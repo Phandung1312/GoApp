@@ -9,6 +9,7 @@ class _Image extends AssetImage {
 class AppImages{
 
   static const appLogo = _Image('app_logo.png');
+  static const backgrounPending = _Image('background_pending.png');
   static const icGoogle = _Image('ic_google.png');
   static const icCompass = _Image('ic_compass.png');
   static const icCompassSelected = _Image('ic_compass_selected.png');

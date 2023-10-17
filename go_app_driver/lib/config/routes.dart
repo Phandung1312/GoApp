@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_app_driver/presentation/pages/login/login_page.dart';
+import 'package:go_app_driver/presentation/pages/login/pending_page.dart';
 import 'package:go_app_driver/presentation/pages/login/register_page.dart';
 
 enum Routes { splash, login, register, home }
@@ -8,6 +9,7 @@ class Paths {
   static const String splash = '/';
   static const String login = '/login';
   static const String register = '/register';
+  static const String pending = '/pending';
   static const String home = '/home';
 
  
@@ -20,6 +22,8 @@ class AppNavigator {
         return _materialRoute(const LoginPage());
       case Paths.register:
         return _materialRoute(const RegisterPage());
+      case Paths.pending:
+        return _materialRoute(const PendingPage());
       default:
         return _materialRoute(const LoginPage());
     }

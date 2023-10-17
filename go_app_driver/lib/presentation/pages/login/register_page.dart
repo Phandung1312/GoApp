@@ -22,9 +22,6 @@ class _RegisterState extends State<RegisterPage> {
   final TextEditingController _dateController = TextEditingController();
   bool genderValue = true;
 
-  File? _selectedAvatar;
-  File? _selectedLisence;
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -32,7 +29,7 @@ class _RegisterState extends State<RegisterPage> {
       body: SizedBox(
         width: double.infinity,
         child: Column(mainAxisSize: MainAxisSize.max, children: [
-          const MainToolBar(isBack: false),
+          const MainToolBar(title: "Đăng kí tài xế",isBack: false),
           Flexible(
               flex: 1,
               child: SingleChildScrollView(
@@ -161,7 +158,7 @@ class _RegisterState extends State<RegisterPage> {
                             SizedBox(
                               child: InkWell(
                                   onTap: () {
-                                    _selectImage(context, _selectedAvatar);
+                                    _selectImage(context, ImageOptions.avatar);
                                   },
                                   child: _selectedAvatar != null
                                       ? Image.file(
@@ -200,7 +197,7 @@ class _RegisterState extends State<RegisterPage> {
                             SizedBox(
                               child: InkWell(
                                   onTap: () {
-                                    _selectImage(context, _selectedLisence);
+                                    _selectImage(context, ImageOptions.license );
                                   },
                                   child: _selectedLisence != null
                                       ? Image.file(
@@ -225,17 +222,20 @@ class _RegisterState extends State<RegisterPage> {
                     width: double.infinity,
                     child: ElevatedButton(
                         onPressed: () {
-                          if (_formKey.currentState!.validate()) {}
+                          if (_formKey.currentState!.validate()) {
+
+                          }
                         },
                         style: ElevatedButton.styleFrom(
+
                             padding: const EdgeInsets.all(20.0),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(25)),
-                            backgroundColor: AppColors.grayLine),
+                            backgroundColor: AppColors.primaryGreen),
                         child: const Text(
                           "Gửi hồ sơ",
                           style: TextStyle(
-                            color: AppColors.buttonInActiveText,
+                            color: Colors.white,
                             fontSize: 16.0,
                           ),
                         )),
@@ -284,8 +284,9 @@ class _RegisterState extends State<RegisterPage> {
       _dateController.text = picked.toString().split(" ")[0];
     }
   }
-
-  Future<void> _selectImage(BuildContext context, File? imageFile) async {
+  File? _selectedAvatar;
+  File? _selectedLisence;
+  Future<void> _selectImage(BuildContext context, ImageOptions imageOption) async {
     showDialog(
         context: context,
         builder: (context) {
@@ -299,7 +300,7 @@ class _RegisterState extends State<RegisterPage> {
                     title: const Text("Máy ảnh"),
                     onTap: () {
                       _handleImageSelection(
-                          context, ImageSource.camera, imageFile);
+                          context, ImageSource.camera,  imageOption);
                       Navigator.of(context).pop();
                     },
                   ),
@@ -308,7 +309,7 @@ class _RegisterState extends State<RegisterPage> {
                     title: const Text("Thư viện"),
                     onTap: () {
                       _handleImageSelection(
-                          context, ImageSource.gallery, imageFile);
+                          context, ImageSource.gallery, imageOption);
                       Navigator.of(context).pop();
                     },
                   )
@@ -329,11 +330,22 @@ class _RegisterState extends State<RegisterPage> {
   }
 
   Future _handleImageSelection(
-      BuildContext context, ImageSource imageSource, File? imageFile) async {
+      BuildContext context, ImageSource imageSource, ImageOptions imageOption) async {
     final returnedImage = await ImagePicker().pickImage(source: imageSource);
     if (returnedImage == null) return;
     setState(() {
-      // _selectedLisence = File(returnedImage.path);
+      if(imageOption == ImageOptions.avatar){
+        _selectedAvatar = File(returnedImage.path);
+      }
+      else{
+        _selectedLisence = File(returnedImage.path);
+      }
     });
   }
+}
+
+
+enum ImageOptions{
+  avatar,
+  license
 }

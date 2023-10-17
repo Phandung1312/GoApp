@@ -4,7 +4,8 @@ import 'package:go_app_driver/config/styles.dart';
 
 class MainToolBar extends StatelessWidget {
   final bool isBack;
-  const MainToolBar({Key? key, this.isBack = true}) : super(key: key);
+  final String title;
+  const MainToolBar({Key? key,this.title ="" ,this.isBack = true}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +27,9 @@ class MainToolBar extends StatelessWidget {
                       },
                       child: const Icon(Icons.arrow_back),
                     )),
-              const Positioned(
+               Positioned(
                   child: Text(
-                "Đăng kí tài xế",
+                title,
                 style: Styles.titleText,
               )),
             ])),
