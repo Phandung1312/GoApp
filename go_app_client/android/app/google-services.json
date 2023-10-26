@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "650109837523",
+    "project_id": "goapp-453be",
+    "storage_bucket": "goapp-453be.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:650109837523:android:ef4c98b4082ac90fe8b426",
+        "android_client_info": {
+          "package_name": "com.example.go_app_client"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "650109837523-52mh678rs1n5aa2nm9v1tl95fj7ig0sl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.go_app_client",
+            "certificate_hash": "d6ec13f7891e7633a0705505ffbd39d24b2dacba"
+          }
+        },
+        {
+          "client_id": "650109837523-vcpbjogn6rgu2g4k1gojsfc5rtm5i7iq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCATBNuX8Ev_PI5HRyG_CO0oz2rNhZqz0Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "650109837523-vcpbjogn6rgu2g4k1gojsfc5rtm5i7iq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "650109837523-8a0vnk2avi9e2oi0ktna07hv7gh5g8jl.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.goAppDriver"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:650109837523:android:1a6103e1d7fd9bf6e8b426",
+        "android_client_info": {
+          "package_name": "com.example.go_app_driver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "650109837523-jlp9rv9eefsuaa3rp0no6tit7fhpfefo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.go_app_driver",
+            "certificate_hash": "e2a4084e2aebd0f80f26930f5c7f16118af4eaa0"
+          }
+        },
+        {
+          "client_id": "650109837523-vcpbjogn6rgu2g4k1gojsfc5rtm5i7iq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCATBNuX8Ev_PI5HRyG_CO0oz2rNhZqz0Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "650109837523-vcpbjogn6rgu2g4k1gojsfc5rtm5i7iq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "650109837523-8a0vnk2avi9e2oi0ktna07hv7gh5g8jl.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.goAppDriver"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

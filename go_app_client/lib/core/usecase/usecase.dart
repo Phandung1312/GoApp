@@ -1,8 +1,13 @@
+abstract class BaseUseCase<T>{
+  const BaseUseCase();
+}
 
-import 'package:dartz/dartz.dart';
-import 'package:go_app_client/core/errors/failure.dart';
+abstract class UseCase<T, P> extends BaseUseCase<T>{
+  const UseCase() : super();
+  Future<T> call(P params);
+}
 
-
-abstract class UseCase<Type, Params>{
-  Future<Either<Failure, Type>> call(Params params);
+abstract class NoPramsUseCase<T> extends BaseUseCase<T>{
+  const NoPramsUseCase() : super();
+  Future<T> call();
 }

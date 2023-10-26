@@ -1,20 +1,40 @@
 
 import 'package:flutter/material.dart';
-import 'package:go_app_client/presentation/pages/login_page.dart';
+import 'package:go_app_client/presentation/pages/home/input_location/input_location_page.dart';
+import 'package:go_app_client/presentation/pages/home/pick_location/pick_location_page.dart';
+import 'package:go_app_client/presentation/pages/login/login_page.dart';
+import 'package:go_app_client/presentation/pages/main_page.dart';
+import 'package:go_app_client/presentation/pages/splash/splash_page.dart';
 
-class AppRoutes{
-  static Route onGenerateRoutes(RouteSettings settings) {
-      switch (settings.name) {
-        case '/':
-          return _materialRoute(const LoginPage());
+enum Routes { splash, login, main }
 
-          
-        default:
-          return _materialRoute(const LoginPage());
-      }
+class Paths {
+  static const String splash = '/';
+  static const String login = '/login';
+  static const String main = '/main';
+  static const String inputLocation = "/main/inputlocaiton";
+  static const String pickLocation = "main/inputlocation/picklocation";
+}
+
+class AppNavigator {
+  static Route onGenerateRoute(RouteSettings settings) {
+    switch (settings.name) {
+      case Paths.splash:
+        return _materialRoute(const SplashPage());
+      case Paths.login:
+        return _materialRoute(const LoginPage());
+      case Paths.main:
+        return _materialRoute(const MainPage());
+      case Paths.inputLocation:
+        return _materialRoute(const InputLocationPage());
+      case Paths.pickLocation:
+        return _materialRoute(const PickLocationPage());
+      default:
+        return _materialRoute(const LoginPage());
     }
+  }
 
-   static Route<dynamic> _materialRoute(Widget view) {
+  static Route<dynamic> _materialRoute(Widget view) {
     return MaterialPageRoute(builder: (_) => view);
   }
 }

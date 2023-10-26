@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:go_app_client/config/routes/routes.dart';
 import 'package:go_app_client/config/theme/app_theme.dart';
-import 'package:go_app_client/injection_container.dart';
+import 'package:go_app_client/core/inject/injection.dart';
+import 'package:go_app_client/presentation/bloc/booking/booking_bloc.dart';
+import 'package:go_app_client/presentation/bloc/home/home_bloc.dart';
 import 'package:go_app_client/presentation/bloc/login/login_bloc.dart';
-import 'package:go_app_client/presentation/pages/login_page.dart';
-
-
+import 'package:go_app_client/presentation/pages/splash/splash_page.dart';
+import 'package:injectable/injectable.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await initializeDependencise();
+  await configureInjection(Environment.prod);
+  await dotenv.load(fileName: ".env");
   runApp(const MyApp());
 }
 
@@ -18,13 +22,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<LoginBloc>(create: (_) => getIt()),
+        BlocProvider<HomeBloc>(create: (_) => getIt()),
+        BlocProvider<BookingBloc>(create: (_) => getIt())
+      ],
+      child: MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: theme(),
-      home:  BlocProvider<LoginBloc>(
-        create: (_) => sl(),
-        child: LoginPage(),
-      ),
+      onGenerateRoute: AppNavigator.onGenerateRoute,
+      home:  SplashPage()
+    ),
     );
   }
 }
