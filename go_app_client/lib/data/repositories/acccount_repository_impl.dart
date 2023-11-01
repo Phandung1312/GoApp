@@ -1,6 +1,8 @@
 
 
 
+import 'package:dartz/dartz.dart';
+import 'package:go_app_client/core/errors/failures.dart';
 import 'package:go_app_client/data/datasources/account/account_remote_datasource.dart';
 import 'package:go_app_client/domain/entities/account.dart';
 import 'package:go_app_client/domain/repositories/account_repository.dart';
@@ -12,10 +14,9 @@ class AccountRepositoryImpl implements AccountRepository{
   AccountRepositoryImpl(this._remoteDataSource);
   final IAccountRemoteDataSource _remoteDataSource;
   @override
-  Future<Account> getAccount() async {
+  Future<Either<Failure, Account>> getAccount() async {
     await _handleSignIn();
-    return const Account(
-    );
+    return const Right(Account());
   }
 
   Future<void> _handleSignIn() async {

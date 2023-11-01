@@ -2,14 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:go_app_client/config/colors.dart';
+import 'package:go_app_client/config/constants.dart';
 import 'package:go_app_client/config/routes/routes.dart';
 import 'package:go_app_client/helpers/share_prefereces.dart';
 import 'package:go_app_client/presentation/bloc/home/home_bloc.dart';
 import 'package:go_app_client/presentation/pages/home/sections/type_vihecle_bottom_card.dart';
 
-import 'package:mapbox_gl/mapbox_gl.dart';
+import 'package:vietmap_flutter_gl/vietmap_flutter_gl.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -19,20 +19,16 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late MapboxMapController controller;
 
-  late CameraPosition _initialCameraPosition;
-
+ late CameraPosition _initialCameraPosition;
   @override
   void initState() {
     super.initState();
     LatLng latLng = getCurrentLatLngFromSharedPrefs();
-    _initialCameraPosition = CameraPosition(target: latLng, zoom: 15);
+  _initialCameraPosition = CameraPosition(target: latLng, zoom: 15);
   }
 
-  _onMapCreated(MapboxMapController controller) async {
-    this.controller = controller;
-  }
+
 
   _onStyleLoadedCallback() async {}
 
@@ -48,17 +44,14 @@ class _HomePageState extends State<HomePage> {
       },
       builder: (context, state) {
         return Stack(alignment: Alignment.center, children: [
-          MapboxMap(
-              accessToken: dotenv.env["MAPBOX_ACCESS_TOKEN"],
-              initialCameraPosition: _initialCameraPosition,
-              onMapCreated: _onMapCreated,
-              onStyleLoadedCallback: _onStyleLoadedCallback,
-              myLocationEnabled: true,
-              myLocationTrackingMode: MyLocationTrackingMode.TrackingGPS,
-              minMaxZoomPreference: const MinMaxZoomPreference(7, 30),
-              myLocationRenderMode: MyLocationRenderMode.COMPASS,
-               
-              ),
+          VietmapGL(styleString:
+          mapStyle,
+      initialCameraPosition:
+          _initialCameraPosition,
+          myLocationEnabled: true,
+          myLocationTrackingMode: MyLocationTrackingMode.TrackingGPS,
+          minMaxZoomPreference: const MinMaxZoomPreference(7, 20),
+          ),
           state.maybeWhen(
             showVehicleType: () =>
                 const Positioned(bottom: 0, child: TypeVihecleCard()),

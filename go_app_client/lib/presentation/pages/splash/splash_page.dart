@@ -1,10 +1,10 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:go_app_client/config/images.dart';
 import 'package:go_app_client/config/routes/routes.dart';
 import 'package:go_app_client/core/inject/injection.dart';
-import 'package:location/location.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashPage extends StatefulWidget {
@@ -35,24 +35,26 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   void initializeLocationAndSave() async{
-    Location location = Location();
     bool? serviceEnable;
-    PermissionStatus? permissionGranted;
+    LocationPermission permission;
 
-    serviceEnable = await location.serviceEnabled();
+    serviceEnable = await Geolocator.isLocationServiceEnabled();
     if(!serviceEnable){
-      serviceEnable = await location.requestService();
+      
     }
-    permissionGranted = await location.hasPermission();
-    if (permissionGranted == PermissionStatus.denied) {
-      permissionGranted = await location.requestPermission();
+    permission = await Geolocator.checkPermission();
+    if (permission  == LocationPermission.denied) {
+      permission  = await Geolocator.requestPermission();
+      if(permission == LocationPermission.denied){
+
+      }
     }
 
     // Get the current user location
-    LocationData locationData = await location.getLocation();
+    Position locationData = await Geolocator.getCurrentPosition();
     final prefs = getIt<SharedPreferences>();
-    await prefs.setDouble('latitude', locationData.latitude!);
-    await prefs.setDouble('longitude', locationData.longitude!);
+    await prefs.setDouble('latitude', locationData.latitude);
+    await prefs.setDouble('longitude', locationData.longitude);
     Future.delayed(
       const  Duration(seconds:  1),
       () => Navigator.pushNamedAndRemoveUntil(context, Paths.login,(route) => route.isFirst)

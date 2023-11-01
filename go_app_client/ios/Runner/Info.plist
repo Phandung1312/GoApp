@@ -29,8 +29,18 @@
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UISupportedInterfaceOrientations</key>
+	<key>VietMapAPIBaseURL</key>
+	<string>https://maps.vietmap.vn/api/navigations/route/</string>
+	<key>VietMapAccessToken</key>
+	<string>YOUR_API_KEY_HERE</string>
+	<key>VietMapURL</key>
+	<string>https://maps.vietmap.vn/api/maps/light/styles.json?apikey=YOUR_API_KEY_HERE</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>This app requires location permission to working normally</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>This app requires location permission to working normally</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Ứng dụng cần truy cập vị trí của bạn để cung cấp dịch vụ theo dõi.</string>
+	<string>This app requires location permission to working normally</string>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>

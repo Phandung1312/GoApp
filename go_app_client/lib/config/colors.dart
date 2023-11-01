@@ -15,4 +15,5 @@ class AppColors {
   static const Color buttonInActiveText = Color.fromARGB(255, 98, 98, 99);
   static const Color buttonActiveText = Color.fromARGB(255, 255, 255, 255);
   static const Color buttonVihecleType = Color.fromARGB(255, 236, 232, 232);
+  static const Color backgroundInactiveButton = Color(0xFFE2E2E2);
 }

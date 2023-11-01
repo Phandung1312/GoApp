@@ -1,6 +1,7 @@
 
 import 'package:dio/dio.dart';
 import 'package:go_app_client/data/api/account_api_service.dart';
+import 'package:go_app_client/data/api/map_api_service.dart';
 
 import 'package:injectable/injectable.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -16,6 +17,9 @@ abstract class RegisterModule{
 
   @lazySingleton
   AccountApiService accountApiService(Dio dio) => AccountApiService(dio);
+
+  @lazySingleton
+  MapApiService mapApiService(Dio dio) => MapApiService(dio);
   
   @preResolve
   Future<SharedPreferences> get sharedPreferences => SharedPreferences.getInstance();

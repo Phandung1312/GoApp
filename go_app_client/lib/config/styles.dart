@@ -15,4 +15,20 @@ class Styles{
     color: AppColors.primaryGrayText,
     fontSize: 20,
   );
+
+  static const TextStyle titleCardText  = TextStyle(
+    color: Colors.black,
+    fontSize: 14,
+    fontWeight: FontWeight.bold
+  );
+
+   static const TextStyle primaryCardText  = TextStyle(
+    color: Colors.black,
+    fontSize: 12,
+  );
+  static const TextStyle emptyListText  = TextStyle(
+    color: Colors.black,
+    fontSize: 16,
+  );
+
 }
