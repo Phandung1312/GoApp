@@ -26,6 +26,11 @@ class Styles{
     color: Colors.black,
     fontSize: 12,
   );
+  static const TextStyle additionalCardText  = TextStyle(
+    color: Colors.black,
+    
+    fontSize: 10,
+  );
   static const TextStyle emptyListText  = TextStyle(
     color: Colors.black,
     fontSize: 16,

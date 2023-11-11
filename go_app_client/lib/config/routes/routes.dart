@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:go_app_client/presentation/pages/home/complete_booking/complete_booking_page.dart';
 import 'package:go_app_client/presentation/pages/home/input_location/input_location_page.dart';
 import 'package:go_app_client/presentation/pages/home/pick_location/pick_location_page.dart';
 import 'package:go_app_client/presentation/pages/login/login_page.dart';
@@ -13,7 +14,8 @@ class Paths {
   static const String login = '/login';
   static const String main = '/main';
   static const String inputLocation = "/main/inputlocaiton";
-  static const String pickLocation = "main/inputlocation/picklocation";
+  static const String pickLocation = "/main/inputlocation/picklocation";
+  static const String completeBooking = "main/completebooking";
 }
 
 class AppNavigator {
@@ -29,6 +31,8 @@ class AppNavigator {
         return _materialRoute(const InputLocationPage());
       case Paths.pickLocation:
         return _materialRoute(const PickLocationPage());
+      case Paths.completeBooking:
+        return _materialRoute(const CompleteBookingPage());
       default:
         return _materialRoute(const LoginPage());
     }

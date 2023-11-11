@@ -1,11 +1,12 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:go_app_client/config/colors.dart';
-import 'package:go_app_client/config/constants.dart';
 import 'package:go_app_client/config/images.dart';
+import 'package:go_app_client/config/routes/routes.dart';
 import 'package:go_app_client/core/errors/failures.dart';
+import 'package:go_app_client/core/utils/debounce.dart';
+import 'package:go_app_client/domain/entities/map_picker_data.dart';
 import 'package:go_app_client/helpers/share_prefereces.dart';
 import 'package:go_app_client/presentation/bloc/booking/booking_bloc.dart';
 import 'package:lottie/lottie.dart';
@@ -19,61 +20,73 @@ class PickLocationPage extends StatefulWidget {
 }
 
 class _PickLocationState extends State<PickLocationPage> {
-  Timer? searchOnStoppedMoving;
+  final Debounce _debounce = Debounce(delay: const Duration(milliseconds: 500));
   late CameraPosition _initialCameraPosition;
   VietmapController? _controller;
-
+  String address = "";
   bool isPickupLocation = true;
 
   @override
   void initState() {
     super.initState();
-    LatLng latLng = getCurrentLatLngFromSharedPrefs();
-    _initialCameraPosition = CameraPosition(target: latLng, zoom: 15);
-
     final state = BlocProvider.of<BookingBloc>(context).state;
-    state.whenOrNull(
-      locatingPickupLocation: () => isPickupLocation = true,
-      locatingDesLocation: () => isPickupLocation = false,
-    );
+    LatLng latLng = getCurrentLatLngFromSharedPrefs();
+
+    if (state is BookingLocatingLocation) {
+      var selectedLocation = state.selectedLocation;
+      if (selectedLocation != null) {
+        latLng = LatLng(selectedLocation.latitude, selectedLocation.longitude);
+      }
+      isPickupLocation = state.isPickupLocation;
+    }
+    _initialCameraPosition = CameraPosition(target: latLng, zoom: 15);
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<BookingBloc, BookingState>(
       listener: (context, state) {
-        state.whenOrNull(
-          loadError: (failure) {
-            String errorMessage = "";
-            switch (failure) {
-              case ApiServerFailure:
-                errorMessage = (failure as ApiServerFailure).message;
-                break;
-              default:
-                errorMessage = "Đã xảy ra lỗi, vui lòng thử lại sau";
-                break;
-            }
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content: Text(errorMessage),
-              action: SnackBarAction(label: "Đã rõ", onPressed: () {}),
-            ));
-          },
-        );
+        if (state is BookingLoadError) {
+          var failure = state.failure;
+          String errorMessage = "";
+
+          switch (failure.runtimeType) {
+            case ApiServerFailure:
+              errorMessage = (failure as ApiServerFailure).message;
+              break;
+            case ApiTimeOutFailure:
+              errorMessage = "Không thể kết nối đến server";
+            default:
+              errorMessage = "Đã xảy ra lỗi, vui lòng thử lại sau";
+              break;
+          }
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text(errorMessage),
+            action: SnackBarAction(label: "Đã rõ", onPressed: () {}),
+          ));
+        }
+
+        if (state is BookingLoadLocationSuccess) {
+          setState(() {
+            address = state.result.display;
+          });
+        }
+        
+        if(state is BookingGetDirectionSuccess){
+          Navigator.pushNamedAndRemoveUntil(context, Paths.completeBooking, (route) => route.settings.name == Paths.main);
+        }
       },
-      buildWhen: (previous, current) {
-        return current.maybeWhen(
-            loadingLocation: () => true,
-            loadLocationSuccess: (result) => true,
-            loadError: (failure) => true,
-            orElse: () => false);
-      },
+      buildWhen: (previous, current) =>
+          current is BookingLoadingLocation ||
+          current is BookingLoadLocationSuccess ||
+          current is BookingLoadError,
       builder: (context, state) {
         return SafeArea(
           child: Scaffold(
             body: Stack(alignment: Alignment.center, children: [
               VietmapGL(
                 trackCameraPosition: true,
-                styleString: mapStyle,
+                styleString: dotenv.env['MAP_STYLE'] ?? "",
                 initialCameraPosition: _initialCameraPosition,
                 myLocationEnabled: true,
                 onMapCreated: (controller) {
@@ -83,24 +96,19 @@ class _PickLocationState extends State<PickLocationPage> {
                 },
                 onCameraIdle: () {
                   if (!mounted) return;
-                  if (searchOnStoppedMoving != null) {
-                    setState(() {
-                      searchOnStoppedMoving?.cancel();
-                    });
-                  }
-                  setState(() => searchOnStoppedMoving =
-                          Timer(const Duration(milliseconds: 200), () {
-                        try {
-                          context.read<BookingBloc>().add(
-                              BookingSearchAddressFromCoordinate(
-                                  coordinate:
-                                      _controller!.cameraPosition!.target));
-                        } catch (e) {
-                          debugPrint(e.toString());
-                        }
-                      }));
+                  _debounce.run(() {
+                    if (_controller?.cameraPosition != null) {
+                      try {
+                        context.read<BookingBloc>().add(
+                            BookingSearchAddressFromCoordinate(
+                                coordinate:
+                                    _controller!.cameraPosition!.target));
+                      } catch (e) {
+                        debugPrint(e.toString());
+                      }
+                    }
+                  });
                 },
-                myLocationTrackingMode: MyLocationTrackingMode.TrackingGPS,
                 minMaxZoomPreference: const MinMaxZoomPreference(7, 30),
               ),
               Positioned(
@@ -145,11 +153,7 @@ class _PickLocationState extends State<PickLocationPage> {
                               ),
                               Expanded(
                                   child: Text(
-                                state.whenOrNull(
-                                      loadLocationSuccess: (result) =>
-                                          result.display,
-                                    ) ??
-                                    "",
+                                address,
                                 style: const TextStyle(
                                     decoration: TextDecoration.none,
                                     color: Colors.black,
@@ -165,33 +169,44 @@ class _PickLocationState extends State<PickLocationPage> {
                         ),
                         SizedBox(
                             width: double.infinity,
-                            child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                    shape: const RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(10))),
-                                    backgroundColor: state.maybeWhen(
-                                          loadingLocation: () => AppColors
-                                              .backgroundInactiveButton,
-                                              orElse: () => AppColors.primaryGreen
-                                        ),
-                                    textStyle: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold)),
-                                onPressed: //state.whenOrNull( loadLocationSuccess: (result) => (){}), 
-                                (){},
-                                child: state.whenOrNull(
-                                        loadingLocation: () => Lottie.asset(
-                                            'assets/animations/loading_dots.json',
-                                            width: 60,
-                                            height: 60
-                                            )) ??
-                                    Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 20),
-                                        child: Text(
-                                            "Xác nhận điểm ${isPickupLocation ? 'đón' : 'đến'}")))),
+                            child: state is BookingLoadingLocation
+                                ? Container(
+                                    color: AppColors.backgroundInactiveButton,
+                                    child: Lottie.asset(
+                                        'assets/animations/loading_dots.json',
+                                        height: 60),
+                                  )
+                                : ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                        shape: const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(10))),
+                                        backgroundColor:  AppColors.primaryGreen,
+                                        textStyle: const TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold)),
+                                    onPressed: state
+                                            is BookingLoadLocationSuccess
+                                        ? () {
+                                            MapPickerData mapPickerData =
+                                                MapPickerData(
+                                                    latLng: _controller!
+                                                        .cameraPosition!.target,
+                                                    display:
+                                                        state.result.display);
+                                            context.read<BookingBloc>().add(
+                                                BookingEvent.pickAddress(
+                                                    mapPickerData:
+                                                        mapPickerData));
+                                            Navigator.pop(context);
+                                          }
+                                        : null,
+                                    child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                vertical: 20),
+                                            child: Text(
+                                                "Xác nhận điểm ${isPickupLocation ? 'đón' : 'đến'}")))),
                       ],
                     ),
                   )),

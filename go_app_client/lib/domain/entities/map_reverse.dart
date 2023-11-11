@@ -5,6 +5,7 @@ part 'map_reverse.freezed.dart';
 @freezed
 class MapReverse with _$MapReverse{
   const factory MapReverse({
+      @Default("") String refId,
       @Default("") String address,
       @Default("") String name,
       @Default("") String display,

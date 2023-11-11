@@ -1,4 +1,4 @@
 enum VehicleType{
-  motorbike,
+  motorcycle,
   car
 }

@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_app_client/config/colors.dart';
 import 'package:go_app_client/config/images.dart';
+import 'package:go_app_client/config/routes/routes.dart';
 import 'package:go_app_client/domain/entities/enum/enum.dart';
-import 'package:go_app_client/presentation/bloc/home/home_bloc.dart';
+import 'package:go_app_client/presentation/bloc/booking/booking_bloc.dart';
 
 class TypeVihecleCard extends StatelessWidget {
   const TypeVihecleCard({super.key});
@@ -42,7 +43,8 @@ class TypeVihecleCard extends StatelessWidget {
                         shape: const CircleBorder(),
                         backgroundColor: AppColors.buttonVihecleType),
                     onPressed: () {
-                      context.read<HomeBloc>().add(const HomeEvent.selectVehicleType(vehicleType: VehicleType.motorbike));
+                      context.read<BookingBloc>().add(const BookingEvent.selectVehicleType(vehicleType: VehicleType.motorcycle));
+                      Navigator.pushNamed(context, Paths.inputLocation);
                     },
                     child: const Center(
                         child: Image(
@@ -64,7 +66,8 @@ class TypeVihecleCard extends StatelessWidget {
                         shape: const CircleBorder(),
                         backgroundColor: AppColors.buttonVihecleType),
                     onPressed: () {
-                      context.read<HomeBloc>().add(const HomeEvent.selectVehicleType(vehicleType: VehicleType.motorbike));
+                     context.read<BookingBloc>().add(const BookingEvent.selectVehicleType(vehicleType: VehicleType.car));
+                      Navigator.pushNamed(context, Paths.inputLocation);
                     },
                     child: const Center(
                         child: Image(

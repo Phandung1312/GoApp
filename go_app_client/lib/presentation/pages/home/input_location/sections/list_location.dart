@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_app_client/config/colors.dart';
-import 'package:go_app_client/config/routes/routes.dart';
 import 'package:go_app_client/config/styles.dart';
 import 'package:go_app_client/domain/entities/map_autocomplete.dart';
 import 'package:go_app_client/presentation/bloc/booking/booking_bloc.dart';
@@ -26,7 +25,7 @@ class ListLocation extends StatelessWidget {
             padding: const EdgeInsets.all(10),
             child: InkWell(
               onTap: () {
-                textEditingController.text = addresses[index].address;
+                context.read<BookingBloc>().add(BookingEvent.getAddressDetail(model: addresses[index]));
                 FocusScope.of(context).unfocus();
               },
               child: Row(
@@ -34,11 +33,10 @@ class ListLocation extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   ElevatedButton(
-                      onPressed: () {
-                        context.read<BookingBloc>().add(
+                      onPressed: () async {
+                       context.read<BookingBloc>().add(
                             BookingEvent.locateOnMap(
-                                selectLocation: currentSelection));
-                        Navigator.pushNamed(context, Paths.pickLocation);
+                                selectLocation: currentSelection, refId: addresses[index].refId));
                       },
                       style: ElevatedButton.styleFrom(
                           elevation: 0,

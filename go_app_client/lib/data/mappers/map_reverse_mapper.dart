@@ -8,6 +8,7 @@ class MapReverseMapper extends BaseModelMapper<MapReverseModel, MapReverse> {
   @override
   MapReverse maptoEntity(MapReverseModel? model) {
     return MapReverse(
+        refId: model?.refId ?? "",
         address: model?.address ?? "",
         name: model?.name ?? "",
         display: model?.display ?? "",

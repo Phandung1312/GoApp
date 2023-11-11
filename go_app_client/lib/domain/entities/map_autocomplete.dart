@@ -5,6 +5,7 @@ part 'map_autocomplete.freezed.dart';
 class MapAutoComplete with _$MapAutoComplete{
   const factory MapAutoComplete(
     {
+      @Default("") String refId,
       @Default("") String address,
       @Default("") String name,
       @Default("") String display,

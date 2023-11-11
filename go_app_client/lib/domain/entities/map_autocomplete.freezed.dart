@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$MapAutoComplete {
+  String get refId => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get display => throw _privateConstructorUsedError;
@@ -31,7 +32,7 @@ abstract class $MapAutoCompleteCopyWith<$Res> {
           MapAutoComplete value, $Res Function(MapAutoComplete) then) =
       _$MapAutoCompleteCopyWithImpl<$Res, MapAutoComplete>;
   @useResult
-  $Res call({String address, String name, String display});
+  $Res call({String refId, String address, String name, String display});
 }
 
 /// @nodoc
@@ -47,11 +48,16 @@ class _$MapAutoCompleteCopyWithImpl<$Res, $Val extends MapAutoComplete>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? refId = null,
     Object? address = null,
     Object? name = null,
     Object? display = null,
   }) {
     return _then(_value.copyWith(
+      refId: null == refId
+          ? _value.refId
+          : refId // ignore: cast_nullable_to_non_nullable
+              as String,
       address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -76,7 +82,7 @@ abstract class _$$MapAutoCompleteImplCopyWith<$Res>
       __$$MapAutoCompleteImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String address, String name, String display});
+  $Res call({String refId, String address, String name, String display});
 }
 
 /// @nodoc
@@ -90,11 +96,16 @@ class __$$MapAutoCompleteImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? refId = null,
     Object? address = null,
     Object? name = null,
     Object? display = null,
   }) {
     return _then(_$MapAutoCompleteImpl(
+      refId: null == refId
+          ? _value.refId
+          : refId // ignore: cast_nullable_to_non_nullable
+              as String,
       address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -115,8 +126,11 @@ class __$$MapAutoCompleteImplCopyWithImpl<$Res>
 
 class _$MapAutoCompleteImpl implements _MapAutoComplete {
   const _$MapAutoCompleteImpl(
-      {this.address = "", this.name = "", this.display = ""});
+      {this.refId = "", this.address = "", this.name = "", this.display = ""});
 
+  @override
+  @JsonKey()
+  final String refId;
   @override
   @JsonKey()
   final String address;
@@ -129,7 +143,7 @@ class _$MapAutoCompleteImpl implements _MapAutoComplete {
 
   @override
   String toString() {
-    return 'MapAutoComplete(address: $address, name: $name, display: $display)';
+    return 'MapAutoComplete(refId: $refId, address: $address, name: $name, display: $display)';
   }
 
   @override
@@ -137,13 +151,14 @@ class _$MapAutoCompleteImpl implements _MapAutoComplete {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MapAutoCompleteImpl &&
+            (identical(other.refId, refId) || other.refId == refId) &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.display, display) || other.display == display));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, address, name, display);
+  int get hashCode => Object.hash(runtimeType, refId, address, name, display);
 
   @JsonKey(ignore: true)
   @override
@@ -155,10 +170,13 @@ class _$MapAutoCompleteImpl implements _MapAutoComplete {
 
 abstract class _MapAutoComplete implements MapAutoComplete {
   const factory _MapAutoComplete(
-      {final String address,
+      {final String refId,
+      final String address,
       final String name,
       final String display}) = _$MapAutoCompleteImpl;
 
+  @override
+  String get refId;
   @override
   String get address;
   @override

@@ -4,8 +4,8 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:go_app_client/core/errors/failures.dart';
+import 'package:logger/logger.dart';
 import 'package:retrofit/dio.dart';
 
 mixin BaseRemoteService {
@@ -20,7 +20,7 @@ mixin BaseRemoteService {
         return const  Left(ApiServerFailure('Có lỗi xảy ra'));
       }
     } on DioException catch(e){
-      debugPrint("Check Debug ${e.error.toString()}");
+      Logger().e("Retrofit error:${e.message}");
       if(e.type == DioExceptionType.receiveTimeout){
         return Left(ApiTimeOutFailure());
       }

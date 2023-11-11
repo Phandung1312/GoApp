@@ -18,41 +18,57 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$BookingEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() selectVehicleType,
     required TResult Function() selectPickupLocation,
     required TResult Function() selectDesLocation,
-    required TResult Function(SelectLocation selectLocation) locateOnMap,
+    required TResult Function(SelectLocation selectLocation, String? refId)
+        locateOnMap,
     required TResult Function(String query) searchAddressFromText,
     required TResult Function(LatLng coordinate) searchAddressFromCoordinate,
     required TResult Function(MapPickerData mapPickerData) pickAddress,
+    required TResult Function(MapAutoComplete model) getAddressDetail,
+    required TResult Function(VehicleType vehicleType) selectVehicleType,
+    required TResult Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)
+        updateRouteParams,
+    required TResult Function(LatLng from, LatLng to) getDirection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? selectVehicleType,
     TResult? Function()? selectPickupLocation,
     TResult? Function()? selectDesLocation,
-    TResult? Function(SelectLocation selectLocation)? locateOnMap,
+    TResult? Function(SelectLocation selectLocation, String? refId)?
+        locateOnMap,
     TResult? Function(String query)? searchAddressFromText,
     TResult? Function(LatLng coordinate)? searchAddressFromCoordinate,
     TResult? Function(MapPickerData mapPickerData)? pickAddress,
+    TResult? Function(MapAutoComplete model)? getAddressDetail,
+    TResult? Function(VehicleType vehicleType)? selectVehicleType,
+    TResult? Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)?
+        updateRouteParams,
+    TResult? Function(LatLng from, LatLng to)? getDirection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? selectVehicleType,
     TResult Function()? selectPickupLocation,
     TResult Function()? selectDesLocation,
-    TResult Function(SelectLocation selectLocation)? locateOnMap,
+    TResult Function(SelectLocation selectLocation, String? refId)? locateOnMap,
     TResult Function(String query)? searchAddressFromText,
     TResult Function(LatLng coordinate)? searchAddressFromCoordinate,
     TResult Function(MapPickerData mapPickerData)? pickAddress,
+    TResult Function(MapAutoComplete model)? getAddressDetail,
+    TResult Function(VehicleType vehicleType)? selectVehicleType,
+    TResult Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)?
+        updateRouteParams,
+    TResult Function(LatLng from, LatLng to)? getDirection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(BookingSelectVehicleType value) selectVehicleType,
     required TResult Function(BookingSelectPickupLocation value)
         selectPickupLocation,
     required TResult Function(BookingSelectDesLocation value) selectDesLocation,
@@ -62,11 +78,14 @@ mixin _$BookingEvent {
     required TResult Function(BookingSearchAddressFromCoordinate value)
         searchAddressFromCoordinate,
     required TResult Function(BookingPickAddress value) pickAddress,
+    required TResult Function(BookingGetAddressDetail value) getAddressDetail,
+    required TResult Function(BookingSelectVehicleType value) selectVehicleType,
+    required TResult Function(BookingUpdateRouteParams value) updateRouteParams,
+    required TResult Function(BookingGetDirection value) getDirection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult? Function(BookingSelectPickupLocation value)? selectPickupLocation,
     TResult? Function(BookingSelectDesLocation value)? selectDesLocation,
     TResult? Function(BookingLocateOnMap value)? locateOnMap,
@@ -75,11 +94,14 @@ mixin _$BookingEvent {
     TResult? Function(BookingSearchAddressFromCoordinate value)?
         searchAddressFromCoordinate,
     TResult? Function(BookingPickAddress value)? pickAddress,
+    TResult? Function(BookingGetAddressDetail value)? getAddressDetail,
+    TResult? Function(BookingSelectVehicleType value)? selectVehicleType,
+    TResult? Function(BookingUpdateRouteParams value)? updateRouteParams,
+    TResult? Function(BookingGetDirection value)? getDirection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult Function(BookingSelectPickupLocation value)? selectPickupLocation,
     TResult Function(BookingSelectDesLocation value)? selectDesLocation,
     TResult Function(BookingLocateOnMap value)? locateOnMap,
@@ -87,6 +109,10 @@ mixin _$BookingEvent {
     TResult Function(BookingSearchAddressFromCoordinate value)?
         searchAddressFromCoordinate,
     TResult Function(BookingPickAddress value)? pickAddress,
+    TResult Function(BookingGetAddressDetail value)? getAddressDetail,
+    TResult Function(BookingSelectVehicleType value)? selectVehicleType,
+    TResult Function(BookingUpdateRouteParams value)? updateRouteParams,
+    TResult Function(BookingGetDirection value)? getDirection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -108,147 +134,6 @@ class _$BookingEventCopyWithImpl<$Res, $Val extends BookingEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$BookingSelectVehicleTypeImplCopyWith<$Res> {
-  factory _$$BookingSelectVehicleTypeImplCopyWith(
-          _$BookingSelectVehicleTypeImpl value,
-          $Res Function(_$BookingSelectVehicleTypeImpl) then) =
-      __$$BookingSelectVehicleTypeImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$BookingSelectVehicleTypeImplCopyWithImpl<$Res>
-    extends _$BookingEventCopyWithImpl<$Res, _$BookingSelectVehicleTypeImpl>
-    implements _$$BookingSelectVehicleTypeImplCopyWith<$Res> {
-  __$$BookingSelectVehicleTypeImplCopyWithImpl(
-      _$BookingSelectVehicleTypeImpl _value,
-      $Res Function(_$BookingSelectVehicleTypeImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$BookingSelectVehicleTypeImpl implements BookingSelectVehicleType {
-  const _$BookingSelectVehicleTypeImpl();
-
-  @override
-  String toString() {
-    return 'BookingEvent.selectVehicleType()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$BookingSelectVehicleTypeImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() selectVehicleType,
-    required TResult Function() selectPickupLocation,
-    required TResult Function() selectDesLocation,
-    required TResult Function(SelectLocation selectLocation) locateOnMap,
-    required TResult Function(String query) searchAddressFromText,
-    required TResult Function(LatLng coordinate) searchAddressFromCoordinate,
-    required TResult Function(MapPickerData mapPickerData) pickAddress,
-  }) {
-    return selectVehicleType();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? selectVehicleType,
-    TResult? Function()? selectPickupLocation,
-    TResult? Function()? selectDesLocation,
-    TResult? Function(SelectLocation selectLocation)? locateOnMap,
-    TResult? Function(String query)? searchAddressFromText,
-    TResult? Function(LatLng coordinate)? searchAddressFromCoordinate,
-    TResult? Function(MapPickerData mapPickerData)? pickAddress,
-  }) {
-    return selectVehicleType?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? selectVehicleType,
-    TResult Function()? selectPickupLocation,
-    TResult Function()? selectDesLocation,
-    TResult Function(SelectLocation selectLocation)? locateOnMap,
-    TResult Function(String query)? searchAddressFromText,
-    TResult Function(LatLng coordinate)? searchAddressFromCoordinate,
-    TResult Function(MapPickerData mapPickerData)? pickAddress,
-    required TResult orElse(),
-  }) {
-    if (selectVehicleType != null) {
-      return selectVehicleType();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(BookingSelectVehicleType value) selectVehicleType,
-    required TResult Function(BookingSelectPickupLocation value)
-        selectPickupLocation,
-    required TResult Function(BookingSelectDesLocation value) selectDesLocation,
-    required TResult Function(BookingLocateOnMap value) locateOnMap,
-    required TResult Function(BookingSearchAddressFromText value)
-        searchAddressFromText,
-    required TResult Function(BookingSearchAddressFromCoordinate value)
-        searchAddressFromCoordinate,
-    required TResult Function(BookingPickAddress value) pickAddress,
-  }) {
-    return selectVehicleType(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(BookingSelectVehicleType value)? selectVehicleType,
-    TResult? Function(BookingSelectPickupLocation value)? selectPickupLocation,
-    TResult? Function(BookingSelectDesLocation value)? selectDesLocation,
-    TResult? Function(BookingLocateOnMap value)? locateOnMap,
-    TResult? Function(BookingSearchAddressFromText value)?
-        searchAddressFromText,
-    TResult? Function(BookingSearchAddressFromCoordinate value)?
-        searchAddressFromCoordinate,
-    TResult? Function(BookingPickAddress value)? pickAddress,
-  }) {
-    return selectVehicleType?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(BookingSelectVehicleType value)? selectVehicleType,
-    TResult Function(BookingSelectPickupLocation value)? selectPickupLocation,
-    TResult Function(BookingSelectDesLocation value)? selectDesLocation,
-    TResult Function(BookingLocateOnMap value)? locateOnMap,
-    TResult Function(BookingSearchAddressFromText value)? searchAddressFromText,
-    TResult Function(BookingSearchAddressFromCoordinate value)?
-        searchAddressFromCoordinate,
-    TResult Function(BookingPickAddress value)? pickAddress,
-    required TResult orElse(),
-  }) {
-    if (selectVehicleType != null) {
-      return selectVehicleType(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class BookingSelectVehicleType implements BookingEvent {
-  const factory BookingSelectVehicleType() = _$BookingSelectVehicleTypeImpl;
 }
 
 /// @nodoc
@@ -292,13 +177,19 @@ class _$BookingSelectPickupLocationImpl implements BookingSelectPickupLocation {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() selectVehicleType,
     required TResult Function() selectPickupLocation,
     required TResult Function() selectDesLocation,
-    required TResult Function(SelectLocation selectLocation) locateOnMap,
+    required TResult Function(SelectLocation selectLocation, String? refId)
+        locateOnMap,
     required TResult Function(String query) searchAddressFromText,
     required TResult Function(LatLng coordinate) searchAddressFromCoordinate,
     required TResult Function(MapPickerData mapPickerData) pickAddress,
+    required TResult Function(MapAutoComplete model) getAddressDetail,
+    required TResult Function(VehicleType vehicleType) selectVehicleType,
+    required TResult Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)
+        updateRouteParams,
+    required TResult Function(LatLng from, LatLng to) getDirection,
   }) {
     return selectPickupLocation();
   }
@@ -306,13 +197,19 @@ class _$BookingSelectPickupLocationImpl implements BookingSelectPickupLocation {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? selectVehicleType,
     TResult? Function()? selectPickupLocation,
     TResult? Function()? selectDesLocation,
-    TResult? Function(SelectLocation selectLocation)? locateOnMap,
+    TResult? Function(SelectLocation selectLocation, String? refId)?
+        locateOnMap,
     TResult? Function(String query)? searchAddressFromText,
     TResult? Function(LatLng coordinate)? searchAddressFromCoordinate,
     TResult? Function(MapPickerData mapPickerData)? pickAddress,
+    TResult? Function(MapAutoComplete model)? getAddressDetail,
+    TResult? Function(VehicleType vehicleType)? selectVehicleType,
+    TResult? Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)?
+        updateRouteParams,
+    TResult? Function(LatLng from, LatLng to)? getDirection,
   }) {
     return selectPickupLocation?.call();
   }
@@ -320,13 +217,18 @@ class _$BookingSelectPickupLocationImpl implements BookingSelectPickupLocation {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? selectVehicleType,
     TResult Function()? selectPickupLocation,
     TResult Function()? selectDesLocation,
-    TResult Function(SelectLocation selectLocation)? locateOnMap,
+    TResult Function(SelectLocation selectLocation, String? refId)? locateOnMap,
     TResult Function(String query)? searchAddressFromText,
     TResult Function(LatLng coordinate)? searchAddressFromCoordinate,
     TResult Function(MapPickerData mapPickerData)? pickAddress,
+    TResult Function(MapAutoComplete model)? getAddressDetail,
+    TResult Function(VehicleType vehicleType)? selectVehicleType,
+    TResult Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)?
+        updateRouteParams,
+    TResult Function(LatLng from, LatLng to)? getDirection,
     required TResult orElse(),
   }) {
     if (selectPickupLocation != null) {
@@ -338,7 +240,6 @@ class _$BookingSelectPickupLocationImpl implements BookingSelectPickupLocation {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(BookingSelectVehicleType value) selectVehicleType,
     required TResult Function(BookingSelectPickupLocation value)
         selectPickupLocation,
     required TResult Function(BookingSelectDesLocation value) selectDesLocation,
@@ -348,6 +249,10 @@ class _$BookingSelectPickupLocationImpl implements BookingSelectPickupLocation {
     required TResult Function(BookingSearchAddressFromCoordinate value)
         searchAddressFromCoordinate,
     required TResult Function(BookingPickAddress value) pickAddress,
+    required TResult Function(BookingGetAddressDetail value) getAddressDetail,
+    required TResult Function(BookingSelectVehicleType value) selectVehicleType,
+    required TResult Function(BookingUpdateRouteParams value) updateRouteParams,
+    required TResult Function(BookingGetDirection value) getDirection,
   }) {
     return selectPickupLocation(this);
   }
@@ -355,7 +260,6 @@ class _$BookingSelectPickupLocationImpl implements BookingSelectPickupLocation {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult? Function(BookingSelectPickupLocation value)? selectPickupLocation,
     TResult? Function(BookingSelectDesLocation value)? selectDesLocation,
     TResult? Function(BookingLocateOnMap value)? locateOnMap,
@@ -364,6 +268,10 @@ class _$BookingSelectPickupLocationImpl implements BookingSelectPickupLocation {
     TResult? Function(BookingSearchAddressFromCoordinate value)?
         searchAddressFromCoordinate,
     TResult? Function(BookingPickAddress value)? pickAddress,
+    TResult? Function(BookingGetAddressDetail value)? getAddressDetail,
+    TResult? Function(BookingSelectVehicleType value)? selectVehicleType,
+    TResult? Function(BookingUpdateRouteParams value)? updateRouteParams,
+    TResult? Function(BookingGetDirection value)? getDirection,
   }) {
     return selectPickupLocation?.call(this);
   }
@@ -371,7 +279,6 @@ class _$BookingSelectPickupLocationImpl implements BookingSelectPickupLocation {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult Function(BookingSelectPickupLocation value)? selectPickupLocation,
     TResult Function(BookingSelectDesLocation value)? selectDesLocation,
     TResult Function(BookingLocateOnMap value)? locateOnMap,
@@ -379,6 +286,10 @@ class _$BookingSelectPickupLocationImpl implements BookingSelectPickupLocation {
     TResult Function(BookingSearchAddressFromCoordinate value)?
         searchAddressFromCoordinate,
     TResult Function(BookingPickAddress value)? pickAddress,
+    TResult Function(BookingGetAddressDetail value)? getAddressDetail,
+    TResult Function(BookingSelectVehicleType value)? selectVehicleType,
+    TResult Function(BookingUpdateRouteParams value)? updateRouteParams,
+    TResult Function(BookingGetDirection value)? getDirection,
     required TResult orElse(),
   }) {
     if (selectPickupLocation != null) {
@@ -434,13 +345,19 @@ class _$BookingSelectDesLocationImpl implements BookingSelectDesLocation {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() selectVehicleType,
     required TResult Function() selectPickupLocation,
     required TResult Function() selectDesLocation,
-    required TResult Function(SelectLocation selectLocation) locateOnMap,
+    required TResult Function(SelectLocation selectLocation, String? refId)
+        locateOnMap,
     required TResult Function(String query) searchAddressFromText,
     required TResult Function(LatLng coordinate) searchAddressFromCoordinate,
     required TResult Function(MapPickerData mapPickerData) pickAddress,
+    required TResult Function(MapAutoComplete model) getAddressDetail,
+    required TResult Function(VehicleType vehicleType) selectVehicleType,
+    required TResult Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)
+        updateRouteParams,
+    required TResult Function(LatLng from, LatLng to) getDirection,
   }) {
     return selectDesLocation();
   }
@@ -448,13 +365,19 @@ class _$BookingSelectDesLocationImpl implements BookingSelectDesLocation {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? selectVehicleType,
     TResult? Function()? selectPickupLocation,
     TResult? Function()? selectDesLocation,
-    TResult? Function(SelectLocation selectLocation)? locateOnMap,
+    TResult? Function(SelectLocation selectLocation, String? refId)?
+        locateOnMap,
     TResult? Function(String query)? searchAddressFromText,
     TResult? Function(LatLng coordinate)? searchAddressFromCoordinate,
     TResult? Function(MapPickerData mapPickerData)? pickAddress,
+    TResult? Function(MapAutoComplete model)? getAddressDetail,
+    TResult? Function(VehicleType vehicleType)? selectVehicleType,
+    TResult? Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)?
+        updateRouteParams,
+    TResult? Function(LatLng from, LatLng to)? getDirection,
   }) {
     return selectDesLocation?.call();
   }
@@ -462,13 +385,18 @@ class _$BookingSelectDesLocationImpl implements BookingSelectDesLocation {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? selectVehicleType,
     TResult Function()? selectPickupLocation,
     TResult Function()? selectDesLocation,
-    TResult Function(SelectLocation selectLocation)? locateOnMap,
+    TResult Function(SelectLocation selectLocation, String? refId)? locateOnMap,
     TResult Function(String query)? searchAddressFromText,
     TResult Function(LatLng coordinate)? searchAddressFromCoordinate,
     TResult Function(MapPickerData mapPickerData)? pickAddress,
+    TResult Function(MapAutoComplete model)? getAddressDetail,
+    TResult Function(VehicleType vehicleType)? selectVehicleType,
+    TResult Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)?
+        updateRouteParams,
+    TResult Function(LatLng from, LatLng to)? getDirection,
     required TResult orElse(),
   }) {
     if (selectDesLocation != null) {
@@ -480,7 +408,6 @@ class _$BookingSelectDesLocationImpl implements BookingSelectDesLocation {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(BookingSelectVehicleType value) selectVehicleType,
     required TResult Function(BookingSelectPickupLocation value)
         selectPickupLocation,
     required TResult Function(BookingSelectDesLocation value) selectDesLocation,
@@ -490,6 +417,10 @@ class _$BookingSelectDesLocationImpl implements BookingSelectDesLocation {
     required TResult Function(BookingSearchAddressFromCoordinate value)
         searchAddressFromCoordinate,
     required TResult Function(BookingPickAddress value) pickAddress,
+    required TResult Function(BookingGetAddressDetail value) getAddressDetail,
+    required TResult Function(BookingSelectVehicleType value) selectVehicleType,
+    required TResult Function(BookingUpdateRouteParams value) updateRouteParams,
+    required TResult Function(BookingGetDirection value) getDirection,
   }) {
     return selectDesLocation(this);
   }
@@ -497,7 +428,6 @@ class _$BookingSelectDesLocationImpl implements BookingSelectDesLocation {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult? Function(BookingSelectPickupLocation value)? selectPickupLocation,
     TResult? Function(BookingSelectDesLocation value)? selectDesLocation,
     TResult? Function(BookingLocateOnMap value)? locateOnMap,
@@ -506,6 +436,10 @@ class _$BookingSelectDesLocationImpl implements BookingSelectDesLocation {
     TResult? Function(BookingSearchAddressFromCoordinate value)?
         searchAddressFromCoordinate,
     TResult? Function(BookingPickAddress value)? pickAddress,
+    TResult? Function(BookingGetAddressDetail value)? getAddressDetail,
+    TResult? Function(BookingSelectVehicleType value)? selectVehicleType,
+    TResult? Function(BookingUpdateRouteParams value)? updateRouteParams,
+    TResult? Function(BookingGetDirection value)? getDirection,
   }) {
     return selectDesLocation?.call(this);
   }
@@ -513,7 +447,6 @@ class _$BookingSelectDesLocationImpl implements BookingSelectDesLocation {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult Function(BookingSelectPickupLocation value)? selectPickupLocation,
     TResult Function(BookingSelectDesLocation value)? selectDesLocation,
     TResult Function(BookingLocateOnMap value)? locateOnMap,
@@ -521,6 +454,10 @@ class _$BookingSelectDesLocationImpl implements BookingSelectDesLocation {
     TResult Function(BookingSearchAddressFromCoordinate value)?
         searchAddressFromCoordinate,
     TResult Function(BookingPickAddress value)? pickAddress,
+    TResult Function(BookingGetAddressDetail value)? getAddressDetail,
+    TResult Function(BookingSelectVehicleType value)? selectVehicleType,
+    TResult Function(BookingUpdateRouteParams value)? updateRouteParams,
+    TResult Function(BookingGetDirection value)? getDirection,
     required TResult orElse(),
   }) {
     if (selectDesLocation != null) {
@@ -540,7 +477,7 @@ abstract class _$$BookingLocateOnMapImplCopyWith<$Res> {
           $Res Function(_$BookingLocateOnMapImpl) then) =
       __$$BookingLocateOnMapImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({SelectLocation selectLocation});
+  $Res call({SelectLocation selectLocation, String? refId});
 }
 
 /// @nodoc
@@ -555,12 +492,17 @@ class __$$BookingLocateOnMapImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? selectLocation = null,
+    Object? refId = freezed,
   }) {
     return _then(_$BookingLocateOnMapImpl(
       selectLocation: null == selectLocation
           ? _value.selectLocation
           : selectLocation // ignore: cast_nullable_to_non_nullable
               as SelectLocation,
+      refId: freezed == refId
+          ? _value.refId
+          : refId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -568,14 +510,16 @@ class __$$BookingLocateOnMapImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$BookingLocateOnMapImpl implements BookingLocateOnMap {
-  const _$BookingLocateOnMapImpl({required this.selectLocation});
+  const _$BookingLocateOnMapImpl({required this.selectLocation, this.refId});
 
   @override
   final SelectLocation selectLocation;
+  @override
+  final String? refId;
 
   @override
   String toString() {
-    return 'BookingEvent.locateOnMap(selectLocation: $selectLocation)';
+    return 'BookingEvent.locateOnMap(selectLocation: $selectLocation, refId: $refId)';
   }
 
   @override
@@ -584,11 +528,12 @@ class _$BookingLocateOnMapImpl implements BookingLocateOnMap {
         (other.runtimeType == runtimeType &&
             other is _$BookingLocateOnMapImpl &&
             (identical(other.selectLocation, selectLocation) ||
-                other.selectLocation == selectLocation));
+                other.selectLocation == selectLocation) &&
+            (identical(other.refId, refId) || other.refId == refId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, selectLocation);
+  int get hashCode => Object.hash(runtimeType, selectLocation, refId);
 
   @JsonKey(ignore: true)
   @override
@@ -600,45 +545,62 @@ class _$BookingLocateOnMapImpl implements BookingLocateOnMap {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() selectVehicleType,
     required TResult Function() selectPickupLocation,
     required TResult Function() selectDesLocation,
-    required TResult Function(SelectLocation selectLocation) locateOnMap,
+    required TResult Function(SelectLocation selectLocation, String? refId)
+        locateOnMap,
     required TResult Function(String query) searchAddressFromText,
     required TResult Function(LatLng coordinate) searchAddressFromCoordinate,
     required TResult Function(MapPickerData mapPickerData) pickAddress,
+    required TResult Function(MapAutoComplete model) getAddressDetail,
+    required TResult Function(VehicleType vehicleType) selectVehicleType,
+    required TResult Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)
+        updateRouteParams,
+    required TResult Function(LatLng from, LatLng to) getDirection,
   }) {
-    return locateOnMap(selectLocation);
+    return locateOnMap(selectLocation, refId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? selectVehicleType,
     TResult? Function()? selectPickupLocation,
     TResult? Function()? selectDesLocation,
-    TResult? Function(SelectLocation selectLocation)? locateOnMap,
+    TResult? Function(SelectLocation selectLocation, String? refId)?
+        locateOnMap,
     TResult? Function(String query)? searchAddressFromText,
     TResult? Function(LatLng coordinate)? searchAddressFromCoordinate,
     TResult? Function(MapPickerData mapPickerData)? pickAddress,
+    TResult? Function(MapAutoComplete model)? getAddressDetail,
+    TResult? Function(VehicleType vehicleType)? selectVehicleType,
+    TResult? Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)?
+        updateRouteParams,
+    TResult? Function(LatLng from, LatLng to)? getDirection,
   }) {
-    return locateOnMap?.call(selectLocation);
+    return locateOnMap?.call(selectLocation, refId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? selectVehicleType,
     TResult Function()? selectPickupLocation,
     TResult Function()? selectDesLocation,
-    TResult Function(SelectLocation selectLocation)? locateOnMap,
+    TResult Function(SelectLocation selectLocation, String? refId)? locateOnMap,
     TResult Function(String query)? searchAddressFromText,
     TResult Function(LatLng coordinate)? searchAddressFromCoordinate,
     TResult Function(MapPickerData mapPickerData)? pickAddress,
+    TResult Function(MapAutoComplete model)? getAddressDetail,
+    TResult Function(VehicleType vehicleType)? selectVehicleType,
+    TResult Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)?
+        updateRouteParams,
+    TResult Function(LatLng from, LatLng to)? getDirection,
     required TResult orElse(),
   }) {
     if (locateOnMap != null) {
-      return locateOnMap(selectLocation);
+      return locateOnMap(selectLocation, refId);
     }
     return orElse();
   }
@@ -646,7 +608,6 @@ class _$BookingLocateOnMapImpl implements BookingLocateOnMap {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(BookingSelectVehicleType value) selectVehicleType,
     required TResult Function(BookingSelectPickupLocation value)
         selectPickupLocation,
     required TResult Function(BookingSelectDesLocation value) selectDesLocation,
@@ -656,6 +617,10 @@ class _$BookingLocateOnMapImpl implements BookingLocateOnMap {
     required TResult Function(BookingSearchAddressFromCoordinate value)
         searchAddressFromCoordinate,
     required TResult Function(BookingPickAddress value) pickAddress,
+    required TResult Function(BookingGetAddressDetail value) getAddressDetail,
+    required TResult Function(BookingSelectVehicleType value) selectVehicleType,
+    required TResult Function(BookingUpdateRouteParams value) updateRouteParams,
+    required TResult Function(BookingGetDirection value) getDirection,
   }) {
     return locateOnMap(this);
   }
@@ -663,7 +628,6 @@ class _$BookingLocateOnMapImpl implements BookingLocateOnMap {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult? Function(BookingSelectPickupLocation value)? selectPickupLocation,
     TResult? Function(BookingSelectDesLocation value)? selectDesLocation,
     TResult? Function(BookingLocateOnMap value)? locateOnMap,
@@ -672,6 +636,10 @@ class _$BookingLocateOnMapImpl implements BookingLocateOnMap {
     TResult? Function(BookingSearchAddressFromCoordinate value)?
         searchAddressFromCoordinate,
     TResult? Function(BookingPickAddress value)? pickAddress,
+    TResult? Function(BookingGetAddressDetail value)? getAddressDetail,
+    TResult? Function(BookingSelectVehicleType value)? selectVehicleType,
+    TResult? Function(BookingUpdateRouteParams value)? updateRouteParams,
+    TResult? Function(BookingGetDirection value)? getDirection,
   }) {
     return locateOnMap?.call(this);
   }
@@ -679,7 +647,6 @@ class _$BookingLocateOnMapImpl implements BookingLocateOnMap {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult Function(BookingSelectPickupLocation value)? selectPickupLocation,
     TResult Function(BookingSelectDesLocation value)? selectDesLocation,
     TResult Function(BookingLocateOnMap value)? locateOnMap,
@@ -687,6 +654,10 @@ class _$BookingLocateOnMapImpl implements BookingLocateOnMap {
     TResult Function(BookingSearchAddressFromCoordinate value)?
         searchAddressFromCoordinate,
     TResult Function(BookingPickAddress value)? pickAddress,
+    TResult Function(BookingGetAddressDetail value)? getAddressDetail,
+    TResult Function(BookingSelectVehicleType value)? selectVehicleType,
+    TResult Function(BookingUpdateRouteParams value)? updateRouteParams,
+    TResult Function(BookingGetDirection value)? getDirection,
     required TResult orElse(),
   }) {
     if (locateOnMap != null) {
@@ -698,10 +669,11 @@ class _$BookingLocateOnMapImpl implements BookingLocateOnMap {
 
 abstract class BookingLocateOnMap implements BookingEvent {
   const factory BookingLocateOnMap(
-          {required final SelectLocation selectLocation}) =
-      _$BookingLocateOnMapImpl;
+      {required final SelectLocation selectLocation,
+      final String? refId}) = _$BookingLocateOnMapImpl;
 
   SelectLocation get selectLocation;
+  String? get refId;
   @JsonKey(ignore: true)
   _$$BookingLocateOnMapImplCopyWith<_$BookingLocateOnMapImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -776,13 +748,19 @@ class _$BookingSearchAddressFromTextImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() selectVehicleType,
     required TResult Function() selectPickupLocation,
     required TResult Function() selectDesLocation,
-    required TResult Function(SelectLocation selectLocation) locateOnMap,
+    required TResult Function(SelectLocation selectLocation, String? refId)
+        locateOnMap,
     required TResult Function(String query) searchAddressFromText,
     required TResult Function(LatLng coordinate) searchAddressFromCoordinate,
     required TResult Function(MapPickerData mapPickerData) pickAddress,
+    required TResult Function(MapAutoComplete model) getAddressDetail,
+    required TResult Function(VehicleType vehicleType) selectVehicleType,
+    required TResult Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)
+        updateRouteParams,
+    required TResult Function(LatLng from, LatLng to) getDirection,
   }) {
     return searchAddressFromText(query);
   }
@@ -790,13 +768,19 @@ class _$BookingSearchAddressFromTextImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? selectVehicleType,
     TResult? Function()? selectPickupLocation,
     TResult? Function()? selectDesLocation,
-    TResult? Function(SelectLocation selectLocation)? locateOnMap,
+    TResult? Function(SelectLocation selectLocation, String? refId)?
+        locateOnMap,
     TResult? Function(String query)? searchAddressFromText,
     TResult? Function(LatLng coordinate)? searchAddressFromCoordinate,
     TResult? Function(MapPickerData mapPickerData)? pickAddress,
+    TResult? Function(MapAutoComplete model)? getAddressDetail,
+    TResult? Function(VehicleType vehicleType)? selectVehicleType,
+    TResult? Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)?
+        updateRouteParams,
+    TResult? Function(LatLng from, LatLng to)? getDirection,
   }) {
     return searchAddressFromText?.call(query);
   }
@@ -804,13 +788,18 @@ class _$BookingSearchAddressFromTextImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? selectVehicleType,
     TResult Function()? selectPickupLocation,
     TResult Function()? selectDesLocation,
-    TResult Function(SelectLocation selectLocation)? locateOnMap,
+    TResult Function(SelectLocation selectLocation, String? refId)? locateOnMap,
     TResult Function(String query)? searchAddressFromText,
     TResult Function(LatLng coordinate)? searchAddressFromCoordinate,
     TResult Function(MapPickerData mapPickerData)? pickAddress,
+    TResult Function(MapAutoComplete model)? getAddressDetail,
+    TResult Function(VehicleType vehicleType)? selectVehicleType,
+    TResult Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)?
+        updateRouteParams,
+    TResult Function(LatLng from, LatLng to)? getDirection,
     required TResult orElse(),
   }) {
     if (searchAddressFromText != null) {
@@ -822,7 +811,6 @@ class _$BookingSearchAddressFromTextImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(BookingSelectVehicleType value) selectVehicleType,
     required TResult Function(BookingSelectPickupLocation value)
         selectPickupLocation,
     required TResult Function(BookingSelectDesLocation value) selectDesLocation,
@@ -832,6 +820,10 @@ class _$BookingSearchAddressFromTextImpl
     required TResult Function(BookingSearchAddressFromCoordinate value)
         searchAddressFromCoordinate,
     required TResult Function(BookingPickAddress value) pickAddress,
+    required TResult Function(BookingGetAddressDetail value) getAddressDetail,
+    required TResult Function(BookingSelectVehicleType value) selectVehicleType,
+    required TResult Function(BookingUpdateRouteParams value) updateRouteParams,
+    required TResult Function(BookingGetDirection value) getDirection,
   }) {
     return searchAddressFromText(this);
   }
@@ -839,7 +831,6 @@ class _$BookingSearchAddressFromTextImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult? Function(BookingSelectPickupLocation value)? selectPickupLocation,
     TResult? Function(BookingSelectDesLocation value)? selectDesLocation,
     TResult? Function(BookingLocateOnMap value)? locateOnMap,
@@ -848,6 +839,10 @@ class _$BookingSearchAddressFromTextImpl
     TResult? Function(BookingSearchAddressFromCoordinate value)?
         searchAddressFromCoordinate,
     TResult? Function(BookingPickAddress value)? pickAddress,
+    TResult? Function(BookingGetAddressDetail value)? getAddressDetail,
+    TResult? Function(BookingSelectVehicleType value)? selectVehicleType,
+    TResult? Function(BookingUpdateRouteParams value)? updateRouteParams,
+    TResult? Function(BookingGetDirection value)? getDirection,
   }) {
     return searchAddressFromText?.call(this);
   }
@@ -855,7 +850,6 @@ class _$BookingSearchAddressFromTextImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult Function(BookingSelectPickupLocation value)? selectPickupLocation,
     TResult Function(BookingSelectDesLocation value)? selectDesLocation,
     TResult Function(BookingLocateOnMap value)? locateOnMap,
@@ -863,6 +857,10 @@ class _$BookingSearchAddressFromTextImpl
     TResult Function(BookingSearchAddressFromCoordinate value)?
         searchAddressFromCoordinate,
     TResult Function(BookingPickAddress value)? pickAddress,
+    TResult Function(BookingGetAddressDetail value)? getAddressDetail,
+    TResult Function(BookingSelectVehicleType value)? selectVehicleType,
+    TResult Function(BookingUpdateRouteParams value)? updateRouteParams,
+    TResult Function(BookingGetDirection value)? getDirection,
     required TResult orElse(),
   }) {
     if (searchAddressFromText != null) {
@@ -954,13 +952,19 @@ class _$BookingSearchAddressFromCoordinateImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() selectVehicleType,
     required TResult Function() selectPickupLocation,
     required TResult Function() selectDesLocation,
-    required TResult Function(SelectLocation selectLocation) locateOnMap,
+    required TResult Function(SelectLocation selectLocation, String? refId)
+        locateOnMap,
     required TResult Function(String query) searchAddressFromText,
     required TResult Function(LatLng coordinate) searchAddressFromCoordinate,
     required TResult Function(MapPickerData mapPickerData) pickAddress,
+    required TResult Function(MapAutoComplete model) getAddressDetail,
+    required TResult Function(VehicleType vehicleType) selectVehicleType,
+    required TResult Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)
+        updateRouteParams,
+    required TResult Function(LatLng from, LatLng to) getDirection,
   }) {
     return searchAddressFromCoordinate(coordinate);
   }
@@ -968,13 +972,19 @@ class _$BookingSearchAddressFromCoordinateImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? selectVehicleType,
     TResult? Function()? selectPickupLocation,
     TResult? Function()? selectDesLocation,
-    TResult? Function(SelectLocation selectLocation)? locateOnMap,
+    TResult? Function(SelectLocation selectLocation, String? refId)?
+        locateOnMap,
     TResult? Function(String query)? searchAddressFromText,
     TResult? Function(LatLng coordinate)? searchAddressFromCoordinate,
     TResult? Function(MapPickerData mapPickerData)? pickAddress,
+    TResult? Function(MapAutoComplete model)? getAddressDetail,
+    TResult? Function(VehicleType vehicleType)? selectVehicleType,
+    TResult? Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)?
+        updateRouteParams,
+    TResult? Function(LatLng from, LatLng to)? getDirection,
   }) {
     return searchAddressFromCoordinate?.call(coordinate);
   }
@@ -982,13 +992,18 @@ class _$BookingSearchAddressFromCoordinateImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? selectVehicleType,
     TResult Function()? selectPickupLocation,
     TResult Function()? selectDesLocation,
-    TResult Function(SelectLocation selectLocation)? locateOnMap,
+    TResult Function(SelectLocation selectLocation, String? refId)? locateOnMap,
     TResult Function(String query)? searchAddressFromText,
     TResult Function(LatLng coordinate)? searchAddressFromCoordinate,
     TResult Function(MapPickerData mapPickerData)? pickAddress,
+    TResult Function(MapAutoComplete model)? getAddressDetail,
+    TResult Function(VehicleType vehicleType)? selectVehicleType,
+    TResult Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)?
+        updateRouteParams,
+    TResult Function(LatLng from, LatLng to)? getDirection,
     required TResult orElse(),
   }) {
     if (searchAddressFromCoordinate != null) {
@@ -1000,7 +1015,6 @@ class _$BookingSearchAddressFromCoordinateImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(BookingSelectVehicleType value) selectVehicleType,
     required TResult Function(BookingSelectPickupLocation value)
         selectPickupLocation,
     required TResult Function(BookingSelectDesLocation value) selectDesLocation,
@@ -1010,6 +1024,10 @@ class _$BookingSearchAddressFromCoordinateImpl
     required TResult Function(BookingSearchAddressFromCoordinate value)
         searchAddressFromCoordinate,
     required TResult Function(BookingPickAddress value) pickAddress,
+    required TResult Function(BookingGetAddressDetail value) getAddressDetail,
+    required TResult Function(BookingSelectVehicleType value) selectVehicleType,
+    required TResult Function(BookingUpdateRouteParams value) updateRouteParams,
+    required TResult Function(BookingGetDirection value) getDirection,
   }) {
     return searchAddressFromCoordinate(this);
   }
@@ -1017,7 +1035,6 @@ class _$BookingSearchAddressFromCoordinateImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult? Function(BookingSelectPickupLocation value)? selectPickupLocation,
     TResult? Function(BookingSelectDesLocation value)? selectDesLocation,
     TResult? Function(BookingLocateOnMap value)? locateOnMap,
@@ -1026,6 +1043,10 @@ class _$BookingSearchAddressFromCoordinateImpl
     TResult? Function(BookingSearchAddressFromCoordinate value)?
         searchAddressFromCoordinate,
     TResult? Function(BookingPickAddress value)? pickAddress,
+    TResult? Function(BookingGetAddressDetail value)? getAddressDetail,
+    TResult? Function(BookingSelectVehicleType value)? selectVehicleType,
+    TResult? Function(BookingUpdateRouteParams value)? updateRouteParams,
+    TResult? Function(BookingGetDirection value)? getDirection,
   }) {
     return searchAddressFromCoordinate?.call(this);
   }
@@ -1033,7 +1054,6 @@ class _$BookingSearchAddressFromCoordinateImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult Function(BookingSelectPickupLocation value)? selectPickupLocation,
     TResult Function(BookingSelectDesLocation value)? selectDesLocation,
     TResult Function(BookingLocateOnMap value)? locateOnMap,
@@ -1041,6 +1061,10 @@ class _$BookingSearchAddressFromCoordinateImpl
     TResult Function(BookingSearchAddressFromCoordinate value)?
         searchAddressFromCoordinate,
     TResult Function(BookingPickAddress value)? pickAddress,
+    TResult Function(BookingGetAddressDetail value)? getAddressDetail,
+    TResult Function(BookingSelectVehicleType value)? selectVehicleType,
+    TResult Function(BookingUpdateRouteParams value)? updateRouteParams,
+    TResult Function(BookingGetDirection value)? getDirection,
     required TResult orElse(),
   }) {
     if (searchAddressFromCoordinate != null) {
@@ -1138,13 +1162,19 @@ class _$BookingPickAddressImpl implements BookingPickAddress {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() selectVehicleType,
     required TResult Function() selectPickupLocation,
     required TResult Function() selectDesLocation,
-    required TResult Function(SelectLocation selectLocation) locateOnMap,
+    required TResult Function(SelectLocation selectLocation, String? refId)
+        locateOnMap,
     required TResult Function(String query) searchAddressFromText,
     required TResult Function(LatLng coordinate) searchAddressFromCoordinate,
     required TResult Function(MapPickerData mapPickerData) pickAddress,
+    required TResult Function(MapAutoComplete model) getAddressDetail,
+    required TResult Function(VehicleType vehicleType) selectVehicleType,
+    required TResult Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)
+        updateRouteParams,
+    required TResult Function(LatLng from, LatLng to) getDirection,
   }) {
     return pickAddress(mapPickerData);
   }
@@ -1152,13 +1182,19 @@ class _$BookingPickAddressImpl implements BookingPickAddress {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? selectVehicleType,
     TResult? Function()? selectPickupLocation,
     TResult? Function()? selectDesLocation,
-    TResult? Function(SelectLocation selectLocation)? locateOnMap,
+    TResult? Function(SelectLocation selectLocation, String? refId)?
+        locateOnMap,
     TResult? Function(String query)? searchAddressFromText,
     TResult? Function(LatLng coordinate)? searchAddressFromCoordinate,
     TResult? Function(MapPickerData mapPickerData)? pickAddress,
+    TResult? Function(MapAutoComplete model)? getAddressDetail,
+    TResult? Function(VehicleType vehicleType)? selectVehicleType,
+    TResult? Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)?
+        updateRouteParams,
+    TResult? Function(LatLng from, LatLng to)? getDirection,
   }) {
     return pickAddress?.call(mapPickerData);
   }
@@ -1166,13 +1202,18 @@ class _$BookingPickAddressImpl implements BookingPickAddress {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? selectVehicleType,
     TResult Function()? selectPickupLocation,
     TResult Function()? selectDesLocation,
-    TResult Function(SelectLocation selectLocation)? locateOnMap,
+    TResult Function(SelectLocation selectLocation, String? refId)? locateOnMap,
     TResult Function(String query)? searchAddressFromText,
     TResult Function(LatLng coordinate)? searchAddressFromCoordinate,
     TResult Function(MapPickerData mapPickerData)? pickAddress,
+    TResult Function(MapAutoComplete model)? getAddressDetail,
+    TResult Function(VehicleType vehicleType)? selectVehicleType,
+    TResult Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)?
+        updateRouteParams,
+    TResult Function(LatLng from, LatLng to)? getDirection,
     required TResult orElse(),
   }) {
     if (pickAddress != null) {
@@ -1184,7 +1225,6 @@ class _$BookingPickAddressImpl implements BookingPickAddress {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(BookingSelectVehicleType value) selectVehicleType,
     required TResult Function(BookingSelectPickupLocation value)
         selectPickupLocation,
     required TResult Function(BookingSelectDesLocation value) selectDesLocation,
@@ -1194,6 +1234,10 @@ class _$BookingPickAddressImpl implements BookingPickAddress {
     required TResult Function(BookingSearchAddressFromCoordinate value)
         searchAddressFromCoordinate,
     required TResult Function(BookingPickAddress value) pickAddress,
+    required TResult Function(BookingGetAddressDetail value) getAddressDetail,
+    required TResult Function(BookingSelectVehicleType value) selectVehicleType,
+    required TResult Function(BookingUpdateRouteParams value) updateRouteParams,
+    required TResult Function(BookingGetDirection value) getDirection,
   }) {
     return pickAddress(this);
   }
@@ -1201,7 +1245,6 @@ class _$BookingPickAddressImpl implements BookingPickAddress {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult? Function(BookingSelectPickupLocation value)? selectPickupLocation,
     TResult? Function(BookingSelectDesLocation value)? selectDesLocation,
     TResult? Function(BookingLocateOnMap value)? locateOnMap,
@@ -1210,6 +1253,10 @@ class _$BookingPickAddressImpl implements BookingPickAddress {
     TResult? Function(BookingSearchAddressFromCoordinate value)?
         searchAddressFromCoordinate,
     TResult? Function(BookingPickAddress value)? pickAddress,
+    TResult? Function(BookingGetAddressDetail value)? getAddressDetail,
+    TResult? Function(BookingSelectVehicleType value)? selectVehicleType,
+    TResult? Function(BookingUpdateRouteParams value)? updateRouteParams,
+    TResult? Function(BookingGetDirection value)? getDirection,
   }) {
     return pickAddress?.call(this);
   }
@@ -1217,7 +1264,6 @@ class _$BookingPickAddressImpl implements BookingPickAddress {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult Function(BookingSelectPickupLocation value)? selectPickupLocation,
     TResult Function(BookingSelectDesLocation value)? selectDesLocation,
     TResult Function(BookingLocateOnMap value)? locateOnMap,
@@ -1225,6 +1271,10 @@ class _$BookingPickAddressImpl implements BookingPickAddress {
     TResult Function(BookingSearchAddressFromCoordinate value)?
         searchAddressFromCoordinate,
     TResult Function(BookingPickAddress value)? pickAddress,
+    TResult Function(BookingGetAddressDetail value)? getAddressDetail,
+    TResult Function(BookingSelectVehicleType value)? selectVehicleType,
+    TResult Function(BookingUpdateRouteParams value)? updateRouteParams,
+    TResult Function(BookingGetDirection value)? getDirection,
     required TResult orElse(),
   }) {
     if (pickAddress != null) {
@@ -1245,1358 +1295,138 @@ abstract class BookingPickAddress implements BookingEvent {
 }
 
 /// @nodoc
-mixin _$BookingState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() showAddressSheet,
-    required TResult Function() locatingPickupLocation,
-    required TResult Function() locatingDesLocation,
-    required TResult Function() loadingLocations,
-    required TResult Function() loadingLocation,
-    required TResult Function(List<MapAutoComplete> result)
-        loadLocationsSuccess,
-    required TResult Function(MapReverse result) loadLocationSuccess,
-    required TResult Function(Failure failure) loadError,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? showAddressSheet,
-    TResult? Function()? locatingPickupLocation,
-    TResult? Function()? locatingDesLocation,
-    TResult? Function()? loadingLocations,
-    TResult? Function()? loadingLocation,
-    TResult? Function(List<MapAutoComplete> result)? loadLocationsSuccess,
-    TResult? Function(MapReverse result)? loadLocationSuccess,
-    TResult? Function(Failure failure)? loadError,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? showAddressSheet,
-    TResult Function()? locatingPickupLocation,
-    TResult Function()? locatingDesLocation,
-    TResult Function()? loadingLocations,
-    TResult Function()? loadingLocation,
-    TResult Function(List<MapAutoComplete> result)? loadLocationsSuccess,
-    TResult Function(MapReverse result)? loadLocationSuccess,
-    TResult Function(Failure failure)? loadError,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_BookingInitial value) initial,
-    required TResult Function(_BookingShowAddressSheet value) showAddressSheet,
-    required TResult Function(_BookingLocatingPickupLocation value)
-        locatingPickupLocation,
-    required TResult Function(_BookingLocatingDesLocation value)
-        locatingDesLocation,
-    required TResult Function(_BookingLoadingLocations value) loadingLocations,
-    required TResult Function(_BoookingLoadingLocation value) loadingLocation,
-    required TResult Function(_BookingLoadLocationsSuccess value)
-        loadLocationsSuccess,
-    required TResult Function(_BookingLoadLocationSuccess value)
-        loadLocationSuccess,
-    required TResult Function(_BookingLoadError value) loadError,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_BookingInitial value)? initial,
-    TResult? Function(_BookingShowAddressSheet value)? showAddressSheet,
-    TResult? Function(_BookingLocatingPickupLocation value)?
-        locatingPickupLocation,
-    TResult? Function(_BookingLocatingDesLocation value)? locatingDesLocation,
-    TResult? Function(_BookingLoadingLocations value)? loadingLocations,
-    TResult? Function(_BoookingLoadingLocation value)? loadingLocation,
-    TResult? Function(_BookingLoadLocationsSuccess value)? loadLocationsSuccess,
-    TResult? Function(_BookingLoadLocationSuccess value)? loadLocationSuccess,
-    TResult? Function(_BookingLoadError value)? loadError,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_BookingInitial value)? initial,
-    TResult Function(_BookingShowAddressSheet value)? showAddressSheet,
-    TResult Function(_BookingLocatingPickupLocation value)?
-        locatingPickupLocation,
-    TResult Function(_BookingLocatingDesLocation value)? locatingDesLocation,
-    TResult Function(_BookingLoadingLocations value)? loadingLocations,
-    TResult Function(_BoookingLoadingLocation value)? loadingLocation,
-    TResult Function(_BookingLoadLocationsSuccess value)? loadLocationsSuccess,
-    TResult Function(_BookingLoadLocationSuccess value)? loadLocationSuccess,
-    TResult Function(_BookingLoadError value)? loadError,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $BookingStateCopyWith<$Res> {
-  factory $BookingStateCopyWith(
-          BookingState value, $Res Function(BookingState) then) =
-      _$BookingStateCopyWithImpl<$Res, BookingState>;
-}
-
-/// @nodoc
-class _$BookingStateCopyWithImpl<$Res, $Val extends BookingState>
-    implements $BookingStateCopyWith<$Res> {
-  _$BookingStateCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$BookingInitialImplCopyWith<$Res> {
-  factory _$$BookingInitialImplCopyWith(_$BookingInitialImpl value,
-          $Res Function(_$BookingInitialImpl) then) =
-      __$$BookingInitialImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$BookingInitialImplCopyWithImpl<$Res>
-    extends _$BookingStateCopyWithImpl<$Res, _$BookingInitialImpl>
-    implements _$$BookingInitialImplCopyWith<$Res> {
-  __$$BookingInitialImplCopyWithImpl(
-      _$BookingInitialImpl _value, $Res Function(_$BookingInitialImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$BookingInitialImpl implements _BookingInitial {
-  const _$BookingInitialImpl();
-
-  @override
-  String toString() {
-    return 'BookingState.initial()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$BookingInitialImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() showAddressSheet,
-    required TResult Function() locatingPickupLocation,
-    required TResult Function() locatingDesLocation,
-    required TResult Function() loadingLocations,
-    required TResult Function() loadingLocation,
-    required TResult Function(List<MapAutoComplete> result)
-        loadLocationsSuccess,
-    required TResult Function(MapReverse result) loadLocationSuccess,
-    required TResult Function(Failure failure) loadError,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? showAddressSheet,
-    TResult? Function()? locatingPickupLocation,
-    TResult? Function()? locatingDesLocation,
-    TResult? Function()? loadingLocations,
-    TResult? Function()? loadingLocation,
-    TResult? Function(List<MapAutoComplete> result)? loadLocationsSuccess,
-    TResult? Function(MapReverse result)? loadLocationSuccess,
-    TResult? Function(Failure failure)? loadError,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? showAddressSheet,
-    TResult Function()? locatingPickupLocation,
-    TResult Function()? locatingDesLocation,
-    TResult Function()? loadingLocations,
-    TResult Function()? loadingLocation,
-    TResult Function(List<MapAutoComplete> result)? loadLocationsSuccess,
-    TResult Function(MapReverse result)? loadLocationSuccess,
-    TResult Function(Failure failure)? loadError,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_BookingInitial value) initial,
-    required TResult Function(_BookingShowAddressSheet value) showAddressSheet,
-    required TResult Function(_BookingLocatingPickupLocation value)
-        locatingPickupLocation,
-    required TResult Function(_BookingLocatingDesLocation value)
-        locatingDesLocation,
-    required TResult Function(_BookingLoadingLocations value) loadingLocations,
-    required TResult Function(_BoookingLoadingLocation value) loadingLocation,
-    required TResult Function(_BookingLoadLocationsSuccess value)
-        loadLocationsSuccess,
-    required TResult Function(_BookingLoadLocationSuccess value)
-        loadLocationSuccess,
-    required TResult Function(_BookingLoadError value) loadError,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_BookingInitial value)? initial,
-    TResult? Function(_BookingShowAddressSheet value)? showAddressSheet,
-    TResult? Function(_BookingLocatingPickupLocation value)?
-        locatingPickupLocation,
-    TResult? Function(_BookingLocatingDesLocation value)? locatingDesLocation,
-    TResult? Function(_BookingLoadingLocations value)? loadingLocations,
-    TResult? Function(_BoookingLoadingLocation value)? loadingLocation,
-    TResult? Function(_BookingLoadLocationsSuccess value)? loadLocationsSuccess,
-    TResult? Function(_BookingLoadLocationSuccess value)? loadLocationSuccess,
-    TResult? Function(_BookingLoadError value)? loadError,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_BookingInitial value)? initial,
-    TResult Function(_BookingShowAddressSheet value)? showAddressSheet,
-    TResult Function(_BookingLocatingPickupLocation value)?
-        locatingPickupLocation,
-    TResult Function(_BookingLocatingDesLocation value)? locatingDesLocation,
-    TResult Function(_BookingLoadingLocations value)? loadingLocations,
-    TResult Function(_BoookingLoadingLocation value)? loadingLocation,
-    TResult Function(_BookingLoadLocationsSuccess value)? loadLocationsSuccess,
-    TResult Function(_BookingLoadLocationSuccess value)? loadLocationSuccess,
-    TResult Function(_BookingLoadError value)? loadError,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _BookingInitial implements BookingState {
-  const factory _BookingInitial() = _$BookingInitialImpl;
-}
-
-/// @nodoc
-abstract class _$$BookingShowAddressSheetImplCopyWith<$Res> {
-  factory _$$BookingShowAddressSheetImplCopyWith(
-          _$BookingShowAddressSheetImpl value,
-          $Res Function(_$BookingShowAddressSheetImpl) then) =
-      __$$BookingShowAddressSheetImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$BookingShowAddressSheetImplCopyWithImpl<$Res>
-    extends _$BookingStateCopyWithImpl<$Res, _$BookingShowAddressSheetImpl>
-    implements _$$BookingShowAddressSheetImplCopyWith<$Res> {
-  __$$BookingShowAddressSheetImplCopyWithImpl(
-      _$BookingShowAddressSheetImpl _value,
-      $Res Function(_$BookingShowAddressSheetImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$BookingShowAddressSheetImpl implements _BookingShowAddressSheet {
-  const _$BookingShowAddressSheetImpl();
-
-  @override
-  String toString() {
-    return 'BookingState.showAddressSheet()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$BookingShowAddressSheetImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() showAddressSheet,
-    required TResult Function() locatingPickupLocation,
-    required TResult Function() locatingDesLocation,
-    required TResult Function() loadingLocations,
-    required TResult Function() loadingLocation,
-    required TResult Function(List<MapAutoComplete> result)
-        loadLocationsSuccess,
-    required TResult Function(MapReverse result) loadLocationSuccess,
-    required TResult Function(Failure failure) loadError,
-  }) {
-    return showAddressSheet();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? showAddressSheet,
-    TResult? Function()? locatingPickupLocation,
-    TResult? Function()? locatingDesLocation,
-    TResult? Function()? loadingLocations,
-    TResult? Function()? loadingLocation,
-    TResult? Function(List<MapAutoComplete> result)? loadLocationsSuccess,
-    TResult? Function(MapReverse result)? loadLocationSuccess,
-    TResult? Function(Failure failure)? loadError,
-  }) {
-    return showAddressSheet?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? showAddressSheet,
-    TResult Function()? locatingPickupLocation,
-    TResult Function()? locatingDesLocation,
-    TResult Function()? loadingLocations,
-    TResult Function()? loadingLocation,
-    TResult Function(List<MapAutoComplete> result)? loadLocationsSuccess,
-    TResult Function(MapReverse result)? loadLocationSuccess,
-    TResult Function(Failure failure)? loadError,
-    required TResult orElse(),
-  }) {
-    if (showAddressSheet != null) {
-      return showAddressSheet();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_BookingInitial value) initial,
-    required TResult Function(_BookingShowAddressSheet value) showAddressSheet,
-    required TResult Function(_BookingLocatingPickupLocation value)
-        locatingPickupLocation,
-    required TResult Function(_BookingLocatingDesLocation value)
-        locatingDesLocation,
-    required TResult Function(_BookingLoadingLocations value) loadingLocations,
-    required TResult Function(_BoookingLoadingLocation value) loadingLocation,
-    required TResult Function(_BookingLoadLocationsSuccess value)
-        loadLocationsSuccess,
-    required TResult Function(_BookingLoadLocationSuccess value)
-        loadLocationSuccess,
-    required TResult Function(_BookingLoadError value) loadError,
-  }) {
-    return showAddressSheet(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_BookingInitial value)? initial,
-    TResult? Function(_BookingShowAddressSheet value)? showAddressSheet,
-    TResult? Function(_BookingLocatingPickupLocation value)?
-        locatingPickupLocation,
-    TResult? Function(_BookingLocatingDesLocation value)? locatingDesLocation,
-    TResult? Function(_BookingLoadingLocations value)? loadingLocations,
-    TResult? Function(_BoookingLoadingLocation value)? loadingLocation,
-    TResult? Function(_BookingLoadLocationsSuccess value)? loadLocationsSuccess,
-    TResult? Function(_BookingLoadLocationSuccess value)? loadLocationSuccess,
-    TResult? Function(_BookingLoadError value)? loadError,
-  }) {
-    return showAddressSheet?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_BookingInitial value)? initial,
-    TResult Function(_BookingShowAddressSheet value)? showAddressSheet,
-    TResult Function(_BookingLocatingPickupLocation value)?
-        locatingPickupLocation,
-    TResult Function(_BookingLocatingDesLocation value)? locatingDesLocation,
-    TResult Function(_BookingLoadingLocations value)? loadingLocations,
-    TResult Function(_BoookingLoadingLocation value)? loadingLocation,
-    TResult Function(_BookingLoadLocationsSuccess value)? loadLocationsSuccess,
-    TResult Function(_BookingLoadLocationSuccess value)? loadLocationSuccess,
-    TResult Function(_BookingLoadError value)? loadError,
-    required TResult orElse(),
-  }) {
-    if (showAddressSheet != null) {
-      return showAddressSheet(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _BookingShowAddressSheet implements BookingState {
-  const factory _BookingShowAddressSheet() = _$BookingShowAddressSheetImpl;
-}
-
-/// @nodoc
-abstract class _$$BookingLocatingPickupLocationImplCopyWith<$Res> {
-  factory _$$BookingLocatingPickupLocationImplCopyWith(
-          _$BookingLocatingPickupLocationImpl value,
-          $Res Function(_$BookingLocatingPickupLocationImpl) then) =
-      __$$BookingLocatingPickupLocationImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$BookingLocatingPickupLocationImplCopyWithImpl<$Res>
-    extends _$BookingStateCopyWithImpl<$Res,
-        _$BookingLocatingPickupLocationImpl>
-    implements _$$BookingLocatingPickupLocationImplCopyWith<$Res> {
-  __$$BookingLocatingPickupLocationImplCopyWithImpl(
-      _$BookingLocatingPickupLocationImpl _value,
-      $Res Function(_$BookingLocatingPickupLocationImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$BookingLocatingPickupLocationImpl
-    implements _BookingLocatingPickupLocation {
-  const _$BookingLocatingPickupLocationImpl();
-
-  @override
-  String toString() {
-    return 'BookingState.locatingPickupLocation()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$BookingLocatingPickupLocationImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() showAddressSheet,
-    required TResult Function() locatingPickupLocation,
-    required TResult Function() locatingDesLocation,
-    required TResult Function() loadingLocations,
-    required TResult Function() loadingLocation,
-    required TResult Function(List<MapAutoComplete> result)
-        loadLocationsSuccess,
-    required TResult Function(MapReverse result) loadLocationSuccess,
-    required TResult Function(Failure failure) loadError,
-  }) {
-    return locatingPickupLocation();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? showAddressSheet,
-    TResult? Function()? locatingPickupLocation,
-    TResult? Function()? locatingDesLocation,
-    TResult? Function()? loadingLocations,
-    TResult? Function()? loadingLocation,
-    TResult? Function(List<MapAutoComplete> result)? loadLocationsSuccess,
-    TResult? Function(MapReverse result)? loadLocationSuccess,
-    TResult? Function(Failure failure)? loadError,
-  }) {
-    return locatingPickupLocation?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? showAddressSheet,
-    TResult Function()? locatingPickupLocation,
-    TResult Function()? locatingDesLocation,
-    TResult Function()? loadingLocations,
-    TResult Function()? loadingLocation,
-    TResult Function(List<MapAutoComplete> result)? loadLocationsSuccess,
-    TResult Function(MapReverse result)? loadLocationSuccess,
-    TResult Function(Failure failure)? loadError,
-    required TResult orElse(),
-  }) {
-    if (locatingPickupLocation != null) {
-      return locatingPickupLocation();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_BookingInitial value) initial,
-    required TResult Function(_BookingShowAddressSheet value) showAddressSheet,
-    required TResult Function(_BookingLocatingPickupLocation value)
-        locatingPickupLocation,
-    required TResult Function(_BookingLocatingDesLocation value)
-        locatingDesLocation,
-    required TResult Function(_BookingLoadingLocations value) loadingLocations,
-    required TResult Function(_BoookingLoadingLocation value) loadingLocation,
-    required TResult Function(_BookingLoadLocationsSuccess value)
-        loadLocationsSuccess,
-    required TResult Function(_BookingLoadLocationSuccess value)
-        loadLocationSuccess,
-    required TResult Function(_BookingLoadError value) loadError,
-  }) {
-    return locatingPickupLocation(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_BookingInitial value)? initial,
-    TResult? Function(_BookingShowAddressSheet value)? showAddressSheet,
-    TResult? Function(_BookingLocatingPickupLocation value)?
-        locatingPickupLocation,
-    TResult? Function(_BookingLocatingDesLocation value)? locatingDesLocation,
-    TResult? Function(_BookingLoadingLocations value)? loadingLocations,
-    TResult? Function(_BoookingLoadingLocation value)? loadingLocation,
-    TResult? Function(_BookingLoadLocationsSuccess value)? loadLocationsSuccess,
-    TResult? Function(_BookingLoadLocationSuccess value)? loadLocationSuccess,
-    TResult? Function(_BookingLoadError value)? loadError,
-  }) {
-    return locatingPickupLocation?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_BookingInitial value)? initial,
-    TResult Function(_BookingShowAddressSheet value)? showAddressSheet,
-    TResult Function(_BookingLocatingPickupLocation value)?
-        locatingPickupLocation,
-    TResult Function(_BookingLocatingDesLocation value)? locatingDesLocation,
-    TResult Function(_BookingLoadingLocations value)? loadingLocations,
-    TResult Function(_BoookingLoadingLocation value)? loadingLocation,
-    TResult Function(_BookingLoadLocationsSuccess value)? loadLocationsSuccess,
-    TResult Function(_BookingLoadLocationSuccess value)? loadLocationSuccess,
-    TResult Function(_BookingLoadError value)? loadError,
-    required TResult orElse(),
-  }) {
-    if (locatingPickupLocation != null) {
-      return locatingPickupLocation(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _BookingLocatingPickupLocation implements BookingState {
-  const factory _BookingLocatingPickupLocation() =
-      _$BookingLocatingPickupLocationImpl;
-}
-
-/// @nodoc
-abstract class _$$BookingLocatingDesLocationImplCopyWith<$Res> {
-  factory _$$BookingLocatingDesLocationImplCopyWith(
-          _$BookingLocatingDesLocationImpl value,
-          $Res Function(_$BookingLocatingDesLocationImpl) then) =
-      __$$BookingLocatingDesLocationImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$BookingLocatingDesLocationImplCopyWithImpl<$Res>
-    extends _$BookingStateCopyWithImpl<$Res, _$BookingLocatingDesLocationImpl>
-    implements _$$BookingLocatingDesLocationImplCopyWith<$Res> {
-  __$$BookingLocatingDesLocationImplCopyWithImpl(
-      _$BookingLocatingDesLocationImpl _value,
-      $Res Function(_$BookingLocatingDesLocationImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$BookingLocatingDesLocationImpl implements _BookingLocatingDesLocation {
-  const _$BookingLocatingDesLocationImpl();
-
-  @override
-  String toString() {
-    return 'BookingState.locatingDesLocation()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$BookingLocatingDesLocationImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() showAddressSheet,
-    required TResult Function() locatingPickupLocation,
-    required TResult Function() locatingDesLocation,
-    required TResult Function() loadingLocations,
-    required TResult Function() loadingLocation,
-    required TResult Function(List<MapAutoComplete> result)
-        loadLocationsSuccess,
-    required TResult Function(MapReverse result) loadLocationSuccess,
-    required TResult Function(Failure failure) loadError,
-  }) {
-    return locatingDesLocation();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? showAddressSheet,
-    TResult? Function()? locatingPickupLocation,
-    TResult? Function()? locatingDesLocation,
-    TResult? Function()? loadingLocations,
-    TResult? Function()? loadingLocation,
-    TResult? Function(List<MapAutoComplete> result)? loadLocationsSuccess,
-    TResult? Function(MapReverse result)? loadLocationSuccess,
-    TResult? Function(Failure failure)? loadError,
-  }) {
-    return locatingDesLocation?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? showAddressSheet,
-    TResult Function()? locatingPickupLocation,
-    TResult Function()? locatingDesLocation,
-    TResult Function()? loadingLocations,
-    TResult Function()? loadingLocation,
-    TResult Function(List<MapAutoComplete> result)? loadLocationsSuccess,
-    TResult Function(MapReverse result)? loadLocationSuccess,
-    TResult Function(Failure failure)? loadError,
-    required TResult orElse(),
-  }) {
-    if (locatingDesLocation != null) {
-      return locatingDesLocation();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_BookingInitial value) initial,
-    required TResult Function(_BookingShowAddressSheet value) showAddressSheet,
-    required TResult Function(_BookingLocatingPickupLocation value)
-        locatingPickupLocation,
-    required TResult Function(_BookingLocatingDesLocation value)
-        locatingDesLocation,
-    required TResult Function(_BookingLoadingLocations value) loadingLocations,
-    required TResult Function(_BoookingLoadingLocation value) loadingLocation,
-    required TResult Function(_BookingLoadLocationsSuccess value)
-        loadLocationsSuccess,
-    required TResult Function(_BookingLoadLocationSuccess value)
-        loadLocationSuccess,
-    required TResult Function(_BookingLoadError value) loadError,
-  }) {
-    return locatingDesLocation(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_BookingInitial value)? initial,
-    TResult? Function(_BookingShowAddressSheet value)? showAddressSheet,
-    TResult? Function(_BookingLocatingPickupLocation value)?
-        locatingPickupLocation,
-    TResult? Function(_BookingLocatingDesLocation value)? locatingDesLocation,
-    TResult? Function(_BookingLoadingLocations value)? loadingLocations,
-    TResult? Function(_BoookingLoadingLocation value)? loadingLocation,
-    TResult? Function(_BookingLoadLocationsSuccess value)? loadLocationsSuccess,
-    TResult? Function(_BookingLoadLocationSuccess value)? loadLocationSuccess,
-    TResult? Function(_BookingLoadError value)? loadError,
-  }) {
-    return locatingDesLocation?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_BookingInitial value)? initial,
-    TResult Function(_BookingShowAddressSheet value)? showAddressSheet,
-    TResult Function(_BookingLocatingPickupLocation value)?
-        locatingPickupLocation,
-    TResult Function(_BookingLocatingDesLocation value)? locatingDesLocation,
-    TResult Function(_BookingLoadingLocations value)? loadingLocations,
-    TResult Function(_BoookingLoadingLocation value)? loadingLocation,
-    TResult Function(_BookingLoadLocationsSuccess value)? loadLocationsSuccess,
-    TResult Function(_BookingLoadLocationSuccess value)? loadLocationSuccess,
-    TResult Function(_BookingLoadError value)? loadError,
-    required TResult orElse(),
-  }) {
-    if (locatingDesLocation != null) {
-      return locatingDesLocation(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _BookingLocatingDesLocation implements BookingState {
-  const factory _BookingLocatingDesLocation() =
-      _$BookingLocatingDesLocationImpl;
-}
-
-/// @nodoc
-abstract class _$$BookingLoadingLocationsImplCopyWith<$Res> {
-  factory _$$BookingLoadingLocationsImplCopyWith(
-          _$BookingLoadingLocationsImpl value,
-          $Res Function(_$BookingLoadingLocationsImpl) then) =
-      __$$BookingLoadingLocationsImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$BookingLoadingLocationsImplCopyWithImpl<$Res>
-    extends _$BookingStateCopyWithImpl<$Res, _$BookingLoadingLocationsImpl>
-    implements _$$BookingLoadingLocationsImplCopyWith<$Res> {
-  __$$BookingLoadingLocationsImplCopyWithImpl(
-      _$BookingLoadingLocationsImpl _value,
-      $Res Function(_$BookingLoadingLocationsImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$BookingLoadingLocationsImpl implements _BookingLoadingLocations {
-  const _$BookingLoadingLocationsImpl();
-
-  @override
-  String toString() {
-    return 'BookingState.loadingLocations()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$BookingLoadingLocationsImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() showAddressSheet,
-    required TResult Function() locatingPickupLocation,
-    required TResult Function() locatingDesLocation,
-    required TResult Function() loadingLocations,
-    required TResult Function() loadingLocation,
-    required TResult Function(List<MapAutoComplete> result)
-        loadLocationsSuccess,
-    required TResult Function(MapReverse result) loadLocationSuccess,
-    required TResult Function(Failure failure) loadError,
-  }) {
-    return loadingLocations();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? showAddressSheet,
-    TResult? Function()? locatingPickupLocation,
-    TResult? Function()? locatingDesLocation,
-    TResult? Function()? loadingLocations,
-    TResult? Function()? loadingLocation,
-    TResult? Function(List<MapAutoComplete> result)? loadLocationsSuccess,
-    TResult? Function(MapReverse result)? loadLocationSuccess,
-    TResult? Function(Failure failure)? loadError,
-  }) {
-    return loadingLocations?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? showAddressSheet,
-    TResult Function()? locatingPickupLocation,
-    TResult Function()? locatingDesLocation,
-    TResult Function()? loadingLocations,
-    TResult Function()? loadingLocation,
-    TResult Function(List<MapAutoComplete> result)? loadLocationsSuccess,
-    TResult Function(MapReverse result)? loadLocationSuccess,
-    TResult Function(Failure failure)? loadError,
-    required TResult orElse(),
-  }) {
-    if (loadingLocations != null) {
-      return loadingLocations();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_BookingInitial value) initial,
-    required TResult Function(_BookingShowAddressSheet value) showAddressSheet,
-    required TResult Function(_BookingLocatingPickupLocation value)
-        locatingPickupLocation,
-    required TResult Function(_BookingLocatingDesLocation value)
-        locatingDesLocation,
-    required TResult Function(_BookingLoadingLocations value) loadingLocations,
-    required TResult Function(_BoookingLoadingLocation value) loadingLocation,
-    required TResult Function(_BookingLoadLocationsSuccess value)
-        loadLocationsSuccess,
-    required TResult Function(_BookingLoadLocationSuccess value)
-        loadLocationSuccess,
-    required TResult Function(_BookingLoadError value) loadError,
-  }) {
-    return loadingLocations(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_BookingInitial value)? initial,
-    TResult? Function(_BookingShowAddressSheet value)? showAddressSheet,
-    TResult? Function(_BookingLocatingPickupLocation value)?
-        locatingPickupLocation,
-    TResult? Function(_BookingLocatingDesLocation value)? locatingDesLocation,
-    TResult? Function(_BookingLoadingLocations value)? loadingLocations,
-    TResult? Function(_BoookingLoadingLocation value)? loadingLocation,
-    TResult? Function(_BookingLoadLocationsSuccess value)? loadLocationsSuccess,
-    TResult? Function(_BookingLoadLocationSuccess value)? loadLocationSuccess,
-    TResult? Function(_BookingLoadError value)? loadError,
-  }) {
-    return loadingLocations?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_BookingInitial value)? initial,
-    TResult Function(_BookingShowAddressSheet value)? showAddressSheet,
-    TResult Function(_BookingLocatingPickupLocation value)?
-        locatingPickupLocation,
-    TResult Function(_BookingLocatingDesLocation value)? locatingDesLocation,
-    TResult Function(_BookingLoadingLocations value)? loadingLocations,
-    TResult Function(_BoookingLoadingLocation value)? loadingLocation,
-    TResult Function(_BookingLoadLocationsSuccess value)? loadLocationsSuccess,
-    TResult Function(_BookingLoadLocationSuccess value)? loadLocationSuccess,
-    TResult Function(_BookingLoadError value)? loadError,
-    required TResult orElse(),
-  }) {
-    if (loadingLocations != null) {
-      return loadingLocations(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _BookingLoadingLocations implements BookingState {
-  const factory _BookingLoadingLocations() = _$BookingLoadingLocationsImpl;
-}
-
-/// @nodoc
-abstract class _$$BoookingLoadingLocationImplCopyWith<$Res> {
-  factory _$$BoookingLoadingLocationImplCopyWith(
-          _$BoookingLoadingLocationImpl value,
-          $Res Function(_$BoookingLoadingLocationImpl) then) =
-      __$$BoookingLoadingLocationImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$BoookingLoadingLocationImplCopyWithImpl<$Res>
-    extends _$BookingStateCopyWithImpl<$Res, _$BoookingLoadingLocationImpl>
-    implements _$$BoookingLoadingLocationImplCopyWith<$Res> {
-  __$$BoookingLoadingLocationImplCopyWithImpl(
-      _$BoookingLoadingLocationImpl _value,
-      $Res Function(_$BoookingLoadingLocationImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$BoookingLoadingLocationImpl implements _BoookingLoadingLocation {
-  const _$BoookingLoadingLocationImpl();
-
-  @override
-  String toString() {
-    return 'BookingState.loadingLocation()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$BoookingLoadingLocationImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() showAddressSheet,
-    required TResult Function() locatingPickupLocation,
-    required TResult Function() locatingDesLocation,
-    required TResult Function() loadingLocations,
-    required TResult Function() loadingLocation,
-    required TResult Function(List<MapAutoComplete> result)
-        loadLocationsSuccess,
-    required TResult Function(MapReverse result) loadLocationSuccess,
-    required TResult Function(Failure failure) loadError,
-  }) {
-    return loadingLocation();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? showAddressSheet,
-    TResult? Function()? locatingPickupLocation,
-    TResult? Function()? locatingDesLocation,
-    TResult? Function()? loadingLocations,
-    TResult? Function()? loadingLocation,
-    TResult? Function(List<MapAutoComplete> result)? loadLocationsSuccess,
-    TResult? Function(MapReverse result)? loadLocationSuccess,
-    TResult? Function(Failure failure)? loadError,
-  }) {
-    return loadingLocation?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? showAddressSheet,
-    TResult Function()? locatingPickupLocation,
-    TResult Function()? locatingDesLocation,
-    TResult Function()? loadingLocations,
-    TResult Function()? loadingLocation,
-    TResult Function(List<MapAutoComplete> result)? loadLocationsSuccess,
-    TResult Function(MapReverse result)? loadLocationSuccess,
-    TResult Function(Failure failure)? loadError,
-    required TResult orElse(),
-  }) {
-    if (loadingLocation != null) {
-      return loadingLocation();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_BookingInitial value) initial,
-    required TResult Function(_BookingShowAddressSheet value) showAddressSheet,
-    required TResult Function(_BookingLocatingPickupLocation value)
-        locatingPickupLocation,
-    required TResult Function(_BookingLocatingDesLocation value)
-        locatingDesLocation,
-    required TResult Function(_BookingLoadingLocations value) loadingLocations,
-    required TResult Function(_BoookingLoadingLocation value) loadingLocation,
-    required TResult Function(_BookingLoadLocationsSuccess value)
-        loadLocationsSuccess,
-    required TResult Function(_BookingLoadLocationSuccess value)
-        loadLocationSuccess,
-    required TResult Function(_BookingLoadError value) loadError,
-  }) {
-    return loadingLocation(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_BookingInitial value)? initial,
-    TResult? Function(_BookingShowAddressSheet value)? showAddressSheet,
-    TResult? Function(_BookingLocatingPickupLocation value)?
-        locatingPickupLocation,
-    TResult? Function(_BookingLocatingDesLocation value)? locatingDesLocation,
-    TResult? Function(_BookingLoadingLocations value)? loadingLocations,
-    TResult? Function(_BoookingLoadingLocation value)? loadingLocation,
-    TResult? Function(_BookingLoadLocationsSuccess value)? loadLocationsSuccess,
-    TResult? Function(_BookingLoadLocationSuccess value)? loadLocationSuccess,
-    TResult? Function(_BookingLoadError value)? loadError,
-  }) {
-    return loadingLocation?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_BookingInitial value)? initial,
-    TResult Function(_BookingShowAddressSheet value)? showAddressSheet,
-    TResult Function(_BookingLocatingPickupLocation value)?
-        locatingPickupLocation,
-    TResult Function(_BookingLocatingDesLocation value)? locatingDesLocation,
-    TResult Function(_BookingLoadingLocations value)? loadingLocations,
-    TResult Function(_BoookingLoadingLocation value)? loadingLocation,
-    TResult Function(_BookingLoadLocationsSuccess value)? loadLocationsSuccess,
-    TResult Function(_BookingLoadLocationSuccess value)? loadLocationSuccess,
-    TResult Function(_BookingLoadError value)? loadError,
-    required TResult orElse(),
-  }) {
-    if (loadingLocation != null) {
-      return loadingLocation(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _BoookingLoadingLocation implements BookingState {
-  const factory _BoookingLoadingLocation() = _$BoookingLoadingLocationImpl;
-}
-
-/// @nodoc
-abstract class _$$BookingLoadLocationsSuccessImplCopyWith<$Res> {
-  factory _$$BookingLoadLocationsSuccessImplCopyWith(
-          _$BookingLoadLocationsSuccessImpl value,
-          $Res Function(_$BookingLoadLocationsSuccessImpl) then) =
-      __$$BookingLoadLocationsSuccessImplCopyWithImpl<$Res>;
+abstract class _$$BookingGetAddressDetailImplCopyWith<$Res> {
+  factory _$$BookingGetAddressDetailImplCopyWith(
+          _$BookingGetAddressDetailImpl value,
+          $Res Function(_$BookingGetAddressDetailImpl) then) =
+      __$$BookingGetAddressDetailImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<MapAutoComplete> result});
+  $Res call({MapAutoComplete model});
+
+  $MapAutoCompleteCopyWith<$Res> get model;
 }
 
 /// @nodoc
-class __$$BookingLoadLocationsSuccessImplCopyWithImpl<$Res>
-    extends _$BookingStateCopyWithImpl<$Res, _$BookingLoadLocationsSuccessImpl>
-    implements _$$BookingLoadLocationsSuccessImplCopyWith<$Res> {
-  __$$BookingLoadLocationsSuccessImplCopyWithImpl(
-      _$BookingLoadLocationsSuccessImpl _value,
-      $Res Function(_$BookingLoadLocationsSuccessImpl) _then)
+class __$$BookingGetAddressDetailImplCopyWithImpl<$Res>
+    extends _$BookingEventCopyWithImpl<$Res, _$BookingGetAddressDetailImpl>
+    implements _$$BookingGetAddressDetailImplCopyWith<$Res> {
+  __$$BookingGetAddressDetailImplCopyWithImpl(
+      _$BookingGetAddressDetailImpl _value,
+      $Res Function(_$BookingGetAddressDetailImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = null,
+    Object? model = null,
   }) {
-    return _then(_$BookingLoadLocationsSuccessImpl(
-      result: null == result
-          ? _value._result
-          : result // ignore: cast_nullable_to_non_nullable
-              as List<MapAutoComplete>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$BookingLoadLocationsSuccessImpl
-    implements _BookingLoadLocationsSuccess {
-  const _$BookingLoadLocationsSuccessImpl(
-      {required final List<MapAutoComplete> result})
-      : _result = result;
-
-  final List<MapAutoComplete> _result;
-  @override
-  List<MapAutoComplete> get result {
-    if (_result is EqualUnmodifiableListView) return _result;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_result);
-  }
-
-  @override
-  String toString() {
-    return 'BookingState.loadLocationsSuccess(result: $result)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$BookingLoadLocationsSuccessImpl &&
-            const DeepCollectionEquality().equals(other._result, _result));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_result));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$BookingLoadLocationsSuccessImplCopyWith<_$BookingLoadLocationsSuccessImpl>
-      get copyWith => __$$BookingLoadLocationsSuccessImplCopyWithImpl<
-          _$BookingLoadLocationsSuccessImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() showAddressSheet,
-    required TResult Function() locatingPickupLocation,
-    required TResult Function() locatingDesLocation,
-    required TResult Function() loadingLocations,
-    required TResult Function() loadingLocation,
-    required TResult Function(List<MapAutoComplete> result)
-        loadLocationsSuccess,
-    required TResult Function(MapReverse result) loadLocationSuccess,
-    required TResult Function(Failure failure) loadError,
-  }) {
-    return loadLocationsSuccess(result);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? showAddressSheet,
-    TResult? Function()? locatingPickupLocation,
-    TResult? Function()? locatingDesLocation,
-    TResult? Function()? loadingLocations,
-    TResult? Function()? loadingLocation,
-    TResult? Function(List<MapAutoComplete> result)? loadLocationsSuccess,
-    TResult? Function(MapReverse result)? loadLocationSuccess,
-    TResult? Function(Failure failure)? loadError,
-  }) {
-    return loadLocationsSuccess?.call(result);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? showAddressSheet,
-    TResult Function()? locatingPickupLocation,
-    TResult Function()? locatingDesLocation,
-    TResult Function()? loadingLocations,
-    TResult Function()? loadingLocation,
-    TResult Function(List<MapAutoComplete> result)? loadLocationsSuccess,
-    TResult Function(MapReverse result)? loadLocationSuccess,
-    TResult Function(Failure failure)? loadError,
-    required TResult orElse(),
-  }) {
-    if (loadLocationsSuccess != null) {
-      return loadLocationsSuccess(result);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_BookingInitial value) initial,
-    required TResult Function(_BookingShowAddressSheet value) showAddressSheet,
-    required TResult Function(_BookingLocatingPickupLocation value)
-        locatingPickupLocation,
-    required TResult Function(_BookingLocatingDesLocation value)
-        locatingDesLocation,
-    required TResult Function(_BookingLoadingLocations value) loadingLocations,
-    required TResult Function(_BoookingLoadingLocation value) loadingLocation,
-    required TResult Function(_BookingLoadLocationsSuccess value)
-        loadLocationsSuccess,
-    required TResult Function(_BookingLoadLocationSuccess value)
-        loadLocationSuccess,
-    required TResult Function(_BookingLoadError value) loadError,
-  }) {
-    return loadLocationsSuccess(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_BookingInitial value)? initial,
-    TResult? Function(_BookingShowAddressSheet value)? showAddressSheet,
-    TResult? Function(_BookingLocatingPickupLocation value)?
-        locatingPickupLocation,
-    TResult? Function(_BookingLocatingDesLocation value)? locatingDesLocation,
-    TResult? Function(_BookingLoadingLocations value)? loadingLocations,
-    TResult? Function(_BoookingLoadingLocation value)? loadingLocation,
-    TResult? Function(_BookingLoadLocationsSuccess value)? loadLocationsSuccess,
-    TResult? Function(_BookingLoadLocationSuccess value)? loadLocationSuccess,
-    TResult? Function(_BookingLoadError value)? loadError,
-  }) {
-    return loadLocationsSuccess?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_BookingInitial value)? initial,
-    TResult Function(_BookingShowAddressSheet value)? showAddressSheet,
-    TResult Function(_BookingLocatingPickupLocation value)?
-        locatingPickupLocation,
-    TResult Function(_BookingLocatingDesLocation value)? locatingDesLocation,
-    TResult Function(_BookingLoadingLocations value)? loadingLocations,
-    TResult Function(_BoookingLoadingLocation value)? loadingLocation,
-    TResult Function(_BookingLoadLocationsSuccess value)? loadLocationsSuccess,
-    TResult Function(_BookingLoadLocationSuccess value)? loadLocationSuccess,
-    TResult Function(_BookingLoadError value)? loadError,
-    required TResult orElse(),
-  }) {
-    if (loadLocationsSuccess != null) {
-      return loadLocationsSuccess(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _BookingLoadLocationsSuccess implements BookingState {
-  const factory _BookingLoadLocationsSuccess(
-          {required final List<MapAutoComplete> result}) =
-      _$BookingLoadLocationsSuccessImpl;
-
-  List<MapAutoComplete> get result;
-  @JsonKey(ignore: true)
-  _$$BookingLoadLocationsSuccessImplCopyWith<_$BookingLoadLocationsSuccessImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$BookingLoadLocationSuccessImplCopyWith<$Res> {
-  factory _$$BookingLoadLocationSuccessImplCopyWith(
-          _$BookingLoadLocationSuccessImpl value,
-          $Res Function(_$BookingLoadLocationSuccessImpl) then) =
-      __$$BookingLoadLocationSuccessImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({MapReverse result});
-
-  $MapReverseCopyWith<$Res> get result;
-}
-
-/// @nodoc
-class __$$BookingLoadLocationSuccessImplCopyWithImpl<$Res>
-    extends _$BookingStateCopyWithImpl<$Res, _$BookingLoadLocationSuccessImpl>
-    implements _$$BookingLoadLocationSuccessImplCopyWith<$Res> {
-  __$$BookingLoadLocationSuccessImplCopyWithImpl(
-      _$BookingLoadLocationSuccessImpl _value,
-      $Res Function(_$BookingLoadLocationSuccessImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? result = null,
-  }) {
-    return _then(_$BookingLoadLocationSuccessImpl(
-      result: null == result
-          ? _value.result
-          : result // ignore: cast_nullable_to_non_nullable
-              as MapReverse,
+    return _then(_$BookingGetAddressDetailImpl(
+      model: null == model
+          ? _value.model
+          : model // ignore: cast_nullable_to_non_nullable
+              as MapAutoComplete,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $MapReverseCopyWith<$Res> get result {
-    return $MapReverseCopyWith<$Res>(_value.result, (value) {
-      return _then(_value.copyWith(result: value));
+  $MapAutoCompleteCopyWith<$Res> get model {
+    return $MapAutoCompleteCopyWith<$Res>(_value.model, (value) {
+      return _then(_value.copyWith(model: value));
     });
   }
 }
 
 /// @nodoc
 
-class _$BookingLoadLocationSuccessImpl implements _BookingLoadLocationSuccess {
-  const _$BookingLoadLocationSuccessImpl({required this.result});
+class _$BookingGetAddressDetailImpl implements BookingGetAddressDetail {
+  const _$BookingGetAddressDetailImpl({required this.model});
 
   @override
-  final MapReverse result;
+  final MapAutoComplete model;
 
   @override
   String toString() {
-    return 'BookingState.loadLocationSuccess(result: $result)';
+    return 'BookingEvent.getAddressDetail(model: $model)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BookingLoadLocationSuccessImpl &&
-            (identical(other.result, result) || other.result == result));
+            other is _$BookingGetAddressDetailImpl &&
+            (identical(other.model, model) || other.model == model));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, result);
+  int get hashCode => Object.hash(runtimeType, model);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BookingLoadLocationSuccessImplCopyWith<_$BookingLoadLocationSuccessImpl>
-      get copyWith => __$$BookingLoadLocationSuccessImplCopyWithImpl<
-          _$BookingLoadLocationSuccessImpl>(this, _$identity);
+  _$$BookingGetAddressDetailImplCopyWith<_$BookingGetAddressDetailImpl>
+      get copyWith => __$$BookingGetAddressDetailImplCopyWithImpl<
+          _$BookingGetAddressDetailImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() showAddressSheet,
-    required TResult Function() locatingPickupLocation,
-    required TResult Function() locatingDesLocation,
-    required TResult Function() loadingLocations,
-    required TResult Function() loadingLocation,
-    required TResult Function(List<MapAutoComplete> result)
-        loadLocationsSuccess,
-    required TResult Function(MapReverse result) loadLocationSuccess,
-    required TResult Function(Failure failure) loadError,
+    required TResult Function() selectPickupLocation,
+    required TResult Function() selectDesLocation,
+    required TResult Function(SelectLocation selectLocation, String? refId)
+        locateOnMap,
+    required TResult Function(String query) searchAddressFromText,
+    required TResult Function(LatLng coordinate) searchAddressFromCoordinate,
+    required TResult Function(MapPickerData mapPickerData) pickAddress,
+    required TResult Function(MapAutoComplete model) getAddressDetail,
+    required TResult Function(VehicleType vehicleType) selectVehicleType,
+    required TResult Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)
+        updateRouteParams,
+    required TResult Function(LatLng from, LatLng to) getDirection,
   }) {
-    return loadLocationSuccess(result);
+    return getAddressDetail(model);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? showAddressSheet,
-    TResult? Function()? locatingPickupLocation,
-    TResult? Function()? locatingDesLocation,
-    TResult? Function()? loadingLocations,
-    TResult? Function()? loadingLocation,
-    TResult? Function(List<MapAutoComplete> result)? loadLocationsSuccess,
-    TResult? Function(MapReverse result)? loadLocationSuccess,
-    TResult? Function(Failure failure)? loadError,
+    TResult? Function()? selectPickupLocation,
+    TResult? Function()? selectDesLocation,
+    TResult? Function(SelectLocation selectLocation, String? refId)?
+        locateOnMap,
+    TResult? Function(String query)? searchAddressFromText,
+    TResult? Function(LatLng coordinate)? searchAddressFromCoordinate,
+    TResult? Function(MapPickerData mapPickerData)? pickAddress,
+    TResult? Function(MapAutoComplete model)? getAddressDetail,
+    TResult? Function(VehicleType vehicleType)? selectVehicleType,
+    TResult? Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)?
+        updateRouteParams,
+    TResult? Function(LatLng from, LatLng to)? getDirection,
   }) {
-    return loadLocationSuccess?.call(result);
+    return getAddressDetail?.call(model);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? showAddressSheet,
-    TResult Function()? locatingPickupLocation,
-    TResult Function()? locatingDesLocation,
-    TResult Function()? loadingLocations,
-    TResult Function()? loadingLocation,
-    TResult Function(List<MapAutoComplete> result)? loadLocationsSuccess,
-    TResult Function(MapReverse result)? loadLocationSuccess,
-    TResult Function(Failure failure)? loadError,
+    TResult Function()? selectPickupLocation,
+    TResult Function()? selectDesLocation,
+    TResult Function(SelectLocation selectLocation, String? refId)? locateOnMap,
+    TResult Function(String query)? searchAddressFromText,
+    TResult Function(LatLng coordinate)? searchAddressFromCoordinate,
+    TResult Function(MapPickerData mapPickerData)? pickAddress,
+    TResult Function(MapAutoComplete model)? getAddressDetail,
+    TResult Function(VehicleType vehicleType)? selectVehicleType,
+    TResult Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)?
+        updateRouteParams,
+    TResult Function(LatLng from, LatLng to)? getDirection,
     required TResult orElse(),
   }) {
-    if (loadLocationSuccess != null) {
-      return loadLocationSuccess(result);
+    if (getAddressDetail != null) {
+      return getAddressDetail(model);
     }
     return orElse();
   }
@@ -2604,183 +1434,199 @@ class _$BookingLoadLocationSuccessImpl implements _BookingLoadLocationSuccess {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_BookingInitial value) initial,
-    required TResult Function(_BookingShowAddressSheet value) showAddressSheet,
-    required TResult Function(_BookingLocatingPickupLocation value)
-        locatingPickupLocation,
-    required TResult Function(_BookingLocatingDesLocation value)
-        locatingDesLocation,
-    required TResult Function(_BookingLoadingLocations value) loadingLocations,
-    required TResult Function(_BoookingLoadingLocation value) loadingLocation,
-    required TResult Function(_BookingLoadLocationsSuccess value)
-        loadLocationsSuccess,
-    required TResult Function(_BookingLoadLocationSuccess value)
-        loadLocationSuccess,
-    required TResult Function(_BookingLoadError value) loadError,
+    required TResult Function(BookingSelectPickupLocation value)
+        selectPickupLocation,
+    required TResult Function(BookingSelectDesLocation value) selectDesLocation,
+    required TResult Function(BookingLocateOnMap value) locateOnMap,
+    required TResult Function(BookingSearchAddressFromText value)
+        searchAddressFromText,
+    required TResult Function(BookingSearchAddressFromCoordinate value)
+        searchAddressFromCoordinate,
+    required TResult Function(BookingPickAddress value) pickAddress,
+    required TResult Function(BookingGetAddressDetail value) getAddressDetail,
+    required TResult Function(BookingSelectVehicleType value) selectVehicleType,
+    required TResult Function(BookingUpdateRouteParams value) updateRouteParams,
+    required TResult Function(BookingGetDirection value) getDirection,
   }) {
-    return loadLocationSuccess(this);
+    return getAddressDetail(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_BookingInitial value)? initial,
-    TResult? Function(_BookingShowAddressSheet value)? showAddressSheet,
-    TResult? Function(_BookingLocatingPickupLocation value)?
-        locatingPickupLocation,
-    TResult? Function(_BookingLocatingDesLocation value)? locatingDesLocation,
-    TResult? Function(_BookingLoadingLocations value)? loadingLocations,
-    TResult? Function(_BoookingLoadingLocation value)? loadingLocation,
-    TResult? Function(_BookingLoadLocationsSuccess value)? loadLocationsSuccess,
-    TResult? Function(_BookingLoadLocationSuccess value)? loadLocationSuccess,
-    TResult? Function(_BookingLoadError value)? loadError,
+    TResult? Function(BookingSelectPickupLocation value)? selectPickupLocation,
+    TResult? Function(BookingSelectDesLocation value)? selectDesLocation,
+    TResult? Function(BookingLocateOnMap value)? locateOnMap,
+    TResult? Function(BookingSearchAddressFromText value)?
+        searchAddressFromText,
+    TResult? Function(BookingSearchAddressFromCoordinate value)?
+        searchAddressFromCoordinate,
+    TResult? Function(BookingPickAddress value)? pickAddress,
+    TResult? Function(BookingGetAddressDetail value)? getAddressDetail,
+    TResult? Function(BookingSelectVehicleType value)? selectVehicleType,
+    TResult? Function(BookingUpdateRouteParams value)? updateRouteParams,
+    TResult? Function(BookingGetDirection value)? getDirection,
   }) {
-    return loadLocationSuccess?.call(this);
+    return getAddressDetail?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_BookingInitial value)? initial,
-    TResult Function(_BookingShowAddressSheet value)? showAddressSheet,
-    TResult Function(_BookingLocatingPickupLocation value)?
-        locatingPickupLocation,
-    TResult Function(_BookingLocatingDesLocation value)? locatingDesLocation,
-    TResult Function(_BookingLoadingLocations value)? loadingLocations,
-    TResult Function(_BoookingLoadingLocation value)? loadingLocation,
-    TResult Function(_BookingLoadLocationsSuccess value)? loadLocationsSuccess,
-    TResult Function(_BookingLoadLocationSuccess value)? loadLocationSuccess,
-    TResult Function(_BookingLoadError value)? loadError,
+    TResult Function(BookingSelectPickupLocation value)? selectPickupLocation,
+    TResult Function(BookingSelectDesLocation value)? selectDesLocation,
+    TResult Function(BookingLocateOnMap value)? locateOnMap,
+    TResult Function(BookingSearchAddressFromText value)? searchAddressFromText,
+    TResult Function(BookingSearchAddressFromCoordinate value)?
+        searchAddressFromCoordinate,
+    TResult Function(BookingPickAddress value)? pickAddress,
+    TResult Function(BookingGetAddressDetail value)? getAddressDetail,
+    TResult Function(BookingSelectVehicleType value)? selectVehicleType,
+    TResult Function(BookingUpdateRouteParams value)? updateRouteParams,
+    TResult Function(BookingGetDirection value)? getDirection,
     required TResult orElse(),
   }) {
-    if (loadLocationSuccess != null) {
-      return loadLocationSuccess(this);
+    if (getAddressDetail != null) {
+      return getAddressDetail(this);
     }
     return orElse();
   }
 }
 
-abstract class _BookingLoadLocationSuccess implements BookingState {
-  const factory _BookingLoadLocationSuccess(
-      {required final MapReverse result}) = _$BookingLoadLocationSuccessImpl;
+abstract class BookingGetAddressDetail implements BookingEvent {
+  const factory BookingGetAddressDetail(
+      {required final MapAutoComplete model}) = _$BookingGetAddressDetailImpl;
 
-  MapReverse get result;
+  MapAutoComplete get model;
   @JsonKey(ignore: true)
-  _$$BookingLoadLocationSuccessImplCopyWith<_$BookingLoadLocationSuccessImpl>
+  _$$BookingGetAddressDetailImplCopyWith<_$BookingGetAddressDetailImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$BookingLoadErrorImplCopyWith<$Res> {
-  factory _$$BookingLoadErrorImplCopyWith(_$BookingLoadErrorImpl value,
-          $Res Function(_$BookingLoadErrorImpl) then) =
-      __$$BookingLoadErrorImplCopyWithImpl<$Res>;
+abstract class _$$BookingSelectVehicleTypeImplCopyWith<$Res> {
+  factory _$$BookingSelectVehicleTypeImplCopyWith(
+          _$BookingSelectVehicleTypeImpl value,
+          $Res Function(_$BookingSelectVehicleTypeImpl) then) =
+      __$$BookingSelectVehicleTypeImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Failure failure});
+  $Res call({VehicleType vehicleType});
 }
 
 /// @nodoc
-class __$$BookingLoadErrorImplCopyWithImpl<$Res>
-    extends _$BookingStateCopyWithImpl<$Res, _$BookingLoadErrorImpl>
-    implements _$$BookingLoadErrorImplCopyWith<$Res> {
-  __$$BookingLoadErrorImplCopyWithImpl(_$BookingLoadErrorImpl _value,
-      $Res Function(_$BookingLoadErrorImpl) _then)
+class __$$BookingSelectVehicleTypeImplCopyWithImpl<$Res>
+    extends _$BookingEventCopyWithImpl<$Res, _$BookingSelectVehicleTypeImpl>
+    implements _$$BookingSelectVehicleTypeImplCopyWith<$Res> {
+  __$$BookingSelectVehicleTypeImplCopyWithImpl(
+      _$BookingSelectVehicleTypeImpl _value,
+      $Res Function(_$BookingSelectVehicleTypeImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? failure = null,
+    Object? vehicleType = null,
   }) {
-    return _then(_$BookingLoadErrorImpl(
-      failure: null == failure
-          ? _value.failure
-          : failure // ignore: cast_nullable_to_non_nullable
-              as Failure,
+    return _then(_$BookingSelectVehicleTypeImpl(
+      vehicleType: null == vehicleType
+          ? _value.vehicleType
+          : vehicleType // ignore: cast_nullable_to_non_nullable
+              as VehicleType,
     ));
   }
 }
 
 /// @nodoc
 
-class _$BookingLoadErrorImpl implements _BookingLoadError {
-  const _$BookingLoadErrorImpl({required this.failure});
+class _$BookingSelectVehicleTypeImpl implements BookingSelectVehicleType {
+  const _$BookingSelectVehicleTypeImpl({required this.vehicleType});
 
   @override
-  final Failure failure;
+  final VehicleType vehicleType;
 
   @override
   String toString() {
-    return 'BookingState.loadError(failure: $failure)';
+    return 'BookingEvent.selectVehicleType(vehicleType: $vehicleType)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BookingLoadErrorImpl &&
-            (identical(other.failure, failure) || other.failure == failure));
+            other is _$BookingSelectVehicleTypeImpl &&
+            (identical(other.vehicleType, vehicleType) ||
+                other.vehicleType == vehicleType));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, failure);
+  int get hashCode => Object.hash(runtimeType, vehicleType);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BookingLoadErrorImplCopyWith<_$BookingLoadErrorImpl> get copyWith =>
-      __$$BookingLoadErrorImplCopyWithImpl<_$BookingLoadErrorImpl>(
-          this, _$identity);
+  _$$BookingSelectVehicleTypeImplCopyWith<_$BookingSelectVehicleTypeImpl>
+      get copyWith => __$$BookingSelectVehicleTypeImplCopyWithImpl<
+          _$BookingSelectVehicleTypeImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() showAddressSheet,
-    required TResult Function() locatingPickupLocation,
-    required TResult Function() locatingDesLocation,
-    required TResult Function() loadingLocations,
-    required TResult Function() loadingLocation,
-    required TResult Function(List<MapAutoComplete> result)
-        loadLocationsSuccess,
-    required TResult Function(MapReverse result) loadLocationSuccess,
-    required TResult Function(Failure failure) loadError,
+    required TResult Function() selectPickupLocation,
+    required TResult Function() selectDesLocation,
+    required TResult Function(SelectLocation selectLocation, String? refId)
+        locateOnMap,
+    required TResult Function(String query) searchAddressFromText,
+    required TResult Function(LatLng coordinate) searchAddressFromCoordinate,
+    required TResult Function(MapPickerData mapPickerData) pickAddress,
+    required TResult Function(MapAutoComplete model) getAddressDetail,
+    required TResult Function(VehicleType vehicleType) selectVehicleType,
+    required TResult Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)
+        updateRouteParams,
+    required TResult Function(LatLng from, LatLng to) getDirection,
   }) {
-    return loadError(failure);
+    return selectVehicleType(vehicleType);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? showAddressSheet,
-    TResult? Function()? locatingPickupLocation,
-    TResult? Function()? locatingDesLocation,
-    TResult? Function()? loadingLocations,
-    TResult? Function()? loadingLocation,
-    TResult? Function(List<MapAutoComplete> result)? loadLocationsSuccess,
-    TResult? Function(MapReverse result)? loadLocationSuccess,
-    TResult? Function(Failure failure)? loadError,
+    TResult? Function()? selectPickupLocation,
+    TResult? Function()? selectDesLocation,
+    TResult? Function(SelectLocation selectLocation, String? refId)?
+        locateOnMap,
+    TResult? Function(String query)? searchAddressFromText,
+    TResult? Function(LatLng coordinate)? searchAddressFromCoordinate,
+    TResult? Function(MapPickerData mapPickerData)? pickAddress,
+    TResult? Function(MapAutoComplete model)? getAddressDetail,
+    TResult? Function(VehicleType vehicleType)? selectVehicleType,
+    TResult? Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)?
+        updateRouteParams,
+    TResult? Function(LatLng from, LatLng to)? getDirection,
   }) {
-    return loadError?.call(failure);
+    return selectVehicleType?.call(vehicleType);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? showAddressSheet,
-    TResult Function()? locatingPickupLocation,
-    TResult Function()? locatingDesLocation,
-    TResult Function()? loadingLocations,
-    TResult Function()? loadingLocation,
-    TResult Function(List<MapAutoComplete> result)? loadLocationsSuccess,
-    TResult Function(MapReverse result)? loadLocationSuccess,
-    TResult Function(Failure failure)? loadError,
+    TResult Function()? selectPickupLocation,
+    TResult Function()? selectDesLocation,
+    TResult Function(SelectLocation selectLocation, String? refId)? locateOnMap,
+    TResult Function(String query)? searchAddressFromText,
+    TResult Function(LatLng coordinate)? searchAddressFromCoordinate,
+    TResult Function(MapPickerData mapPickerData)? pickAddress,
+    TResult Function(MapAutoComplete model)? getAddressDetail,
+    TResult Function(VehicleType vehicleType)? selectVehicleType,
+    TResult Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)?
+        updateRouteParams,
+    TResult Function(LatLng from, LatLng to)? getDirection,
     required TResult orElse(),
   }) {
-    if (loadError != null) {
-      return loadError(failure);
+    if (selectVehicleType != null) {
+      return selectVehicleType(vehicleType);
     }
     return orElse();
   }
@@ -2788,68 +1634,524 @@ class _$BookingLoadErrorImpl implements _BookingLoadError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_BookingInitial value) initial,
-    required TResult Function(_BookingShowAddressSheet value) showAddressSheet,
-    required TResult Function(_BookingLocatingPickupLocation value)
-        locatingPickupLocation,
-    required TResult Function(_BookingLocatingDesLocation value)
-        locatingDesLocation,
-    required TResult Function(_BookingLoadingLocations value) loadingLocations,
-    required TResult Function(_BoookingLoadingLocation value) loadingLocation,
-    required TResult Function(_BookingLoadLocationsSuccess value)
-        loadLocationsSuccess,
-    required TResult Function(_BookingLoadLocationSuccess value)
-        loadLocationSuccess,
-    required TResult Function(_BookingLoadError value) loadError,
+    required TResult Function(BookingSelectPickupLocation value)
+        selectPickupLocation,
+    required TResult Function(BookingSelectDesLocation value) selectDesLocation,
+    required TResult Function(BookingLocateOnMap value) locateOnMap,
+    required TResult Function(BookingSearchAddressFromText value)
+        searchAddressFromText,
+    required TResult Function(BookingSearchAddressFromCoordinate value)
+        searchAddressFromCoordinate,
+    required TResult Function(BookingPickAddress value) pickAddress,
+    required TResult Function(BookingGetAddressDetail value) getAddressDetail,
+    required TResult Function(BookingSelectVehicleType value) selectVehicleType,
+    required TResult Function(BookingUpdateRouteParams value) updateRouteParams,
+    required TResult Function(BookingGetDirection value) getDirection,
   }) {
-    return loadError(this);
+    return selectVehicleType(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_BookingInitial value)? initial,
-    TResult? Function(_BookingShowAddressSheet value)? showAddressSheet,
-    TResult? Function(_BookingLocatingPickupLocation value)?
-        locatingPickupLocation,
-    TResult? Function(_BookingLocatingDesLocation value)? locatingDesLocation,
-    TResult? Function(_BookingLoadingLocations value)? loadingLocations,
-    TResult? Function(_BoookingLoadingLocation value)? loadingLocation,
-    TResult? Function(_BookingLoadLocationsSuccess value)? loadLocationsSuccess,
-    TResult? Function(_BookingLoadLocationSuccess value)? loadLocationSuccess,
-    TResult? Function(_BookingLoadError value)? loadError,
+    TResult? Function(BookingSelectPickupLocation value)? selectPickupLocation,
+    TResult? Function(BookingSelectDesLocation value)? selectDesLocation,
+    TResult? Function(BookingLocateOnMap value)? locateOnMap,
+    TResult? Function(BookingSearchAddressFromText value)?
+        searchAddressFromText,
+    TResult? Function(BookingSearchAddressFromCoordinate value)?
+        searchAddressFromCoordinate,
+    TResult? Function(BookingPickAddress value)? pickAddress,
+    TResult? Function(BookingGetAddressDetail value)? getAddressDetail,
+    TResult? Function(BookingSelectVehicleType value)? selectVehicleType,
+    TResult? Function(BookingUpdateRouteParams value)? updateRouteParams,
+    TResult? Function(BookingGetDirection value)? getDirection,
   }) {
-    return loadError?.call(this);
+    return selectVehicleType?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_BookingInitial value)? initial,
-    TResult Function(_BookingShowAddressSheet value)? showAddressSheet,
-    TResult Function(_BookingLocatingPickupLocation value)?
-        locatingPickupLocation,
-    TResult Function(_BookingLocatingDesLocation value)? locatingDesLocation,
-    TResult Function(_BookingLoadingLocations value)? loadingLocations,
-    TResult Function(_BoookingLoadingLocation value)? loadingLocation,
-    TResult Function(_BookingLoadLocationsSuccess value)? loadLocationsSuccess,
-    TResult Function(_BookingLoadLocationSuccess value)? loadLocationSuccess,
-    TResult Function(_BookingLoadError value)? loadError,
+    TResult Function(BookingSelectPickupLocation value)? selectPickupLocation,
+    TResult Function(BookingSelectDesLocation value)? selectDesLocation,
+    TResult Function(BookingLocateOnMap value)? locateOnMap,
+    TResult Function(BookingSearchAddressFromText value)? searchAddressFromText,
+    TResult Function(BookingSearchAddressFromCoordinate value)?
+        searchAddressFromCoordinate,
+    TResult Function(BookingPickAddress value)? pickAddress,
+    TResult Function(BookingGetAddressDetail value)? getAddressDetail,
+    TResult Function(BookingSelectVehicleType value)? selectVehicleType,
+    TResult Function(BookingUpdateRouteParams value)? updateRouteParams,
+    TResult Function(BookingGetDirection value)? getDirection,
     required TResult orElse(),
   }) {
-    if (loadError != null) {
-      return loadError(this);
+    if (selectVehicleType != null) {
+      return selectVehicleType(this);
     }
     return orElse();
   }
 }
 
-abstract class _BookingLoadError implements BookingState {
-  const factory _BookingLoadError({required final Failure failure}) =
-      _$BookingLoadErrorImpl;
+abstract class BookingSelectVehicleType implements BookingEvent {
+  const factory BookingSelectVehicleType(
+          {required final VehicleType vehicleType}) =
+      _$BookingSelectVehicleTypeImpl;
 
-  Failure get failure;
+  VehicleType get vehicleType;
   @JsonKey(ignore: true)
-  _$$BookingLoadErrorImplCopyWith<_$BookingLoadErrorImpl> get copyWith =>
+  _$$BookingSelectVehicleTypeImplCopyWith<_$BookingSelectVehicleTypeImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$BookingUpdateRouteParamsImplCopyWith<$Res> {
+  factory _$$BookingUpdateRouteParamsImplCopyWith(
+          _$BookingUpdateRouteParamsImpl value,
+          $Res Function(_$BookingUpdateRouteParamsImpl) then) =
+      __$$BookingUpdateRouteParamsImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {LatLng? pickupPoint,
+      LatLng? destinationPoint,
+      String? pickupDescription,
+      String? destinationDesciption});
+}
+
+/// @nodoc
+class __$$BookingUpdateRouteParamsImplCopyWithImpl<$Res>
+    extends _$BookingEventCopyWithImpl<$Res, _$BookingUpdateRouteParamsImpl>
+    implements _$$BookingUpdateRouteParamsImplCopyWith<$Res> {
+  __$$BookingUpdateRouteParamsImplCopyWithImpl(
+      _$BookingUpdateRouteParamsImpl _value,
+      $Res Function(_$BookingUpdateRouteParamsImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? pickupPoint = freezed,
+    Object? destinationPoint = freezed,
+    Object? pickupDescription = freezed,
+    Object? destinationDesciption = freezed,
+  }) {
+    return _then(_$BookingUpdateRouteParamsImpl(
+      pickupPoint: freezed == pickupPoint
+          ? _value.pickupPoint
+          : pickupPoint // ignore: cast_nullable_to_non_nullable
+              as LatLng?,
+      destinationPoint: freezed == destinationPoint
+          ? _value.destinationPoint
+          : destinationPoint // ignore: cast_nullable_to_non_nullable
+              as LatLng?,
+      pickupDescription: freezed == pickupDescription
+          ? _value.pickupDescription
+          : pickupDescription // ignore: cast_nullable_to_non_nullable
+              as String?,
+      destinationDesciption: freezed == destinationDesciption
+          ? _value.destinationDesciption
+          : destinationDesciption // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$BookingUpdateRouteParamsImpl implements BookingUpdateRouteParams {
+  const _$BookingUpdateRouteParamsImpl(
+      {this.pickupPoint,
+      this.destinationPoint,
+      this.pickupDescription,
+      this.destinationDesciption});
+
+  @override
+  final LatLng? pickupPoint;
+  @override
+  final LatLng? destinationPoint;
+  @override
+  final String? pickupDescription;
+  @override
+  final String? destinationDesciption;
+
+  @override
+  String toString() {
+    return 'BookingEvent.updateRouteParams(pickupPoint: $pickupPoint, destinationPoint: $destinationPoint, pickupDescription: $pickupDescription, destinationDesciption: $destinationDesciption)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$BookingUpdateRouteParamsImpl &&
+            (identical(other.pickupPoint, pickupPoint) ||
+                other.pickupPoint == pickupPoint) &&
+            (identical(other.destinationPoint, destinationPoint) ||
+                other.destinationPoint == destinationPoint) &&
+            (identical(other.pickupDescription, pickupDescription) ||
+                other.pickupDescription == pickupDescription) &&
+            (identical(other.destinationDesciption, destinationDesciption) ||
+                other.destinationDesciption == destinationDesciption));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, pickupPoint, destinationPoint,
+      pickupDescription, destinationDesciption);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$BookingUpdateRouteParamsImplCopyWith<_$BookingUpdateRouteParamsImpl>
+      get copyWith => __$$BookingUpdateRouteParamsImplCopyWithImpl<
+          _$BookingUpdateRouteParamsImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() selectPickupLocation,
+    required TResult Function() selectDesLocation,
+    required TResult Function(SelectLocation selectLocation, String? refId)
+        locateOnMap,
+    required TResult Function(String query) searchAddressFromText,
+    required TResult Function(LatLng coordinate) searchAddressFromCoordinate,
+    required TResult Function(MapPickerData mapPickerData) pickAddress,
+    required TResult Function(MapAutoComplete model) getAddressDetail,
+    required TResult Function(VehicleType vehicleType) selectVehicleType,
+    required TResult Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)
+        updateRouteParams,
+    required TResult Function(LatLng from, LatLng to) getDirection,
+  }) {
+    return updateRouteParams(pickupPoint, destinationPoint, pickupDescription,
+        destinationDesciption);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? selectPickupLocation,
+    TResult? Function()? selectDesLocation,
+    TResult? Function(SelectLocation selectLocation, String? refId)?
+        locateOnMap,
+    TResult? Function(String query)? searchAddressFromText,
+    TResult? Function(LatLng coordinate)? searchAddressFromCoordinate,
+    TResult? Function(MapPickerData mapPickerData)? pickAddress,
+    TResult? Function(MapAutoComplete model)? getAddressDetail,
+    TResult? Function(VehicleType vehicleType)? selectVehicleType,
+    TResult? Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)?
+        updateRouteParams,
+    TResult? Function(LatLng from, LatLng to)? getDirection,
+  }) {
+    return updateRouteParams?.call(pickupPoint, destinationPoint,
+        pickupDescription, destinationDesciption);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? selectPickupLocation,
+    TResult Function()? selectDesLocation,
+    TResult Function(SelectLocation selectLocation, String? refId)? locateOnMap,
+    TResult Function(String query)? searchAddressFromText,
+    TResult Function(LatLng coordinate)? searchAddressFromCoordinate,
+    TResult Function(MapPickerData mapPickerData)? pickAddress,
+    TResult Function(MapAutoComplete model)? getAddressDetail,
+    TResult Function(VehicleType vehicleType)? selectVehicleType,
+    TResult Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)?
+        updateRouteParams,
+    TResult Function(LatLng from, LatLng to)? getDirection,
+    required TResult orElse(),
+  }) {
+    if (updateRouteParams != null) {
+      return updateRouteParams(pickupPoint, destinationPoint, pickupDescription,
+          destinationDesciption);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(BookingSelectPickupLocation value)
+        selectPickupLocation,
+    required TResult Function(BookingSelectDesLocation value) selectDesLocation,
+    required TResult Function(BookingLocateOnMap value) locateOnMap,
+    required TResult Function(BookingSearchAddressFromText value)
+        searchAddressFromText,
+    required TResult Function(BookingSearchAddressFromCoordinate value)
+        searchAddressFromCoordinate,
+    required TResult Function(BookingPickAddress value) pickAddress,
+    required TResult Function(BookingGetAddressDetail value) getAddressDetail,
+    required TResult Function(BookingSelectVehicleType value) selectVehicleType,
+    required TResult Function(BookingUpdateRouteParams value) updateRouteParams,
+    required TResult Function(BookingGetDirection value) getDirection,
+  }) {
+    return updateRouteParams(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(BookingSelectPickupLocation value)? selectPickupLocation,
+    TResult? Function(BookingSelectDesLocation value)? selectDesLocation,
+    TResult? Function(BookingLocateOnMap value)? locateOnMap,
+    TResult? Function(BookingSearchAddressFromText value)?
+        searchAddressFromText,
+    TResult? Function(BookingSearchAddressFromCoordinate value)?
+        searchAddressFromCoordinate,
+    TResult? Function(BookingPickAddress value)? pickAddress,
+    TResult? Function(BookingGetAddressDetail value)? getAddressDetail,
+    TResult? Function(BookingSelectVehicleType value)? selectVehicleType,
+    TResult? Function(BookingUpdateRouteParams value)? updateRouteParams,
+    TResult? Function(BookingGetDirection value)? getDirection,
+  }) {
+    return updateRouteParams?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(BookingSelectPickupLocation value)? selectPickupLocation,
+    TResult Function(BookingSelectDesLocation value)? selectDesLocation,
+    TResult Function(BookingLocateOnMap value)? locateOnMap,
+    TResult Function(BookingSearchAddressFromText value)? searchAddressFromText,
+    TResult Function(BookingSearchAddressFromCoordinate value)?
+        searchAddressFromCoordinate,
+    TResult Function(BookingPickAddress value)? pickAddress,
+    TResult Function(BookingGetAddressDetail value)? getAddressDetail,
+    TResult Function(BookingSelectVehicleType value)? selectVehicleType,
+    TResult Function(BookingUpdateRouteParams value)? updateRouteParams,
+    TResult Function(BookingGetDirection value)? getDirection,
+    required TResult orElse(),
+  }) {
+    if (updateRouteParams != null) {
+      return updateRouteParams(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class BookingUpdateRouteParams implements BookingEvent {
+  const factory BookingUpdateRouteParams(
+      {final LatLng? pickupPoint,
+      final LatLng? destinationPoint,
+      final String? pickupDescription,
+      final String? destinationDesciption}) = _$BookingUpdateRouteParamsImpl;
+
+  LatLng? get pickupPoint;
+  LatLng? get destinationPoint;
+  String? get pickupDescription;
+  String? get destinationDesciption;
+  @JsonKey(ignore: true)
+  _$$BookingUpdateRouteParamsImplCopyWith<_$BookingUpdateRouteParamsImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$BookingGetDirectionImplCopyWith<$Res> {
+  factory _$$BookingGetDirectionImplCopyWith(_$BookingGetDirectionImpl value,
+          $Res Function(_$BookingGetDirectionImpl) then) =
+      __$$BookingGetDirectionImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({LatLng from, LatLng to});
+}
+
+/// @nodoc
+class __$$BookingGetDirectionImplCopyWithImpl<$Res>
+    extends _$BookingEventCopyWithImpl<$Res, _$BookingGetDirectionImpl>
+    implements _$$BookingGetDirectionImplCopyWith<$Res> {
+  __$$BookingGetDirectionImplCopyWithImpl(_$BookingGetDirectionImpl _value,
+      $Res Function(_$BookingGetDirectionImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? from = null,
+    Object? to = null,
+  }) {
+    return _then(_$BookingGetDirectionImpl(
+      from: null == from
+          ? _value.from
+          : from // ignore: cast_nullable_to_non_nullable
+              as LatLng,
+      to: null == to
+          ? _value.to
+          : to // ignore: cast_nullable_to_non_nullable
+              as LatLng,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$BookingGetDirectionImpl implements BookingGetDirection {
+  const _$BookingGetDirectionImpl({required this.from, required this.to});
+
+  @override
+  final LatLng from;
+  @override
+  final LatLng to;
+
+  @override
+  String toString() {
+    return 'BookingEvent.getDirection(from: $from, to: $to)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$BookingGetDirectionImpl &&
+            (identical(other.from, from) || other.from == from) &&
+            (identical(other.to, to) || other.to == to));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, from, to);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$BookingGetDirectionImplCopyWith<_$BookingGetDirectionImpl> get copyWith =>
+      __$$BookingGetDirectionImplCopyWithImpl<_$BookingGetDirectionImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() selectPickupLocation,
+    required TResult Function() selectDesLocation,
+    required TResult Function(SelectLocation selectLocation, String? refId)
+        locateOnMap,
+    required TResult Function(String query) searchAddressFromText,
+    required TResult Function(LatLng coordinate) searchAddressFromCoordinate,
+    required TResult Function(MapPickerData mapPickerData) pickAddress,
+    required TResult Function(MapAutoComplete model) getAddressDetail,
+    required TResult Function(VehicleType vehicleType) selectVehicleType,
+    required TResult Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)
+        updateRouteParams,
+    required TResult Function(LatLng from, LatLng to) getDirection,
+  }) {
+    return getDirection(from, to);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? selectPickupLocation,
+    TResult? Function()? selectDesLocation,
+    TResult? Function(SelectLocation selectLocation, String? refId)?
+        locateOnMap,
+    TResult? Function(String query)? searchAddressFromText,
+    TResult? Function(LatLng coordinate)? searchAddressFromCoordinate,
+    TResult? Function(MapPickerData mapPickerData)? pickAddress,
+    TResult? Function(MapAutoComplete model)? getAddressDetail,
+    TResult? Function(VehicleType vehicleType)? selectVehicleType,
+    TResult? Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)?
+        updateRouteParams,
+    TResult? Function(LatLng from, LatLng to)? getDirection,
+  }) {
+    return getDirection?.call(from, to);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? selectPickupLocation,
+    TResult Function()? selectDesLocation,
+    TResult Function(SelectLocation selectLocation, String? refId)? locateOnMap,
+    TResult Function(String query)? searchAddressFromText,
+    TResult Function(LatLng coordinate)? searchAddressFromCoordinate,
+    TResult Function(MapPickerData mapPickerData)? pickAddress,
+    TResult Function(MapAutoComplete model)? getAddressDetail,
+    TResult Function(VehicleType vehicleType)? selectVehicleType,
+    TResult Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)?
+        updateRouteParams,
+    TResult Function(LatLng from, LatLng to)? getDirection,
+    required TResult orElse(),
+  }) {
+    if (getDirection != null) {
+      return getDirection(from, to);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(BookingSelectPickupLocation value)
+        selectPickupLocation,
+    required TResult Function(BookingSelectDesLocation value) selectDesLocation,
+    required TResult Function(BookingLocateOnMap value) locateOnMap,
+    required TResult Function(BookingSearchAddressFromText value)
+        searchAddressFromText,
+    required TResult Function(BookingSearchAddressFromCoordinate value)
+        searchAddressFromCoordinate,
+    required TResult Function(BookingPickAddress value) pickAddress,
+    required TResult Function(BookingGetAddressDetail value) getAddressDetail,
+    required TResult Function(BookingSelectVehicleType value) selectVehicleType,
+    required TResult Function(BookingUpdateRouteParams value) updateRouteParams,
+    required TResult Function(BookingGetDirection value) getDirection,
+  }) {
+    return getDirection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(BookingSelectPickupLocation value)? selectPickupLocation,
+    TResult? Function(BookingSelectDesLocation value)? selectDesLocation,
+    TResult? Function(BookingLocateOnMap value)? locateOnMap,
+    TResult? Function(BookingSearchAddressFromText value)?
+        searchAddressFromText,
+    TResult? Function(BookingSearchAddressFromCoordinate value)?
+        searchAddressFromCoordinate,
+    TResult? Function(BookingPickAddress value)? pickAddress,
+    TResult? Function(BookingGetAddressDetail value)? getAddressDetail,
+    TResult? Function(BookingSelectVehicleType value)? selectVehicleType,
+    TResult? Function(BookingUpdateRouteParams value)? updateRouteParams,
+    TResult? Function(BookingGetDirection value)? getDirection,
+  }) {
+    return getDirection?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(BookingSelectPickupLocation value)? selectPickupLocation,
+    TResult Function(BookingSelectDesLocation value)? selectDesLocation,
+    TResult Function(BookingLocateOnMap value)? locateOnMap,
+    TResult Function(BookingSearchAddressFromText value)? searchAddressFromText,
+    TResult Function(BookingSearchAddressFromCoordinate value)?
+        searchAddressFromCoordinate,
+    TResult Function(BookingPickAddress value)? pickAddress,
+    TResult Function(BookingGetAddressDetail value)? getAddressDetail,
+    TResult Function(BookingSelectVehicleType value)? selectVehicleType,
+    TResult Function(BookingUpdateRouteParams value)? updateRouteParams,
+    TResult Function(BookingGetDirection value)? getDirection,
+    required TResult orElse(),
+  }) {
+    if (getDirection != null) {
+      return getDirection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class BookingGetDirection implements BookingEvent {
+  const factory BookingGetDirection(
+      {required final LatLng from,
+      required final LatLng to}) = _$BookingGetDirectionImpl;
+
+  LatLng get from;
+  LatLng get to;
+  @JsonKey(ignore: true)
+  _$$BookingGetDirectionImplCopyWith<_$BookingGetDirectionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

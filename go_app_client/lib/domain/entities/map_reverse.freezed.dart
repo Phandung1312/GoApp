@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$MapReverse {
+  String get refId => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get display => throw _privateConstructorUsedError;
@@ -34,7 +35,12 @@ abstract class $MapReverseCopyWith<$Res> {
       _$MapReverseCopyWithImpl<$Res, MapReverse>;
   @useResult
   $Res call(
-      {String address, String name, String display, double lat, double lng});
+      {String refId,
+      String address,
+      String name,
+      String display,
+      double lat,
+      double lng});
 }
 
 /// @nodoc
@@ -50,6 +56,7 @@ class _$MapReverseCopyWithImpl<$Res, $Val extends MapReverse>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? refId = null,
     Object? address = null,
     Object? name = null,
     Object? display = null,
@@ -57,6 +64,10 @@ class _$MapReverseCopyWithImpl<$Res, $Val extends MapReverse>
     Object? lng = null,
   }) {
     return _then(_value.copyWith(
+      refId: null == refId
+          ? _value.refId
+          : refId // ignore: cast_nullable_to_non_nullable
+              as String,
       address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -90,7 +101,12 @@ abstract class _$$MapReverseImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String address, String name, String display, double lat, double lng});
+      {String refId,
+      String address,
+      String name,
+      String display,
+      double lat,
+      double lng});
 }
 
 /// @nodoc
@@ -104,6 +120,7 @@ class __$$MapReverseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? refId = null,
     Object? address = null,
     Object? name = null,
     Object? display = null,
@@ -111,6 +128,10 @@ class __$$MapReverseImplCopyWithImpl<$Res>
     Object? lng = null,
   }) {
     return _then(_$MapReverseImpl(
+      refId: null == refId
+          ? _value.refId
+          : refId // ignore: cast_nullable_to_non_nullable
+              as String,
       address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -139,12 +160,16 @@ class __$$MapReverseImplCopyWithImpl<$Res>
 
 class _$MapReverseImpl implements _MapReverse {
   const _$MapReverseImpl(
-      {this.address = "",
+      {this.refId = "",
+      this.address = "",
       this.name = "",
       this.display = "",
       this.lat = 0.0,
       this.lng = 0.0});
 
+  @override
+  @JsonKey()
+  final String refId;
   @override
   @JsonKey()
   final String address;
@@ -163,7 +188,7 @@ class _$MapReverseImpl implements _MapReverse {
 
   @override
   String toString() {
-    return 'MapReverse(address: $address, name: $name, display: $display, lat: $lat, lng: $lng)';
+    return 'MapReverse(refId: $refId, address: $address, name: $name, display: $display, lat: $lat, lng: $lng)';
   }
 
   @override
@@ -171,6 +196,7 @@ class _$MapReverseImpl implements _MapReverse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MapReverseImpl &&
+            (identical(other.refId, refId) || other.refId == refId) &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.display, display) || other.display == display) &&
@@ -180,7 +206,7 @@ class _$MapReverseImpl implements _MapReverse {
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, address, name, display, lat, lng);
+      Object.hash(runtimeType, refId, address, name, display, lat, lng);
 
   @JsonKey(ignore: true)
   @override
@@ -191,12 +217,15 @@ class _$MapReverseImpl implements _MapReverse {
 
 abstract class _MapReverse implements MapReverse {
   const factory _MapReverse(
-      {final String address,
+      {final String refId,
+      final String address,
       final String name,
       final String display,
       final double lat,
       final double lng}) = _$MapReverseImpl;
 
+  @override
+  String get refId;
   @override
   String get address;
   @override

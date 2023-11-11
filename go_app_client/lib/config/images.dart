@@ -23,6 +23,8 @@ class AppImages{
   static const icCar = _Image('ic_car.png');
   static const icMarkerPickpup = _Image('ic_marker_pickup.png');
   static const icMarkerDes = _Image('ic_marker_des.png');
+  static const icGreenDot = _Image('ic_green_dot.png');
+  static const icRedDot = _Image('ic_red_dot.png');
 
  
 }

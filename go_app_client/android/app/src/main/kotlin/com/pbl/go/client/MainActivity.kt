@@ -1,4 +1,4 @@
-package com.example.pbl6
+package com.pbl.go.client
 
 import io.flutter.embedding.android.FlutterActivity
 

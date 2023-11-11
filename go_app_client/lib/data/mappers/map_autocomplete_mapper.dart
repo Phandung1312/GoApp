@@ -10,6 +10,7 @@ class MapAutoCompleteMapper extends BaseModelMapper<MapAutoCompleteModel, MapAut
   @override
   MapAutoComplete maptoEntity(MapAutoCompleteModel? model) {
     return MapAutoComplete(
+        refId: model?.refId ?? "",
         address: model?.address ?? "",
         name:  model?.name ?? "",
         display: model?.display ?? ""
