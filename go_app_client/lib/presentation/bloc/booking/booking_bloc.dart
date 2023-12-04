@@ -2,7 +2,6 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:go_app_client/core/errors/failures.dart';
@@ -11,8 +10,9 @@ import 'package:go_app_client/domain/entities/map_autocomplete.dart';
 import 'package:go_app_client/domain/entities/map_picker_data.dart';
 import 'package:go_app_client/domain/entities/map_place.dart';
 import 'package:go_app_client/domain/entities/map_reverse.dart';
-import 'package:go_app_client/domain/entities/map_routing.dart';
 import 'package:go_app_client/domain/entities/map_routing_params.dart';
+import 'package:go_app_client/domain/entities/path_entity.dart';
+import 'package:go_app_client/domain/usecases/booking/get_booking_price.dart';
 import 'package:go_app_client/domain/usecases/map/find_route_usecase.dart';
 import 'package:go_app_client/domain/usecases/map/get_place_detail_usecase.dart';
 import 'package:go_app_client/domain/usecases/map/search_address_from_latlng_usecase.dart';
@@ -33,11 +33,13 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
   final SearchAddressFromLatLngUseCase _searchAddressFromLatLngUseCase;
   final GetPlaceDetailUseCase _getPlaceDetailUseCase;
   final FindRouteUseCase _findRouteUseCase;
+  final GetBookingPriceUseCase _getBookingPriceUseCase;
   BookingBloc(
       this._searchAddressFromTextUseCase,
       this._searchAddressFromLatLngUseCase,
       this._getPlaceDetailUseCase,
-      this._findRouteUseCase)
+      this._findRouteUseCase,
+      this._getBookingPriceUseCase)
       : super(const BookingInitial()) {
     on<BookingSelectVehicleType>(_onSelectVehicleType);
     on<BookingLocateOnMap>(_onLocatingOnMap);
@@ -47,7 +49,30 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
     on<BookingUpdateRouteParams>(_onUpdateRouteParams);
     on<BookingPickAddress>(_onPickAddress);
     on<BookingGetDirection>(_onGetDirection);
+    on<BookingChangeRouteByVehicle>(_onChangeRouteByVehicle);
+    on<BookingGoToPayment>(_onGotoPayment);
+    on<BookingPay>(_onPay);
   }
+  void _onPay(BookingPay event,Emitter<BookingState> emit) async{
+    emit(BookingLoadingDriver(state: state));
+    await Future.delayed(const Duration(seconds: 2), (){
+    });
+    emit(BookingLoadDriverSuccess(state: state));
+  }
+  void _onGotoPayment(BookingGoToPayment event,Emitter<BookingState> emit) {
+    emit(BookingVisiblePayment(state: state));
+  }
+  void _onChangeRouteByVehicle(
+      BookingChangeRouteByVehicle event, Emitter<BookingState> emit) async {
+    var params = state.mapRoutingParams;
+    params = params?.copyWith(vehicleType: event.vehicleType);
+     EasyLoadingHelper.simplyCustomize(Colors.green);
+    EasyLoading.show();
+    emit(BookingUpdateSucess(mapRoutingParams: params!, bookingPrices: state.bookingPrices));
+    add(BookingGetDirection(
+        from: params.pickupLocation!, to: params.destinationLocation!));
+  }
+
   void _onSelectVehicleType(
       BookingSelectVehicleType event, Emitter<BookingState> emit) {
     var params = state.mapRoutingParams;
@@ -131,7 +156,10 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
         destinationDescription:
             event.destinationDesciption ?? params.destinationDescription);
     if (params.pickupLocation != null && params.destinationLocation != null) {
-      emit(BookingState(mapRoutingParams: params));
+       EasyLoading.show();
+      var either = await _getBookingPriceUseCase(params);
+      either.fold((l) => emit(BookingLoadError(state: state, failure: l)), (r) => emit(BookingState(mapRoutingParams: params,
+      bookingPrices: r)));      
       add(BookingGetDirection(
           from: params.pickupLocation!, to: params.destinationLocation!));
     } else {
@@ -140,32 +168,29 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
   }
 
   _onGetDirection(BookingGetDirection event, Emitter<BookingState> emit) async {
-    EasyLoading.show();
     var params = state.mapRoutingParams!;
     if (params.pickupDescription == "Vị trí của bạn") {
       var currentPointResult = await _searchAddressFromLatLngUseCase(
           LocationPoint(
               lat: params.pickupLocation!.latitude,
               long: params.pickupLocation!.longitude));
-      currentPointResult.fold((l) => emit(BookingLoadError(state: state, failure: l)), (r){
+      currentPointResult
+          .fold((l) => emit(BookingLoadError(state: state, failure: l)), (r) {
         params = params.copyWith(pickupDescription: r.display);
       });
     }
     var either = await _findRouteUseCase(params);
     EasyLoading.dismiss();
     either.fold((l) => emit(BookingLoadError(state: state, failure: l)), (r) {
-      if (r.paths.isEmpty) {
+      if (r.points.isEmpty) {
         emit(BookingLoadError(
             state: state,
             failure: ExceptionFailure(
                 Exception("Tìm tuyến đường thất bại, xin vui lòng thử lại"))));
       } else {
-        var locs =
-            PolylinePoints().decodePolyline(r.paths.first.points).map((e) {
-          return LatLng(e.latitude, e.longitude);
-        }).toList();
         emit(BookingGetDirectionSuccess(
-            mapRouting: r, listPoints: locs, params: params));
+            path: r,
+            state: state));
       }
     });
   }

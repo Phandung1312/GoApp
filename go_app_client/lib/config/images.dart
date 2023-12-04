@@ -25,6 +25,20 @@ class AppImages{
   static const icMarkerDes = _Image('ic_marker_des.png');
   static const icGreenDot = _Image('ic_green_dot.png');
   static const icRedDot = _Image('ic_red_dot.png');
+  static const icMomo = _Image('ic_momo.png');
+  static const icVNPay = _Image('ic_vnpay.png');
+  static const icDoubleChat = _Image('ic_double_chat.png');
+  static const icUserName = _Image('ic_user_name.png');
+  static const icPhone = _Image('ic_phone.png');
+  static const icCalendar = _Image('ic_calendar.png');
+  
+  static const icRegisterDay = _Image('ic_register_day.png');
+  static const icGender = _Image('ic_gender.png');
+  static const icReview = _Image('ic_review.png');
+  static const icLicensePlate = _Image('ic_license_plate.png');
+  static const icVehicleType = _Image('ic_vehicle_type.png');
+
+
 
  
 }

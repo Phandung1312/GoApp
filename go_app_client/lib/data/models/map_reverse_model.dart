@@ -7,6 +7,7 @@ part 'map_reverse_model.g.dart';
 @freezed
 class MapReverseModel with _$MapReverseModel{
   const factory MapReverseModel(
+    // ignore: invalid_annotation_target
     @JsonKey(name: 'ref_id') String? refId,
     String? address,
     String? name,

@@ -57,7 +57,9 @@ class _HomePageState extends State<HomePage> {
                   onPressed: () {
                     context.read<HomeBloc>().add(const HomeEvent.startBooking());
                   },
-                  child: const Text("Đặt xe ngay"),
+                  child: const Text("Đặt xe ngay", style: TextStyle(
+                    color: Colors.white
+                  ),),
                 ),
             ),
           ),

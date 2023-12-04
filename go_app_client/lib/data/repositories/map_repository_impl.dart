@@ -7,8 +7,8 @@ import 'package:go_app_client/data/datasources/map/map_remote_datasource.dart';
 import 'package:go_app_client/domain/entities/map_autocomplete.dart';
 import 'package:go_app_client/domain/entities/map_place.dart';
 import 'package:go_app_client/domain/entities/map_reverse.dart';
-import 'package:go_app_client/domain/entities/map_routing.dart';
 import 'package:go_app_client/domain/entities/map_routing_params.dart';
+import 'package:go_app_client/domain/entities/path_entity.dart';
 import 'package:go_app_client/domain/repositories/map_repository.dart';
 import 'package:injectable/injectable.dart';
 
@@ -51,7 +51,7 @@ class MapRepositoryImpl implements MapRepository{
   }
 
   @override
-  Future<Either<Failure, MapRouting>> findRout({required MapRoutingParams params}) async {
+  Future<Either<Failure, PathEntity>> findRout({required MapRoutingParams params}) async {
     if(await _networkInfo.isConnected){
       final result = await _remoteDataSource.findRoute(params);
       return result;

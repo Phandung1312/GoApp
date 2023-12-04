@@ -7,3 +7,8 @@ LatLng getCurrentLatLngFromSharedPrefs()  {
   return LatLng(prefs.getDouble('latitude')!,
       prefs.getDouble('longitude')!);
 }
+
+String getIdToken(){
+   final prefs = getIt<SharedPreferences>();
+   return "${prefs.getString('idToken')}";
+}

@@ -18,7 +18,7 @@ class Styles{
 
   static const TextStyle titleCardText  = TextStyle(
     color: Colors.black,
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: FontWeight.bold
   );
 
@@ -35,5 +35,9 @@ class Styles{
     color: Colors.black,
     fontSize: 16,
   );
-
+ static const TextStyle largeText  = TextStyle(
+    color: Colors.black,
+    fontWeight: FontWeight.bold,
+    fontSize: 16,
+  );
 }

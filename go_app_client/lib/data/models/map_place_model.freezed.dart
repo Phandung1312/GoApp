@@ -21,16 +21,20 @@ MapPlaceModel _$MapPlaceModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$MapPlaceModel {
   String? get display => throw _privateConstructorUsedError;
-  String? get name => throw _privateConstructorUsedError;
+  String? get name =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: "hs_num")
   String? get hsNum => throw _privateConstructorUsedError;
-  String? get street => throw _privateConstructorUsedError;
+  String? get street =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: "city_id")
   int? get cityId => throw _privateConstructorUsedError;
-  String? get city => throw _privateConstructorUsedError;
+  String? get city =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: "district_id")
   int? get districtId => throw _privateConstructorUsedError;
-  String? get district => throw _privateConstructorUsedError;
+  String? get district =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: "ward_id")
   int? get wardId => throw _privateConstructorUsedError;
   String? get ward => throw _privateConstructorUsedError;
@@ -268,21 +272,25 @@ class _$MapPlaceModelImpl extends _MapPlaceModel {
   final String? display;
   @override
   final String? name;
+// ignore: invalid_annotation_target
   @override
   @JsonKey(name: "hs_num")
   final String? hsNum;
   @override
   final String? street;
+// ignore: invalid_annotation_target
   @override
   @JsonKey(name: "city_id")
   final int? cityId;
   @override
   final String? city;
+// ignore: invalid_annotation_target
   @override
   @JsonKey(name: "district_id")
   final int? districtId;
   @override
   final String? district;
+// ignore: invalid_annotation_target
   @override
   @JsonKey(name: "ward_id")
   final int? wardId;
@@ -361,22 +369,22 @@ abstract class _MapPlaceModel extends MapPlaceModel {
   String? get display;
   @override
   String? get name;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: "hs_num")
   String? get hsNum;
   @override
   String? get street;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: "city_id")
   int? get cityId;
   @override
   String? get city;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: "district_id")
   int? get districtId;
   @override
   String? get district;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: "ward_id")
   int? get wardId;
   @override

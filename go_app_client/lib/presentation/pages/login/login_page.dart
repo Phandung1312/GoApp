@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_app_client/config/colors.dart';
 import 'package:go_app_client/config/images.dart';
 import 'package:go_app_client/config/routes/routes.dart';
+import 'package:go_app_client/domain/entities/enum/account_status.dart';
 import 'package:go_app_client/presentation/bloc/login/login_bloc.dart';
-
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -26,11 +26,37 @@ class LoginPage extends StatelessWidget {
                 barrierDismissible: false);
           }
           if (state is LoginSucess) {
-            Navigator.of(context).pop();
-
-            Future.delayed(const Duration(milliseconds: 100), () {
-              Navigator.pushNamed(context, Paths.main);
-            });
+            switch (state.status) {
+              case AccountStatus.unregistered:
+                {
+                  Navigator.of(context).pop();
+                  Future.delayed(const Duration(milliseconds: 100), () {
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, Paths.register, (route) => false);
+                  });
+                  break;
+                }
+              case AccountStatus.blocked:
+                {
+                  Navigator.of(context).pop();
+                  Future.delayed(const Duration(milliseconds: 100), () {
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, Paths.main, (route) => false);
+                  });
+                  break;
+                }
+              case AccountStatus.registered:
+                {
+                  Navigator.of(context).pop();
+                  Future.delayed(const Duration(milliseconds: 100), () {
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, Paths.main, (route) => false);
+                  });
+                  break;
+                }
+              default:
+                break;
+            }
           }
         },
         child: SafeArea(
@@ -67,7 +93,6 @@ class LoginPage extends StatelessWidget {
                       InkWell(
                         onTap: () {
                           context.read<LoginBloc>().add(LoginStarted());
-              
                         },
                         child: SizedBox(
                           height: 60,
@@ -111,5 +136,3 @@ class LoginPage extends StatelessWidget {
         ));
   }
 }
-
-

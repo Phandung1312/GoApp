@@ -28,9 +28,10 @@ class _InputLocationPageState extends State<InputLocationPage> {
   SelectLocation currentSelection = SelectLocation.pickupLocation;
   set currentSelectionState(SelectLocation selectLocation) {
     setState(() {
-      if(currentSelection == SelectLocation.pickupLocation){
+      if (currentSelection == SelectLocation.pickupLocation) {
         final state = BlocProvider.of<BookingBloc>(context).state;
-        if(state.mapRoutingParams?.pickupLocation == null) _pickupLocationController.text = "";
+        if (state.mapRoutingParams?.pickupLocation == null)
+          _pickupLocationController.text = "";
       }
       currentSelection = selectLocation;
     });
@@ -64,29 +65,28 @@ class _InputLocationPageState extends State<InputLocationPage> {
           Navigator.pushNamed(context, Paths.pickLocation);
           return;
         }
-        if(state is BookingLoadPlaceDetailSuccess){
+        if (state is BookingLoadPlaceDetailSuccess) {
           var isPickup = currentSelection == SelectLocation.pickupLocation;
-          if(isPickup){
+          if (isPickup) {
             context.read<BookingBloc>().add(BookingEvent.updateRouteParams(
-              pickupPoint: LatLng(state.mapPlace.lat, state.mapPlace.lng),
-              pickupDescription: state.mapPlace.display
-          ));
+                pickupPoint: LatLng(state.mapPlace.lat, state.mapPlace.lng),
+                pickupDescription: state.mapPlace.display));
             _pickupLocationController.text = state.mapPlace.display;
             setState(() {
               currentSelection = SelectLocation.desLocation;
             });
-          }
-          else{
+          } else {
             context.read<BookingBloc>().add(BookingEvent.updateRouteParams(
-              destinationPoint: LatLng(state.mapPlace.lat, state.mapPlace.lng),
-              destinationDesciption: state.mapPlace.display
-          ));
+                destinationPoint:
+                    LatLng(state.mapPlace.lat, state.mapPlace.lng),
+                destinationDesciption: state.mapPlace.display));
           }
           return;
         }
 
-        if(state is BookingGetDirectionSuccess){
-          Navigator.pushNamedAndRemoveUntil(context, Paths.completeBooking, (route) => route.settings.name == Paths.main);
+        if (state is BookingGetDirectionSuccess) {
+          Navigator.pushNamedAndRemoveUntil(context, Paths.completeBooking,
+              (route) => route.settings.name == Paths.main);
         }
       },
       buildWhen: (previous, current) =>
@@ -228,7 +228,10 @@ class _InputLocationPageState extends State<InputLocationPage> {
                           SizedBox(
                             width: 8,
                           ),
-                          Text("Chọn từ bản đồ"),
+                          Text(
+                            "Chọn từ bản đồ",
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ],
                       ),
                     ),

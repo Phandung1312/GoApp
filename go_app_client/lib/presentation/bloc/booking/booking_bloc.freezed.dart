@@ -31,6 +31,9 @@ mixin _$BookingEvent {
             String? pickupDescription, String? destinationDesciption)
         updateRouteParams,
     required TResult Function(LatLng from, LatLng to) getDirection,
+    required TResult Function(VehicleType vehicleType) changeRouteByVehicle,
+    required TResult Function() goToPayment,
+    required TResult Function() pay,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -48,6 +51,9 @@ mixin _$BookingEvent {
             String? pickupDescription, String? destinationDesciption)?
         updateRouteParams,
     TResult? Function(LatLng from, LatLng to)? getDirection,
+    TResult? Function(VehicleType vehicleType)? changeRouteByVehicle,
+    TResult? Function()? goToPayment,
+    TResult? Function()? pay,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,6 +70,9 @@ mixin _$BookingEvent {
             String? pickupDescription, String? destinationDesciption)?
         updateRouteParams,
     TResult Function(LatLng from, LatLng to)? getDirection,
+    TResult Function(VehicleType vehicleType)? changeRouteByVehicle,
+    TResult Function()? goToPayment,
+    TResult Function()? pay,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -82,6 +91,10 @@ mixin _$BookingEvent {
     required TResult Function(BookingSelectVehicleType value) selectVehicleType,
     required TResult Function(BookingUpdateRouteParams value) updateRouteParams,
     required TResult Function(BookingGetDirection value) getDirection,
+    required TResult Function(BookingChangeRouteByVehicle value)
+        changeRouteByVehicle,
+    required TResult Function(BookingGoToPayment value) goToPayment,
+    required TResult Function(BookingPay value) pay,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -98,6 +111,9 @@ mixin _$BookingEvent {
     TResult? Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult? Function(BookingUpdateRouteParams value)? updateRouteParams,
     TResult? Function(BookingGetDirection value)? getDirection,
+    TResult? Function(BookingChangeRouteByVehicle value)? changeRouteByVehicle,
+    TResult? Function(BookingGoToPayment value)? goToPayment,
+    TResult? Function(BookingPay value)? pay,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -113,6 +129,9 @@ mixin _$BookingEvent {
     TResult Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult Function(BookingUpdateRouteParams value)? updateRouteParams,
     TResult Function(BookingGetDirection value)? getDirection,
+    TResult Function(BookingChangeRouteByVehicle value)? changeRouteByVehicle,
+    TResult Function(BookingGoToPayment value)? goToPayment,
+    TResult Function(BookingPay value)? pay,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -190,6 +209,9 @@ class _$BookingSelectPickupLocationImpl implements BookingSelectPickupLocation {
             String? pickupDescription, String? destinationDesciption)
         updateRouteParams,
     required TResult Function(LatLng from, LatLng to) getDirection,
+    required TResult Function(VehicleType vehicleType) changeRouteByVehicle,
+    required TResult Function() goToPayment,
+    required TResult Function() pay,
   }) {
     return selectPickupLocation();
   }
@@ -210,6 +232,9 @@ class _$BookingSelectPickupLocationImpl implements BookingSelectPickupLocation {
             String? pickupDescription, String? destinationDesciption)?
         updateRouteParams,
     TResult? Function(LatLng from, LatLng to)? getDirection,
+    TResult? Function(VehicleType vehicleType)? changeRouteByVehicle,
+    TResult? Function()? goToPayment,
+    TResult? Function()? pay,
   }) {
     return selectPickupLocation?.call();
   }
@@ -229,6 +254,9 @@ class _$BookingSelectPickupLocationImpl implements BookingSelectPickupLocation {
             String? pickupDescription, String? destinationDesciption)?
         updateRouteParams,
     TResult Function(LatLng from, LatLng to)? getDirection,
+    TResult Function(VehicleType vehicleType)? changeRouteByVehicle,
+    TResult Function()? goToPayment,
+    TResult Function()? pay,
     required TResult orElse(),
   }) {
     if (selectPickupLocation != null) {
@@ -253,6 +281,10 @@ class _$BookingSelectPickupLocationImpl implements BookingSelectPickupLocation {
     required TResult Function(BookingSelectVehicleType value) selectVehicleType,
     required TResult Function(BookingUpdateRouteParams value) updateRouteParams,
     required TResult Function(BookingGetDirection value) getDirection,
+    required TResult Function(BookingChangeRouteByVehicle value)
+        changeRouteByVehicle,
+    required TResult Function(BookingGoToPayment value) goToPayment,
+    required TResult Function(BookingPay value) pay,
   }) {
     return selectPickupLocation(this);
   }
@@ -272,6 +304,9 @@ class _$BookingSelectPickupLocationImpl implements BookingSelectPickupLocation {
     TResult? Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult? Function(BookingUpdateRouteParams value)? updateRouteParams,
     TResult? Function(BookingGetDirection value)? getDirection,
+    TResult? Function(BookingChangeRouteByVehicle value)? changeRouteByVehicle,
+    TResult? Function(BookingGoToPayment value)? goToPayment,
+    TResult? Function(BookingPay value)? pay,
   }) {
     return selectPickupLocation?.call(this);
   }
@@ -290,6 +325,9 @@ class _$BookingSelectPickupLocationImpl implements BookingSelectPickupLocation {
     TResult Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult Function(BookingUpdateRouteParams value)? updateRouteParams,
     TResult Function(BookingGetDirection value)? getDirection,
+    TResult Function(BookingChangeRouteByVehicle value)? changeRouteByVehicle,
+    TResult Function(BookingGoToPayment value)? goToPayment,
+    TResult Function(BookingPay value)? pay,
     required TResult orElse(),
   }) {
     if (selectPickupLocation != null) {
@@ -358,6 +396,9 @@ class _$BookingSelectDesLocationImpl implements BookingSelectDesLocation {
             String? pickupDescription, String? destinationDesciption)
         updateRouteParams,
     required TResult Function(LatLng from, LatLng to) getDirection,
+    required TResult Function(VehicleType vehicleType) changeRouteByVehicle,
+    required TResult Function() goToPayment,
+    required TResult Function() pay,
   }) {
     return selectDesLocation();
   }
@@ -378,6 +419,9 @@ class _$BookingSelectDesLocationImpl implements BookingSelectDesLocation {
             String? pickupDescription, String? destinationDesciption)?
         updateRouteParams,
     TResult? Function(LatLng from, LatLng to)? getDirection,
+    TResult? Function(VehicleType vehicleType)? changeRouteByVehicle,
+    TResult? Function()? goToPayment,
+    TResult? Function()? pay,
   }) {
     return selectDesLocation?.call();
   }
@@ -397,6 +441,9 @@ class _$BookingSelectDesLocationImpl implements BookingSelectDesLocation {
             String? pickupDescription, String? destinationDesciption)?
         updateRouteParams,
     TResult Function(LatLng from, LatLng to)? getDirection,
+    TResult Function(VehicleType vehicleType)? changeRouteByVehicle,
+    TResult Function()? goToPayment,
+    TResult Function()? pay,
     required TResult orElse(),
   }) {
     if (selectDesLocation != null) {
@@ -421,6 +468,10 @@ class _$BookingSelectDesLocationImpl implements BookingSelectDesLocation {
     required TResult Function(BookingSelectVehicleType value) selectVehicleType,
     required TResult Function(BookingUpdateRouteParams value) updateRouteParams,
     required TResult Function(BookingGetDirection value) getDirection,
+    required TResult Function(BookingChangeRouteByVehicle value)
+        changeRouteByVehicle,
+    required TResult Function(BookingGoToPayment value) goToPayment,
+    required TResult Function(BookingPay value) pay,
   }) {
     return selectDesLocation(this);
   }
@@ -440,6 +491,9 @@ class _$BookingSelectDesLocationImpl implements BookingSelectDesLocation {
     TResult? Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult? Function(BookingUpdateRouteParams value)? updateRouteParams,
     TResult? Function(BookingGetDirection value)? getDirection,
+    TResult? Function(BookingChangeRouteByVehicle value)? changeRouteByVehicle,
+    TResult? Function(BookingGoToPayment value)? goToPayment,
+    TResult? Function(BookingPay value)? pay,
   }) {
     return selectDesLocation?.call(this);
   }
@@ -458,6 +512,9 @@ class _$BookingSelectDesLocationImpl implements BookingSelectDesLocation {
     TResult Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult Function(BookingUpdateRouteParams value)? updateRouteParams,
     TResult Function(BookingGetDirection value)? getDirection,
+    TResult Function(BookingChangeRouteByVehicle value)? changeRouteByVehicle,
+    TResult Function(BookingGoToPayment value)? goToPayment,
+    TResult Function(BookingPay value)? pay,
     required TResult orElse(),
   }) {
     if (selectDesLocation != null) {
@@ -558,6 +615,9 @@ class _$BookingLocateOnMapImpl implements BookingLocateOnMap {
             String? pickupDescription, String? destinationDesciption)
         updateRouteParams,
     required TResult Function(LatLng from, LatLng to) getDirection,
+    required TResult Function(VehicleType vehicleType) changeRouteByVehicle,
+    required TResult Function() goToPayment,
+    required TResult Function() pay,
   }) {
     return locateOnMap(selectLocation, refId);
   }
@@ -578,6 +638,9 @@ class _$BookingLocateOnMapImpl implements BookingLocateOnMap {
             String? pickupDescription, String? destinationDesciption)?
         updateRouteParams,
     TResult? Function(LatLng from, LatLng to)? getDirection,
+    TResult? Function(VehicleType vehicleType)? changeRouteByVehicle,
+    TResult? Function()? goToPayment,
+    TResult? Function()? pay,
   }) {
     return locateOnMap?.call(selectLocation, refId);
   }
@@ -597,6 +660,9 @@ class _$BookingLocateOnMapImpl implements BookingLocateOnMap {
             String? pickupDescription, String? destinationDesciption)?
         updateRouteParams,
     TResult Function(LatLng from, LatLng to)? getDirection,
+    TResult Function(VehicleType vehicleType)? changeRouteByVehicle,
+    TResult Function()? goToPayment,
+    TResult Function()? pay,
     required TResult orElse(),
   }) {
     if (locateOnMap != null) {
@@ -621,6 +687,10 @@ class _$BookingLocateOnMapImpl implements BookingLocateOnMap {
     required TResult Function(BookingSelectVehicleType value) selectVehicleType,
     required TResult Function(BookingUpdateRouteParams value) updateRouteParams,
     required TResult Function(BookingGetDirection value) getDirection,
+    required TResult Function(BookingChangeRouteByVehicle value)
+        changeRouteByVehicle,
+    required TResult Function(BookingGoToPayment value) goToPayment,
+    required TResult Function(BookingPay value) pay,
   }) {
     return locateOnMap(this);
   }
@@ -640,6 +710,9 @@ class _$BookingLocateOnMapImpl implements BookingLocateOnMap {
     TResult? Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult? Function(BookingUpdateRouteParams value)? updateRouteParams,
     TResult? Function(BookingGetDirection value)? getDirection,
+    TResult? Function(BookingChangeRouteByVehicle value)? changeRouteByVehicle,
+    TResult? Function(BookingGoToPayment value)? goToPayment,
+    TResult? Function(BookingPay value)? pay,
   }) {
     return locateOnMap?.call(this);
   }
@@ -658,6 +731,9 @@ class _$BookingLocateOnMapImpl implements BookingLocateOnMap {
     TResult Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult Function(BookingUpdateRouteParams value)? updateRouteParams,
     TResult Function(BookingGetDirection value)? getDirection,
+    TResult Function(BookingChangeRouteByVehicle value)? changeRouteByVehicle,
+    TResult Function(BookingGoToPayment value)? goToPayment,
+    TResult Function(BookingPay value)? pay,
     required TResult orElse(),
   }) {
     if (locateOnMap != null) {
@@ -761,6 +837,9 @@ class _$BookingSearchAddressFromTextImpl
             String? pickupDescription, String? destinationDesciption)
         updateRouteParams,
     required TResult Function(LatLng from, LatLng to) getDirection,
+    required TResult Function(VehicleType vehicleType) changeRouteByVehicle,
+    required TResult Function() goToPayment,
+    required TResult Function() pay,
   }) {
     return searchAddressFromText(query);
   }
@@ -781,6 +860,9 @@ class _$BookingSearchAddressFromTextImpl
             String? pickupDescription, String? destinationDesciption)?
         updateRouteParams,
     TResult? Function(LatLng from, LatLng to)? getDirection,
+    TResult? Function(VehicleType vehicleType)? changeRouteByVehicle,
+    TResult? Function()? goToPayment,
+    TResult? Function()? pay,
   }) {
     return searchAddressFromText?.call(query);
   }
@@ -800,6 +882,9 @@ class _$BookingSearchAddressFromTextImpl
             String? pickupDescription, String? destinationDesciption)?
         updateRouteParams,
     TResult Function(LatLng from, LatLng to)? getDirection,
+    TResult Function(VehicleType vehicleType)? changeRouteByVehicle,
+    TResult Function()? goToPayment,
+    TResult Function()? pay,
     required TResult orElse(),
   }) {
     if (searchAddressFromText != null) {
@@ -824,6 +909,10 @@ class _$BookingSearchAddressFromTextImpl
     required TResult Function(BookingSelectVehicleType value) selectVehicleType,
     required TResult Function(BookingUpdateRouteParams value) updateRouteParams,
     required TResult Function(BookingGetDirection value) getDirection,
+    required TResult Function(BookingChangeRouteByVehicle value)
+        changeRouteByVehicle,
+    required TResult Function(BookingGoToPayment value) goToPayment,
+    required TResult Function(BookingPay value) pay,
   }) {
     return searchAddressFromText(this);
   }
@@ -843,6 +932,9 @@ class _$BookingSearchAddressFromTextImpl
     TResult? Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult? Function(BookingUpdateRouteParams value)? updateRouteParams,
     TResult? Function(BookingGetDirection value)? getDirection,
+    TResult? Function(BookingChangeRouteByVehicle value)? changeRouteByVehicle,
+    TResult? Function(BookingGoToPayment value)? goToPayment,
+    TResult? Function(BookingPay value)? pay,
   }) {
     return searchAddressFromText?.call(this);
   }
@@ -861,6 +953,9 @@ class _$BookingSearchAddressFromTextImpl
     TResult Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult Function(BookingUpdateRouteParams value)? updateRouteParams,
     TResult Function(BookingGetDirection value)? getDirection,
+    TResult Function(BookingChangeRouteByVehicle value)? changeRouteByVehicle,
+    TResult Function(BookingGoToPayment value)? goToPayment,
+    TResult Function(BookingPay value)? pay,
     required TResult orElse(),
   }) {
     if (searchAddressFromText != null) {
@@ -965,6 +1060,9 @@ class _$BookingSearchAddressFromCoordinateImpl
             String? pickupDescription, String? destinationDesciption)
         updateRouteParams,
     required TResult Function(LatLng from, LatLng to) getDirection,
+    required TResult Function(VehicleType vehicleType) changeRouteByVehicle,
+    required TResult Function() goToPayment,
+    required TResult Function() pay,
   }) {
     return searchAddressFromCoordinate(coordinate);
   }
@@ -985,6 +1083,9 @@ class _$BookingSearchAddressFromCoordinateImpl
             String? pickupDescription, String? destinationDesciption)?
         updateRouteParams,
     TResult? Function(LatLng from, LatLng to)? getDirection,
+    TResult? Function(VehicleType vehicleType)? changeRouteByVehicle,
+    TResult? Function()? goToPayment,
+    TResult? Function()? pay,
   }) {
     return searchAddressFromCoordinate?.call(coordinate);
   }
@@ -1004,6 +1105,9 @@ class _$BookingSearchAddressFromCoordinateImpl
             String? pickupDescription, String? destinationDesciption)?
         updateRouteParams,
     TResult Function(LatLng from, LatLng to)? getDirection,
+    TResult Function(VehicleType vehicleType)? changeRouteByVehicle,
+    TResult Function()? goToPayment,
+    TResult Function()? pay,
     required TResult orElse(),
   }) {
     if (searchAddressFromCoordinate != null) {
@@ -1028,6 +1132,10 @@ class _$BookingSearchAddressFromCoordinateImpl
     required TResult Function(BookingSelectVehicleType value) selectVehicleType,
     required TResult Function(BookingUpdateRouteParams value) updateRouteParams,
     required TResult Function(BookingGetDirection value) getDirection,
+    required TResult Function(BookingChangeRouteByVehicle value)
+        changeRouteByVehicle,
+    required TResult Function(BookingGoToPayment value) goToPayment,
+    required TResult Function(BookingPay value) pay,
   }) {
     return searchAddressFromCoordinate(this);
   }
@@ -1047,6 +1155,9 @@ class _$BookingSearchAddressFromCoordinateImpl
     TResult? Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult? Function(BookingUpdateRouteParams value)? updateRouteParams,
     TResult? Function(BookingGetDirection value)? getDirection,
+    TResult? Function(BookingChangeRouteByVehicle value)? changeRouteByVehicle,
+    TResult? Function(BookingGoToPayment value)? goToPayment,
+    TResult? Function(BookingPay value)? pay,
   }) {
     return searchAddressFromCoordinate?.call(this);
   }
@@ -1065,6 +1176,9 @@ class _$BookingSearchAddressFromCoordinateImpl
     TResult Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult Function(BookingUpdateRouteParams value)? updateRouteParams,
     TResult Function(BookingGetDirection value)? getDirection,
+    TResult Function(BookingChangeRouteByVehicle value)? changeRouteByVehicle,
+    TResult Function(BookingGoToPayment value)? goToPayment,
+    TResult Function(BookingPay value)? pay,
     required TResult orElse(),
   }) {
     if (searchAddressFromCoordinate != null) {
@@ -1175,6 +1289,9 @@ class _$BookingPickAddressImpl implements BookingPickAddress {
             String? pickupDescription, String? destinationDesciption)
         updateRouteParams,
     required TResult Function(LatLng from, LatLng to) getDirection,
+    required TResult Function(VehicleType vehicleType) changeRouteByVehicle,
+    required TResult Function() goToPayment,
+    required TResult Function() pay,
   }) {
     return pickAddress(mapPickerData);
   }
@@ -1195,6 +1312,9 @@ class _$BookingPickAddressImpl implements BookingPickAddress {
             String? pickupDescription, String? destinationDesciption)?
         updateRouteParams,
     TResult? Function(LatLng from, LatLng to)? getDirection,
+    TResult? Function(VehicleType vehicleType)? changeRouteByVehicle,
+    TResult? Function()? goToPayment,
+    TResult? Function()? pay,
   }) {
     return pickAddress?.call(mapPickerData);
   }
@@ -1214,6 +1334,9 @@ class _$BookingPickAddressImpl implements BookingPickAddress {
             String? pickupDescription, String? destinationDesciption)?
         updateRouteParams,
     TResult Function(LatLng from, LatLng to)? getDirection,
+    TResult Function(VehicleType vehicleType)? changeRouteByVehicle,
+    TResult Function()? goToPayment,
+    TResult Function()? pay,
     required TResult orElse(),
   }) {
     if (pickAddress != null) {
@@ -1238,6 +1361,10 @@ class _$BookingPickAddressImpl implements BookingPickAddress {
     required TResult Function(BookingSelectVehicleType value) selectVehicleType,
     required TResult Function(BookingUpdateRouteParams value) updateRouteParams,
     required TResult Function(BookingGetDirection value) getDirection,
+    required TResult Function(BookingChangeRouteByVehicle value)
+        changeRouteByVehicle,
+    required TResult Function(BookingGoToPayment value) goToPayment,
+    required TResult Function(BookingPay value) pay,
   }) {
     return pickAddress(this);
   }
@@ -1257,6 +1384,9 @@ class _$BookingPickAddressImpl implements BookingPickAddress {
     TResult? Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult? Function(BookingUpdateRouteParams value)? updateRouteParams,
     TResult? Function(BookingGetDirection value)? getDirection,
+    TResult? Function(BookingChangeRouteByVehicle value)? changeRouteByVehicle,
+    TResult? Function(BookingGoToPayment value)? goToPayment,
+    TResult? Function(BookingPay value)? pay,
   }) {
     return pickAddress?.call(this);
   }
@@ -1275,6 +1405,9 @@ class _$BookingPickAddressImpl implements BookingPickAddress {
     TResult Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult Function(BookingUpdateRouteParams value)? updateRouteParams,
     TResult Function(BookingGetDirection value)? getDirection,
+    TResult Function(BookingChangeRouteByVehicle value)? changeRouteByVehicle,
+    TResult Function(BookingGoToPayment value)? goToPayment,
+    TResult Function(BookingPay value)? pay,
     required TResult orElse(),
   }) {
     if (pickAddress != null) {
@@ -1384,6 +1517,9 @@ class _$BookingGetAddressDetailImpl implements BookingGetAddressDetail {
             String? pickupDescription, String? destinationDesciption)
         updateRouteParams,
     required TResult Function(LatLng from, LatLng to) getDirection,
+    required TResult Function(VehicleType vehicleType) changeRouteByVehicle,
+    required TResult Function() goToPayment,
+    required TResult Function() pay,
   }) {
     return getAddressDetail(model);
   }
@@ -1404,6 +1540,9 @@ class _$BookingGetAddressDetailImpl implements BookingGetAddressDetail {
             String? pickupDescription, String? destinationDesciption)?
         updateRouteParams,
     TResult? Function(LatLng from, LatLng to)? getDirection,
+    TResult? Function(VehicleType vehicleType)? changeRouteByVehicle,
+    TResult? Function()? goToPayment,
+    TResult? Function()? pay,
   }) {
     return getAddressDetail?.call(model);
   }
@@ -1423,6 +1562,9 @@ class _$BookingGetAddressDetailImpl implements BookingGetAddressDetail {
             String? pickupDescription, String? destinationDesciption)?
         updateRouteParams,
     TResult Function(LatLng from, LatLng to)? getDirection,
+    TResult Function(VehicleType vehicleType)? changeRouteByVehicle,
+    TResult Function()? goToPayment,
+    TResult Function()? pay,
     required TResult orElse(),
   }) {
     if (getAddressDetail != null) {
@@ -1447,6 +1589,10 @@ class _$BookingGetAddressDetailImpl implements BookingGetAddressDetail {
     required TResult Function(BookingSelectVehicleType value) selectVehicleType,
     required TResult Function(BookingUpdateRouteParams value) updateRouteParams,
     required TResult Function(BookingGetDirection value) getDirection,
+    required TResult Function(BookingChangeRouteByVehicle value)
+        changeRouteByVehicle,
+    required TResult Function(BookingGoToPayment value) goToPayment,
+    required TResult Function(BookingPay value) pay,
   }) {
     return getAddressDetail(this);
   }
@@ -1466,6 +1612,9 @@ class _$BookingGetAddressDetailImpl implements BookingGetAddressDetail {
     TResult? Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult? Function(BookingUpdateRouteParams value)? updateRouteParams,
     TResult? Function(BookingGetDirection value)? getDirection,
+    TResult? Function(BookingChangeRouteByVehicle value)? changeRouteByVehicle,
+    TResult? Function(BookingGoToPayment value)? goToPayment,
+    TResult? Function(BookingPay value)? pay,
   }) {
     return getAddressDetail?.call(this);
   }
@@ -1484,6 +1633,9 @@ class _$BookingGetAddressDetailImpl implements BookingGetAddressDetail {
     TResult Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult Function(BookingUpdateRouteParams value)? updateRouteParams,
     TResult Function(BookingGetDirection value)? getDirection,
+    TResult Function(BookingChangeRouteByVehicle value)? changeRouteByVehicle,
+    TResult Function(BookingGoToPayment value)? goToPayment,
+    TResult Function(BookingPay value)? pay,
     required TResult orElse(),
   }) {
     if (getAddressDetail != null) {
@@ -1584,6 +1736,9 @@ class _$BookingSelectVehicleTypeImpl implements BookingSelectVehicleType {
             String? pickupDescription, String? destinationDesciption)
         updateRouteParams,
     required TResult Function(LatLng from, LatLng to) getDirection,
+    required TResult Function(VehicleType vehicleType) changeRouteByVehicle,
+    required TResult Function() goToPayment,
+    required TResult Function() pay,
   }) {
     return selectVehicleType(vehicleType);
   }
@@ -1604,6 +1759,9 @@ class _$BookingSelectVehicleTypeImpl implements BookingSelectVehicleType {
             String? pickupDescription, String? destinationDesciption)?
         updateRouteParams,
     TResult? Function(LatLng from, LatLng to)? getDirection,
+    TResult? Function(VehicleType vehicleType)? changeRouteByVehicle,
+    TResult? Function()? goToPayment,
+    TResult? Function()? pay,
   }) {
     return selectVehicleType?.call(vehicleType);
   }
@@ -1623,6 +1781,9 @@ class _$BookingSelectVehicleTypeImpl implements BookingSelectVehicleType {
             String? pickupDescription, String? destinationDesciption)?
         updateRouteParams,
     TResult Function(LatLng from, LatLng to)? getDirection,
+    TResult Function(VehicleType vehicleType)? changeRouteByVehicle,
+    TResult Function()? goToPayment,
+    TResult Function()? pay,
     required TResult orElse(),
   }) {
     if (selectVehicleType != null) {
@@ -1647,6 +1808,10 @@ class _$BookingSelectVehicleTypeImpl implements BookingSelectVehicleType {
     required TResult Function(BookingSelectVehicleType value) selectVehicleType,
     required TResult Function(BookingUpdateRouteParams value) updateRouteParams,
     required TResult Function(BookingGetDirection value) getDirection,
+    required TResult Function(BookingChangeRouteByVehicle value)
+        changeRouteByVehicle,
+    required TResult Function(BookingGoToPayment value) goToPayment,
+    required TResult Function(BookingPay value) pay,
   }) {
     return selectVehicleType(this);
   }
@@ -1666,6 +1831,9 @@ class _$BookingSelectVehicleTypeImpl implements BookingSelectVehicleType {
     TResult? Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult? Function(BookingUpdateRouteParams value)? updateRouteParams,
     TResult? Function(BookingGetDirection value)? getDirection,
+    TResult? Function(BookingChangeRouteByVehicle value)? changeRouteByVehicle,
+    TResult? Function(BookingGoToPayment value)? goToPayment,
+    TResult? Function(BookingPay value)? pay,
   }) {
     return selectVehicleType?.call(this);
   }
@@ -1684,6 +1852,9 @@ class _$BookingSelectVehicleTypeImpl implements BookingSelectVehicleType {
     TResult Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult Function(BookingUpdateRouteParams value)? updateRouteParams,
     TResult Function(BookingGetDirection value)? getDirection,
+    TResult Function(BookingChangeRouteByVehicle value)? changeRouteByVehicle,
+    TResult Function(BookingGoToPayment value)? goToPayment,
+    TResult Function(BookingPay value)? pay,
     required TResult orElse(),
   }) {
     if (selectVehicleType != null) {
@@ -1821,6 +1992,9 @@ class _$BookingUpdateRouteParamsImpl implements BookingUpdateRouteParams {
             String? pickupDescription, String? destinationDesciption)
         updateRouteParams,
     required TResult Function(LatLng from, LatLng to) getDirection,
+    required TResult Function(VehicleType vehicleType) changeRouteByVehicle,
+    required TResult Function() goToPayment,
+    required TResult Function() pay,
   }) {
     return updateRouteParams(pickupPoint, destinationPoint, pickupDescription,
         destinationDesciption);
@@ -1842,6 +2016,9 @@ class _$BookingUpdateRouteParamsImpl implements BookingUpdateRouteParams {
             String? pickupDescription, String? destinationDesciption)?
         updateRouteParams,
     TResult? Function(LatLng from, LatLng to)? getDirection,
+    TResult? Function(VehicleType vehicleType)? changeRouteByVehicle,
+    TResult? Function()? goToPayment,
+    TResult? Function()? pay,
   }) {
     return updateRouteParams?.call(pickupPoint, destinationPoint,
         pickupDescription, destinationDesciption);
@@ -1862,6 +2039,9 @@ class _$BookingUpdateRouteParamsImpl implements BookingUpdateRouteParams {
             String? pickupDescription, String? destinationDesciption)?
         updateRouteParams,
     TResult Function(LatLng from, LatLng to)? getDirection,
+    TResult Function(VehicleType vehicleType)? changeRouteByVehicle,
+    TResult Function()? goToPayment,
+    TResult Function()? pay,
     required TResult orElse(),
   }) {
     if (updateRouteParams != null) {
@@ -1887,6 +2067,10 @@ class _$BookingUpdateRouteParamsImpl implements BookingUpdateRouteParams {
     required TResult Function(BookingSelectVehicleType value) selectVehicleType,
     required TResult Function(BookingUpdateRouteParams value) updateRouteParams,
     required TResult Function(BookingGetDirection value) getDirection,
+    required TResult Function(BookingChangeRouteByVehicle value)
+        changeRouteByVehicle,
+    required TResult Function(BookingGoToPayment value) goToPayment,
+    required TResult Function(BookingPay value) pay,
   }) {
     return updateRouteParams(this);
   }
@@ -1906,6 +2090,9 @@ class _$BookingUpdateRouteParamsImpl implements BookingUpdateRouteParams {
     TResult? Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult? Function(BookingUpdateRouteParams value)? updateRouteParams,
     TResult? Function(BookingGetDirection value)? getDirection,
+    TResult? Function(BookingChangeRouteByVehicle value)? changeRouteByVehicle,
+    TResult? Function(BookingGoToPayment value)? goToPayment,
+    TResult? Function(BookingPay value)? pay,
   }) {
     return updateRouteParams?.call(this);
   }
@@ -1924,6 +2111,9 @@ class _$BookingUpdateRouteParamsImpl implements BookingUpdateRouteParams {
     TResult Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult Function(BookingUpdateRouteParams value)? updateRouteParams,
     TResult Function(BookingGetDirection value)? getDirection,
+    TResult Function(BookingChangeRouteByVehicle value)? changeRouteByVehicle,
+    TResult Function(BookingGoToPayment value)? goToPayment,
+    TResult Function(BookingPay value)? pay,
     required TResult orElse(),
   }) {
     if (updateRouteParams != null) {
@@ -2035,6 +2225,9 @@ class _$BookingGetDirectionImpl implements BookingGetDirection {
             String? pickupDescription, String? destinationDesciption)
         updateRouteParams,
     required TResult Function(LatLng from, LatLng to) getDirection,
+    required TResult Function(VehicleType vehicleType) changeRouteByVehicle,
+    required TResult Function() goToPayment,
+    required TResult Function() pay,
   }) {
     return getDirection(from, to);
   }
@@ -2055,6 +2248,9 @@ class _$BookingGetDirectionImpl implements BookingGetDirection {
             String? pickupDescription, String? destinationDesciption)?
         updateRouteParams,
     TResult? Function(LatLng from, LatLng to)? getDirection,
+    TResult? Function(VehicleType vehicleType)? changeRouteByVehicle,
+    TResult? Function()? goToPayment,
+    TResult? Function()? pay,
   }) {
     return getDirection?.call(from, to);
   }
@@ -2074,6 +2270,9 @@ class _$BookingGetDirectionImpl implements BookingGetDirection {
             String? pickupDescription, String? destinationDesciption)?
         updateRouteParams,
     TResult Function(LatLng from, LatLng to)? getDirection,
+    TResult Function(VehicleType vehicleType)? changeRouteByVehicle,
+    TResult Function()? goToPayment,
+    TResult Function()? pay,
     required TResult orElse(),
   }) {
     if (getDirection != null) {
@@ -2098,6 +2297,10 @@ class _$BookingGetDirectionImpl implements BookingGetDirection {
     required TResult Function(BookingSelectVehicleType value) selectVehicleType,
     required TResult Function(BookingUpdateRouteParams value) updateRouteParams,
     required TResult Function(BookingGetDirection value) getDirection,
+    required TResult Function(BookingChangeRouteByVehicle value)
+        changeRouteByVehicle,
+    required TResult Function(BookingGoToPayment value) goToPayment,
+    required TResult Function(BookingPay value) pay,
   }) {
     return getDirection(this);
   }
@@ -2117,6 +2320,9 @@ class _$BookingGetDirectionImpl implements BookingGetDirection {
     TResult? Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult? Function(BookingUpdateRouteParams value)? updateRouteParams,
     TResult? Function(BookingGetDirection value)? getDirection,
+    TResult? Function(BookingChangeRouteByVehicle value)? changeRouteByVehicle,
+    TResult? Function(BookingGoToPayment value)? goToPayment,
+    TResult? Function(BookingPay value)? pay,
   }) {
     return getDirection?.call(this);
   }
@@ -2135,6 +2341,9 @@ class _$BookingGetDirectionImpl implements BookingGetDirection {
     TResult Function(BookingSelectVehicleType value)? selectVehicleType,
     TResult Function(BookingUpdateRouteParams value)? updateRouteParams,
     TResult Function(BookingGetDirection value)? getDirection,
+    TResult Function(BookingChangeRouteByVehicle value)? changeRouteByVehicle,
+    TResult Function(BookingGoToPayment value)? goToPayment,
+    TResult Function(BookingPay value)? pay,
     required TResult orElse(),
   }) {
     if (getDirection != null) {
@@ -2154,4 +2363,590 @@ abstract class BookingGetDirection implements BookingEvent {
   @JsonKey(ignore: true)
   _$$BookingGetDirectionImplCopyWith<_$BookingGetDirectionImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$BookingChangeRouteByVehicleImplCopyWith<$Res> {
+  factory _$$BookingChangeRouteByVehicleImplCopyWith(
+          _$BookingChangeRouteByVehicleImpl value,
+          $Res Function(_$BookingChangeRouteByVehicleImpl) then) =
+      __$$BookingChangeRouteByVehicleImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({VehicleType vehicleType});
+}
+
+/// @nodoc
+class __$$BookingChangeRouteByVehicleImplCopyWithImpl<$Res>
+    extends _$BookingEventCopyWithImpl<$Res, _$BookingChangeRouteByVehicleImpl>
+    implements _$$BookingChangeRouteByVehicleImplCopyWith<$Res> {
+  __$$BookingChangeRouteByVehicleImplCopyWithImpl(
+      _$BookingChangeRouteByVehicleImpl _value,
+      $Res Function(_$BookingChangeRouteByVehicleImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? vehicleType = null,
+  }) {
+    return _then(_$BookingChangeRouteByVehicleImpl(
+      vehicleType: null == vehicleType
+          ? _value.vehicleType
+          : vehicleType // ignore: cast_nullable_to_non_nullable
+              as VehicleType,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$BookingChangeRouteByVehicleImpl implements BookingChangeRouteByVehicle {
+  const _$BookingChangeRouteByVehicleImpl({required this.vehicleType});
+
+  @override
+  final VehicleType vehicleType;
+
+  @override
+  String toString() {
+    return 'BookingEvent.changeRouteByVehicle(vehicleType: $vehicleType)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$BookingChangeRouteByVehicleImpl &&
+            (identical(other.vehicleType, vehicleType) ||
+                other.vehicleType == vehicleType));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, vehicleType);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$BookingChangeRouteByVehicleImplCopyWith<_$BookingChangeRouteByVehicleImpl>
+      get copyWith => __$$BookingChangeRouteByVehicleImplCopyWithImpl<
+          _$BookingChangeRouteByVehicleImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() selectPickupLocation,
+    required TResult Function() selectDesLocation,
+    required TResult Function(SelectLocation selectLocation, String? refId)
+        locateOnMap,
+    required TResult Function(String query) searchAddressFromText,
+    required TResult Function(LatLng coordinate) searchAddressFromCoordinate,
+    required TResult Function(MapPickerData mapPickerData) pickAddress,
+    required TResult Function(MapAutoComplete model) getAddressDetail,
+    required TResult Function(VehicleType vehicleType) selectVehicleType,
+    required TResult Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)
+        updateRouteParams,
+    required TResult Function(LatLng from, LatLng to) getDirection,
+    required TResult Function(VehicleType vehicleType) changeRouteByVehicle,
+    required TResult Function() goToPayment,
+    required TResult Function() pay,
+  }) {
+    return changeRouteByVehicle(vehicleType);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? selectPickupLocation,
+    TResult? Function()? selectDesLocation,
+    TResult? Function(SelectLocation selectLocation, String? refId)?
+        locateOnMap,
+    TResult? Function(String query)? searchAddressFromText,
+    TResult? Function(LatLng coordinate)? searchAddressFromCoordinate,
+    TResult? Function(MapPickerData mapPickerData)? pickAddress,
+    TResult? Function(MapAutoComplete model)? getAddressDetail,
+    TResult? Function(VehicleType vehicleType)? selectVehicleType,
+    TResult? Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)?
+        updateRouteParams,
+    TResult? Function(LatLng from, LatLng to)? getDirection,
+    TResult? Function(VehicleType vehicleType)? changeRouteByVehicle,
+    TResult? Function()? goToPayment,
+    TResult? Function()? pay,
+  }) {
+    return changeRouteByVehicle?.call(vehicleType);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? selectPickupLocation,
+    TResult Function()? selectDesLocation,
+    TResult Function(SelectLocation selectLocation, String? refId)? locateOnMap,
+    TResult Function(String query)? searchAddressFromText,
+    TResult Function(LatLng coordinate)? searchAddressFromCoordinate,
+    TResult Function(MapPickerData mapPickerData)? pickAddress,
+    TResult Function(MapAutoComplete model)? getAddressDetail,
+    TResult Function(VehicleType vehicleType)? selectVehicleType,
+    TResult Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)?
+        updateRouteParams,
+    TResult Function(LatLng from, LatLng to)? getDirection,
+    TResult Function(VehicleType vehicleType)? changeRouteByVehicle,
+    TResult Function()? goToPayment,
+    TResult Function()? pay,
+    required TResult orElse(),
+  }) {
+    if (changeRouteByVehicle != null) {
+      return changeRouteByVehicle(vehicleType);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(BookingSelectPickupLocation value)
+        selectPickupLocation,
+    required TResult Function(BookingSelectDesLocation value) selectDesLocation,
+    required TResult Function(BookingLocateOnMap value) locateOnMap,
+    required TResult Function(BookingSearchAddressFromText value)
+        searchAddressFromText,
+    required TResult Function(BookingSearchAddressFromCoordinate value)
+        searchAddressFromCoordinate,
+    required TResult Function(BookingPickAddress value) pickAddress,
+    required TResult Function(BookingGetAddressDetail value) getAddressDetail,
+    required TResult Function(BookingSelectVehicleType value) selectVehicleType,
+    required TResult Function(BookingUpdateRouteParams value) updateRouteParams,
+    required TResult Function(BookingGetDirection value) getDirection,
+    required TResult Function(BookingChangeRouteByVehicle value)
+        changeRouteByVehicle,
+    required TResult Function(BookingGoToPayment value) goToPayment,
+    required TResult Function(BookingPay value) pay,
+  }) {
+    return changeRouteByVehicle(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(BookingSelectPickupLocation value)? selectPickupLocation,
+    TResult? Function(BookingSelectDesLocation value)? selectDesLocation,
+    TResult? Function(BookingLocateOnMap value)? locateOnMap,
+    TResult? Function(BookingSearchAddressFromText value)?
+        searchAddressFromText,
+    TResult? Function(BookingSearchAddressFromCoordinate value)?
+        searchAddressFromCoordinate,
+    TResult? Function(BookingPickAddress value)? pickAddress,
+    TResult? Function(BookingGetAddressDetail value)? getAddressDetail,
+    TResult? Function(BookingSelectVehicleType value)? selectVehicleType,
+    TResult? Function(BookingUpdateRouteParams value)? updateRouteParams,
+    TResult? Function(BookingGetDirection value)? getDirection,
+    TResult? Function(BookingChangeRouteByVehicle value)? changeRouteByVehicle,
+    TResult? Function(BookingGoToPayment value)? goToPayment,
+    TResult? Function(BookingPay value)? pay,
+  }) {
+    return changeRouteByVehicle?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(BookingSelectPickupLocation value)? selectPickupLocation,
+    TResult Function(BookingSelectDesLocation value)? selectDesLocation,
+    TResult Function(BookingLocateOnMap value)? locateOnMap,
+    TResult Function(BookingSearchAddressFromText value)? searchAddressFromText,
+    TResult Function(BookingSearchAddressFromCoordinate value)?
+        searchAddressFromCoordinate,
+    TResult Function(BookingPickAddress value)? pickAddress,
+    TResult Function(BookingGetAddressDetail value)? getAddressDetail,
+    TResult Function(BookingSelectVehicleType value)? selectVehicleType,
+    TResult Function(BookingUpdateRouteParams value)? updateRouteParams,
+    TResult Function(BookingGetDirection value)? getDirection,
+    TResult Function(BookingChangeRouteByVehicle value)? changeRouteByVehicle,
+    TResult Function(BookingGoToPayment value)? goToPayment,
+    TResult Function(BookingPay value)? pay,
+    required TResult orElse(),
+  }) {
+    if (changeRouteByVehicle != null) {
+      return changeRouteByVehicle(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class BookingChangeRouteByVehicle implements BookingEvent {
+  const factory BookingChangeRouteByVehicle(
+          {required final VehicleType vehicleType}) =
+      _$BookingChangeRouteByVehicleImpl;
+
+  VehicleType get vehicleType;
+  @JsonKey(ignore: true)
+  _$$BookingChangeRouteByVehicleImplCopyWith<_$BookingChangeRouteByVehicleImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$BookingGoToPaymentImplCopyWith<$Res> {
+  factory _$$BookingGoToPaymentImplCopyWith(_$BookingGoToPaymentImpl value,
+          $Res Function(_$BookingGoToPaymentImpl) then) =
+      __$$BookingGoToPaymentImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$BookingGoToPaymentImplCopyWithImpl<$Res>
+    extends _$BookingEventCopyWithImpl<$Res, _$BookingGoToPaymentImpl>
+    implements _$$BookingGoToPaymentImplCopyWith<$Res> {
+  __$$BookingGoToPaymentImplCopyWithImpl(_$BookingGoToPaymentImpl _value,
+      $Res Function(_$BookingGoToPaymentImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$BookingGoToPaymentImpl implements BookingGoToPayment {
+  const _$BookingGoToPaymentImpl();
+
+  @override
+  String toString() {
+    return 'BookingEvent.goToPayment()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$BookingGoToPaymentImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() selectPickupLocation,
+    required TResult Function() selectDesLocation,
+    required TResult Function(SelectLocation selectLocation, String? refId)
+        locateOnMap,
+    required TResult Function(String query) searchAddressFromText,
+    required TResult Function(LatLng coordinate) searchAddressFromCoordinate,
+    required TResult Function(MapPickerData mapPickerData) pickAddress,
+    required TResult Function(MapAutoComplete model) getAddressDetail,
+    required TResult Function(VehicleType vehicleType) selectVehicleType,
+    required TResult Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)
+        updateRouteParams,
+    required TResult Function(LatLng from, LatLng to) getDirection,
+    required TResult Function(VehicleType vehicleType) changeRouteByVehicle,
+    required TResult Function() goToPayment,
+    required TResult Function() pay,
+  }) {
+    return goToPayment();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? selectPickupLocation,
+    TResult? Function()? selectDesLocation,
+    TResult? Function(SelectLocation selectLocation, String? refId)?
+        locateOnMap,
+    TResult? Function(String query)? searchAddressFromText,
+    TResult? Function(LatLng coordinate)? searchAddressFromCoordinate,
+    TResult? Function(MapPickerData mapPickerData)? pickAddress,
+    TResult? Function(MapAutoComplete model)? getAddressDetail,
+    TResult? Function(VehicleType vehicleType)? selectVehicleType,
+    TResult? Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)?
+        updateRouteParams,
+    TResult? Function(LatLng from, LatLng to)? getDirection,
+    TResult? Function(VehicleType vehicleType)? changeRouteByVehicle,
+    TResult? Function()? goToPayment,
+    TResult? Function()? pay,
+  }) {
+    return goToPayment?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? selectPickupLocation,
+    TResult Function()? selectDesLocation,
+    TResult Function(SelectLocation selectLocation, String? refId)? locateOnMap,
+    TResult Function(String query)? searchAddressFromText,
+    TResult Function(LatLng coordinate)? searchAddressFromCoordinate,
+    TResult Function(MapPickerData mapPickerData)? pickAddress,
+    TResult Function(MapAutoComplete model)? getAddressDetail,
+    TResult Function(VehicleType vehicleType)? selectVehicleType,
+    TResult Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)?
+        updateRouteParams,
+    TResult Function(LatLng from, LatLng to)? getDirection,
+    TResult Function(VehicleType vehicleType)? changeRouteByVehicle,
+    TResult Function()? goToPayment,
+    TResult Function()? pay,
+    required TResult orElse(),
+  }) {
+    if (goToPayment != null) {
+      return goToPayment();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(BookingSelectPickupLocation value)
+        selectPickupLocation,
+    required TResult Function(BookingSelectDesLocation value) selectDesLocation,
+    required TResult Function(BookingLocateOnMap value) locateOnMap,
+    required TResult Function(BookingSearchAddressFromText value)
+        searchAddressFromText,
+    required TResult Function(BookingSearchAddressFromCoordinate value)
+        searchAddressFromCoordinate,
+    required TResult Function(BookingPickAddress value) pickAddress,
+    required TResult Function(BookingGetAddressDetail value) getAddressDetail,
+    required TResult Function(BookingSelectVehicleType value) selectVehicleType,
+    required TResult Function(BookingUpdateRouteParams value) updateRouteParams,
+    required TResult Function(BookingGetDirection value) getDirection,
+    required TResult Function(BookingChangeRouteByVehicle value)
+        changeRouteByVehicle,
+    required TResult Function(BookingGoToPayment value) goToPayment,
+    required TResult Function(BookingPay value) pay,
+  }) {
+    return goToPayment(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(BookingSelectPickupLocation value)? selectPickupLocation,
+    TResult? Function(BookingSelectDesLocation value)? selectDesLocation,
+    TResult? Function(BookingLocateOnMap value)? locateOnMap,
+    TResult? Function(BookingSearchAddressFromText value)?
+        searchAddressFromText,
+    TResult? Function(BookingSearchAddressFromCoordinate value)?
+        searchAddressFromCoordinate,
+    TResult? Function(BookingPickAddress value)? pickAddress,
+    TResult? Function(BookingGetAddressDetail value)? getAddressDetail,
+    TResult? Function(BookingSelectVehicleType value)? selectVehicleType,
+    TResult? Function(BookingUpdateRouteParams value)? updateRouteParams,
+    TResult? Function(BookingGetDirection value)? getDirection,
+    TResult? Function(BookingChangeRouteByVehicle value)? changeRouteByVehicle,
+    TResult? Function(BookingGoToPayment value)? goToPayment,
+    TResult? Function(BookingPay value)? pay,
+  }) {
+    return goToPayment?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(BookingSelectPickupLocation value)? selectPickupLocation,
+    TResult Function(BookingSelectDesLocation value)? selectDesLocation,
+    TResult Function(BookingLocateOnMap value)? locateOnMap,
+    TResult Function(BookingSearchAddressFromText value)? searchAddressFromText,
+    TResult Function(BookingSearchAddressFromCoordinate value)?
+        searchAddressFromCoordinate,
+    TResult Function(BookingPickAddress value)? pickAddress,
+    TResult Function(BookingGetAddressDetail value)? getAddressDetail,
+    TResult Function(BookingSelectVehicleType value)? selectVehicleType,
+    TResult Function(BookingUpdateRouteParams value)? updateRouteParams,
+    TResult Function(BookingGetDirection value)? getDirection,
+    TResult Function(BookingChangeRouteByVehicle value)? changeRouteByVehicle,
+    TResult Function(BookingGoToPayment value)? goToPayment,
+    TResult Function(BookingPay value)? pay,
+    required TResult orElse(),
+  }) {
+    if (goToPayment != null) {
+      return goToPayment(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class BookingGoToPayment implements BookingEvent {
+  const factory BookingGoToPayment() = _$BookingGoToPaymentImpl;
+}
+
+/// @nodoc
+abstract class _$$BookingPayImplCopyWith<$Res> {
+  factory _$$BookingPayImplCopyWith(
+          _$BookingPayImpl value, $Res Function(_$BookingPayImpl) then) =
+      __$$BookingPayImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$BookingPayImplCopyWithImpl<$Res>
+    extends _$BookingEventCopyWithImpl<$Res, _$BookingPayImpl>
+    implements _$$BookingPayImplCopyWith<$Res> {
+  __$$BookingPayImplCopyWithImpl(
+      _$BookingPayImpl _value, $Res Function(_$BookingPayImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$BookingPayImpl implements BookingPay {
+  const _$BookingPayImpl();
+
+  @override
+  String toString() {
+    return 'BookingEvent.pay()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$BookingPayImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() selectPickupLocation,
+    required TResult Function() selectDesLocation,
+    required TResult Function(SelectLocation selectLocation, String? refId)
+        locateOnMap,
+    required TResult Function(String query) searchAddressFromText,
+    required TResult Function(LatLng coordinate) searchAddressFromCoordinate,
+    required TResult Function(MapPickerData mapPickerData) pickAddress,
+    required TResult Function(MapAutoComplete model) getAddressDetail,
+    required TResult Function(VehicleType vehicleType) selectVehicleType,
+    required TResult Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)
+        updateRouteParams,
+    required TResult Function(LatLng from, LatLng to) getDirection,
+    required TResult Function(VehicleType vehicleType) changeRouteByVehicle,
+    required TResult Function() goToPayment,
+    required TResult Function() pay,
+  }) {
+    return pay();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? selectPickupLocation,
+    TResult? Function()? selectDesLocation,
+    TResult? Function(SelectLocation selectLocation, String? refId)?
+        locateOnMap,
+    TResult? Function(String query)? searchAddressFromText,
+    TResult? Function(LatLng coordinate)? searchAddressFromCoordinate,
+    TResult? Function(MapPickerData mapPickerData)? pickAddress,
+    TResult? Function(MapAutoComplete model)? getAddressDetail,
+    TResult? Function(VehicleType vehicleType)? selectVehicleType,
+    TResult? Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)?
+        updateRouteParams,
+    TResult? Function(LatLng from, LatLng to)? getDirection,
+    TResult? Function(VehicleType vehicleType)? changeRouteByVehicle,
+    TResult? Function()? goToPayment,
+    TResult? Function()? pay,
+  }) {
+    return pay?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? selectPickupLocation,
+    TResult Function()? selectDesLocation,
+    TResult Function(SelectLocation selectLocation, String? refId)? locateOnMap,
+    TResult Function(String query)? searchAddressFromText,
+    TResult Function(LatLng coordinate)? searchAddressFromCoordinate,
+    TResult Function(MapPickerData mapPickerData)? pickAddress,
+    TResult Function(MapAutoComplete model)? getAddressDetail,
+    TResult Function(VehicleType vehicleType)? selectVehicleType,
+    TResult Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)?
+        updateRouteParams,
+    TResult Function(LatLng from, LatLng to)? getDirection,
+    TResult Function(VehicleType vehicleType)? changeRouteByVehicle,
+    TResult Function()? goToPayment,
+    TResult Function()? pay,
+    required TResult orElse(),
+  }) {
+    if (pay != null) {
+      return pay();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(BookingSelectPickupLocation value)
+        selectPickupLocation,
+    required TResult Function(BookingSelectDesLocation value) selectDesLocation,
+    required TResult Function(BookingLocateOnMap value) locateOnMap,
+    required TResult Function(BookingSearchAddressFromText value)
+        searchAddressFromText,
+    required TResult Function(BookingSearchAddressFromCoordinate value)
+        searchAddressFromCoordinate,
+    required TResult Function(BookingPickAddress value) pickAddress,
+    required TResult Function(BookingGetAddressDetail value) getAddressDetail,
+    required TResult Function(BookingSelectVehicleType value) selectVehicleType,
+    required TResult Function(BookingUpdateRouteParams value) updateRouteParams,
+    required TResult Function(BookingGetDirection value) getDirection,
+    required TResult Function(BookingChangeRouteByVehicle value)
+        changeRouteByVehicle,
+    required TResult Function(BookingGoToPayment value) goToPayment,
+    required TResult Function(BookingPay value) pay,
+  }) {
+    return pay(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(BookingSelectPickupLocation value)? selectPickupLocation,
+    TResult? Function(BookingSelectDesLocation value)? selectDesLocation,
+    TResult? Function(BookingLocateOnMap value)? locateOnMap,
+    TResult? Function(BookingSearchAddressFromText value)?
+        searchAddressFromText,
+    TResult? Function(BookingSearchAddressFromCoordinate value)?
+        searchAddressFromCoordinate,
+    TResult? Function(BookingPickAddress value)? pickAddress,
+    TResult? Function(BookingGetAddressDetail value)? getAddressDetail,
+    TResult? Function(BookingSelectVehicleType value)? selectVehicleType,
+    TResult? Function(BookingUpdateRouteParams value)? updateRouteParams,
+    TResult? Function(BookingGetDirection value)? getDirection,
+    TResult? Function(BookingChangeRouteByVehicle value)? changeRouteByVehicle,
+    TResult? Function(BookingGoToPayment value)? goToPayment,
+    TResult? Function(BookingPay value)? pay,
+  }) {
+    return pay?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(BookingSelectPickupLocation value)? selectPickupLocation,
+    TResult Function(BookingSelectDesLocation value)? selectDesLocation,
+    TResult Function(BookingLocateOnMap value)? locateOnMap,
+    TResult Function(BookingSearchAddressFromText value)? searchAddressFromText,
+    TResult Function(BookingSearchAddressFromCoordinate value)?
+        searchAddressFromCoordinate,
+    TResult Function(BookingPickAddress value)? pickAddress,
+    TResult Function(BookingGetAddressDetail value)? getAddressDetail,
+    TResult Function(BookingSelectVehicleType value)? selectVehicleType,
+    TResult Function(BookingUpdateRouteParams value)? updateRouteParams,
+    TResult Function(BookingGetDirection value)? getDirection,
+    TResult Function(BookingChangeRouteByVehicle value)? changeRouteByVehicle,
+    TResult Function(BookingGoToPayment value)? goToPayment,
+    TResult Function(BookingPay value)? pay,
+    required TResult orElse(),
+  }) {
+    if (pay != null) {
+      return pay(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class BookingPay implements BookingEvent {
+  const factory BookingPay() = _$BookingPayImpl;
 }

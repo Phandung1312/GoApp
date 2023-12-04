@@ -1,6 +1,8 @@
 
 import 'package:dio/dio.dart';
+import 'package:go_app_client/core/network/token_interceptor.dart';
 import 'package:go_app_client/data/api/account_api_service.dart';
+import 'package:go_app_client/data/api/booking_api_service.dart';
 import 'package:go_app_client/data/api/map_api_service.dart';
 
 import 'package:injectable/injectable.dart';
@@ -12,14 +14,24 @@ abstract class RegisterModule{
   @lazySingleton
   InternetConnectionChecker get connectionChecker => InternetConnectionChecker();
 
+  @Named("Map")
   @lazySingleton
   Dio dio() => Dio();
 
+  @Named("App")
   @lazySingleton
-  AccountApiService accountApiService(Dio dio) => AccountApiService(dio);
+  Dio dioApp() {
+     Dio dio = Dio();
+    dio.interceptors.add(TokenInterceptor());
+    return dio;
+  }
+  @lazySingleton
+  AccountApiService accountApiService(@Named("App") Dio dio) => AccountApiService(dio);
+  @lazySingleton 
+  BookingApiService bookingApiService(@Named('App') Dio dio) => BookingApiService(dio);
 
   @lazySingleton
-  MapApiService mapApiService(Dio dio) => MapApiService(dio);
+  MapApiService mapApiService(@Named("Map") Dio dio) => MapApiService(dio);
   
   @preResolve
   Future<SharedPreferences> get sharedPreferences => SharedPreferences.getInstance();

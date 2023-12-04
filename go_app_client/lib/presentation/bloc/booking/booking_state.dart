@@ -2,10 +2,9 @@ part of 'booking_bloc.dart';
 
 class BookingState extends Equatable {
   final MapRoutingParams? mapRoutingParams;
-
-  const BookingState({
-    this.mapRoutingParams,
-  });
+  final PathEntity? path;
+  final Map<VehicleType, num>? bookingPrices;
+  const BookingState({this.mapRoutingParams, this.path, this.bookingPrices});
 
   @override
   List<Object?> get props => [mapRoutingParams];
@@ -83,20 +82,44 @@ class BookingLoadPlaceDetailSuccess extends BookingState {
 }
 
 class BookingUpdateSucess extends BookingState {
-  const BookingUpdateSucess({required MapRoutingParams mapRoutingParams})
-      : super(mapRoutingParams: mapRoutingParams);
+  const BookingUpdateSucess(
+      {required MapRoutingParams mapRoutingParams,
+      Map<VehicleType, num>? bookingPrices})
+      : super(mapRoutingParams: mapRoutingParams, bookingPrices: bookingPrices);
 }
 
 class BookingGetDirectionSuccess extends BookingState {
-  final MapRouting mapRouting;
-  final List<LatLng> listPoints;
-  const BookingGetDirectionSuccess(
-      {required this.mapRouting,
-      required this.listPoints,
-      required MapRoutingParams params})
+  BookingGetDirectionSuccess({required PathEntity path,required BookingState state})
       : super(
-          mapRoutingParams: params,
-        );
+            mapRoutingParams: state.mapRoutingParams,
+            path:  path,
+            bookingPrices: state.bookingPrices);
   @override
-  List<Object?> get props => [mapRouting, listPoints, mapRoutingParams];
+  List<Object?> get props => [mapRoutingParams, path];
+}
+
+class BookingVisiblePayment extends BookingState {
+  BookingVisiblePayment({required BookingState state})
+      : super(
+            mapRoutingParams: state.mapRoutingParams,
+            path: state.path,
+            bookingPrices: state.bookingPrices);
+  @override
+  List<Object?> get props => [];
+}
+
+class BookingLoadingDriver extends BookingState {
+  BookingLoadingDriver({required BookingState state})
+      : super(
+            mapRoutingParams: state.mapRoutingParams,
+            path: state.path,
+            bookingPrices: state.bookingPrices);
+}
+
+class BookingLoadDriverSuccess extends BookingState {
+  BookingLoadDriverSuccess({required BookingState state})
+      : super(
+            mapRoutingParams: state.mapRoutingParams,
+            path: state.path,
+            bookingPrices: state.bookingPrices);
 }

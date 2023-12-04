@@ -13,7 +13,9 @@ _$PathModelImpl _$$PathModelImplFromJson(Map<String, dynamic> json) =>
       json['time'] as int?,
       json['transfers'] as int?,
       json['points_encoded'] as bool?,
-      (json['bbox'] as List<dynamic>?)?.map((e) => e as num).toList(),
+      (json['bbox'] as List<dynamic>?)
+          ?.map((e) => (e as num).toDouble())
+          .toList(),
       json['points'] as String?,
       (json['instructions'] as List<dynamic>?)
           ?.map((e) => InstructionModel.fromJson(e as Map<String, dynamic>))

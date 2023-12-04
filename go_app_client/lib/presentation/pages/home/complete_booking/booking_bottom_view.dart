@@ -3,21 +3,21 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_app_client/config/colors.dart';
 import 'package:go_app_client/config/images.dart';
 import 'package:go_app_client/config/styles.dart';
-import 'package:go_app_client/domain/entities/enum/enum.dart';
 import 'package:go_app_client/presentation/bloc/booking/booking_bloc.dart';
-import 'package:go_app_client/presentation/pages/home/complete_booking/sections/route_price_card.dart';
+import 'package:go_app_client/presentation/pages/home/complete_booking/sections/booking_bottom_panel.dart';
 
-class BookingBottomCard extends StatefulWidget {
-  const BookingBottomCard({super.key});
+class BookingBottomView extends StatefulWidget {
+  const BookingBottomView({super.key});
 
   @override
-  State<BookingBottomCard> createState() => _BookingBottomCardState();
+  State<BookingBottomView> createState() => _BookingBottomViewState();
 }
 
-class _BookingBottomCardState extends State<BookingBottomCard> {
+class _BookingBottomViewState extends State<BookingBottomView> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<BookingBloc, BookingState>(
+      buildWhen: (previous, current) => current is BookingGetDirectionSuccess,
       builder: (context, state) {
         return state is BookingGetDirectionSuccess
             ? Container(
@@ -108,46 +108,10 @@ class _BookingBottomCardState extends State<BookingBottomCard> {
                             ),
                           ),
                         ),
-                        const SizedBox(
-                          height: 20
-                        ),
+                        const SizedBox(height: 20),
                         Container(
                           color: Colors.white,
-                          child: Column(
-                            children: [
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              const RoutePriceCard(
-                            vehicleType: VehicleType.motorcycle,
-                            description: "Xe tay ga",
-                            price: 30000),
-                        const RoutePriceCard(
-                            vehicleType: VehicleType.car,
-                            description: "Xe 4 chỗ",
-                            price: 50000),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width,
-                          child: Padding(
-                            padding: const EdgeInsets.all(20),
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 20),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)),
-                                  backgroundColor: AppColors.primaryGreen,
-                                  textStyle: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold)),
-                              onPressed: () {},
-                              child: const Text("Đặt xe"),
-                            ),
-                          ),
-                        )
-                            ],
-                          ),
+                          child: const BookingBottomPanel(),
                         )
                       ],
                     ),

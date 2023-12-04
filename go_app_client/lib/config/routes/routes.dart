@@ -1,9 +1,11 @@
-
 import 'package:flutter/material.dart';
+import 'package:go_app_client/presentation/pages/home/chat/chat_page.dart';
 import 'package:go_app_client/presentation/pages/home/complete_booking/complete_booking_page.dart';
+import 'package:go_app_client/presentation/pages/home/driver_profile/driver_profile_page.dart';
 import 'package:go_app_client/presentation/pages/home/input_location/input_location_page.dart';
 import 'package:go_app_client/presentation/pages/home/pick_location/pick_location_page.dart';
 import 'package:go_app_client/presentation/pages/login/login_page.dart';
+import 'package:go_app_client/presentation/pages/login/register_page.dart';
 import 'package:go_app_client/presentation/pages/main_page.dart';
 import 'package:go_app_client/presentation/pages/splash/splash_page.dart';
 
@@ -12,10 +14,13 @@ enum Routes { splash, login, main }
 class Paths {
   static const String splash = '/';
   static const String login = '/login';
+  static const String register = '/register';
   static const String main = '/main';
   static const String inputLocation = "/main/inputlocaiton";
   static const String pickLocation = "/main/inputlocation/picklocation";
   static const String completeBooking = "main/completebooking";
+  static const String chat = "main/completebooking/chat";
+  static const String driverInfo = "main/completebooking/driverinfo";
 }
 
 class AppNavigator {
@@ -25,6 +30,8 @@ class AppNavigator {
         return _materialRoute(const SplashPage());
       case Paths.login:
         return _materialRoute(const LoginPage());
+      case Paths.register:
+        return _materialRoute(const RegisterPage());
       case Paths.main:
         return _materialRoute(const MainPage());
       case Paths.inputLocation:
@@ -33,6 +40,10 @@ class AppNavigator {
         return _materialRoute(const PickLocationPage());
       case Paths.completeBooking:
         return _materialRoute(const CompleteBookingPage());
+      case Paths.chat:
+        return _materialRoute(const ChatPage());
+      case Paths.driverInfo:
+        return _materialRoute(const DriverProfilePage());
       default:
         return _materialRoute(const LoginPage());
     }

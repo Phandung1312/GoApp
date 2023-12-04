@@ -7,6 +7,7 @@ part 'map_autocomplete_model.g.dart';
 @freezed
 class MapAutoCompleteModel with _$MapAutoCompleteModel{
   const factory MapAutoCompleteModel(
+    // ignore: invalid_annotation_target
     @JsonKey(name: 'ref_id') String? refId,
     String? address,
     String? name,

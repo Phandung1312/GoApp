@@ -12,27 +12,29 @@ class _AccountApiService implements AccountApiService {
   _AccountApiService(
     this._dio, {
     this.baseUrl,
-  });
+  }) {
+    baseUrl ??= 'https://goapi-production-9e3a.up.railway.app/';
+  }
 
   final Dio _dio;
 
   String? baseUrl;
 
   @override
-  Future<AccountModel> login() async {
+  Future<HttpResponse<LoginInfoModel>> login() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<AccountModel>(Options(
-      method: 'POST',
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<HttpResponse<LoginInfoModel>>(Options(
+      method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/login',
+              'account/login',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -41,8 +43,74 @@ class _AccountApiService implements AccountApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = AccountModel.fromJson(_result.data!);
-    return value;
+    final value = LoginInfoModel.fromJson(_result.data!);
+    final httpResponse = HttpResponse(value, _result);
+    return httpResponse;
+  }
+
+  @override
+  Future<HttpResponse<ClientInfoModel>> registerCustomer({
+    File? avatar,
+    required String fullName,
+    String? dateOfBirth,
+    bool? gender,
+    required String phoneNumber,
+  }) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = FormData();
+    if (avatar != null) {
+      _data.files.add(MapEntry(
+        'avatar',
+        MultipartFile.fromFileSync(
+          avatar.path,
+          filename: avatar.path.split(Platform.pathSeparator).last,
+        ),
+      ));
+    }
+    _data.fields.add(MapEntry(
+      'fullName',
+      fullName,
+    ));
+    if (dateOfBirth != null) {
+      _data.fields.add(MapEntry(
+        'dateOfBirth',
+        dateOfBirth,
+      ));
+    }
+    if (gender != null) {
+      _data.fields.add(MapEntry(
+        'isMale',
+        gender.toString(),
+      ));
+    }
+    _data.fields.add(MapEntry(
+      'phoneNumber',
+      phoneNumber,
+    ));
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<HttpResponse<ClientInfoModel>>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+      contentType: 'multipart/form-data',
+    )
+            .compose(
+              _dio.options,
+              'account/customer',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ClientInfoModel.fromJson(_result.data!);
+    final httpResponse = HttpResponse(value, _result);
+    return httpResponse;
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

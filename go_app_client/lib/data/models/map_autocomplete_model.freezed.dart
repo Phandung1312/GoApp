@@ -20,6 +20,7 @@ MapAutoCompleteModel _$MapAutoCompleteModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MapAutoCompleteModel {
+// ignore: invalid_annotation_target
   @JsonKey(name: 'ref_id')
   String? get refId => throw _privateConstructorUsedError;
   String? get address => throw _privateConstructorUsedError;
@@ -146,6 +147,7 @@ class _$MapAutoCompleteModelImpl implements _MapAutoCompleteModel {
   factory _$MapAutoCompleteModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$MapAutoCompleteModelImplFromJson(json);
 
+// ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'ref_id')
   final String? refId;
@@ -202,7 +204,7 @@ abstract class _MapAutoCompleteModel implements MapAutoCompleteModel {
   factory _MapAutoCompleteModel.fromJson(Map<String, dynamic> json) =
       _$MapAutoCompleteModelImpl.fromJson;
 
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'ref_id')
   String? get refId;
   @override

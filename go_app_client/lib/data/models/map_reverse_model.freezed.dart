@@ -20,6 +20,7 @@ MapReverseModel _$MapReverseModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MapReverseModel {
+// ignore: invalid_annotation_target
   @JsonKey(name: 'ref_id')
   String? get refId => throw _privateConstructorUsedError;
   String? get address => throw _privateConstructorUsedError;
@@ -184,6 +185,7 @@ class _$MapReverseModelImpl implements _MapReverseModel {
   factory _$MapReverseModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$MapReverseModelImplFromJson(json);
 
+// ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'ref_id')
   final String? refId;
@@ -253,7 +255,7 @@ abstract class _MapReverseModel implements MapReverseModel {
   factory _MapReverseModel.fromJson(Map<String, dynamic> json) =
       _$MapReverseModelImpl.fromJson;
 
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'ref_id')
   String? get refId;
   @override

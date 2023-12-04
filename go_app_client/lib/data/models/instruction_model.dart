@@ -14,8 +14,10 @@ class InstructionModel with _$InstructionModel implements DataMapper<Instruction
     List<num>? interval,
     String? text,
     num? time,
+    // ignore: invalid_annotation_target
     @JsonKey(name: 'street_name')
     String? streetName,
+    // ignore: invalid_annotation_target
     @JsonKey(name: 'last_heading')
     num? lastHeading,
   ) = _InstructionModel;

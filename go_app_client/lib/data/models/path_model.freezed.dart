@@ -23,13 +23,14 @@ mixin _$PathModel {
   num? get distance => throw _privateConstructorUsedError;
   num? get weight => throw _privateConstructorUsedError;
   int? get time => throw _privateConstructorUsedError;
-  int? get transfers => throw _privateConstructorUsedError;
+  int? get transfers =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'points_encoded')
   bool? get pointsEncoded => throw _privateConstructorUsedError;
-  List<num>? get bbox => throw _privateConstructorUsedError;
+  List<double>? get bbox => throw _privateConstructorUsedError;
   String? get points => throw _privateConstructorUsedError;
   List<InstructionModel>? get instructions =>
-      throw _privateConstructorUsedError;
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'snapped_waypoints')
   String? get snappedWaypoints => throw _privateConstructorUsedError;
 
@@ -50,7 +51,7 @@ abstract class $PathModelCopyWith<$Res> {
       int? time,
       int? transfers,
       @JsonKey(name: 'points_encoded') bool? pointsEncoded,
-      List<num>? bbox,
+      List<double>? bbox,
       String? points,
       List<InstructionModel>? instructions,
       @JsonKey(name: 'snapped_waypoints') String? snappedWaypoints});
@@ -103,7 +104,7 @@ class _$PathModelCopyWithImpl<$Res, $Val extends PathModel>
       bbox: freezed == bbox
           ? _value.bbox
           : bbox // ignore: cast_nullable_to_non_nullable
-              as List<num>?,
+              as List<double>?,
       points: freezed == points
           ? _value.points
           : points // ignore: cast_nullable_to_non_nullable
@@ -134,7 +135,7 @@ abstract class _$$PathModelImplCopyWith<$Res>
       int? time,
       int? transfers,
       @JsonKey(name: 'points_encoded') bool? pointsEncoded,
-      List<num>? bbox,
+      List<double>? bbox,
       String? points,
       List<InstructionModel>? instructions,
       @JsonKey(name: 'snapped_waypoints') String? snappedWaypoints});
@@ -185,7 +186,7 @@ class __$$PathModelImplCopyWithImpl<$Res>
       freezed == bbox
           ? _value._bbox
           : bbox // ignore: cast_nullable_to_non_nullable
-              as List<num>?,
+              as List<double>?,
       freezed == points
           ? _value.points
           : points // ignore: cast_nullable_to_non_nullable
@@ -211,7 +212,7 @@ class _$PathModelImpl extends _PathModel {
       this.time,
       this.transfers,
       @JsonKey(name: 'points_encoded') this.pointsEncoded,
-      final List<num>? bbox,
+      final List<double>? bbox,
       this.points,
       final List<InstructionModel>? instructions,
       @JsonKey(name: 'snapped_waypoints') this.snappedWaypoints)
@@ -230,12 +231,13 @@ class _$PathModelImpl extends _PathModel {
   final int? time;
   @override
   final int? transfers;
+// ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'points_encoded')
   final bool? pointsEncoded;
-  final List<num>? _bbox;
+  final List<double>? _bbox;
   @override
-  List<num>? get bbox {
+  List<double>? get bbox {
     final value = _bbox;
     if (value == null) return null;
     if (_bbox is EqualUnmodifiableListView) return _bbox;
@@ -255,6 +257,7 @@ class _$PathModelImpl extends _PathModel {
     return EqualUnmodifiableListView(value);
   }
 
+// ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'snapped_waypoints')
   final String? snappedWaypoints;
@@ -320,7 +323,7 @@ abstract class _PathModel extends PathModel {
           final int? time,
           final int? transfers,
           @JsonKey(name: 'points_encoded') final bool? pointsEncoded,
-          final List<num>? bbox,
+          final List<double>? bbox,
           final String? points,
           final List<InstructionModel>? instructions,
           @JsonKey(name: 'snapped_waypoints') final String? snappedWaypoints) =
@@ -338,16 +341,16 @@ abstract class _PathModel extends PathModel {
   int? get time;
   @override
   int? get transfers;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'points_encoded')
   bool? get pointsEncoded;
   @override
-  List<num>? get bbox;
+  List<double>? get bbox;
   @override
   String? get points;
   @override
   List<InstructionModel>? get instructions;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'snapped_waypoints')
   String? get snappedWaypoints;
   @override

@@ -12,8 +12,8 @@ import 'package:go_app_client/data/models/map_routing_model.dart';
 import 'package:go_app_client/domain/entities/map_autocomplete.dart';
 import 'package:go_app_client/domain/entities/map_place.dart';
 import 'package:go_app_client/domain/entities/map_reverse.dart';
-import 'package:go_app_client/domain/entities/map_routing.dart';
 import 'package:go_app_client/domain/entities/map_routing_params.dart';
+import 'package:go_app_client/domain/entities/path_entity.dart';
 import 'package:go_app_client/extensions/latlng_extension.dart';
 import 'package:go_app_client/helpers/share_prefereces.dart';
 import 'package:injectable/injectable.dart';
@@ -24,7 +24,7 @@ abstract class IMapRemoteDataSource {
   Future<Either<Failure, MapReverse>> getAddressFromLatLng(
       {required double lat, required double lng, int? cats});
   Future<Either<Failure, MapPlace>> getPlaceDetail(String placeId);
-  Future<Either<Failure, MapRouting>> findRoute(MapRoutingParams params);
+  Future<Either<Failure, PathEntity>> findRoute(MapRoutingParams params);
 }
 
 String apiKey = dotenv.env['MAP_API_KEY'] ?? "";
@@ -65,14 +65,14 @@ class MapRemoteDataSource
   }
 
   @override
-  Future<Either<Failure, MapRouting>> findRoute(MapRoutingParams params) async {
+  Future<Either<Failure, PathEntity>> findRoute(MapRoutingParams params) async {
     var apiVersion = dotenv.env['MAP_API_VERSION'] ?? "1.1";
     var result = await callApi<MapRoutingModel>(() => _mapApiService.findRoute(
         apiVersion,
         apiKey,
         <String>[params.pickupLocation?.toUrlValue() ?? "",params.destinationLocation?.toUrlValue() ?? ""],
-        true,
+        false,
         params.vehicleType.name));
-    return result.map((r) => r.maptoEntity());
+    return result.map((r) => r.paths?.first.maptoEntity() ?? const PathEntity());
   }
 }

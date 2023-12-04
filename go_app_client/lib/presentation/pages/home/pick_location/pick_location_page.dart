@@ -71,9 +71,10 @@ class _PickLocationState extends State<PickLocationPage> {
             address = state.result.display;
           });
         }
-        
-        if(state is BookingGetDirectionSuccess){
-          Navigator.pushNamedAndRemoveUntil(context, Paths.completeBooking, (route) => route.settings.name == Paths.main);
+
+        if (state is BookingGetDirectionSuccess) {
+          Navigator.pushNamedAndRemoveUntil(context, Paths.completeBooking,
+              (route) => route.settings.name == Paths.main);
         }
       },
       buildWhen: (previous, current) =>
@@ -171,7 +172,11 @@ class _PickLocationState extends State<PickLocationPage> {
                             width: double.infinity,
                             child: state is BookingLoadingLocation
                                 ? Container(
-                                    color: AppColors.backgroundInactiveButton,
+                                    decoration: const BoxDecoration(
+                                        color:
+                                            AppColors.backgroundInactiveButton,
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(10))),
                                     child: Lottie.asset(
                                         'assets/animations/loading_dots.json',
                                         height: 60),
@@ -181,7 +186,7 @@ class _PickLocationState extends State<PickLocationPage> {
                                         shape: const RoundedRectangleBorder(
                                             borderRadius: BorderRadius.all(
                                                 Radius.circular(10))),
-                                        backgroundColor:  AppColors.primaryGreen,
+                                        backgroundColor: AppColors.primaryGreen,
                                         textStyle: const TextStyle(
                                             color: Colors.white,
                                             fontSize: 20,
@@ -203,10 +208,12 @@ class _PickLocationState extends State<PickLocationPage> {
                                           }
                                         : null,
                                     child: Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                vertical: 20),
-                                            child: Text(
-                                                "Xác nhận điểm ${isPickupLocation ? 'đón' : 'đến'}")))),
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 20),
+                                        child: Text(
+                                          "Xác nhận điểm ${isPickupLocation ? 'đón' : 'đến'}",
+                                          style: TextStyle(color: Colors.white),
+                                        )))),
                       ],
                     ),
                   )),

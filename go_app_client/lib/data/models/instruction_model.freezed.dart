@@ -25,9 +25,11 @@ mixin _$InstructionModel {
   num? get sign => throw _privateConstructorUsedError;
   List<num>? get interval => throw _privateConstructorUsedError;
   String? get text => throw _privateConstructorUsedError;
-  num? get time => throw _privateConstructorUsedError;
+  num? get time =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'street_name')
-  String? get streetName => throw _privateConstructorUsedError;
+  String? get streetName =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'last_heading')
   num? get lastHeading => throw _privateConstructorUsedError;
 
@@ -227,9 +229,11 @@ class _$InstructionModelImpl extends _InstructionModel {
   final String? text;
   @override
   final num? time;
+// ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'street_name')
   final String? streetName;
+// ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'last_heading')
   final num? lastHeading;
@@ -313,10 +317,10 @@ abstract class _InstructionModel extends InstructionModel {
   String? get text;
   @override
   num? get time;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'street_name')
   String? get streetName;
-  @override
+  @override // ignore: invalid_annotation_target
   @JsonKey(name: 'last_heading')
   num? get lastHeading;
   @override

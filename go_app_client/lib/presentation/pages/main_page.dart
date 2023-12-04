@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_app_client/config/colors.dart';
 import 'package:go_app_client/config/images.dart';
+import 'package:go_app_client/presentation/pages/history/history_page.dart';
 import 'package:go_app_client/presentation/pages/home/home_page.dart';
 
 
@@ -15,7 +16,8 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   int _currentIndex = 0;
   final tabs = [
-    HomePage()
+    const HomePage(),
+    const HistoryPage()
   ];
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class _MainPageState extends State<MainPage> {
           selectedItemColor: AppColors.primaryGreen,
           unselectedLabelStyle: const  TextStyle(color: AppColors.itemUnselected),
           backgroundColor: Colors.white,
-          currentIndex:   0,
+          currentIndex:   _currentIndex,
           type: BottomNavigationBarType.fixed,
           items: const  [
             BottomNavigationBarItem(
@@ -37,7 +39,7 @@ class _MainPageState extends State<MainPage> {
               BottomNavigationBarItem(
               icon: ImageIcon(AppImages.icInvoice ), 
               activeIcon: ImageIcon(AppImages.icInvoiceSelected),
-               label : "Bill",
+               label : "Hoạt động",
               ),
               BottomNavigationBarItem(
               icon: ImageIcon(AppImages.icPayment), 

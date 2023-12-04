@@ -11,15 +11,19 @@ class MapPlaceModel  with _$MapPlaceModel implements DataMapper<MapPlace> {
   const factory MapPlaceModel(
     String? display,
     String? name,
+    // ignore: invalid_annotation_target
     @JsonKey(name:"hs_num")
     String? hsNum,
     String? street,
+    // ignore: invalid_annotation_target
     @JsonKey(name: "city_id")
     int? cityId,
     String? city,
+    // ignore: invalid_annotation_target
     @JsonKey(name: "district_id")
     int? districtId,
     String? district,
+    // ignore: invalid_annotation_target
     @JsonKey(name: "ward_id")
     int? wardId,
     String? ward,
