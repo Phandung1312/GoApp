@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_app_driver/config/colors.dart';
 import 'package:go_app_driver/config/images.dart';
+import 'package:go_app_driver/domain/entities/enum/account_status.dart';
 import 'package:go_app_driver/presentation/bloc/login/login_bloc.dart';
 import 'package:go_app_driver/config/routes.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+import 'package:toast/toast.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -27,10 +28,40 @@ class LoginPage extends StatelessWidget {
           }
           if (state is LoginSucess) {
             Navigator.of(context).pop();
+            switch (state.status) {
+              case AccountStatus.unregistered:
+                {
+                  Future.delayed(const Duration(milliseconds: 100), () {
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, Paths.register, (_) => false);
+                  });
+                  break;
+                }
+              case AccountStatus.registered:
+                {
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, Paths.main, (_) => false);
+                  break;
+                }
+              case AccountStatus.uncheck:
+                {
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, Paths.pending, (route) => route.isFirst);
+                  break;
+                }
+              default:
+                {
+                  Toast.show("Rất tiếc tài khoản của bạn đã bị khóa",
+              duration: Toast.lengthShort, gravity: Toast.bottom);
+                  break;
+                }
+            }
+          }
 
-            Future.delayed(const Duration(milliseconds: 100), () {
-              Navigator.pushNamed(context, Paths.register);
-            });
+          if(state is LoginFailure){
+              Navigator.of(context).pop();
+                 Toast.show("Đã có lỗi xảy ra, xin vui lòng thử lại",
+              duration: Toast.lengthShort, gravity: Toast.bottom);
           }
         },
         child: SafeArea(
@@ -111,20 +142,5 @@ class LoginPage extends StatelessWidget {
         ));
   }
 
-  Future<void> _handleSignIn() async {
-    try {
-      final googleUser = await _googleSignIn.signIn();
-      print(googleUser?.displayName ?? "");
-    } catch (error) {
-      print(error);
-    }
-  }
 }
 
-GoogleSignIn _googleSignIn = GoogleSignIn(
-  scopes: [
-    'email',
-    'https://www.googleapis.com/auth/contacts.readonly',
-     'https://www.googleapis.com/auth/userinfo.profile'
-  ],
-);

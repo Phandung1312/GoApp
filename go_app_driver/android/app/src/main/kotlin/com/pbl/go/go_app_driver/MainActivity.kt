@@ -1,4 +1,4 @@
-package com.example.go_app_driver
+package com.pbl.go.go_app_driver
 
 import io.flutter.embedding.android.FlutterActivity
 

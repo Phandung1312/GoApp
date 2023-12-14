@@ -12,4 +12,6 @@ class AppColors {
   static const Color hintText = Color.fromARGB(255, 160, 160, 160);
   static const Color buttonInActiveText = Color.fromARGB(255, 98, 98, 99);
   static const Color buttonActiveText = Color.fromARGB(255, 255, 255, 255);
+  static const Color primaryGreyColor = Color.fromARGB(255, 145, 137, 137);
+
 }

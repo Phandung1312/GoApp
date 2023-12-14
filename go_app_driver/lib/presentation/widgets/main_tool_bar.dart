@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:go_app_driver/config/colors.dart';
 import 'package:go_app_driver/config/styles.dart';
 
-class MainToolBar extends StatelessWidget {
+
+class MainToolBar extends StatelessWidget implements PreferredSizeWidget {
   final bool isBack;
   final String title;
-  const MainToolBar({Key? key,this.title ="" ,this.isBack = true}) : super(key: key);
-
+  const MainToolBar({Key? key, this.title = "", this.isBack = true})
+      : preferredSize = const Size.fromHeight(80),
+        super(key: key);
+  @override
+  final Size preferredSize;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -27,7 +31,7 @@ class MainToolBar extends StatelessWidget {
                       },
                       child: const Icon(Icons.arrow_back),
                     )),
-               Positioned(
+              Positioned(
                   child: Text(
                 title,
                 style: Styles.titleText,
@@ -41,4 +45,6 @@ class MainToolBar extends StatelessWidget {
       ],
     );
   }
+
 }
+

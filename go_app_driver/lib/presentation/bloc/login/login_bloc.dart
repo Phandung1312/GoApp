@@ -1,4 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_app_driver/core/errors/failures.dart';
+import 'package:go_app_driver/domain/entities/enum/account_status.dart';
+import 'package:go_app_driver/domain/entities/register_info.dart';
 import 'package:go_app_driver/domain/usecases/account/login_usecase.dart';
 import 'package:injectable/injectable.dart';
 
@@ -14,7 +17,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   void _onLoginStarted(LoginStarted event, Emitter<LoginState> emit) async {
     emit(LoginInprogress());
-    // final Account = await _loginUseCase();
-    emit(LoginSucess());
+    var either = await _loginUseCase();
+      either.fold((l) => emit(LoginFailure(failure: l)), (r) => emit(LoginSucess(status: r)));  
   }
+
 }
