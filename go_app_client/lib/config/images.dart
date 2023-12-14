@@ -38,6 +38,16 @@ class AppImages{
   static const icLicensePlate = _Image('ic_license_plate.png');
   static const icVehicleType = _Image('ic_vehicle_type.png');
 
+  static const icTopViewMotorcycle = _Image('ic_top_view_motorcycle.png');
+  static const icTopViewCar = _Image('ic_top_view_car.png');
+
+  static const icFocus = _Image('ic_focus.png');
+
+  static const icTrophy = _Image('ic_trophy.png');
+  static const icClean = _Image('ic_clean.png');
+  static const icFamous = _Image('ic_famous.png');
+  static const icCompassReview = _Image('ic_compass_review.png');
+
 
 
  

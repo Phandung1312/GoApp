@@ -191,6 +191,7 @@ DataModel _$DataModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$DataModel {
+  int? get id => throw _privateConstructorUsedError;
   @AccountStatusConverter()
   AccountStatus? get status => throw _privateConstructorUsedError;
   String? get role => throw _privateConstructorUsedError;
@@ -206,7 +207,8 @@ abstract class $DataModelCopyWith<$Res> {
   factory $DataModelCopyWith(DataModel value, $Res Function(DataModel) then) =
       _$DataModelCopyWithImpl<$Res, DataModel>;
   @useResult
-  $Res call({@AccountStatusConverter() AccountStatus? status, String? role});
+  $Res call(
+      {int? id, @AccountStatusConverter() AccountStatus? status, String? role});
 }
 
 /// @nodoc
@@ -222,10 +224,15 @@ class _$DataModelCopyWithImpl<$Res, $Val extends DataModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? status = freezed,
     Object? role = freezed,
   }) {
     return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -246,7 +253,8 @@ abstract class _$$DataModelImplCopyWith<$Res>
       __$$DataModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@AccountStatusConverter() AccountStatus? status, String? role});
+  $Res call(
+      {int? id, @AccountStatusConverter() AccountStatus? status, String? role});
 }
 
 /// @nodoc
@@ -260,10 +268,15 @@ class __$$DataModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? status = freezed,
     Object? role = freezed,
   }) {
     return _then(_$DataModelImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -279,11 +292,14 @@ class __$$DataModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$DataModelImpl implements _DataModel {
-  const _$DataModelImpl({@AccountStatusConverter() this.status, this.role});
+  const _$DataModelImpl(
+      {this.id, @AccountStatusConverter() this.status, this.role});
 
   factory _$DataModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$DataModelImplFromJson(json);
 
+  @override
+  final int? id;
   @override
   @AccountStatusConverter()
   final AccountStatus? status;
@@ -292,7 +308,7 @@ class _$DataModelImpl implements _DataModel {
 
   @override
   String toString() {
-    return 'DataModel(status: $status, role: $role)';
+    return 'DataModel(id: $id, status: $status, role: $role)';
   }
 
   @override
@@ -300,13 +316,14 @@ class _$DataModelImpl implements _DataModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DataModelImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.role, role) || other.role == role));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, status, role);
+  int get hashCode => Object.hash(runtimeType, id, status, role);
 
   @JsonKey(ignore: true)
   @override
@@ -324,12 +341,15 @@ class _$DataModelImpl implements _DataModel {
 
 abstract class _DataModel implements DataModel {
   const factory _DataModel(
-      {@AccountStatusConverter() final AccountStatus? status,
+      {final int? id,
+      @AccountStatusConverter() final AccountStatus? status,
       final String? role}) = _$DataModelImpl;
 
   factory _DataModel.fromJson(Map<String, dynamic> json) =
       _$DataModelImpl.fromJson;
 
+  @override
+  int? get id;
   @override
   @AccountStatusConverter()
   AccountStatus? get status;

@@ -375,7 +375,7 @@ packages:
     source: hosted
     version: "4.0.1"
   flutter_spinkit:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: flutter_spinkit
       sha256: b39c753e909d4796906c5696a14daf33639a76e017136c8d82bf3e620ce5bb8e
@@ -1085,6 +1085,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.11.1"
+  stomp_dart_client:
+    dependency: "direct main"
+    description:
+      name: stomp_dart_client
+      sha256: "0972bc5b96e76b05ac5787f240f502aa8251d973326fc067a6173c88a8818b96"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   stream_channel:
     dependency: transitive
     description:
@@ -1141,6 +1149,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.1"
+  toast:
+    dependency: "direct main"
+    description:
+      name: toast
+      sha256: "9f877c2bf17931941b55b22e7e3d432779b769683ca292e0f5f8c3e6cfe62c89"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.9"
   tuple:
     dependency: transitive
     description:
@@ -1241,26 +1257,18 @@ packages:
     dependency: "direct main"
     description:
       name: vietmap_flutter_gl
-      sha256: "96ec98537c8c70bd36aa0c3184952c6e8696ce129bd5e44bb010508f4d7a588a"
+      sha256: "04b63761883ed1ee156c49f9bedee14cef9a5c3c4ba406e58640b7341010b987"
       url: "https://pub.dev"
     source: hosted
-    version: "1.2.1"
-  vietmap_flutter_navigation:
-    dependency: "direct main"
-    description:
-      name: vietmap_flutter_navigation
-      sha256: "24639012af37a967acc25a050be8a1ba0e5968eadb37343fe926b80b3d845dff"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.3.2"
+    version: "1.3.1"
   vietmap_gl_platform_interface:
     dependency: transitive
     description:
       name: vietmap_gl_platform_interface
-      sha256: ef9515a1267e6d4774030ffb1e259472b8f1de9db53ffa7aa3d21664fa9285f7
+      sha256: "394b5bf3bafe4a766ce2c82ac9601c2b48f3847bfe46c79733bc8fda64530220"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.6"
+    version: "0.1.0"
   watcher:
     dependency: transitive
     description:

@@ -4,12 +4,14 @@ import 'package:dartz/dartz.dart';
 import 'package:go_app_client/core/errors/failures.dart';
 import 'package:go_app_client/core/network/base_remote_service.dart';
 import 'package:go_app_client/data/api/account_api_service.dart';
+import 'package:go_app_client/data/models/client_info_model.dart';
+import 'package:go_app_client/data/models/login_info_model.dart';
 import 'package:go_app_client/domain/entities/enum/account_status.dart';
 import 'package:injectable/injectable.dart';
 
 abstract class IAccountRemoteDataSource{
-  Future<Either<Failure, AccountStatus>> login();
-  Future<Either<Failure, bool>> registerCustomer(String fullNamne,String mobile);
+  Future<Either<Failure, LoginInfoModel>> login();
+  Future<Either<Failure, ClientInfoModel>> registerCustomer(String fullNamne,String mobile);
   
 }
 
@@ -19,18 +21,15 @@ class AccountRemoteDateSource with BaseRemoteService implements IAccountRemoteDa
   final AccountApiService _accountApiService;
   
   @override
-  Future<Either<Failure, AccountStatus>> login() async{
+  Future<Either<Failure, LoginInfoModel>> login() async{
     var result = await callApi(() => _accountApiService.login());
-    return result.map((r) => r.data?.status ?? AccountStatus.unknown);
+    return result;
   }
   
   @override
-  Future<Either<Failure, bool>> registerCustomer(String fullName,String mobile) async{
+  Future<Either<Failure, ClientInfoModel>> registerCustomer(String fullName,String mobile) async{
     var result = await callApi(() => _accountApiService.registerCustomer(phoneNumber: mobile, fullName: fullName));
-    return result.map((r){
-      if(r.nonBlock == true) return true;
-      return false;
-    });
+    return result;
   }
 
 

@@ -5,8 +5,12 @@ import 'package:go_app_client/config/colors.dart';
 import 'package:go_app_client/config/images.dart';
 import 'package:go_app_client/config/routes/routes.dart';
 import 'package:go_app_client/config/styles.dart';
+import 'package:go_app_client/domain/entities/driver_info.dart';
 import 'package:go_app_client/domain/entities/enum/enum.dart';
+import 'package:go_app_client/extensions/enum_extension.dart';
 import 'package:go_app_client/presentation/bloc/booking/booking_bloc.dart';
+import 'package:go_app_client/presentation/bloc/chat/chat/chat_cubit.dart';
+import 'package:toast/toast.dart';
 
 class DriverInfoCard extends StatefulWidget {
   const DriverInfoCard({super.key});
@@ -18,15 +22,26 @@ class DriverInfoCard extends StatefulWidget {
 class _DriverInfoCardState extends State<DriverInfoCard> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<BookingBloc, BookingState>(
+    return BlocConsumer<BookingBloc, BookingState>(
+        listener: (context, state) {
+          if (state is BookingStatusUpdated) {
+            if (state.booking?.status == BookingStatus.complete) {
+              Toast.show("Đã hoàn thành chuyến đi, hãy đánh giá cho tài xế.",
+                  duration: Toast.lengthShort, gravity: Toast.bottom);
+              // Navigator.pushNamedAndRemoveUntil(context, Paths.review, (route) => false);
+              Navigator.pushNamed(context, Paths.review);
+            }
+          }
+        },
         buildWhen: (previous, current) =>
+            current is BookingFoundingDriver ||
             current is BookingLoadDriverSuccess ||
-            current is BookingLoadingDriver,
+            current is BookingStatusUpdated,
         builder: (context, state) => Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: state is BookingLoadingDriver
+            child: state is BookingFoundingDriver
                 ? Padding(
-                    padding: const EdgeInsets.only(bottom: 20),
+                    padding: const EdgeInsets.symmetric(vertical: 20),
                     child: Row(
                       children: [
                         Image(
@@ -60,27 +75,30 @@ class _DriverInfoCardState extends State<DriverInfoCard> {
                             onTap: () {
                               Navigator.pushNamed(context, Paths.driverInfo);
                             },
-                            child: const CircleAvatar(
-                              backgroundColor: Colors.blue,
+                            child: CircleAvatar(
+                              backgroundImage:
+                                  Image.network(state.driverInfo?.avtUrl ?? "")
+                                      .image,
                               radius: 30,
                             ),
                           ),
                           const SizedBox(
                             width: 10,
                           ),
-                          const Expanded(
+                          Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "Nguyễn Văn A",
+                                  state.driverInfo?.fulllName ?? "",
                                   style: Styles.titleCardText,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 Text(
-                                  "Honda AirBlade",
+                                  state.driverInfo?.vehicleType.toName() ??
+                                      "XE MÁY",
                                   style: Styles.primaryCardText,
                                 )
                               ],
@@ -93,12 +111,12 @@ class _DriverInfoCardState extends State<DriverInfoCard> {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.black),
-                            child: const Padding(
-                              padding: EdgeInsets.symmetric(
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
                                   horizontal: 10, vertical: 5),
                               child: Text(
-                                "43A-734.343",
-                                style: TextStyle(
+                                state.driverInfo?.licensePlate ?? "",
+                                style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold),
@@ -114,12 +132,14 @@ class _DriverInfoCardState extends State<DriverInfoCard> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           RatingBar.builder(
+                              ignoreGestures: true,
                               itemBuilder: (context, index) => const Icon(
                                     Icons.star,
                                     color: Colors.amber,
-                                    size: 7,
+                                    size: 6,
                                   ),
-                              initialRating: 3.5,
+                              itemSize: 30,
+                              initialRating: state.driverInfo?.rating ?? 0,
                               allowHalfRating: true,
                               itemPadding:
                                   const EdgeInsets.symmetric(horizontal: 4.0),
@@ -130,14 +150,38 @@ class _DriverInfoCardState extends State<DriverInfoCard> {
                           const SizedBox(
                             width: 10,
                           ),
-                          const Text(
-                            " • " + "3.9",
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold
+                          Expanded(
+                            child: Text(
+                              " • " "${state.driverInfo?.rating}",
+                              style: const TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                           ),
+                          GestureDetector(
+                            onTap: () {},
+                            child: const Row(
+                              children: [
+                                Text(
+                                  "Xem thêm",
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                                Icon(
+                                  Icons.more_vert,
+                                )
+                              ],
+                            ),
+                          )
                         ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        state.booking?.status.toDriverStatus() ?? "null",
+                        style: const TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w500),
                       ),
                       const SizedBox(
                         height: 10,
@@ -151,6 +195,8 @@ class _DriverInfoCardState extends State<DriverInfoCard> {
                           Expanded(
                             child: GestureDetector(
                               onTap: () {
+                                context.read<ChatCubit>().loadAllMessage(
+                                    state.driverInfo ?? const DriverInfo());
                                 Navigator.pushNamed(context, Paths.chat);
                               },
                               child: Container(

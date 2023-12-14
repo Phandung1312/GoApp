@@ -11,7 +11,7 @@ mixin BaseRemoteService {
       Future<HttpResponse<T>> Function() call) async {
     try {
       var httpResponse = await call();
-      Logger().i(httpResponse.response.requestOptions.headers);
+      Logger().i(httpResponse.response.requestOptions.data);
       Logger().i(httpResponse.response.requestOptions.uri);
       Logger().i(httpResponse.response.data);
       if (httpResponse.response.statusCode == HttpStatus.ok) {
@@ -24,6 +24,7 @@ mixin BaseRemoteService {
       Logger().i(e.requestOptions.uri);
       Logger().i(e.requestOptions.headers);
       Logger().i(e.requestOptions.data.toString());
+      Logger().i(e.response?.data.toString());
       Logger().e("Retrofit error:${e.message}");
       if (e.type == DioExceptionType.receiveTimeout) {
         return Left(ApiTimeOutFailure());

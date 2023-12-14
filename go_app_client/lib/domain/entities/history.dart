@@ -6,7 +6,7 @@ class History with _$History{
   const factory History({
     @Default(0)
     int id,
-    @Default(BookingStatus.waitingDriver)
+    @Default(BookingStatus.waitting)
     BookingStatus bookingStatus,
     @Default(VehicleType.motorcycle)
     VehicleType vehicleType,

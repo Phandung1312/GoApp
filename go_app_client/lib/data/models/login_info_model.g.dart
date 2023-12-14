@@ -23,6 +23,7 @@ Map<String, dynamic> _$$LoginInfoModelImplToJson(
 
 _$DataModelImpl _$$DataModelImplFromJson(Map<String, dynamic> json) =>
     _$DataModelImpl(
+      id: json['id'] as int?,
       status: _$JsonConverterFromJson<String, AccountStatus>(
           json['status'], const AccountStatusConverter().fromJson),
       role: json['role'] as String?,
@@ -30,6 +31,7 @@ _$DataModelImpl _$$DataModelImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$DataModelImplToJson(_$DataModelImpl instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'status': _$JsonConverterToJson<String, AccountStatus>(
           instance.status, const AccountStatusConverter().toJson),
       'role': instance.role,

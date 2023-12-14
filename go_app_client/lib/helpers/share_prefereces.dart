@@ -12,3 +12,9 @@ String getIdToken(){
    final prefs = getIt<SharedPreferences>();
    return "${prefs.getString('idToken')}";
 }
+
+
+int getUserId(){
+   final prefs = getIt<SharedPreferences>();
+   return prefs.getInt('idUser') ?? 0;
+}

@@ -5,6 +5,7 @@ import 'package:go_app_client/config/routes/routes.dart';
 import 'package:go_app_client/presentation/bloc/login/login_bloc.dart';
 import 'package:go_app_client/presentation/widgets/main_tool_bar.dart';
 import 'package:lottie/lottie.dart';
+import 'package:toast/toast.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -23,6 +24,8 @@ class _RegisterPageState extends State<RegisterPage> {
     return BlocConsumer<LoginBloc, LoginState>(
       listener: (context, state) {
         if (state is LoginRegisterSuccess) {
+          Toast.show("Đăng kí tài khoản thành công",
+              duration: Toast.lengthShort, gravity: Toast.bottom);
           Navigator.pushNamedAndRemoveUntil(
               context, Paths.main, (route) => false);
           return;
@@ -54,7 +57,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: Column(
                         children: [
                           TextFormField(
-                            keyboardType: TextInputType.phone,
+                            keyboardType: TextInputType.text,
                             controller: _nameEditingController,
                             validator: (value) {
                               if (value == null || value.isEmpty) {

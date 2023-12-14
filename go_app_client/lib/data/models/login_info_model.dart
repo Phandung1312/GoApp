@@ -22,6 +22,7 @@ class LoginInfoModel with _$LoginInfoModel{
 class DataModel with _$DataModel{
   const factory DataModel(
     {
+      int? id,
       @AccountStatusConverter()
       AccountStatus? status,
       String? role,

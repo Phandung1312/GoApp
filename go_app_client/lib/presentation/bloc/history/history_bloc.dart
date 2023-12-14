@@ -22,13 +22,13 @@ class HistoryBloc extends Bloc<HistoryEvent, HistoryState>{
     await Future.delayed(const Duration(seconds: 2), () {
       var histories = <History>[
         const History(
-          bookingStatus: BookingStatus.done,
+          bookingStatus: BookingStatus.complete,
           vehicleType: VehicleType.motorcycle,
           to: "Đại học Bách Khoa Đà Nẵng",
           createAt: "20 thg 9 2023, 21:04"
         ),
         const History(
-          bookingStatus: BookingStatus.canceled,
+          bookingStatus: BookingStatus.cancelled,
           vehicleType: VehicleType.car,
           to: "Bến xe trung tâm Thành phố Đà Nẵng",
           createAt: "13 thg 12 2023, 08:04"

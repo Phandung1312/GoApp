@@ -10,7 +10,7 @@ class ListHistories extends StatelessWidget {
   const ListHistories({super.key, required this.histories});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {  
     return ListView.builder(
         scrollDirection: Axis.vertical,
         itemCount: histories.length,
@@ -41,7 +41,7 @@ class ListHistories extends StatelessWidget {
                         Text(
                           Utils.bookingStatusToString(history.bookingStatus),
                           style: TextStyle(
-                              color: history.bookingStatus == BookingStatus.done
+                              color: history.bookingStatus == BookingStatus.complete
                                   ? AppColors.primaryGreen
                                   : Colors.red,
                               fontSize: 14,

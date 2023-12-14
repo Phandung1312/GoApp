@@ -12,8 +12,13 @@ enum Wallet{
 
 
 enum BookingStatus{
-  waitingDriver,
-  driverConfirmed,
-  canceled,
-  done
+  waitting,
+  paid,
+  found,
+  onRide,
+  cancelled,
+  refunded,
+  wattingRefund,
+  complete,
+  unknown
 }

@@ -12,3 +12,12 @@ extension LatLngBoundsExtension on Position {
     return LatLng(latitude, longitude);
   }
 }
+
+
+extension StringExtension on String{
+  LatLng toLatLng(){
+    return LatLng(double.parse(split(",")[0]), double.parse(split(",")[1]));
+  }
+}
+
+

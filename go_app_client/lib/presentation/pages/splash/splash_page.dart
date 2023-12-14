@@ -57,7 +57,7 @@ class _SplashPageState extends State<SplashPage> {
     await prefs.setDouble('longitude', locationData.longitude);
     Future.delayed(
       const  Duration(seconds:  1),
-      () => Navigator.pushNamedAndRemoveUntil(context, Paths.login,(route) => route.isFirst)
+      () => Navigator.pushNamedAndRemoveUntil(context, Paths.login,(route) => false)
     );
      
   }

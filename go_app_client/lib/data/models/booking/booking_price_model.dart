@@ -4,7 +4,7 @@ part 'booking_price_model.freezed.dart';
 part 'booking_price_model.g.dart';
 
 @freezed
-class BookingPriceModel with _$BookingPriceModel{
+class BookingPriceModel with _$BookingPriceModel {
   const factory BookingPriceModel(
     {
       String? pickUpLocation,

@@ -24,7 +24,6 @@ class _HomePageState extends State<HomePage> {
     _initialCameraPosition = CameraPosition(target: latLng, zoom: 15);
   }
 
-  _onStyleLoadedCallback() async {}
 
   @override
   Widget build(BuildContext context) {

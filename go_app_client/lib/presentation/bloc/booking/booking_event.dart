@@ -25,6 +25,11 @@ class BookingEvent with _$BookingEvent {
 
   const factory BookingEvent.getDirection({required LatLng from , required LatLng to}) = BookingGetDirection;
   const factory BookingEvent.changeRouteByVehicle({required VehicleType vehicleType}) = BookingChangeRouteByVehicle;
+  const factory BookingEvent.createOrder({required VehicleType vehicleType}) = BookingCreateOrder;
   const factory BookingEvent.goToPayment() = BookingGoToPayment;
   const factory BookingEvent.pay() = BookingPay;
+
+  const factory BookingEvent.loadDriverInfo({required int driverId}) = BookingLoadDriverInfo;
+  const factory BookingEvent.changeStatus({required BookingStatus bookingStatus}) = BookingChangeStatus;
+
 }

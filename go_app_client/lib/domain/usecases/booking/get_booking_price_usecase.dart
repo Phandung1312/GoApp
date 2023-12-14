@@ -1,4 +1,4 @@
-
+  
 
 import 'package:dartz/dartz.dart';
 import 'package:go_app_client/core/errors/failures.dart';

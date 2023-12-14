@@ -1,4 +1,3 @@
-
 import 'package:dartz/dartz.dart';
 import 'package:go_app_client/core/errors/failures.dart';
 import 'package:go_app_client/core/inject/injection.dart';
@@ -11,17 +10,21 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 @LazySingleton(as: AccountRepository)
 class AccountRepositoryImpl implements AccountRepository {
-  AccountRepositoryImpl(this._networkInfo,this._remoteDataSource);
-    final NetworkInfo _networkInfo;
+  AccountRepositoryImpl(this._networkInfo, this._remoteDataSource, this._prefs);
+  final NetworkInfo _networkInfo;
   final IAccountRemoteDataSource _remoteDataSource;
+  final SharedPreferences _prefs;
   @override
   Future<Either<Failure, AccountStatus>> login() async {
     await _handleSignIn();
     var result = await _remoteDataSource.login();
-    return result;
+    await result.fold((l) => null, (r) async {
+      var idUser = r.data?.id ?? 0;
+      await _prefs.setInt('idUser', idUser);
+    });
+    return result.map((r) => r.data?.status ?? AccountStatus.unknown);
   }
 
   Future<void> _handleSignIn() async {
@@ -30,22 +33,31 @@ class AccountRepositoryImpl implements AccountRepository {
       GoogleSignInAuthentication? googleSignInAuthentication =
           await googleUser?.authentication;
       final pref = getIt<SharedPreferences>();
-      await pref.setString("idToken", googleSignInAuthentication?.idToken ?? "");
+      await pref.setString(
+          "idToken", googleSignInAuthentication?.idToken ?? "");
     } catch (error) {
       print(error);
     }
   }
-  
+
   @override
-  Future<Either<Failure, bool>> registerCustomer(ClientInfoRequest clientInfoRequest) async{
-    if(await _networkInfo.isConnected){
-      final result =await _remoteDataSource.registerCustomer(clientInfoRequest.fullName,clientInfoRequest.phoneNumber);
-      return result;
-    }
-    else{
+  Future<Either<Failure, bool>> registerCustomer(
+      ClientInfoRequest clientInfoRequest) async {
+    if (await _networkInfo.isConnected) {
+      final result = await _remoteDataSource.registerCustomer(
+          clientInfoRequest.fullName, clientInfoRequest.phoneNumber);
+      await result.fold((l) => null, (r) async {
+        var idUser = r.id;
+        await _prefs.setInt('idUser', idUser);
+      });
+      return result.map((r) {
+        if (r.nonBlock == true) return true;
+        return false;
+      });
+    } else {
       return Left(NetworkFailure());
     }
-  } 
+  }
 }
 
 GoogleSignIn _googleSignIn = GoogleSignIn(

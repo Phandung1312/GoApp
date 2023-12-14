@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:intl/intl.dart';
+import 'package:logger/logger.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 enum VNPayHashType {
@@ -56,6 +57,7 @@ class VNPAYFlutter {
       'vnp_OrderType': 'orther',
       'vnp_CreateDate': createAt ??
           DateFormat('yyyyMMddHHmmss').format(DateTime.now()).toString(),
+      // 'vnp_ExpireDate' : DateFormat('yyyyMMddHHmmss').format(DateTime.now().add(const Duration(minutes: 30))).toString(),
     };
     var sortedParam = _sortParams(params);
     final hashDataBuffer = StringBuffer();
@@ -80,6 +82,7 @@ class VNPAYFlutter {
     }
     String paymentUrl =
         "$url?$query&vnp_SecureHashType=${vnPayHashType == VNPayHashType.HMACSHA512 ? "HmacSHA512" : "SHA256"}&vnp_SecureHash=$vnpSecureHash";
+    Logger().i(paymentUrl);
     return paymentUrl;
   }
 

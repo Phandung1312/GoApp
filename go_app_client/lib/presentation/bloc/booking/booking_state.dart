@@ -4,7 +4,14 @@ class BookingState extends Equatable {
   final MapRoutingParams? mapRoutingParams;
   final PathEntity? path;
   final Map<VehicleType, num>? bookingPrices;
-  const BookingState({this.mapRoutingParams, this.path, this.bookingPrices});
+  final Booking? booking;
+  final DriverInfo? driverInfo;
+  const BookingState(
+      {this.mapRoutingParams,
+      this.path,
+      this.bookingPrices,
+      this.booking,
+      this.driverInfo});
 
   @override
   List<Object?> get props => [mapRoutingParams];
@@ -89,21 +96,23 @@ class BookingUpdateSucess extends BookingState {
 }
 
 class BookingGetDirectionSuccess extends BookingState {
-  BookingGetDirectionSuccess({required PathEntity path,required BookingState state})
+  BookingGetDirectionSuccess(
+      {required PathEntity path, required BookingState state})
       : super(
             mapRoutingParams: state.mapRoutingParams,
-            path:  path,
+            path: path,
             bookingPrices: state.bookingPrices);
   @override
   List<Object?> get props => [mapRoutingParams, path];
 }
 
 class BookingVisiblePayment extends BookingState {
-  BookingVisiblePayment({required BookingState state})
+  BookingVisiblePayment({required Booking booking, required BookingState state})
       : super(
             mapRoutingParams: state.mapRoutingParams,
             path: state.path,
-            bookingPrices: state.bookingPrices);
+            bookingPrices: state.bookingPrices,
+            booking: booking);
   @override
   List<Object?> get props => [];
 }
@@ -111,15 +120,56 @@ class BookingVisiblePayment extends BookingState {
 class BookingLoadingDriver extends BookingState {
   BookingLoadingDriver({required BookingState state})
       : super(
+          mapRoutingParams: state.mapRoutingParams,
+          path: state.path,
+          bookingPrices: state.bookingPrices,
+        );
+}
+
+class BookingLoadDriverSuccess extends BookingState {
+  BookingLoadDriverSuccess(
+      {required DriverInfo driverInfo, required BookingState state})
+      : super(
+            mapRoutingParams: state.mapRoutingParams,
+            path: state.path,
+            booking: state.booking,
+            driverInfo: driverInfo);
+}
+
+class BookingLoadingOrder extends BookingState {
+  BookingLoadingOrder({required BookingState state})
+      : super(
             mapRoutingParams: state.mapRoutingParams,
             path: state.path,
             bookingPrices: state.bookingPrices);
 }
 
-class BookingLoadDriverSuccess extends BookingState {
-  BookingLoadDriverSuccess({required BookingState state})
+class BookingLoadOrderSuccess extends BookingState {
+  BookingLoadOrderSuccess(
+      {required Booking booking, required BookingState state})
       : super(
             mapRoutingParams: state.mapRoutingParams,
             path: state.path,
-            bookingPrices: state.bookingPrices);
+            booking: booking);
+}
+
+class BookingFoundingDriver extends BookingState {
+  BookingFoundingDriver({required BookingState state})
+      : super(
+            mapRoutingParams: state.mapRoutingParams,
+            path: state.path,
+            bookingPrices: state.bookingPrices,
+            booking: state.booking);
+}
+
+class BookingStatusUpdated extends BookingState {
+  BookingStatusUpdated({required Booking booking,required BookingState state})
+      : super(
+            mapRoutingParams: state.mapRoutingParams,
+            path: state.path,
+            booking: booking,
+            driverInfo: state.driverInfo);
+
+  @override
+  List<Object?> get props => [booking];
 }

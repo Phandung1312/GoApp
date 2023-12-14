@@ -3,18 +3,21 @@ import 'package:go_app_client/config/colors.dart';
 import 'package:go_app_client/config/styles.dart';
 
 
-class MainToolBar extends StatelessWidget {
+class MainToolBar extends StatelessWidget implements PreferredSizeWidget {
   final bool isBack;
   final String title;
-  const MainToolBar({Key? key,this.title ="" ,this.isBack = true}) : super(key: key);
-
+  const MainToolBar({Key? key, this.title = "", this.isBack = true})
+      : preferredSize = const Size.fromHeight(80),
+        super(key: key);
+  @override
+  final Size preferredSize;
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
         const SizedBox(
-          height: 20,
+          height: 15,
         ),
         SizedBox(
             width: double.infinity,
@@ -28,7 +31,7 @@ class MainToolBar extends StatelessWidget {
                       },
                       child: const Icon(Icons.arrow_back),
                     )),
-               Positioned(
+              Positioned(
                   child: Text(
                 title,
                 style: Styles.titleText,
@@ -42,4 +45,6 @@ class MainToolBar extends StatelessWidget {
       ],
     );
   }
+
 }
+

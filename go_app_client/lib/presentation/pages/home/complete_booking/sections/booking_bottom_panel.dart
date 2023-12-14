@@ -21,7 +21,7 @@ class _BookingBottomPanelState extends State<BookingBottomPanel> {
       buildWhen: (previous, current) =>
           current is BookingGetDirectionSuccess ||
           current is BookingVisiblePayment ||
-          current is BookingLoadingDriver,
+          current is BookingFoundingDriver,
       builder: (context, state) {
         if (state is BookingGetDirectionSuccess) {
           return Column(
@@ -50,7 +50,7 @@ class _BookingBottomPanelState extends State<BookingBottomPanel> {
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         padding: const EdgeInsets.symmetric(vertical: 20),
-                        shape: RoundedRectangleBorder(
+                        shape: RoundedRectangleBorder(  
                             borderRadius: BorderRadius.circular(10)),
                         backgroundColor: AppColors.primaryGreen,
                         textStyle: const TextStyle(
@@ -60,7 +60,7 @@ class _BookingBottomPanelState extends State<BookingBottomPanel> {
                     onPressed: () {
                       context
                           .read<BookingBloc>()
-                          .add(const BookingEvent.goToPayment());
+                          .add( BookingEvent.createOrder(vehicleType: state.mapRoutingParams?.vehicleType ?? VehicleType.motorcycle));
                     },
                     child: const Text(
                       "Đặt xe",
@@ -74,17 +74,15 @@ class _BookingBottomPanelState extends State<BookingBottomPanel> {
         }
         if (state is BookingVisiblePayment) {
           return PaymentCard(
-            price: state.bookingPrices?[state.mapRoutingParams!.vehicleType]
-                    ?.toInt() ??
-                0,
-          );
+              bookingId: state.booking!.id,
+              price: state.bookingPrices?[state.mapRoutingParams!.vehicleType]
+                      ?.toInt() ??
+                  0);
         }
-        if (state is BookingLoadingDriver) {
-          return DriverInfoCard();
+        if (state is BookingFoundingDriver) {
+          return const DriverInfoCard();
         }
-        return Container(
-          child: Text("HDIHSIHIDHIDSHSIDHISD"),
-        );
+        return Container();
       },
     );
   }

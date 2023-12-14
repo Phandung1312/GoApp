@@ -30,8 +30,9 @@ class _InputLocationPageState extends State<InputLocationPage> {
     setState(() {
       if (currentSelection == SelectLocation.pickupLocation) {
         final state = BlocProvider.of<BookingBloc>(context).state;
-        if (state.mapRoutingParams?.pickupLocation == null)
+        if (state.mapRoutingParams?.pickupLocation == null) {
           _pickupLocationController.text = "";
+        }
       }
       currentSelection = selectLocation;
     });
@@ -86,7 +87,9 @@ class _InputLocationPageState extends State<InputLocationPage> {
 
         if (state is BookingGetDirectionSuccess) {
           Navigator.pushNamedAndRemoveUntil(context, Paths.completeBooking,
-              (route) => route.settings.name == Paths.main);
+              (route){
+                return route.settings.name == Paths.main;
+              });
         }
       },
       buildWhen: (previous, current) =>
@@ -112,8 +115,11 @@ class _InputLocationPageState extends State<InputLocationPage> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               const SizedBox(width: 10),
-                              const InkWell(
-                                child: Icon(
+                              InkWell(
+                                onTap: () {
+                                  Navigator.pop(context);
+                                },
+                                child: const Icon(
                                   Icons.arrow_back,
                                   size: 30,
                                 ),

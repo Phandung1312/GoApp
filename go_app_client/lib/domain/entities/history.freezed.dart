@@ -171,7 +171,7 @@ class __$$HistoryImplCopyWithImpl<$Res>
 class _$HistoryImpl implements _History {
   const _$HistoryImpl(
       {this.id = 0,
-      this.bookingStatus = BookingStatus.waitingDriver,
+      this.bookingStatus = BookingStatus.waitting,
       this.vehicleType = VehicleType.motorcycle,
       this.from = "",
       this.to = '',

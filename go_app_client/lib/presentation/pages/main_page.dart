@@ -2,8 +2,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_app_client/config/colors.dart';
 import 'package:go_app_client/config/images.dart';
+import 'package:go_app_client/presentation/pages/account/account_page.dart';
 import 'package:go_app_client/presentation/pages/history/history_page.dart';
 import 'package:go_app_client/presentation/pages/home/home_page.dart';
+import 'package:go_app_client/presentation/pages/payment/payment_page.dart';
 
 
 class MainPage extends StatefulWidget {
@@ -17,7 +19,9 @@ class _MainPageState extends State<MainPage> {
   int _currentIndex = 0;
   final tabs = [
     const HomePage(),
-    const HistoryPage()
+    const HistoryPage(),
+    const PaymentPage(),
+    const AccountPage()
   ];
   @override
   Widget build(BuildContext context) {
@@ -52,11 +56,11 @@ class _MainPageState extends State<MainPage> {
                label : "Account",
               ),
           ],
-          onTap: (index){
-            setState(() {
-              _currentIndex = index;
-            });
-          },
+            onTap: (index){
+              setState(() {
+                _currentIndex = index;
+              });
+            },
           ),
       ),
     );

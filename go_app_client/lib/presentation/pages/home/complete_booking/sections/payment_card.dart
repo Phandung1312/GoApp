@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_app_client/config/colors.dart';
+import 'package:go_app_client/config/constants.dart';
 import 'package:go_app_client/config/images.dart';
 import 'package:go_app_client/config/styles.dart';
 import 'package:go_app_client/core/utils/utils.dart';
 import 'package:go_app_client/domain/entities/enum/enum.dart';
 import 'package:go_app_client/helpers/vnpay_helper.dart';
-import 'package:go_app_client/presentation/bloc/booking/booking_bloc.dart';
+import 'package:intl/intl.dart';
+import 'package:logger/logger.dart';
 
 
 class PaymentCard extends StatefulWidget {
+  final int bookingId;
   final int price;
-  const PaymentCard({super.key, required this.price});
+  const PaymentCard({super.key, required this.bookingId,required this.price});
 
   @override
   State<PaymentCard> createState() => _PaymentCardState();
@@ -58,10 +60,10 @@ class _PaymentCardState extends State<PaymentCard> {
           ),
           InkWell(
             onTap: () {
-              // setState(() {
-              //   selectedWallet = Wallet.momo;
-              // });
-              context.read<BookingBloc>().add(BookingEvent.pay());
+              setState(() {
+                selectedWallet = Wallet.momo;
+              });
+      
             },
             child: Padding(
               padding: const EdgeInsets.symmetric(
@@ -183,13 +185,11 @@ class _PaymentCardState extends State<PaymentCard> {
       version: '2.0.1', //version of VNPAY, default is 2.0.1
       tmnCode: 'N6LU5YAQ', //vnpay tmn code, get from vnpay
 
-      txnRef: DateTime.now()
-          .millisecondsSinceEpoch
-          .toString(), //ref code, default is timestamp
-      orderInfo: 'Pay 30.000 VND', //order info, default is Pay Order
-      amount: 30000, //amount
+      txnRef:DateFormat('yyyyMMddHHmmss').format(DateTime.now()).toString() + widget.bookingId.toString(), //ref code, default is timestamp
+      orderInfo: "Payment ${widget.price.toDouble()})", //order info, default is Pay Order
+      amount: widget.price.toDouble(), //amount
       returnUrl:
-          'https://abc.com/return', //https://sandbox.vnpayment.vn/apis/docs/huong-dan-tich-hop/#code-returnurl
+          '$baseUrl' 'payment/returnUrl', //https://sandbox.vnpayment.vn/apis/docs/huong-dan-tich-hop/#code-returnurl
       ipAdress: ipAddress, //Your IP address
       vnpayHashKey:
           'YIIHKJWNUOQPNZSFIDHAZYTJNHBDJNJL', //vnpay hash key, get from vnpay
@@ -201,14 +201,11 @@ class _PaymentCardState extends State<PaymentCard> {
       context: context,
       paymentUrl: paymentUrl,
       onPaymentSuccess: (params) {
-        setState(() {
-          // responseCode = params['vnp_ResponseCode'];
-        });
+          // context.read<BookingBloc>().add(const BookingEvent.pay());
       },
       onPaymentError: (params) {
-        setState(() {
-          // responseCode = 'Error';
-        });
+        
+        Logger().i("Đã xảy ra lỗi thanh toán. Vui lòng thử lại!");
       },
     );
     }

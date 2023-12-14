@@ -8,6 +8,7 @@ import 'package:go_app_client/helpers/map_info.dart';
 import 'package:go_app_client/helpers/share_prefereces.dart';
 import 'package:go_app_client/presentation/bloc/booking/booking_bloc.dart';
 import 'package:go_app_client/presentation/pages/home/complete_booking/booking_bottom_view.dart';
+import 'package:go_app_client/presentation/pages/home/complete_booking/sections/driver_location_marker.dart';
 import 'package:vietmap_flutter_gl/vietmap_flutter_gl.dart';
 
 class CompleteBookingPage extends StatefulWidget {
@@ -54,8 +55,15 @@ class _CompleteBookingPageState extends State<CompleteBookingPage> {
                                 polylineWidth: 5.0,
                                 polylineOpacity: 0.5));
                             _controller?.moveCamera(
-                                CameraUpdate.newLatLngBounds(state.path!.focus ?? LatLngBounds(southwest: const LatLng(0, 0), northeast: const LatLng(0, 0)),
-                                    left: 50, right: 50, bottom: 150));
+                                CameraUpdate.newLatLngBounds(
+                                    state.path!.focus ??
+                                        LatLngBounds(
+                                            southwest: const LatLng(0, 0),
+                                            northeast: const LatLng(0, 0)),
+                                    left: 50,
+                                    right: 50,
+                                    bottom: 150));
+                           
                           },
                           myLocationEnabled: true,
                           minMaxZoomPreference:
@@ -83,7 +91,8 @@ class _CompleteBookingPageState extends State<CompleteBookingPage> {
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 20, vertical: 10),
                                 child: Text(
                                   "${MapInfo.getDistance(state.path!.distance)}km, ${MapInfo.getTravelTime(state.path!.time)} phút",
                                   style: Styles.titleCardText,
@@ -127,6 +136,7 @@ class _CompleteBookingPageState extends State<CompleteBookingPage> {
                                         const LatLng(0, 0))
                               ],
                               mapController: _controller!),
+                          DriverLocationMarker(controller: _controller!),
                           const Positioned(
                             bottom: 0,
                             child: BookingBottomView(),
