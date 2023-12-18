@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:go_app_client/presentation/pages/home/booking_rating/booking_review.dart';
+import 'package:go_app_client/presentation/pages/home/booking_detail/booking_detail_page.dart';
+import 'package:go_app_client/presentation/pages/home/booking_review/booking_review.dart';
+import 'package:go_app_client/presentation/pages/home/cancel_booking/cancel_booking_page.dart';
 import 'package:go_app_client/presentation/pages/home/chat/chat_page.dart';
 import 'package:go_app_client/presentation/pages/home/complete_booking/complete_booking_page.dart';
 import 'package:go_app_client/presentation/pages/home/driver_profile/driver_profile_page.dart';
@@ -22,7 +24,9 @@ class Paths {
   static const String completeBooking = "completebooking";
   static const String chat = "completebooking/chat";
   static const String driverInfo = "completebooking/driverinfo";
+  static const String bookingDetail = "/detail";
   static const String review = "review";
+  static const String cancelBooking = '/cancel';
 }
 
 class AppNavigator {
@@ -48,6 +52,10 @@ class AppNavigator {
         return _materialRoute(const DriverProfilePage(), settings);
       case Paths.review:
         return _materialRoute(const BookingReviewPage(), settings);
+      case Paths.bookingDetail:
+        return _materialRoute(const BookingDetailPage(), settings);
+      case Paths.cancelBooking:
+        return _materialRoute(const CancelBookingPage(), settings);
       default:
         return _materialRoute(const LoginPage(), settings);
     }

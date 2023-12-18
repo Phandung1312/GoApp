@@ -5,6 +5,7 @@ import 'package:go_app_client/config/images.dart';
 import 'package:go_app_client/config/routes/routes.dart';
 import 'package:go_app_client/domain/entities/enum/account_status.dart';
 import 'package:go_app_client/presentation/bloc/login/login_bloc.dart';
+import 'package:toast/toast.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -57,6 +58,11 @@ class LoginPage extends StatelessWidget {
               default:
                 break;
             }
+          }
+           if(state is LoginFailure){
+              Navigator.of(context).pop();
+                 Toast.show("Đã có lỗi xảy ra, xin vui lòng thử lại",
+              duration: Toast.lengthShort, gravity: Toast.bottom);
           }
         },
         child: SafeArea(

@@ -31,5 +31,9 @@ class BookingEvent with _$BookingEvent {
 
   const factory BookingEvent.loadDriverInfo({required int driverId}) = BookingLoadDriverInfo;
   const factory BookingEvent.changeStatus({required BookingStatus bookingStatus}) = BookingChangeStatus;
+  const factory BookingEvent.loadBookingData({required Booking booking}) = BookingLoadBookingData;
+
+  const factory BookingEvent.changeDriverLocation({required DriverLocation driverLocation}) = BookingChangeDriverLocation;
+  const factory BookingEvent.cancel({required BookingCancelRequest request}) = BookingCancel;
 
 }

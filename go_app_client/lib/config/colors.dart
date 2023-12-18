@@ -14,7 +14,7 @@ class AppColors {
   static const Color backgroundInputLocation = Color.fromARGB(255, 220, 215, 215);
   static const Color buttonInActiveText = Color.fromARGB(255, 98, 98, 99);
   static const Color buttonActiveText = Color.fromARGB(255, 255, 255, 255);
-  static const Color buttonVihecleType = Color.fromARGB(255, 236, 232, 232);
+  static const Color buttonVihecleType = Color.fromARGB(255, 244, 239, 239);
   static const Color backgroundInactiveButton = Color(0xFFE2E2E2);
   static const Color whiteShadow = Color.fromARGB(255, 248, 248, 248);
   static const Color itemCardSelected = Color.fromARGB(255, 241, 241, 241);

@@ -16,6 +16,7 @@ enum BookingStatus{
   paid,
   found,
   onRide,
+  arrrivedPickup,
   cancelled,
   refunded,
   wattingRefund,

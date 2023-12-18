@@ -12,6 +12,6 @@ class DriverLocationUpdatedVehicleType extends DriverLocationState{
   DriverLocationUpdatedVehicleType({required VehicleType vehicleType}) : super(vehicleType: vehicleType);
 }
 class DriverLocationUpdated extends DriverLocationState{
-  LatLng location;
-  DriverLocationUpdated({required this.location, required DriverLocationState state}) : super(vehicleType: state.vehicleType) ;
+  DriverLocation driverLocation;
+  DriverLocationUpdated({required this.driverLocation, required DriverLocationState state}) : super(vehicleType: state.vehicleType) ;
 }

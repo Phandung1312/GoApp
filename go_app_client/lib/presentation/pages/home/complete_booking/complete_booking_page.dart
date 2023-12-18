@@ -4,11 +4,13 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:go_app_client/config/colors.dart';
 import 'package:go_app_client/config/images.dart';
 import 'package:go_app_client/config/styles.dart';
+import 'package:go_app_client/domain/entities/enum/enum.dart';
 import 'package:go_app_client/helpers/map_info.dart';
 import 'package:go_app_client/helpers/share_prefereces.dart';
 import 'package:go_app_client/presentation/bloc/booking/booking_bloc.dart';
 import 'package:go_app_client/presentation/pages/home/complete_booking/booking_bottom_view.dart';
 import 'package:go_app_client/presentation/pages/home/complete_booking/sections/driver_location_marker.dart';
+import 'package:go_app_client/presentation/widgets/loading_overlay.dart';
 import 'package:vietmap_flutter_gl/vietmap_flutter_gl.dart';
 
 class CompleteBookingPage extends StatefulWidget {
@@ -21,6 +23,9 @@ class CompleteBookingPage extends StatefulWidget {
 class _CompleteBookingPageState extends State<CompleteBookingPage> {
   VietmapController? _controller;
   late CameraPosition _initialCameraPosition;
+  Line? bookingLine;
+  Line? driverLine;
+
   @override
   void initState() {
     super.initState();
@@ -31,12 +36,48 @@ class _CompleteBookingPageState extends State<CompleteBookingPage> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<BookingBloc, BookingState>(
-        listener: (context, state) {},
-        buildWhen: (previous, current) => current is BookingGetDirectionSuccess,
+        listener: (context, state) {
+          if (state is BookingDriverRouteUpdated) {
+            _controller?.clearLines();
+            _controller?.addPolyline(PolylineOptions(
+                geometry: state.driverRoute,
+                polylineColor: Colors.blue,
+                polylineWidth: 5.0,
+                polylineOpacity: 0.5));
+            return;
+          }
+          if (state is BookingStatusUpdated) {
+            if (state.booking?.status == BookingStatus.onRide) {
+              _controller?.clearLines();
+              _controller?.addPolyline(PolylineOptions(
+                  geometry: state.path!.points,
+                  polylineColor: AppColors.primaryGreen,
+                  polylineWidth: 5.0,
+                  polylineOpacity: 0.5));
+              _controller?.animateCamera(CameraUpdate.newLatLngBounds(
+                  state.path!.focus ??
+                      LatLngBounds(
+                          southwest: const LatLng(0, 0),
+                          northeast: const LatLng(0, 0)),
+                  left: 50,
+                  right: 50,
+                  bottom: 150));
+              return;
+            }
+          }
+        },
+        buildWhen: (previous, current) =>
+            current is BookingGetDirectionSuccess ||
+            current is BookingLoadingData ||
+            current is BookingLoadDataSuccess ||
+            current is BookingFoundingDriver,
         builder: (context, state) => SafeArea(
                 child: Scaffold(
-              body: state is BookingGetDirectionSuccess
-                  ? Stack(
+              body: state is BookingLoadingData
+                  ? const Center(
+                      child: spinKitWave,
+                    )
+                  : Stack(
                       alignment: Alignment.center,
                       children: [
                         VietmapGL(
@@ -49,12 +90,17 @@ class _CompleteBookingPageState extends State<CompleteBookingPage> {
                             });
                           },
                           onMapRenderedCallback: () {
+                            if (state is BookingLoadDriverSuccess ||
+                                state is BookingLoadDataSuccess) {
+                              _controller?.clearLines();
+                              return;
+                            }
                             _controller?.addPolyline(PolylineOptions(
                                 geometry: state.path!.points,
                                 polylineColor: AppColors.primaryGreen,
                                 polylineWidth: 5.0,
                                 polylineOpacity: 0.5));
-                            _controller?.moveCamera(
+                            _controller?.animateCamera(
                                 CameraUpdate.newLatLngBounds(
                                     state.path!.focus ??
                                         LatLngBounds(
@@ -63,7 +109,6 @@ class _CompleteBookingPageState extends State<CompleteBookingPage> {
                                     left: 50,
                                     right: 50,
                                     bottom: 150));
-                           
                           },
                           myLocationEnabled: true,
                           minMaxZoomPreference:
@@ -143,8 +188,7 @@ class _CompleteBookingPageState extends State<CompleteBookingPage> {
                           )
                         ]
                       ],
-                    )
-                  : Container(),
+                    ),
             )));
   }
 }

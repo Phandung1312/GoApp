@@ -400,6 +400,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.4.0"
+  fluttertoast:
+    dependency: "direct main"
+    description:
+      name: fluttertoast
+      sha256: dfdde255317af381bfc1c486ed968d5a43a2ded9c931e87cbecd88767d6a71c1
+      url: "https://pub.dev"
+    source: hosted
+    version: "8.2.4"
   freezed:
     dependency: "direct dev"
     description:
@@ -1257,18 +1265,18 @@ packages:
     dependency: "direct main"
     description:
       name: vietmap_flutter_gl
-      sha256: "04b63761883ed1ee156c49f9bedee14cef9a5c3c4ba406e58640b7341010b987"
+      sha256: e905762e358b7dbbe9c71457b5ddbbdb6608007d5ad33319e3124d5869f4298b
       url: "https://pub.dev"
     source: hosted
-    version: "1.3.1"
+    version: "1.3.3"
   vietmap_gl_platform_interface:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: vietmap_gl_platform_interface
-      sha256: "394b5bf3bafe4a766ce2c82ac9601c2b48f3847bfe46c79733bc8fda64530220"
+      sha256: e9bc6b0d85bb6c55fabf62f97e2b41fc1172a51e56b4feda702fd84d4797fdca
       url: "https://pub.dev"
     source: hosted
-    version: "0.1.0"
+    version: "0.1.3"
   watcher:
     dependency: transitive
     description:

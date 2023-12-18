@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_app_client/domain/entities/driver_location.dart';
 import 'package:go_app_client/domain/entities/enum/enum.dart';
 import 'package:go_app_client/presentation/bloc/socket/socket_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:vietmap_flutter_gl/vietmap_flutter_gl.dart';
 
 part 'driver_location_state.dart';
 
@@ -14,8 +14,8 @@ class DriverLocationCubit extends Cubit<DriverLocationState> {
   StreamSubscription? socketSubscription;
   DriverLocationCubit(this.socketBloc) : super(DriverLocationInitial()) {
     socketSubscription = socketBloc.stream.listen((socketState) {
-      socketState.whenOrNull(receivedDriverLocation: (location) {
-        emit(DriverLocationUpdated(location: location, state: state));
+      socketState.whenOrNull(receivedDriverLocation: (driverLocation) {
+        emit(DriverLocationUpdated(driverLocation: driverLocation, state: state));
       });
     });
   }

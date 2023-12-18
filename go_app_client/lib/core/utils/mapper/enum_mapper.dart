@@ -49,6 +49,8 @@ class BookingStatusConverter implements JsonConverter<BookingStatus, String> {
         return BookingStatus.paid;
       case 'FOUND':
         return BookingStatus.found;
+      case 'ARRIVED_PICKUP':
+        return BookingStatus.arrrivedPickup;
       case 'ON_RIDE':
         return BookingStatus.onRide;
       case 'COMPLETE':
@@ -71,6 +73,8 @@ class BookingStatusConverter implements JsonConverter<BookingStatus, String> {
         return 'WAITING';
       case BookingStatus.found:
         return 'FOUND';
+      case BookingStatus.arrrivedPickup:
+        return 'ARRIVED_PICKUP';
       case BookingStatus.onRide:
         return 'ON_RIDE';
       case BookingStatus.complete:

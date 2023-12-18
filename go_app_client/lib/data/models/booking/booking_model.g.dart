@@ -10,13 +10,17 @@ _$BookingModelImpl _$$BookingModelImplFromJson(Map<String, dynamic> json) =>
     _$BookingModelImpl(
       id: json['id'] as int,
       createAt: json['createAt'] as num?,
-      pickupLocaton: json['pickupLocaton'] as String?,
+      pickUpLocation: json['pickUpLocation'] as String?,
+      pickUpAddress: json['pickUpAddress'] as String?,
       dropOffLocation: json['dropOffLocation'] as String?,
+      dropOffAddress: json['dropOffAddress'] as String?,
       status: _$JsonConverterFromJson<String, BookingStatus>(
           json['status'], const BookingStatusConverter().fromJson),
       distance: (json['distance'] as num?)?.toDouble(),
+      driverId: json['driverId'] as int?,
       amount: (json['amount'] as num?)?.toDouble(),
       predictTime: json['predictTime'] as num?,
+      paymentMethod: json['paymentMethod'] as String?,
       vehicleType: _$JsonConverterFromJson<String, VehicleType>(
           json['vehicleType'], const VehicleTypeConverter().fromJson),
     );
@@ -25,13 +29,17 @@ Map<String, dynamic> _$$BookingModelImplToJson(_$BookingModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'createAt': instance.createAt,
-      'pickupLocaton': instance.pickupLocaton,
+      'pickUpLocation': instance.pickUpLocation,
+      'pickUpAddress': instance.pickUpAddress,
       'dropOffLocation': instance.dropOffLocation,
+      'dropOffAddress': instance.dropOffAddress,
       'status': _$JsonConverterToJson<String, BookingStatus>(
           instance.status, const BookingStatusConverter().toJson),
       'distance': instance.distance,
+      'driverId': instance.driverId,
       'amount': instance.amount,
       'predictTime': instance.predictTime,
+      'paymentMethod': instance.paymentMethod,
       'vehicleType': _$JsonConverterToJson<String, VehicleType>(
           instance.vehicleType, const VehicleTypeConverter().toJson),
     };

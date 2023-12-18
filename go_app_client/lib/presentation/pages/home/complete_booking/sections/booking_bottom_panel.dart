@@ -21,7 +21,9 @@ class _BookingBottomPanelState extends State<BookingBottomPanel> {
       buildWhen: (previous, current) =>
           current is BookingGetDirectionSuccess ||
           current is BookingVisiblePayment ||
-          current is BookingFoundingDriver,
+          current is BookingFoundingDriver || 
+          current is BookingLoadDriverSuccess||
+          current is BookingLoadDataSuccess,
       builder: (context, state) {
         if (state is BookingGetDirectionSuccess) {
           return Column(
@@ -79,7 +81,7 @@ class _BookingBottomPanelState extends State<BookingBottomPanel> {
                       ?.toInt() ??
                   0);
         }
-        if (state is BookingFoundingDriver) {
+        if (state is BookingFoundingDriver || state is BookingLoadDataSuccess || state is BookingLoadDriverSuccess) {
           return const DriverInfoCard();
         }
         return Container();

@@ -23,7 +23,8 @@ mixin _$SocketEvent {
     required TResult Function() listenBooking,
     required TResult Function(BookingStatus status) sendBookingStatus,
     required TResult Function(int driverId) broadCastDriverInfo,
-    required TResult Function(LatLng location) broadCastDriverLocation,
+    required TResult Function(DriverLocation driverLocation)
+        broadCastDriverLocation,
     required TResult Function(Message message) broadCastMessage,
   }) =>
       throw _privateConstructorUsedError;
@@ -34,7 +35,7 @@ mixin _$SocketEvent {
     TResult? Function()? listenBooking,
     TResult? Function(BookingStatus status)? sendBookingStatus,
     TResult? Function(int driverId)? broadCastDriverInfo,
-    TResult? Function(LatLng location)? broadCastDriverLocation,
+    TResult? Function(DriverLocation driverLocation)? broadCastDriverLocation,
     TResult? Function(Message message)? broadCastMessage,
   }) =>
       throw _privateConstructorUsedError;
@@ -45,7 +46,7 @@ mixin _$SocketEvent {
     TResult Function()? listenBooking,
     TResult Function(BookingStatus status)? sendBookingStatus,
     TResult Function(int driverId)? broadCastDriverInfo,
-    TResult Function(LatLng location)? broadCastDriverLocation,
+    TResult Function(DriverLocation driverLocation)? broadCastDriverLocation,
     TResult Function(Message message)? broadCastMessage,
     required TResult orElse(),
   }) =>
@@ -151,7 +152,8 @@ class _$SocketConnectImpl implements _SocketConnect {
     required TResult Function() listenBooking,
     required TResult Function(BookingStatus status) sendBookingStatus,
     required TResult Function(int driverId) broadCastDriverInfo,
-    required TResult Function(LatLng location) broadCastDriverLocation,
+    required TResult Function(DriverLocation driverLocation)
+        broadCastDriverLocation,
     required TResult Function(Message message) broadCastMessage,
   }) {
     return connect();
@@ -165,7 +167,7 @@ class _$SocketConnectImpl implements _SocketConnect {
     TResult? Function()? listenBooking,
     TResult? Function(BookingStatus status)? sendBookingStatus,
     TResult? Function(int driverId)? broadCastDriverInfo,
-    TResult? Function(LatLng location)? broadCastDriverLocation,
+    TResult? Function(DriverLocation driverLocation)? broadCastDriverLocation,
     TResult? Function(Message message)? broadCastMessage,
   }) {
     return connect?.call();
@@ -179,7 +181,7 @@ class _$SocketConnectImpl implements _SocketConnect {
     TResult Function()? listenBooking,
     TResult Function(BookingStatus status)? sendBookingStatus,
     TResult Function(int driverId)? broadCastDriverInfo,
-    TResult Function(LatLng location)? broadCastDriverLocation,
+    TResult Function(DriverLocation driverLocation)? broadCastDriverLocation,
     TResult Function(Message message)? broadCastMessage,
     required TResult orElse(),
   }) {
@@ -288,7 +290,8 @@ class _$SocketListenMessageImpl implements _SocketListenMessage {
     required TResult Function() listenBooking,
     required TResult Function(BookingStatus status) sendBookingStatus,
     required TResult Function(int driverId) broadCastDriverInfo,
-    required TResult Function(LatLng location) broadCastDriverLocation,
+    required TResult Function(DriverLocation driverLocation)
+        broadCastDriverLocation,
     required TResult Function(Message message) broadCastMessage,
   }) {
     return listenMessage();
@@ -302,7 +305,7 @@ class _$SocketListenMessageImpl implements _SocketListenMessage {
     TResult? Function()? listenBooking,
     TResult? Function(BookingStatus status)? sendBookingStatus,
     TResult? Function(int driverId)? broadCastDriverInfo,
-    TResult? Function(LatLng location)? broadCastDriverLocation,
+    TResult? Function(DriverLocation driverLocation)? broadCastDriverLocation,
     TResult? Function(Message message)? broadCastMessage,
   }) {
     return listenMessage?.call();
@@ -316,7 +319,7 @@ class _$SocketListenMessageImpl implements _SocketListenMessage {
     TResult Function()? listenBooking,
     TResult Function(BookingStatus status)? sendBookingStatus,
     TResult Function(int driverId)? broadCastDriverInfo,
-    TResult Function(LatLng location)? broadCastDriverLocation,
+    TResult Function(DriverLocation driverLocation)? broadCastDriverLocation,
     TResult Function(Message message)? broadCastMessage,
     required TResult orElse(),
   }) {
@@ -425,7 +428,8 @@ class _$SocketListenBookingImpl implements _SocketListenBooking {
     required TResult Function() listenBooking,
     required TResult Function(BookingStatus status) sendBookingStatus,
     required TResult Function(int driverId) broadCastDriverInfo,
-    required TResult Function(LatLng location) broadCastDriverLocation,
+    required TResult Function(DriverLocation driverLocation)
+        broadCastDriverLocation,
     required TResult Function(Message message) broadCastMessage,
   }) {
     return listenBooking();
@@ -439,7 +443,7 @@ class _$SocketListenBookingImpl implements _SocketListenBooking {
     TResult? Function()? listenBooking,
     TResult? Function(BookingStatus status)? sendBookingStatus,
     TResult? Function(int driverId)? broadCastDriverInfo,
-    TResult? Function(LatLng location)? broadCastDriverLocation,
+    TResult? Function(DriverLocation driverLocation)? broadCastDriverLocation,
     TResult? Function(Message message)? broadCastMessage,
   }) {
     return listenBooking?.call();
@@ -453,7 +457,7 @@ class _$SocketListenBookingImpl implements _SocketListenBooking {
     TResult Function()? listenBooking,
     TResult Function(BookingStatus status)? sendBookingStatus,
     TResult Function(int driverId)? broadCastDriverInfo,
-    TResult Function(LatLng location)? broadCastDriverLocation,
+    TResult Function(DriverLocation driverLocation)? broadCastDriverLocation,
     TResult Function(Message message)? broadCastMessage,
     required TResult orElse(),
   }) {
@@ -590,7 +594,8 @@ class _$SocketSendBookingStatusImpl implements SocketSendBookingStatus {
     required TResult Function() listenBooking,
     required TResult Function(BookingStatus status) sendBookingStatus,
     required TResult Function(int driverId) broadCastDriverInfo,
-    required TResult Function(LatLng location) broadCastDriverLocation,
+    required TResult Function(DriverLocation driverLocation)
+        broadCastDriverLocation,
     required TResult Function(Message message) broadCastMessage,
   }) {
     return sendBookingStatus(status);
@@ -604,7 +609,7 @@ class _$SocketSendBookingStatusImpl implements SocketSendBookingStatus {
     TResult? Function()? listenBooking,
     TResult? Function(BookingStatus status)? sendBookingStatus,
     TResult? Function(int driverId)? broadCastDriverInfo,
-    TResult? Function(LatLng location)? broadCastDriverLocation,
+    TResult? Function(DriverLocation driverLocation)? broadCastDriverLocation,
     TResult? Function(Message message)? broadCastMessage,
   }) {
     return sendBookingStatus?.call(status);
@@ -618,7 +623,7 @@ class _$SocketSendBookingStatusImpl implements SocketSendBookingStatus {
     TResult Function()? listenBooking,
     TResult Function(BookingStatus status)? sendBookingStatus,
     TResult Function(int driverId)? broadCastDriverInfo,
-    TResult Function(LatLng location)? broadCastDriverLocation,
+    TResult Function(DriverLocation driverLocation)? broadCastDriverLocation,
     TResult Function(Message message)? broadCastMessage,
     required TResult orElse(),
   }) {
@@ -762,7 +767,8 @@ class _$SocketBroadCastDriverInfoImpl implements SocketBroadCastDriverInfo {
     required TResult Function() listenBooking,
     required TResult Function(BookingStatus status) sendBookingStatus,
     required TResult Function(int driverId) broadCastDriverInfo,
-    required TResult Function(LatLng location) broadCastDriverLocation,
+    required TResult Function(DriverLocation driverLocation)
+        broadCastDriverLocation,
     required TResult Function(Message message) broadCastMessage,
   }) {
     return broadCastDriverInfo(driverId);
@@ -776,7 +782,7 @@ class _$SocketBroadCastDriverInfoImpl implements SocketBroadCastDriverInfo {
     TResult? Function()? listenBooking,
     TResult? Function(BookingStatus status)? sendBookingStatus,
     TResult? Function(int driverId)? broadCastDriverInfo,
-    TResult? Function(LatLng location)? broadCastDriverLocation,
+    TResult? Function(DriverLocation driverLocation)? broadCastDriverLocation,
     TResult? Function(Message message)? broadCastMessage,
   }) {
     return broadCastDriverInfo?.call(driverId);
@@ -790,7 +796,7 @@ class _$SocketBroadCastDriverInfoImpl implements SocketBroadCastDriverInfo {
     TResult Function()? listenBooking,
     TResult Function(BookingStatus status)? sendBookingStatus,
     TResult Function(int driverId)? broadCastDriverInfo,
-    TResult Function(LatLng location)? broadCastDriverLocation,
+    TResult Function(DriverLocation driverLocation)? broadCastDriverLocation,
     TResult Function(Message message)? broadCastMessage,
     required TResult orElse(),
   }) {
@@ -868,7 +874,9 @@ abstract class _$$SocketBroadCastDriverLocationImplCopyWith<$Res> {
           $Res Function(_$SocketBroadCastDriverLocationImpl) then) =
       __$$SocketBroadCastDriverLocationImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({LatLng location});
+  $Res call({DriverLocation driverLocation});
+
+  $DriverLocationCopyWith<$Res> get driverLocation;
 }
 
 /// @nodoc
@@ -883,14 +891,22 @@ class __$$SocketBroadCastDriverLocationImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? location = null,
+    Object? driverLocation = null,
   }) {
     return _then(_$SocketBroadCastDriverLocationImpl(
-      location: null == location
-          ? _value.location
-          : location // ignore: cast_nullable_to_non_nullable
-              as LatLng,
+      driverLocation: null == driverLocation
+          ? _value.driverLocation
+          : driverLocation // ignore: cast_nullable_to_non_nullable
+              as DriverLocation,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DriverLocationCopyWith<$Res> get driverLocation {
+    return $DriverLocationCopyWith<$Res>(_value.driverLocation, (value) {
+      return _then(_value.copyWith(driverLocation: value));
+    });
   }
 }
 
@@ -898,14 +914,14 @@ class __$$SocketBroadCastDriverLocationImplCopyWithImpl<$Res>
 
 class _$SocketBroadCastDriverLocationImpl
     implements SocketBroadCastDriverLocation {
-  const _$SocketBroadCastDriverLocationImpl({required this.location});
+  const _$SocketBroadCastDriverLocationImpl({required this.driverLocation});
 
   @override
-  final LatLng location;
+  final DriverLocation driverLocation;
 
   @override
   String toString() {
-    return 'SocketEvent.broadCastDriverLocation(location: $location)';
+    return 'SocketEvent.broadCastDriverLocation(driverLocation: $driverLocation)';
   }
 
   @override
@@ -913,12 +929,12 @@ class _$SocketBroadCastDriverLocationImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SocketBroadCastDriverLocationImpl &&
-            (identical(other.location, location) ||
-                other.location == location));
+            (identical(other.driverLocation, driverLocation) ||
+                other.driverLocation == driverLocation));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, location);
+  int get hashCode => Object.hash(runtimeType, driverLocation);
 
   @JsonKey(ignore: true)
   @override
@@ -936,10 +952,11 @@ class _$SocketBroadCastDriverLocationImpl
     required TResult Function() listenBooking,
     required TResult Function(BookingStatus status) sendBookingStatus,
     required TResult Function(int driverId) broadCastDriverInfo,
-    required TResult Function(LatLng location) broadCastDriverLocation,
+    required TResult Function(DriverLocation driverLocation)
+        broadCastDriverLocation,
     required TResult Function(Message message) broadCastMessage,
   }) {
-    return broadCastDriverLocation(location);
+    return broadCastDriverLocation(driverLocation);
   }
 
   @override
@@ -950,10 +967,10 @@ class _$SocketBroadCastDriverLocationImpl
     TResult? Function()? listenBooking,
     TResult? Function(BookingStatus status)? sendBookingStatus,
     TResult? Function(int driverId)? broadCastDriverInfo,
-    TResult? Function(LatLng location)? broadCastDriverLocation,
+    TResult? Function(DriverLocation driverLocation)? broadCastDriverLocation,
     TResult? Function(Message message)? broadCastMessage,
   }) {
-    return broadCastDriverLocation?.call(location);
+    return broadCastDriverLocation?.call(driverLocation);
   }
 
   @override
@@ -964,12 +981,12 @@ class _$SocketBroadCastDriverLocationImpl
     TResult Function()? listenBooking,
     TResult Function(BookingStatus status)? sendBookingStatus,
     TResult Function(int driverId)? broadCastDriverInfo,
-    TResult Function(LatLng location)? broadCastDriverLocation,
+    TResult Function(DriverLocation driverLocation)? broadCastDriverLocation,
     TResult Function(Message message)? broadCastMessage,
     required TResult orElse(),
   }) {
     if (broadCastDriverLocation != null) {
-      return broadCastDriverLocation(location);
+      return broadCastDriverLocation(driverLocation);
     }
     return orElse();
   }
@@ -1027,9 +1044,10 @@ class _$SocketBroadCastDriverLocationImpl
 
 abstract class SocketBroadCastDriverLocation implements SocketEvent {
   const factory SocketBroadCastDriverLocation(
-      {required final LatLng location}) = _$SocketBroadCastDriverLocationImpl;
+          {required final DriverLocation driverLocation}) =
+      _$SocketBroadCastDriverLocationImpl;
 
-  LatLng get location;
+  DriverLocation get driverLocation;
   @JsonKey(ignore: true)
   _$$SocketBroadCastDriverLocationImplCopyWith<
           _$SocketBroadCastDriverLocationImpl>
@@ -1118,7 +1136,8 @@ class _$SocketBroadCastMessageImpl implements _SocketBroadCastMessage {
     required TResult Function() listenBooking,
     required TResult Function(BookingStatus status) sendBookingStatus,
     required TResult Function(int driverId) broadCastDriverInfo,
-    required TResult Function(LatLng location) broadCastDriverLocation,
+    required TResult Function(DriverLocation driverLocation)
+        broadCastDriverLocation,
     required TResult Function(Message message) broadCastMessage,
   }) {
     return broadCastMessage(message);
@@ -1132,7 +1151,7 @@ class _$SocketBroadCastMessageImpl implements _SocketBroadCastMessage {
     TResult? Function()? listenBooking,
     TResult? Function(BookingStatus status)? sendBookingStatus,
     TResult? Function(int driverId)? broadCastDriverInfo,
-    TResult? Function(LatLng location)? broadCastDriverLocation,
+    TResult? Function(DriverLocation driverLocation)? broadCastDriverLocation,
     TResult? Function(Message message)? broadCastMessage,
   }) {
     return broadCastMessage?.call(message);
@@ -1146,7 +1165,7 @@ class _$SocketBroadCastMessageImpl implements _SocketBroadCastMessage {
     TResult Function()? listenBooking,
     TResult Function(BookingStatus status)? sendBookingStatus,
     TResult Function(int driverId)? broadCastDriverInfo,
-    TResult Function(LatLng location)? broadCastDriverLocation,
+    TResult Function(DriverLocation driverLocation)? broadCastDriverLocation,
     TResult Function(Message message)? broadCastMessage,
     required TResult orElse(),
   }) {
@@ -1223,7 +1242,8 @@ mixin _$SocketState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(Message message) receivedMessage,
-    required TResult Function(LatLng latLng) receivedDriverLocation,
+    required TResult Function(DriverLocation driverLocation)
+        receivedDriverLocation,
     required TResult Function(BookingStatus bookingStatus)
         receivedBookingStatus,
     required TResult Function(int driverId) receivedDriverInfo,
@@ -1233,7 +1253,7 @@ mixin _$SocketState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(Message message)? receivedMessage,
-    TResult? Function(LatLng latLng)? receivedDriverLocation,
+    TResult? Function(DriverLocation driverLocation)? receivedDriverLocation,
     TResult? Function(BookingStatus bookingStatus)? receivedBookingStatus,
     TResult? Function(int driverId)? receivedDriverInfo,
   }) =>
@@ -1242,7 +1262,7 @@ mixin _$SocketState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(Message message)? receivedMessage,
-    TResult Function(LatLng latLng)? receivedDriverLocation,
+    TResult Function(DriverLocation driverLocation)? receivedDriverLocation,
     TResult Function(BookingStatus bookingStatus)? receivedBookingStatus,
     TResult Function(int driverId)? receivedDriverInfo,
     required TResult orElse(),
@@ -1341,7 +1361,8 @@ class _$SocketInitialImpl implements SocketInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(Message message) receivedMessage,
-    required TResult Function(LatLng latLng) receivedDriverLocation,
+    required TResult Function(DriverLocation driverLocation)
+        receivedDriverLocation,
     required TResult Function(BookingStatus bookingStatus)
         receivedBookingStatus,
     required TResult Function(int driverId) receivedDriverInfo,
@@ -1354,7 +1375,7 @@ class _$SocketInitialImpl implements SocketInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(Message message)? receivedMessage,
-    TResult? Function(LatLng latLng)? receivedDriverLocation,
+    TResult? Function(DriverLocation driverLocation)? receivedDriverLocation,
     TResult? Function(BookingStatus bookingStatus)? receivedBookingStatus,
     TResult? Function(int driverId)? receivedDriverInfo,
   }) {
@@ -1366,7 +1387,7 @@ class _$SocketInitialImpl implements SocketInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(Message message)? receivedMessage,
-    TResult Function(LatLng latLng)? receivedDriverLocation,
+    TResult Function(DriverLocation driverLocation)? receivedDriverLocation,
     TResult Function(BookingStatus bookingStatus)? receivedBookingStatus,
     TResult Function(int driverId)? receivedDriverInfo,
     required TResult orElse(),
@@ -1505,7 +1526,8 @@ class _$SocketReceivedMessageImpl implements SocketReceivedMessage {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(Message message) receivedMessage,
-    required TResult Function(LatLng latLng) receivedDriverLocation,
+    required TResult Function(DriverLocation driverLocation)
+        receivedDriverLocation,
     required TResult Function(BookingStatus bookingStatus)
         receivedBookingStatus,
     required TResult Function(int driverId) receivedDriverInfo,
@@ -1518,7 +1540,7 @@ class _$SocketReceivedMessageImpl implements SocketReceivedMessage {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(Message message)? receivedMessage,
-    TResult? Function(LatLng latLng)? receivedDriverLocation,
+    TResult? Function(DriverLocation driverLocation)? receivedDriverLocation,
     TResult? Function(BookingStatus bookingStatus)? receivedBookingStatus,
     TResult? Function(int driverId)? receivedDriverInfo,
   }) {
@@ -1530,7 +1552,7 @@ class _$SocketReceivedMessageImpl implements SocketReceivedMessage {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(Message message)? receivedMessage,
-    TResult Function(LatLng latLng)? receivedDriverLocation,
+    TResult Function(DriverLocation driverLocation)? receivedDriverLocation,
     TResult Function(BookingStatus bookingStatus)? receivedBookingStatus,
     TResult Function(int driverId)? receivedDriverInfo,
     required TResult orElse(),
@@ -1604,7 +1626,9 @@ abstract class _$$SocketReceivedDriverLocationImplCopyWith<$Res> {
           $Res Function(_$SocketReceivedDriverLocationImpl) then) =
       __$$SocketReceivedDriverLocationImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({LatLng latLng});
+  $Res call({DriverLocation driverLocation});
+
+  $DriverLocationCopyWith<$Res> get driverLocation;
 }
 
 /// @nodoc
@@ -1619,14 +1643,22 @@ class __$$SocketReceivedDriverLocationImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? latLng = null,
+    Object? driverLocation = null,
   }) {
     return _then(_$SocketReceivedDriverLocationImpl(
-      latLng: null == latLng
-          ? _value.latLng
-          : latLng // ignore: cast_nullable_to_non_nullable
-              as LatLng,
+      driverLocation: null == driverLocation
+          ? _value.driverLocation
+          : driverLocation // ignore: cast_nullable_to_non_nullable
+              as DriverLocation,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DriverLocationCopyWith<$Res> get driverLocation {
+    return $DriverLocationCopyWith<$Res>(_value.driverLocation, (value) {
+      return _then(_value.copyWith(driverLocation: value));
+    });
   }
 }
 
@@ -1634,14 +1666,14 @@ class __$$SocketReceivedDriverLocationImplCopyWithImpl<$Res>
 
 class _$SocketReceivedDriverLocationImpl
     implements SocketReceivedDriverLocation {
-  const _$SocketReceivedDriverLocationImpl({required this.latLng});
+  const _$SocketReceivedDriverLocationImpl({required this.driverLocation});
 
   @override
-  final LatLng latLng;
+  final DriverLocation driverLocation;
 
   @override
   String toString() {
-    return 'SocketState.receivedDriverLocation(latLng: $latLng)';
+    return 'SocketState.receivedDriverLocation(driverLocation: $driverLocation)';
   }
 
   @override
@@ -1649,11 +1681,12 @@ class _$SocketReceivedDriverLocationImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SocketReceivedDriverLocationImpl &&
-            (identical(other.latLng, latLng) || other.latLng == latLng));
+            (identical(other.driverLocation, driverLocation) ||
+                other.driverLocation == driverLocation));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, latLng);
+  int get hashCode => Object.hash(runtimeType, driverLocation);
 
   @JsonKey(ignore: true)
   @override
@@ -1668,12 +1701,13 @@ class _$SocketReceivedDriverLocationImpl
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(Message message) receivedMessage,
-    required TResult Function(LatLng latLng) receivedDriverLocation,
+    required TResult Function(DriverLocation driverLocation)
+        receivedDriverLocation,
     required TResult Function(BookingStatus bookingStatus)
         receivedBookingStatus,
     required TResult Function(int driverId) receivedDriverInfo,
   }) {
-    return receivedDriverLocation(latLng);
+    return receivedDriverLocation(driverLocation);
   }
 
   @override
@@ -1681,11 +1715,11 @@ class _$SocketReceivedDriverLocationImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(Message message)? receivedMessage,
-    TResult? Function(LatLng latLng)? receivedDriverLocation,
+    TResult? Function(DriverLocation driverLocation)? receivedDriverLocation,
     TResult? Function(BookingStatus bookingStatus)? receivedBookingStatus,
     TResult? Function(int driverId)? receivedDriverInfo,
   }) {
-    return receivedDriverLocation?.call(latLng);
+    return receivedDriverLocation?.call(driverLocation);
   }
 
   @override
@@ -1693,13 +1727,13 @@ class _$SocketReceivedDriverLocationImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(Message message)? receivedMessage,
-    TResult Function(LatLng latLng)? receivedDriverLocation,
+    TResult Function(DriverLocation driverLocation)? receivedDriverLocation,
     TResult Function(BookingStatus bookingStatus)? receivedBookingStatus,
     TResult Function(int driverId)? receivedDriverInfo,
     required TResult orElse(),
   }) {
     if (receivedDriverLocation != null) {
-      return receivedDriverLocation(latLng);
+      return receivedDriverLocation(driverLocation);
     }
     return orElse();
   }
@@ -1751,10 +1785,11 @@ class _$SocketReceivedDriverLocationImpl
 }
 
 abstract class SocketReceivedDriverLocation implements SocketState {
-  const factory SocketReceivedDriverLocation({required final LatLng latLng}) =
+  const factory SocketReceivedDriverLocation(
+          {required final DriverLocation driverLocation}) =
       _$SocketReceivedDriverLocationImpl;
 
-  LatLng get latLng;
+  DriverLocation get driverLocation;
   @JsonKey(ignore: true)
   _$$SocketReceivedDriverLocationImplCopyWith<
           _$SocketReceivedDriverLocationImpl>
@@ -1831,7 +1866,8 @@ class _$SocketReceivedBookingStatusImpl implements SocketReceivedBookingStatus {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(Message message) receivedMessage,
-    required TResult Function(LatLng latLng) receivedDriverLocation,
+    required TResult Function(DriverLocation driverLocation)
+        receivedDriverLocation,
     required TResult Function(BookingStatus bookingStatus)
         receivedBookingStatus,
     required TResult Function(int driverId) receivedDriverInfo,
@@ -1844,7 +1880,7 @@ class _$SocketReceivedBookingStatusImpl implements SocketReceivedBookingStatus {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(Message message)? receivedMessage,
-    TResult? Function(LatLng latLng)? receivedDriverLocation,
+    TResult? Function(DriverLocation driverLocation)? receivedDriverLocation,
     TResult? Function(BookingStatus bookingStatus)? receivedBookingStatus,
     TResult? Function(int driverId)? receivedDriverInfo,
   }) {
@@ -1856,7 +1892,7 @@ class _$SocketReceivedBookingStatusImpl implements SocketReceivedBookingStatus {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(Message message)? receivedMessage,
-    TResult Function(LatLng latLng)? receivedDriverLocation,
+    TResult Function(DriverLocation driverLocation)? receivedDriverLocation,
     TResult Function(BookingStatus bookingStatus)? receivedBookingStatus,
     TResult Function(int driverId)? receivedDriverInfo,
     required TResult orElse(),
@@ -1994,7 +2030,8 @@ class _$SocketReceivedDriverInfoImpl implements SocketReceivedDriverInfo {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(Message message) receivedMessage,
-    required TResult Function(LatLng latLng) receivedDriverLocation,
+    required TResult Function(DriverLocation driverLocation)
+        receivedDriverLocation,
     required TResult Function(BookingStatus bookingStatus)
         receivedBookingStatus,
     required TResult Function(int driverId) receivedDriverInfo,
@@ -2007,7 +2044,7 @@ class _$SocketReceivedDriverInfoImpl implements SocketReceivedDriverInfo {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(Message message)? receivedMessage,
-    TResult? Function(LatLng latLng)? receivedDriverLocation,
+    TResult? Function(DriverLocation driverLocation)? receivedDriverLocation,
     TResult? Function(BookingStatus bookingStatus)? receivedBookingStatus,
     TResult? Function(int driverId)? receivedDriverInfo,
   }) {
@@ -2019,7 +2056,7 @@ class _$SocketReceivedDriverInfoImpl implements SocketReceivedDriverInfo {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(Message message)? receivedMessage,
-    TResult Function(LatLng latLng)? receivedDriverLocation,
+    TResult Function(DriverLocation driverLocation)? receivedDriverLocation,
     TResult Function(BookingStatus bookingStatus)? receivedBookingStatus,
     TResult Function(int driverId)? receivedDriverInfo,
     required TResult orElse(),

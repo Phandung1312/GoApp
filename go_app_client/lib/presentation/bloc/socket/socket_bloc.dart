@@ -4,16 +4,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:go_app_client/config/constants.dart';
 import 'package:go_app_client/core/utils/mapper/enum_mapper.dart';
+import 'package:go_app_client/data/models/booking/driver_location_model.dart';
 import 'package:go_app_client/data/models/chat/message_model.dart';
+import 'package:go_app_client/domain/entities/driver_location.dart';
 import 'package:go_app_client/domain/entities/enum/enum.dart';
 import 'package:go_app_client/domain/entities/message.dart';
-import 'package:go_app_client/extensions/latlng_extension.dart';
 import 'package:go_app_client/helpers/share_prefereces.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:stomp_dart_client/stomp.dart';
 import 'package:stomp_dart_client/stomp_config.dart';
-import 'package:vietmap_flutter_gl/vietmap_flutter_gl.dart';
 
 part 'socket_bloc.freezed.dart';
 part 'socket_event.dart';
@@ -58,7 +58,7 @@ class SocketBloc extends Bloc<SocketEvent, SocketState> {
     emit(SocketReceivedDriverInfo(driverId: event.driverId));
   }
    void _onBroadCastDriverLocation(SocketBroadCastDriverLocation event,Emitter<SocketState> emit) async{
-    emit(SocketReceivedDriverLocation(latLng: event.location));
+    emit(SocketReceivedDriverLocation(driverLocation: event.driverLocation));
   }
   void _sendBookingStatus(
       SocketSendBookingStatus event, Emitter<SocketState> emit) {
@@ -95,8 +95,9 @@ class SocketBloc extends Bloc<SocketEvent, SocketState> {
         destination: SocketUrlConstant.RECEIVE_DRIVER_LOCATION,
         callback: (frame) {
           Logger().i("Receive driver location = ${frame.body}");
-          var location  = (jsonDecode(frame.body!)['location'] as String).toLatLng();
-          add(SocketEvent.broadCastDriverLocation(location: location));
+          var driverLocation = DriverLocationModel.fromJson(
+              jsonDecode(frame.body!) as Map<String, dynamic>).maptoEntity();
+          add(SocketEvent.broadCastDriverLocation(driverLocation: driverLocation));
         });
   }
   void listenerMessage(

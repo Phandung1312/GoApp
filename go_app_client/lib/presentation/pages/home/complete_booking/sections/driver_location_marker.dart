@@ -20,14 +20,14 @@ class DriverLocationMarker extends StatelessWidget {
                   StaticMarker(
                       width: 50,
                       height: 50,
-                      bearing: 0,
+                      bearing: state.driverLocation.bearing,
                       child: Image(
                           image: state.vehicleType == VehicleType.motorcycle
                               ? AppImages.icTopViewMotorcycle
                               : AppImages.icTopViewCar,
                               fit: BoxFit.cover,
                               width: 50,),
-                      latLng: state.location),
+                      latLng: state.driverLocation.location),
                 ],
                 mapController: controller,
               )

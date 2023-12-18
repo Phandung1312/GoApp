@@ -23,6 +23,7 @@ class AccountRepositoryImpl implements AccountRepository {
     await result.fold((l) => null, (r) async {
       var idUser = r.data?.id ?? 0;
       await _prefs.setInt('idUser', idUser);
+      await _prefs.setBool("isLoggedIn", true);
     });
     return result.map((r) => r.data?.status ?? AccountStatus.unknown);
   }

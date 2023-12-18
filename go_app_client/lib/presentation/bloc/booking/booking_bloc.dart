@@ -7,10 +7,11 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:go_app_client/core/errors/failures.dart';
-import 'package:go_app_client/core/inject/injection.dart';
+import 'package:go_app_client/data/models/booking/booking_cancel_request.dart';
 import 'package:go_app_client/data/models/booking/booking_request.dart';
 import 'package:go_app_client/domain/entities/booking.dart';
 import 'package:go_app_client/domain/entities/driver_info.dart';
+import 'package:go_app_client/domain/entities/driver_location.dart';
 import 'package:go_app_client/domain/entities/enum/enum.dart';
 import 'package:go_app_client/domain/entities/map_autocomplete.dart';
 import 'package:go_app_client/domain/entities/map_picker_data.dart';
@@ -18,6 +19,7 @@ import 'package:go_app_client/domain/entities/map_place.dart';
 import 'package:go_app_client/domain/entities/map_reverse.dart';
 import 'package:go_app_client/domain/entities/map_routing_params.dart';
 import 'package:go_app_client/domain/entities/path_entity.dart';
+import 'package:go_app_client/domain/usecases/booking/cancel_booking_usecase.dart';
 import 'package:go_app_client/domain/usecases/booking/create_booking_usecase.dart';
 import 'package:go_app_client/domain/usecases/booking/get_booking_price_usecase.dart';
 import 'package:go_app_client/domain/usecases/booking/get_driver_info_usecase.dart';
@@ -41,6 +43,8 @@ part 'booking_state.dart';
 class BookingBloc extends Bloc<BookingEvent, BookingState> {
   final SocketBloc socketBloc;
   StreamSubscription? socketSubscription;
+  final DriverLocationCubit _driverLocationCubit;
+  StreamSubscription? _driverLocationSubscription;
   final SearchAddressFromTextUseCase _searchAddressFromTextUseCase;
   final SearchAddressFromLatLngUseCase _searchAddressFromLatLngUseCase;
   final GetPlaceDetailUseCase _getPlaceDetailUseCase;
@@ -48,15 +52,18 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
   final GetBookingPriceUseCase _getBookingPriceUseCase;
   final CreateBookingUseCase _createBookingUseCase;
   final GetDriverInfoUseCase _getDriverInfoUseCase;
+  final CancelBookingUseCase _cancelBookingUseCase;
   BookingBloc(
       this.socketBloc,
+      this._driverLocationCubit,
       this._searchAddressFromTextUseCase,
       this._searchAddressFromLatLngUseCase,
       this._getPlaceDetailUseCase,
       this._findRouteUseCase,
       this._getBookingPriceUseCase,
       this._createBookingUseCase,
-      this._getDriverInfoUseCase)
+      this._getDriverInfoUseCase,
+      this._cancelBookingUseCase)
       : super(const BookingInitial()) {
     socketSubscription = socketBloc.stream.listen((state) {
       state.whenOrNull(receivedBookingStatus: (bookingStatus) {
@@ -76,6 +83,13 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
         add(BookingLoadDriverInfo(driverId: driverId));
       });
     });
+    _driverLocationSubscription =
+        _driverLocationCubit.stream.listen((driverLocationState) {
+      if (driverLocationState is DriverLocationUpdated) {
+        add(BookingChangeDriverLocation(
+            driverLocation: driverLocationState.driverLocation));
+      }
+    });
     on<BookingSelectVehicleType>(_onSelectVehicleType);
     on<BookingLocateOnMap>(_onLocatingOnMap);
     on<BookingSearchAddressFromText>(_onSearchAddressFromText);
@@ -90,7 +104,16 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
     on<BookingCreateOrder>(_onCreateOrder);
     on<BookingLoadDriverInfo>(_onLoadDriverInfo);
     on<BookingChangeStatus>(_onChangeBookingStatus);
+    on<BookingLoadBookingData>(_onLoadBookingData);
+    on<BookingChangeDriverLocation>(_onChangeDriverLocation);
+    on<BookingCancel>(_onCancelBooking);
   }
+  void _onChangeDriverLocation(
+      BookingChangeDriverLocation event, Emitter<BookingState> emit) {
+    emit(BookingDriverRouteUpdated(
+        driverRoute: event.driverLocation.route, state: state));
+  }
+
   void _onPay(BookingPay event, Emitter<BookingState> emit) async {
     var newState = BookingState(
       mapRoutingParams: state.mapRoutingParams,
@@ -112,7 +135,7 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
     var either = await _getDriverInfoUseCase(event.driverId);
     either.fold((l) => emit(BookingLoadError(state: state, failure: l)), (r) {
       emit(BookingLoadDriverSuccess(driverInfo: r, state: state));
-      getIt<DriverLocationCubit>().onUpdateVehicleType(r.vehicleType);
+      _driverLocationCubit.onUpdateVehicleType(r.vehicleType);
       socketBloc.listenerDriverLocation();
     });
   }
@@ -278,5 +301,60 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
     socketBloc.listenerDriverInfo();
     either.fold((l) => emit(BookingLoadError(state: state, failure: l)),
         (r) => emit(BookingVisiblePayment(booking: r, state: state)));
+  }
+
+  void _onLoadBookingData(
+      BookingLoadBookingData event, Emitter<BookingState> emit) async {
+    emit(const BookingLoadingData());
+    var bookingData = event.booking;
+    var params = MapRoutingParams(
+        pickupLocation: bookingData.pickUpLocation,
+        pickupDescription: bookingData.pickUpAddress,
+        destinationLocation: bookingData.dropOffLocation,
+        destinationDescription: bookingData.dropOffAddress,
+        vehicleType: bookingData.vehicleType);
+    var either = await _findRouteUseCase(params);
+    await either.fold((l) async {}, (path) async {
+      if (path.points.isEmpty) {
+        emit(BookingLoadError(
+            state: state,
+            failure: ExceptionFailure(
+                Exception("Tìm tuyến đường thất bại, xin vui lòng thử lại"))));
+      } else {
+        if (bookingData.status == BookingStatus.paid) {
+          var newState = BookingState(
+              mapRoutingParams: params, booking: bookingData, path: path);
+          emit(BookingFoundingDriver(state: newState));
+        } else if (bookingData.status == BookingStatus.found ||
+            bookingData.status == BookingStatus.onRide) {
+          var driverEither = await _getDriverInfoUseCase(bookingData.driverId);
+          driverEither.fold((l) => null, (r) {
+            var newState = BookingState(
+                mapRoutingParams: params,
+                booking: bookingData,
+                path: path,
+                driverInfo: r);
+            socketBloc.listenerBooking();
+            socketBloc.listenerDriverLocation();
+            emit(BookingLoadDataSuccess(state: newState));
+          });
+        }
+      }
+    });
+  }
+
+  void _onCancelBooking(BookingCancel event, Emitter<BookingState> emit) async {
+    EasyLoading.show();
+    var either = await _cancelBookingUseCase(
+        event.request.copyWith(bookingId: state.booking?.id ?? 0));
+    EasyLoading.dismiss();
+    either.fold((l) => null, (r) => emit(const BookingCancelSuccess()));
+  }
+
+  @override
+  Future<void> close() {
+    socketSubscription?.cancel();
+    _driverLocationSubscription?.cancel();
+    return super.close();
   }
 }

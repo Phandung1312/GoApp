@@ -6,12 +6,15 @@ class BookingState extends Equatable {
   final Map<VehicleType, num>? bookingPrices;
   final Booking? booking;
   final DriverInfo? driverInfo;
+  final List<LatLng>? driverRoute;
+
   const BookingState(
       {this.mapRoutingParams,
       this.path,
       this.bookingPrices,
       this.booking,
-      this.driverInfo});
+      this.driverInfo,
+      this.driverRoute});
 
   @override
   List<Object?> get props => [mapRoutingParams];
@@ -101,6 +104,7 @@ class BookingGetDirectionSuccess extends BookingState {
       : super(
             mapRoutingParams: state.mapRoutingParams,
             path: path,
+            booking: state.booking,
             bookingPrices: state.bookingPrices);
   @override
   List<Object?> get props => [mapRoutingParams, path];
@@ -163,7 +167,7 @@ class BookingFoundingDriver extends BookingState {
 }
 
 class BookingStatusUpdated extends BookingState {
-  BookingStatusUpdated({required Booking booking,required BookingState state})
+  BookingStatusUpdated({required Booking booking, required BookingState state})
       : super(
             mapRoutingParams: state.mapRoutingParams,
             path: state.path,
@@ -173,3 +177,35 @@ class BookingStatusUpdated extends BookingState {
   @override
   List<Object?> get props => [booking];
 }
+
+class BookingLoadingData extends BookingState {
+  const BookingLoadingData() : super();
+}
+
+class BookingLoadDataSuccess extends BookingState {
+  BookingLoadDataSuccess({required BookingState state})
+      : super(
+            mapRoutingParams: state.mapRoutingParams,
+            path: state.path,
+            booking: state.booking,
+            driverInfo: state.driverInfo);
+}
+
+class BookingDriverRouteUpdated extends BookingState {
+  BookingDriverRouteUpdated(
+      {required List<LatLng> driverRoute, required BookingState state})
+      : super(
+            driverRoute: driverRoute,
+            mapRoutingParams: state.mapRoutingParams,
+            path: state.path,
+            booking: state.booking,
+            driverInfo: state.driverInfo);
+  @override
+  List<Object?> get props => [driverRoute];
+}
+
+
+class BookingCancelSuccess extends BookingState{
+  const BookingCancelSuccess() : super();
+}
+

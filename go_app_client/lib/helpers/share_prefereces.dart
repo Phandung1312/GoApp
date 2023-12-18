@@ -13,7 +13,10 @@ String getIdToken(){
    return "${prefs.getString('idToken')}";
 }
 
-
+bool isLoggedIn() {
+   final prefs = getIt<SharedPreferences>();
+   return prefs.getBool('isLoggedIn') ?? false;
+}
 int getUserId(){
    final prefs = getIt<SharedPreferences>();
    return prefs.getInt('idUser') ?? 0;

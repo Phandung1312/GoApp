@@ -8,9 +8,10 @@ import 'package:go_app_client/config/styles.dart';
 import 'package:go_app_client/domain/entities/driver_info.dart';
 import 'package:go_app_client/domain/entities/enum/enum.dart';
 import 'package:go_app_client/extensions/enum_extension.dart';
+import 'package:go_app_client/helpers/toast.dart';
 import 'package:go_app_client/presentation/bloc/booking/booking_bloc.dart';
 import 'package:go_app_client/presentation/bloc/chat/chat/chat_cubit.dart';
-import 'package:toast/toast.dart';
+import 'package:go_app_client/presentation/bloc/home/home_cubit.dart';
 
 class DriverInfoCard extends StatefulWidget {
   const DriverInfoCard({super.key});
@@ -26,15 +27,19 @@ class _DriverInfoCardState extends State<DriverInfoCard> {
         listener: (context, state) {
           if (state is BookingStatusUpdated) {
             if (state.booking?.status == BookingStatus.complete) {
-              Toast.show("Đã hoàn thành chuyến đi, hãy đánh giá cho tài xế.",
-                  duration: Toast.lengthShort, gravity: Toast.bottom);
-              // Navigator.pushNamedAndRemoveUntil(context, Paths.review, (route) => false);
-              Navigator.pushNamed(context, Paths.review);
+              ToastHelper.showToast(
+                  message:
+                      "Đã hoàn thành chuyến đi, hãy cho tài xế biết cảm nhận của bạn");
+
+              context.read<HomeCubit>().reset();
+              Navigator.pushNamedAndRemoveUntil(context, Paths.review,
+                  (route) => route.settings.name == Paths.main, arguments: state.booking?.id);
             }
           }
         },
         buildWhen: (previous, current) =>
             current is BookingFoundingDriver ||
+            current is BookingLoadDataSuccess ||
             current is BookingLoadDriverSuccess ||
             current is BookingStatusUpdated,
         builder: (context, state) => Padding(
@@ -158,7 +163,9 @@ class _DriverInfoCardState extends State<DriverInfoCard> {
                             ),
                           ),
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.pushNamed(context, Paths.bookingDetail);
+                            },
                             child: const Row(
                               children: [
                                 Text(

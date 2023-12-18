@@ -22,13 +22,17 @@ BookingModel _$BookingModelFromJson(Map<String, dynamic> json) {
 mixin _$BookingModel {
   int get id => throw _privateConstructorUsedError;
   num? get createAt => throw _privateConstructorUsedError;
-  String? get pickupLocaton => throw _privateConstructorUsedError;
+  String? get pickUpLocation => throw _privateConstructorUsedError;
+  String? get pickUpAddress => throw _privateConstructorUsedError;
   String? get dropOffLocation => throw _privateConstructorUsedError;
+  String? get dropOffAddress => throw _privateConstructorUsedError;
   @BookingStatusConverter()
   BookingStatus? get status => throw _privateConstructorUsedError;
   double? get distance => throw _privateConstructorUsedError;
+  int? get driverId => throw _privateConstructorUsedError;
   double? get amount => throw _privateConstructorUsedError;
   num? get predictTime => throw _privateConstructorUsedError;
+  String? get paymentMethod => throw _privateConstructorUsedError;
   @VehicleTypeConverter()
   VehicleType? get vehicleType => throw _privateConstructorUsedError;
 
@@ -47,12 +51,16 @@ abstract class $BookingModelCopyWith<$Res> {
   $Res call(
       {int id,
       num? createAt,
-      String? pickupLocaton,
+      String? pickUpLocation,
+      String? pickUpAddress,
       String? dropOffLocation,
+      String? dropOffAddress,
       @BookingStatusConverter() BookingStatus? status,
       double? distance,
+      int? driverId,
       double? amount,
       num? predictTime,
+      String? paymentMethod,
       @VehicleTypeConverter() VehicleType? vehicleType});
 }
 
@@ -71,12 +79,16 @@ class _$BookingModelCopyWithImpl<$Res, $Val extends BookingModel>
   $Res call({
     Object? id = null,
     Object? createAt = freezed,
-    Object? pickupLocaton = freezed,
+    Object? pickUpLocation = freezed,
+    Object? pickUpAddress = freezed,
     Object? dropOffLocation = freezed,
+    Object? dropOffAddress = freezed,
     Object? status = freezed,
     Object? distance = freezed,
+    Object? driverId = freezed,
     Object? amount = freezed,
     Object? predictTime = freezed,
+    Object? paymentMethod = freezed,
     Object? vehicleType = freezed,
   }) {
     return _then(_value.copyWith(
@@ -88,13 +100,21 @@ class _$BookingModelCopyWithImpl<$Res, $Val extends BookingModel>
           ? _value.createAt
           : createAt // ignore: cast_nullable_to_non_nullable
               as num?,
-      pickupLocaton: freezed == pickupLocaton
-          ? _value.pickupLocaton
-          : pickupLocaton // ignore: cast_nullable_to_non_nullable
+      pickUpLocation: freezed == pickUpLocation
+          ? _value.pickUpLocation
+          : pickUpLocation // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pickUpAddress: freezed == pickUpAddress
+          ? _value.pickUpAddress
+          : pickUpAddress // ignore: cast_nullable_to_non_nullable
               as String?,
       dropOffLocation: freezed == dropOffLocation
           ? _value.dropOffLocation
           : dropOffLocation // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dropOffAddress: freezed == dropOffAddress
+          ? _value.dropOffAddress
+          : dropOffAddress // ignore: cast_nullable_to_non_nullable
               as String?,
       status: freezed == status
           ? _value.status
@@ -104,6 +124,10 @@ class _$BookingModelCopyWithImpl<$Res, $Val extends BookingModel>
           ? _value.distance
           : distance // ignore: cast_nullable_to_non_nullable
               as double?,
+      driverId: freezed == driverId
+          ? _value.driverId
+          : driverId // ignore: cast_nullable_to_non_nullable
+              as int?,
       amount: freezed == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
@@ -112,6 +136,10 @@ class _$BookingModelCopyWithImpl<$Res, $Val extends BookingModel>
           ? _value.predictTime
           : predictTime // ignore: cast_nullable_to_non_nullable
               as num?,
+      paymentMethod: freezed == paymentMethod
+          ? _value.paymentMethod
+          : paymentMethod // ignore: cast_nullable_to_non_nullable
+              as String?,
       vehicleType: freezed == vehicleType
           ? _value.vehicleType
           : vehicleType // ignore: cast_nullable_to_non_nullable
@@ -131,12 +159,16 @@ abstract class _$$BookingModelImplCopyWith<$Res>
   $Res call(
       {int id,
       num? createAt,
-      String? pickupLocaton,
+      String? pickUpLocation,
+      String? pickUpAddress,
       String? dropOffLocation,
+      String? dropOffAddress,
       @BookingStatusConverter() BookingStatus? status,
       double? distance,
+      int? driverId,
       double? amount,
       num? predictTime,
+      String? paymentMethod,
       @VehicleTypeConverter() VehicleType? vehicleType});
 }
 
@@ -153,12 +185,16 @@ class __$$BookingModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? createAt = freezed,
-    Object? pickupLocaton = freezed,
+    Object? pickUpLocation = freezed,
+    Object? pickUpAddress = freezed,
     Object? dropOffLocation = freezed,
+    Object? dropOffAddress = freezed,
     Object? status = freezed,
     Object? distance = freezed,
+    Object? driverId = freezed,
     Object? amount = freezed,
     Object? predictTime = freezed,
+    Object? paymentMethod = freezed,
     Object? vehicleType = freezed,
   }) {
     return _then(_$BookingModelImpl(
@@ -170,13 +206,21 @@ class __$$BookingModelImplCopyWithImpl<$Res>
           ? _value.createAt
           : createAt // ignore: cast_nullable_to_non_nullable
               as num?,
-      pickupLocaton: freezed == pickupLocaton
-          ? _value.pickupLocaton
-          : pickupLocaton // ignore: cast_nullable_to_non_nullable
+      pickUpLocation: freezed == pickUpLocation
+          ? _value.pickUpLocation
+          : pickUpLocation // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pickUpAddress: freezed == pickUpAddress
+          ? _value.pickUpAddress
+          : pickUpAddress // ignore: cast_nullable_to_non_nullable
               as String?,
       dropOffLocation: freezed == dropOffLocation
           ? _value.dropOffLocation
           : dropOffLocation // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dropOffAddress: freezed == dropOffAddress
+          ? _value.dropOffAddress
+          : dropOffAddress // ignore: cast_nullable_to_non_nullable
               as String?,
       status: freezed == status
           ? _value.status
@@ -186,6 +230,10 @@ class __$$BookingModelImplCopyWithImpl<$Res>
           ? _value.distance
           : distance // ignore: cast_nullable_to_non_nullable
               as double?,
+      driverId: freezed == driverId
+          ? _value.driverId
+          : driverId // ignore: cast_nullable_to_non_nullable
+              as int?,
       amount: freezed == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
@@ -194,6 +242,10 @@ class __$$BookingModelImplCopyWithImpl<$Res>
           ? _value.predictTime
           : predictTime // ignore: cast_nullable_to_non_nullable
               as num?,
+      paymentMethod: freezed == paymentMethod
+          ? _value.paymentMethod
+          : paymentMethod // ignore: cast_nullable_to_non_nullable
+              as String?,
       vehicleType: freezed == vehicleType
           ? _value.vehicleType
           : vehicleType // ignore: cast_nullable_to_non_nullable
@@ -208,12 +260,16 @@ class _$BookingModelImpl extends _BookingModel {
   const _$BookingModelImpl(
       {required this.id,
       this.createAt,
-      this.pickupLocaton,
+      this.pickUpLocation,
+      this.pickUpAddress,
       this.dropOffLocation,
+      this.dropOffAddress,
       @BookingStatusConverter() this.status,
       this.distance,
+      this.driverId,
       this.amount,
       this.predictTime,
+      this.paymentMethod,
       @VehicleTypeConverter() this.vehicleType})
       : super._();
 
@@ -225,25 +281,33 @@ class _$BookingModelImpl extends _BookingModel {
   @override
   final num? createAt;
   @override
-  final String? pickupLocaton;
+  final String? pickUpLocation;
+  @override
+  final String? pickUpAddress;
   @override
   final String? dropOffLocation;
+  @override
+  final String? dropOffAddress;
   @override
   @BookingStatusConverter()
   final BookingStatus? status;
   @override
   final double? distance;
   @override
+  final int? driverId;
+  @override
   final double? amount;
   @override
   final num? predictTime;
+  @override
+  final String? paymentMethod;
   @override
   @VehicleTypeConverter()
   final VehicleType? vehicleType;
 
   @override
   String toString() {
-    return 'BookingModel(id: $id, createAt: $createAt, pickupLocaton: $pickupLocaton, dropOffLocation: $dropOffLocation, status: $status, distance: $distance, amount: $amount, predictTime: $predictTime, vehicleType: $vehicleType)';
+    return 'BookingModel(id: $id, createAt: $createAt, pickUpLocation: $pickUpLocation, pickUpAddress: $pickUpAddress, dropOffLocation: $dropOffLocation, dropOffAddress: $dropOffAddress, status: $status, distance: $distance, driverId: $driverId, amount: $amount, predictTime: $predictTime, paymentMethod: $paymentMethod, vehicleType: $vehicleType)';
   }
 
   @override
@@ -254,24 +318,45 @@ class _$BookingModelImpl extends _BookingModel {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.createAt, createAt) ||
                 other.createAt == createAt) &&
-            (identical(other.pickupLocaton, pickupLocaton) ||
-                other.pickupLocaton == pickupLocaton) &&
+            (identical(other.pickUpLocation, pickUpLocation) ||
+                other.pickUpLocation == pickUpLocation) &&
+            (identical(other.pickUpAddress, pickUpAddress) ||
+                other.pickUpAddress == pickUpAddress) &&
             (identical(other.dropOffLocation, dropOffLocation) ||
                 other.dropOffLocation == dropOffLocation) &&
+            (identical(other.dropOffAddress, dropOffAddress) ||
+                other.dropOffAddress == dropOffAddress) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.distance, distance) ||
                 other.distance == distance) &&
+            (identical(other.driverId, driverId) ||
+                other.driverId == driverId) &&
             (identical(other.amount, amount) || other.amount == amount) &&
             (identical(other.predictTime, predictTime) ||
                 other.predictTime == predictTime) &&
+            (identical(other.paymentMethod, paymentMethod) ||
+                other.paymentMethod == paymentMethod) &&
             (identical(other.vehicleType, vehicleType) ||
                 other.vehicleType == vehicleType));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, createAt, pickupLocaton,
-      dropOffLocation, status, distance, amount, predictTime, vehicleType);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      createAt,
+      pickUpLocation,
+      pickUpAddress,
+      dropOffLocation,
+      dropOffAddress,
+      status,
+      distance,
+      driverId,
+      amount,
+      predictTime,
+      paymentMethod,
+      vehicleType);
 
   @JsonKey(ignore: true)
   @override
@@ -291,12 +376,16 @@ abstract class _BookingModel extends BookingModel {
   const factory _BookingModel(
           {required final int id,
           final num? createAt,
-          final String? pickupLocaton,
+          final String? pickUpLocation,
+          final String? pickUpAddress,
           final String? dropOffLocation,
+          final String? dropOffAddress,
           @BookingStatusConverter() final BookingStatus? status,
           final double? distance,
+          final int? driverId,
           final double? amount,
           final num? predictTime,
+          final String? paymentMethod,
           @VehicleTypeConverter() final VehicleType? vehicleType}) =
       _$BookingModelImpl;
   const _BookingModel._() : super._();
@@ -309,18 +398,26 @@ abstract class _BookingModel extends BookingModel {
   @override
   num? get createAt;
   @override
-  String? get pickupLocaton;
+  String? get pickUpLocation;
+  @override
+  String? get pickUpAddress;
   @override
   String? get dropOffLocation;
+  @override
+  String? get dropOffAddress;
   @override
   @BookingStatusConverter()
   BookingStatus? get status;
   @override
   double? get distance;
   @override
+  int? get driverId;
+  @override
   double? get amount;
   @override
   num? get predictTime;
+  @override
+  String? get paymentMethod;
   @override
   @VehicleTypeConverter()
   VehicleType? get vehicleType;

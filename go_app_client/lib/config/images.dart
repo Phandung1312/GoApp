@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-const String _imagePath = 'assets/images';
+  const String _imagePath = 'assets/images';
 
-class _Image extends AssetImage {
-  const _Image(String fileName) : super('$_imagePath/$fileName');
-}
+  class _Image extends AssetImage {
+    const _Image(String fileName) : super('$_imagePath/$fileName');
+  }
 
 class AppImages{
 
@@ -47,6 +47,8 @@ class AppImages{
   static const icClean = _Image('ic_clean.png');
   static const icFamous = _Image('ic_famous.png');
   static const icCompassReview = _Image('ic_compass_review.png');
+
+  static const homeBackground = _Image('home_background.png');
 
 
 
