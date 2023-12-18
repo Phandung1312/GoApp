@@ -5,6 +5,8 @@ import 'package:geolocator/geolocator.dart';
 import 'package:go_app_driver/config/images.dart';
 import 'package:go_app_driver/config/routes.dart';
 import 'package:go_app_driver/core/inject/injection.dart';
+import 'package:go_app_driver/helpers/google_authen_helper.dart';
+import 'package:go_app_driver/helpers/share_prefereces.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -57,10 +59,25 @@ class _SplashPageState extends State<SplashPage> {
     final prefs = getIt<SharedPreferences>();
     await prefs.setDouble('latitude', locationData.latitude);
     await prefs.setDouble('longitude', locationData.longitude);
-    Future.delayed(
-      const  Duration(seconds:  1),
+
+
+    if(isLoggedIn()){
+      GoogleAuthenHelper.refreshToken();
+      Future.delayed(
+      const  Duration(milliseconds: 100),
+      () => Navigator.pushNamedAndRemoveUntil(context, Paths.main,(route) => false)
+    );
+    }
+    else{
+      Future.delayed(
+      const  Duration(milliseconds: 100),
       () => Navigator.pushNamedAndRemoveUntil(context, Paths.login,(route) => false)
     );
+    }
      
+    
   }
+
+
+
 }

@@ -29,6 +29,7 @@ class AccountRepositoryImpl implements AccountRepository {
       final pref = getIt<SharedPreferences>();
       await pref.setString(
           "idToken", googleSignInAuthentication?.idToken ?? "");
+      await pref.setBool("isLoggedIn", true);
     } catch (error) {
       print(error);
     }
@@ -53,6 +54,7 @@ class AccountRepositoryImpl implements AccountRepository {
        await result.fold((l) => null, (r) async {
       var idUser = r.id ;
       await _prefs.setInt('idUser', idUser);
+      
     });
       return result;
     } else {

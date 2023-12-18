@@ -5,4 +5,6 @@ class BookingEvent with _$BookingEvent{
   const factory BookingEvent.loadInfo({required int bookingId}) = BookingLoadInfo;
   const factory BookingEvent.sendBookingStatus() = BookingSendBookingStatus;
   const factory BookingEvent.changeBookingStatus({required BookingStatus bookingStatus}) = BookingChangeBookingStatus;
+  const factory BookingEvent.cancel({required BookingCancelRequest request}) = BookingCancel;
+  
 }

@@ -18,6 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$LocationInfoModel {
   int get idUser => throw _privateConstructorUsedError;
   String get location => throw _privateConstructorUsedError;
+  String? get routeEncode => throw _privateConstructorUsedError;
+  double? get bearing => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LocationInfoModelCopyWith<LocationInfoModel> get copyWith =>
@@ -30,7 +32,8 @@ abstract class $LocationInfoModelCopyWith<$Res> {
           LocationInfoModel value, $Res Function(LocationInfoModel) then) =
       _$LocationInfoModelCopyWithImpl<$Res, LocationInfoModel>;
   @useResult
-  $Res call({int idUser, String location});
+  $Res call(
+      {int idUser, String location, String? routeEncode, double? bearing});
 }
 
 /// @nodoc
@@ -48,6 +51,8 @@ class _$LocationInfoModelCopyWithImpl<$Res, $Val extends LocationInfoModel>
   $Res call({
     Object? idUser = null,
     Object? location = null,
+    Object? routeEncode = freezed,
+    Object? bearing = freezed,
   }) {
     return _then(_value.copyWith(
       idUser: null == idUser
@@ -58,6 +63,14 @@ class _$LocationInfoModelCopyWithImpl<$Res, $Val extends LocationInfoModel>
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as String,
+      routeEncode: freezed == routeEncode
+          ? _value.routeEncode
+          : routeEncode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bearing: freezed == bearing
+          ? _value.bearing
+          : bearing // ignore: cast_nullable_to_non_nullable
+              as double?,
     ) as $Val);
   }
 }
@@ -70,7 +83,8 @@ abstract class _$$LocationInfoModelImplCopyWith<$Res>
       __$$LocationInfoModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int idUser, String location});
+  $Res call(
+      {int idUser, String location, String? routeEncode, double? bearing});
 }
 
 /// @nodoc
@@ -86,6 +100,8 @@ class __$$LocationInfoModelImplCopyWithImpl<$Res>
   $Res call({
     Object? idUser = null,
     Object? location = null,
+    Object? routeEncode = freezed,
+    Object? bearing = freezed,
   }) {
     return _then(_$LocationInfoModelImpl(
       idUser: null == idUser
@@ -96,6 +112,14 @@ class __$$LocationInfoModelImplCopyWithImpl<$Res>
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as String,
+      routeEncode: freezed == routeEncode
+          ? _value.routeEncode
+          : routeEncode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bearing: freezed == bearing
+          ? _value.bearing
+          : bearing // ignore: cast_nullable_to_non_nullable
+              as double?,
     ));
   }
 }
@@ -103,17 +127,25 @@ class __$$LocationInfoModelImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LocationInfoModelImpl extends _LocationInfoModel {
-  const _$LocationInfoModelImpl({required this.idUser, required this.location})
+  const _$LocationInfoModelImpl(
+      {required this.idUser,
+      required this.location,
+      this.routeEncode,
+      this.bearing})
       : super._();
 
   @override
   final int idUser;
   @override
   final String location;
+  @override
+  final String? routeEncode;
+  @override
+  final double? bearing;
 
   @override
   String toString() {
-    return 'LocationInfoModel(idUser: $idUser, location: $location)';
+    return 'LocationInfoModel(idUser: $idUser, location: $location, routeEncode: $routeEncode, bearing: $bearing)';
   }
 
   @override
@@ -123,11 +155,15 @@ class _$LocationInfoModelImpl extends _LocationInfoModel {
             other is _$LocationInfoModelImpl &&
             (identical(other.idUser, idUser) || other.idUser == idUser) &&
             (identical(other.location, location) ||
-                other.location == location));
+                other.location == location) &&
+            (identical(other.routeEncode, routeEncode) ||
+                other.routeEncode == routeEncode) &&
+            (identical(other.bearing, bearing) || other.bearing == bearing));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, idUser, location);
+  int get hashCode =>
+      Object.hash(runtimeType, idUser, location, routeEncode, bearing);
 
   @JsonKey(ignore: true)
   @override
@@ -140,13 +176,19 @@ class _$LocationInfoModelImpl extends _LocationInfoModel {
 abstract class _LocationInfoModel extends LocationInfoModel {
   const factory _LocationInfoModel(
       {required final int idUser,
-      required final String location}) = _$LocationInfoModelImpl;
+      required final String location,
+      final String? routeEncode,
+      final double? bearing}) = _$LocationInfoModelImpl;
   const _LocationInfoModel._() : super._();
 
   @override
   int get idUser;
   @override
   String get location;
+  @override
+  String? get routeEncode;
+  @override
+  double? get bearing;
   @override
   @JsonKey(ignore: true)
   _$$LocationInfoModelImplCopyWith<_$LocationInfoModelImpl> get copyWith =>

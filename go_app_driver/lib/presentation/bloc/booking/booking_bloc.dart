@@ -3,11 +3,13 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:go_app_driver/core/errors/failures.dart';
+import 'package:go_app_driver/data/models/booking/booking_cancel_request.dart';
 import 'package:go_app_driver/data/models/booking/booking_status_request_model.dart';
 import 'package:go_app_driver/domain/entities/booking.dart';
 import 'package:go_app_driver/domain/entities/customer_info.dart';
 import 'package:go_app_driver/domain/entities/enum/enum.dart';
 import 'package:go_app_driver/domain/entities/map_reverse.dart';
+import 'package:go_app_driver/domain/usecases/booking/cancel_booking_usecase.dart';
 import 'package:go_app_driver/domain/usecases/booking/get_booking_usecase.dart';
 import 'package:go_app_driver/domain/usecases/booking/get_customer_info_usecase.dart';
 import 'package:go_app_driver/domain/usecases/map/search_address_from_latlng_usecase.dart';
@@ -27,11 +29,13 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
   GetBookingUseCase getBookingUseCase;
   SearchAddressFromLatLngUseCase searchAddressFromLatLngUseCase;
   GetCustomerInfoUseCase getCustomerInfoUseCase;
+  CancelBookingUseCase cancelBookingUseCase;
   BookingBloc(
       {required this.socketBloc,
       required this.getBookingUseCase,
       required this.searchAddressFromLatLngUseCase,
-      required this.getCustomerInfoUseCase})
+      required this.getCustomerInfoUseCase,
+      required this.cancelBookingUseCase})
       : super(BookingInitial()) {
     socketSubscription = socketBloc.stream.listen((state) {
       state.whenOrNull(receivedBookingStatus: (bookingStatusModel) {
@@ -42,6 +46,7 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
     on<BookingLoadInfo>(_onLoadBookingInfo);
     on<BookingSendBookingStatus>(_onSendBookingStatus);
     on<BookingChangeBookingStatus>(_onChangeBookingSatus);
+    on<BookingCancel>(_onCancelBooking);
   }
   void _onLoadBookingInfo(
       BookingLoadInfo event, Emitter<BookingState> emit) async {
@@ -52,7 +57,7 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
     }, (r) async {
       var bookingData = r;
       var location = r.status == BookingStatus.found
-          ? r.pickupLocation
+          ? r.pickUpLocation
           : r.dropOffLocation;
       var value = await Future.wait([
         getCustomerInfoUseCase(r.customerInfo.id),
@@ -97,14 +102,21 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
             newState = BookingState(
                 bookingData:
                     state.bookingData.copyWith(incomingDesAddress: r.display));
+            emit(BookingStatusChanged(
+                bookingStatus: event.bookingStatus, state: state));
           });
         }
         break;
-      case BookingStatus.cancelled:
       default:
         emit(BookingStatusChanged(
             bookingStatus: event.bookingStatus, state: newState));
         break;
     }
+  }
+
+  void _onCancelBooking(BookingCancel event, Emitter<BookingState> emit) async {
+    var either = await cancelBookingUseCase(
+        event.request.copyWith(bookingId: state.bookingData.id));
+    either.fold((l) => null, (r) => null);
   }
 }

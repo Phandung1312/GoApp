@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_app_driver/presentation/pages/booking/booking_page.dart';
 import 'package:go_app_driver/presentation/pages/booking_detail/booking_detail_page.dart';
+import 'package:go_app_driver/presentation/pages/cancel_booking/cancel_booking_page.dart';
 import 'package:go_app_driver/presentation/pages/chat/chat_page.dart';
 import 'package:go_app_driver/presentation/pages/login/login_page.dart';
 import 'package:go_app_driver/presentation/pages/login/pending_page.dart';
@@ -17,9 +18,10 @@ class Paths {
   static const String pending = '/pending';
   static const String main = '/main';
   static const String booking = '/booking';
-  static const String bookingDetail = '/booking/detail';
+  static const String bookingDetail = '/detail';
   static const String chat = '/chat';
   static const String account = '/account';
+  static const String cancelBooking = '/cancel';
 }
 
 class AppNavigator {
@@ -41,6 +43,8 @@ class AppNavigator {
         return _materialRoute(const BookingDetailPage(), settings);
       case Paths.chat:
         return _materialRoute(const ChatPage(), settings);
+      case Paths.cancelBooking:
+        return _materialRoute(const CancelBookingPage(), settings);
       default:
         return _materialRoute(const LoginPage(), settings);
     }

@@ -21,6 +21,7 @@ mixin _$BookingEvent {
     required TResult Function(int bookingId) loadInfo,
     required TResult Function() sendBookingStatus,
     required TResult Function(BookingStatus bookingStatus) changeBookingStatus,
+    required TResult Function(BookingCancelRequest request) cancel,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$BookingEvent {
     TResult? Function(int bookingId)? loadInfo,
     TResult? Function()? sendBookingStatus,
     TResult? Function(BookingStatus bookingStatus)? changeBookingStatus,
+    TResult? Function(BookingCancelRequest request)? cancel,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$BookingEvent {
     TResult Function(int bookingId)? loadInfo,
     TResult Function()? sendBookingStatus,
     TResult Function(BookingStatus bookingStatus)? changeBookingStatus,
+    TResult Function(BookingCancelRequest request)? cancel,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -44,6 +47,7 @@ mixin _$BookingEvent {
     required TResult Function(BookingSendBookingStatus value) sendBookingStatus,
     required TResult Function(BookingChangeBookingStatus value)
         changeBookingStatus,
+    required TResult Function(BookingCancel value) cancel,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,6 +55,7 @@ mixin _$BookingEvent {
     TResult? Function(BookingLoadInfo value)? loadInfo,
     TResult? Function(BookingSendBookingStatus value)? sendBookingStatus,
     TResult? Function(BookingChangeBookingStatus value)? changeBookingStatus,
+    TResult? Function(BookingCancel value)? cancel,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,6 +63,7 @@ mixin _$BookingEvent {
     TResult Function(BookingLoadInfo value)? loadInfo,
     TResult Function(BookingSendBookingStatus value)? sendBookingStatus,
     TResult Function(BookingChangeBookingStatus value)? changeBookingStatus,
+    TResult Function(BookingCancel value)? cancel,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -150,6 +156,7 @@ class _$BookingLoadInfoImpl implements BookingLoadInfo {
     required TResult Function(int bookingId) loadInfo,
     required TResult Function() sendBookingStatus,
     required TResult Function(BookingStatus bookingStatus) changeBookingStatus,
+    required TResult Function(BookingCancelRequest request) cancel,
   }) {
     return loadInfo(bookingId);
   }
@@ -160,6 +167,7 @@ class _$BookingLoadInfoImpl implements BookingLoadInfo {
     TResult? Function(int bookingId)? loadInfo,
     TResult? Function()? sendBookingStatus,
     TResult? Function(BookingStatus bookingStatus)? changeBookingStatus,
+    TResult? Function(BookingCancelRequest request)? cancel,
   }) {
     return loadInfo?.call(bookingId);
   }
@@ -170,6 +178,7 @@ class _$BookingLoadInfoImpl implements BookingLoadInfo {
     TResult Function(int bookingId)? loadInfo,
     TResult Function()? sendBookingStatus,
     TResult Function(BookingStatus bookingStatus)? changeBookingStatus,
+    TResult Function(BookingCancelRequest request)? cancel,
     required TResult orElse(),
   }) {
     if (loadInfo != null) {
@@ -185,6 +194,7 @@ class _$BookingLoadInfoImpl implements BookingLoadInfo {
     required TResult Function(BookingSendBookingStatus value) sendBookingStatus,
     required TResult Function(BookingChangeBookingStatus value)
         changeBookingStatus,
+    required TResult Function(BookingCancel value) cancel,
   }) {
     return loadInfo(this);
   }
@@ -195,6 +205,7 @@ class _$BookingLoadInfoImpl implements BookingLoadInfo {
     TResult? Function(BookingLoadInfo value)? loadInfo,
     TResult? Function(BookingSendBookingStatus value)? sendBookingStatus,
     TResult? Function(BookingChangeBookingStatus value)? changeBookingStatus,
+    TResult? Function(BookingCancel value)? cancel,
   }) {
     return loadInfo?.call(this);
   }
@@ -205,6 +216,7 @@ class _$BookingLoadInfoImpl implements BookingLoadInfo {
     TResult Function(BookingLoadInfo value)? loadInfo,
     TResult Function(BookingSendBookingStatus value)? sendBookingStatus,
     TResult Function(BookingChangeBookingStatus value)? changeBookingStatus,
+    TResult Function(BookingCancel value)? cancel,
     required TResult orElse(),
   }) {
     if (loadInfo != null) {
@@ -268,6 +280,7 @@ class _$BookingSendBookingStatusImpl implements BookingSendBookingStatus {
     required TResult Function(int bookingId) loadInfo,
     required TResult Function() sendBookingStatus,
     required TResult Function(BookingStatus bookingStatus) changeBookingStatus,
+    required TResult Function(BookingCancelRequest request) cancel,
   }) {
     return sendBookingStatus();
   }
@@ -278,6 +291,7 @@ class _$BookingSendBookingStatusImpl implements BookingSendBookingStatus {
     TResult? Function(int bookingId)? loadInfo,
     TResult? Function()? sendBookingStatus,
     TResult? Function(BookingStatus bookingStatus)? changeBookingStatus,
+    TResult? Function(BookingCancelRequest request)? cancel,
   }) {
     return sendBookingStatus?.call();
   }
@@ -288,6 +302,7 @@ class _$BookingSendBookingStatusImpl implements BookingSendBookingStatus {
     TResult Function(int bookingId)? loadInfo,
     TResult Function()? sendBookingStatus,
     TResult Function(BookingStatus bookingStatus)? changeBookingStatus,
+    TResult Function(BookingCancelRequest request)? cancel,
     required TResult orElse(),
   }) {
     if (sendBookingStatus != null) {
@@ -303,6 +318,7 @@ class _$BookingSendBookingStatusImpl implements BookingSendBookingStatus {
     required TResult Function(BookingSendBookingStatus value) sendBookingStatus,
     required TResult Function(BookingChangeBookingStatus value)
         changeBookingStatus,
+    required TResult Function(BookingCancel value) cancel,
   }) {
     return sendBookingStatus(this);
   }
@@ -313,6 +329,7 @@ class _$BookingSendBookingStatusImpl implements BookingSendBookingStatus {
     TResult? Function(BookingLoadInfo value)? loadInfo,
     TResult? Function(BookingSendBookingStatus value)? sendBookingStatus,
     TResult? Function(BookingChangeBookingStatus value)? changeBookingStatus,
+    TResult? Function(BookingCancel value)? cancel,
   }) {
     return sendBookingStatus?.call(this);
   }
@@ -323,6 +340,7 @@ class _$BookingSendBookingStatusImpl implements BookingSendBookingStatus {
     TResult Function(BookingLoadInfo value)? loadInfo,
     TResult Function(BookingSendBookingStatus value)? sendBookingStatus,
     TResult Function(BookingChangeBookingStatus value)? changeBookingStatus,
+    TResult Function(BookingCancel value)? cancel,
     required TResult orElse(),
   }) {
     if (sendBookingStatus != null) {
@@ -407,6 +425,7 @@ class _$BookingChangeBookingStatusImpl implements BookingChangeBookingStatus {
     required TResult Function(int bookingId) loadInfo,
     required TResult Function() sendBookingStatus,
     required TResult Function(BookingStatus bookingStatus) changeBookingStatus,
+    required TResult Function(BookingCancelRequest request) cancel,
   }) {
     return changeBookingStatus(bookingStatus);
   }
@@ -417,6 +436,7 @@ class _$BookingChangeBookingStatusImpl implements BookingChangeBookingStatus {
     TResult? Function(int bookingId)? loadInfo,
     TResult? Function()? sendBookingStatus,
     TResult? Function(BookingStatus bookingStatus)? changeBookingStatus,
+    TResult? Function(BookingCancelRequest request)? cancel,
   }) {
     return changeBookingStatus?.call(bookingStatus);
   }
@@ -427,6 +447,7 @@ class _$BookingChangeBookingStatusImpl implements BookingChangeBookingStatus {
     TResult Function(int bookingId)? loadInfo,
     TResult Function()? sendBookingStatus,
     TResult Function(BookingStatus bookingStatus)? changeBookingStatus,
+    TResult Function(BookingCancelRequest request)? cancel,
     required TResult orElse(),
   }) {
     if (changeBookingStatus != null) {
@@ -442,6 +463,7 @@ class _$BookingChangeBookingStatusImpl implements BookingChangeBookingStatus {
     required TResult Function(BookingSendBookingStatus value) sendBookingStatus,
     required TResult Function(BookingChangeBookingStatus value)
         changeBookingStatus,
+    required TResult Function(BookingCancel value) cancel,
   }) {
     return changeBookingStatus(this);
   }
@@ -452,6 +474,7 @@ class _$BookingChangeBookingStatusImpl implements BookingChangeBookingStatus {
     TResult? Function(BookingLoadInfo value)? loadInfo,
     TResult? Function(BookingSendBookingStatus value)? sendBookingStatus,
     TResult? Function(BookingChangeBookingStatus value)? changeBookingStatus,
+    TResult? Function(BookingCancel value)? cancel,
   }) {
     return changeBookingStatus?.call(this);
   }
@@ -462,6 +485,7 @@ class _$BookingChangeBookingStatusImpl implements BookingChangeBookingStatus {
     TResult Function(BookingLoadInfo value)? loadInfo,
     TResult Function(BookingSendBookingStatus value)? sendBookingStatus,
     TResult Function(BookingChangeBookingStatus value)? changeBookingStatus,
+    TResult Function(BookingCancel value)? cancel,
     required TResult orElse(),
   }) {
     if (changeBookingStatus != null) {
@@ -480,4 +504,161 @@ abstract class BookingChangeBookingStatus implements BookingEvent {
   @JsonKey(ignore: true)
   _$$BookingChangeBookingStatusImplCopyWith<_$BookingChangeBookingStatusImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$BookingCancelImplCopyWith<$Res> {
+  factory _$$BookingCancelImplCopyWith(
+          _$BookingCancelImpl value, $Res Function(_$BookingCancelImpl) then) =
+      __$$BookingCancelImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BookingCancelRequest request});
+
+  $BookingCancelRequestCopyWith<$Res> get request;
+}
+
+/// @nodoc
+class __$$BookingCancelImplCopyWithImpl<$Res>
+    extends _$BookingEventCopyWithImpl<$Res, _$BookingCancelImpl>
+    implements _$$BookingCancelImplCopyWith<$Res> {
+  __$$BookingCancelImplCopyWithImpl(
+      _$BookingCancelImpl _value, $Res Function(_$BookingCancelImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? request = null,
+  }) {
+    return _then(_$BookingCancelImpl(
+      request: null == request
+          ? _value.request
+          : request // ignore: cast_nullable_to_non_nullable
+              as BookingCancelRequest,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $BookingCancelRequestCopyWith<$Res> get request {
+    return $BookingCancelRequestCopyWith<$Res>(_value.request, (value) {
+      return _then(_value.copyWith(request: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$BookingCancelImpl implements BookingCancel {
+  const _$BookingCancelImpl({required this.request});
+
+  @override
+  final BookingCancelRequest request;
+
+  @override
+  String toString() {
+    return 'BookingEvent.cancel(request: $request)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$BookingCancelImpl &&
+            (identical(other.request, request) || other.request == request));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, request);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$BookingCancelImplCopyWith<_$BookingCancelImpl> get copyWith =>
+      __$$BookingCancelImplCopyWithImpl<_$BookingCancelImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int bookingId) loadInfo,
+    required TResult Function() sendBookingStatus,
+    required TResult Function(BookingStatus bookingStatus) changeBookingStatus,
+    required TResult Function(BookingCancelRequest request) cancel,
+  }) {
+    return cancel(request);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int bookingId)? loadInfo,
+    TResult? Function()? sendBookingStatus,
+    TResult? Function(BookingStatus bookingStatus)? changeBookingStatus,
+    TResult? Function(BookingCancelRequest request)? cancel,
+  }) {
+    return cancel?.call(request);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int bookingId)? loadInfo,
+    TResult Function()? sendBookingStatus,
+    TResult Function(BookingStatus bookingStatus)? changeBookingStatus,
+    TResult Function(BookingCancelRequest request)? cancel,
+    required TResult orElse(),
+  }) {
+    if (cancel != null) {
+      return cancel(request);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(BookingLoadInfo value) loadInfo,
+    required TResult Function(BookingSendBookingStatus value) sendBookingStatus,
+    required TResult Function(BookingChangeBookingStatus value)
+        changeBookingStatus,
+    required TResult Function(BookingCancel value) cancel,
+  }) {
+    return cancel(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(BookingLoadInfo value)? loadInfo,
+    TResult? Function(BookingSendBookingStatus value)? sendBookingStatus,
+    TResult? Function(BookingChangeBookingStatus value)? changeBookingStatus,
+    TResult? Function(BookingCancel value)? cancel,
+  }) {
+    return cancel?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(BookingLoadInfo value)? loadInfo,
+    TResult Function(BookingSendBookingStatus value)? sendBookingStatus,
+    TResult Function(BookingChangeBookingStatus value)? changeBookingStatus,
+    TResult Function(BookingCancel value)? cancel,
+    required TResult orElse(),
+  }) {
+    if (cancel != null) {
+      return cancel(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class BookingCancel implements BookingEvent {
+  const factory BookingCancel({required final BookingCancelRequest request}) =
+      _$BookingCancelImpl;
+
+  BookingCancelRequest get request;
+  @JsonKey(ignore: true)
+  _$$BookingCancelImplCopyWith<_$BookingCancelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

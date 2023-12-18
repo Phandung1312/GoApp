@@ -10,11 +10,9 @@ part 'account_state.dart';
 @injectable
 class AccountCubit extends Cubit<AccountState> {
   final GetAccountUseCase _getAccountUseCase;
-  AccountCubit(this._getAccountUseCase) : super(const AccountState.initial()) {
-    _onLoad();
-  }
+  AccountCubit(this._getAccountUseCase) : super(const AccountState.initial());
 
-  void _onLoad() async {
+  void onLoad() async {
     emit(const AccountState.loading());
     var either = await _getAccountUseCase();
     either.fold(

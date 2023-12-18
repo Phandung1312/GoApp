@@ -13,11 +13,14 @@ import 'package:go_app_driver/domain/entities/enum/enum.dart';
 import 'package:go_app_driver/domain/entities/message.dart';
 import 'package:go_app_driver/extensions/latlng_extension.dart';
 import 'package:go_app_driver/helpers/share_prefereces.dart';
+import 'package:go_app_driver/helpers/vietmap_polyline_utils.dart'
+    as map_helper;
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
+import 'package:polyline_codec/polyline_codec.dart';
 import 'package:stomp_dart_client/stomp.dart';
 import 'package:stomp_dart_client/stomp_config.dart';
-import 'package:vietmap_flutter_gl/vietmap_flutter_gl.dart';
+import 'package:vietmap_gl_platform_interface/vietmap_gl_platform_interface.dart';
 
 part 'socket_bloc.freezed.dart';
 part 'socket_event.dart';
@@ -27,6 +30,8 @@ part 'socket_state.dart';
 class SocketBloc extends Bloc<SocketEvent, SocketState> {
   late final StompClient client;
   Timer? timer;
+  String? route;
+  double bearing = 0;
   SocketBloc() : super(const SocketState.initial()) {
     String token = getIdToken();
 
@@ -56,9 +61,12 @@ class SocketBloc extends Bloc<SocketEvent, SocketState> {
       _SocketNotifyHaveBooking event, Emitter<SocketState> emit) {
     emit(SocketState.receivedBooking(bookingId: event.bookingId));
   }
-  void _onBroadCastMessage(_SocketBroadCastMessage event,Emitter<SocketState> emit) {
+
+  void _onBroadCastMessage(
+      _SocketBroadCastMessage event, Emitter<SocketState> emit) {
     emit(SocketState.receivedMessage(message: event.message));
   }
+
   void _onBroadCastBookingStatus(
       _SocketBroadCastBookingStatus event, Emitter<SocketState> emit) {
     if (event.bookingStatusModel.status == BookingStatus.complete ||
@@ -126,17 +134,38 @@ class SocketBloc extends Bloc<SocketEvent, SocketState> {
         callback: (frame) {
           Logger().i("Receive message = ${frame.body}");
           var message = MessageModel.fromJson(
-              jsonDecode(frame.body!) as Map<String, dynamic>).maptoEntity();
+                  jsonDecode(frame.body!) as Map<String, dynamic>)
+              .maptoEntity();
           add(SocketEvent.broadCastMessage(message));
         });
+  }
+
+  void updateBearing(double value) {
+    bearing = value;
+  }
+
+  void updateRoute(String value) {
+    route = value;
   }
 
   void sendLocation() async {
     Position locationData = await Geolocator.getCurrentPosition();
     LatLng latLng = LatLng(locationData.latitude, locationData.longitude);
     var idUser = getUserId();
-    var locationInfo =
-        LocationInfoModel(idUser: idUser, location: latLng.toUrlValue());
+    var locationInfo = LocationInfoModel(
+        idUser: idUser, location: latLng.toUrlValue(), bearing: bearing);
+    if (route != null) {
+      var listPoint = PolylineCodec.decode(route!).map((e) {
+        return LatLng(e[0] / 10, e[1] / 10);
+      }).toList();
+
+      var data = map_helper.VietmapPolyline.splitRouteByPoint(listPoint, latLng,
+          unit: map_helper.Unit.miles);
+
+      var newRoute = VietmapPolylineDecoder.encodePolyline(data[1]);
+
+      locationInfo = locationInfo.copyWith(routeEncode: newRoute);
+    }
     Logger().i(jsonEncode(locationInfo.toJson()));
     client.send(
         destination: '/app/location',

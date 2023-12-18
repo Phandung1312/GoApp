@@ -3,6 +3,8 @@ import 'package:go_app_driver/core/errors/failures.dart';
 import 'package:go_app_driver/core/network/base_remote_service.dart';
 import 'package:go_app_driver/core/utils/mapper/enum_mapper.dart';
 import 'package:go_app_driver/data/api/booking_api_service.dart';
+import 'package:go_app_driver/data/models/booking/booking_cancel_request.dart';
+import 'package:go_app_driver/data/models/booking/booking_cancel_response.dart';
 import 'package:go_app_driver/data/models/booking/driver_status_model.dart';
 import 'package:go_app_driver/domain/entities/booking.dart';
 import 'package:go_app_driver/domain/entities/customer_info.dart';
@@ -15,6 +17,7 @@ abstract class IBookingRemoteDataSource {
   Future<Either<Failure, DriverStatus>> changeDriverStatus(
       DriverStatusModel status);
   Future<Either<Failure, Booking>> getActiveBooking();
+  Future<Either<Failure, BookingCancelResponse>> cancelBooking(BookingCancelRequest request);
 }
 
 @LazySingleton(as: IBookingRemoteDataSource)
@@ -55,5 +58,11 @@ class BookingRemoteDataSource
   Future<Either<Failure, Booking>> getActiveBooking() async {
     var result = await callApi(() => _bookingApiService.getActiveBooking());
     return result.map((r) => r.maptoEntity());
+  }
+  
+  @override
+  Future<Either<Failure, BookingCancelResponse>> cancelBooking(BookingCancelRequest request) async{
+    var result = await callApi(() => _bookingApiService.cancelBooking(request.bookingId,request));
+    return result;
   }
 }

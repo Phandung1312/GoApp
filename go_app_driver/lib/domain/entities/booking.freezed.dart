@@ -19,8 +19,10 @@ mixin _$Booking {
   int get id => throw _privateConstructorUsedError;
   CustomerInfo get customerInfo => throw _privateConstructorUsedError;
   num get createAt => throw _privateConstructorUsedError;
-  LatLng get pickupLocation => throw _privateConstructorUsedError;
+  LatLng get pickUpLocation => throw _privateConstructorUsedError;
+  String get pickUpAddress => throw _privateConstructorUsedError;
   LatLng get dropOffLocation => throw _privateConstructorUsedError;
+  String get dropOffAddress => throw _privateConstructorUsedError;
   String get incomingDesAddress => throw _privateConstructorUsedError;
   BookingStatus get status => throw _privateConstructorUsedError;
   double get amount => throw _privateConstructorUsedError;
@@ -42,8 +44,10 @@ abstract class $BookingCopyWith<$Res> {
       {int id,
       CustomerInfo customerInfo,
       num createAt,
-      LatLng pickupLocation,
+      LatLng pickUpLocation,
+      String pickUpAddress,
       LatLng dropOffLocation,
+      String dropOffAddress,
       String incomingDesAddress,
       BookingStatus status,
       double amount,
@@ -71,8 +75,10 @@ class _$BookingCopyWithImpl<$Res, $Val extends Booking>
     Object? id = null,
     Object? customerInfo = null,
     Object? createAt = null,
-    Object? pickupLocation = null,
+    Object? pickUpLocation = null,
+    Object? pickUpAddress = null,
     Object? dropOffLocation = null,
+    Object? dropOffAddress = null,
     Object? incomingDesAddress = null,
     Object? status = null,
     Object? amount = null,
@@ -94,14 +100,22 @@ class _$BookingCopyWithImpl<$Res, $Val extends Booking>
           ? _value.createAt
           : createAt // ignore: cast_nullable_to_non_nullable
               as num,
-      pickupLocation: null == pickupLocation
-          ? _value.pickupLocation
-          : pickupLocation // ignore: cast_nullable_to_non_nullable
+      pickUpLocation: null == pickUpLocation
+          ? _value.pickUpLocation
+          : pickUpLocation // ignore: cast_nullable_to_non_nullable
               as LatLng,
+      pickUpAddress: null == pickUpAddress
+          ? _value.pickUpAddress
+          : pickUpAddress // ignore: cast_nullable_to_non_nullable
+              as String,
       dropOffLocation: null == dropOffLocation
           ? _value.dropOffLocation
           : dropOffLocation // ignore: cast_nullable_to_non_nullable
               as LatLng,
+      dropOffAddress: null == dropOffAddress
+          ? _value.dropOffAddress
+          : dropOffAddress // ignore: cast_nullable_to_non_nullable
+              as String,
       incomingDesAddress: null == incomingDesAddress
           ? _value.incomingDesAddress
           : incomingDesAddress // ignore: cast_nullable_to_non_nullable
@@ -153,8 +167,10 @@ abstract class _$$BookingImplCopyWith<$Res> implements $BookingCopyWith<$Res> {
       {int id,
       CustomerInfo customerInfo,
       num createAt,
-      LatLng pickupLocation,
+      LatLng pickUpLocation,
+      String pickUpAddress,
       LatLng dropOffLocation,
+      String dropOffAddress,
       String incomingDesAddress,
       BookingStatus status,
       double amount,
@@ -181,8 +197,10 @@ class __$$BookingImplCopyWithImpl<$Res>
     Object? id = null,
     Object? customerInfo = null,
     Object? createAt = null,
-    Object? pickupLocation = null,
+    Object? pickUpLocation = null,
+    Object? pickUpAddress = null,
     Object? dropOffLocation = null,
+    Object? dropOffAddress = null,
     Object? incomingDesAddress = null,
     Object? status = null,
     Object? amount = null,
@@ -204,14 +222,22 @@ class __$$BookingImplCopyWithImpl<$Res>
           ? _value.createAt
           : createAt // ignore: cast_nullable_to_non_nullable
               as num,
-      pickupLocation: null == pickupLocation
-          ? _value.pickupLocation
-          : pickupLocation // ignore: cast_nullable_to_non_nullable
+      pickUpLocation: null == pickUpLocation
+          ? _value.pickUpLocation
+          : pickUpLocation // ignore: cast_nullable_to_non_nullable
               as LatLng,
+      pickUpAddress: null == pickUpAddress
+          ? _value.pickUpAddress
+          : pickUpAddress // ignore: cast_nullable_to_non_nullable
+              as String,
       dropOffLocation: null == dropOffLocation
           ? _value.dropOffLocation
           : dropOffLocation // ignore: cast_nullable_to_non_nullable
               as LatLng,
+      dropOffAddress: null == dropOffAddress
+          ? _value.dropOffAddress
+          : dropOffAddress // ignore: cast_nullable_to_non_nullable
+              as String,
       incomingDesAddress: null == incomingDesAddress
           ? _value.incomingDesAddress
           : incomingDesAddress // ignore: cast_nullable_to_non_nullable
@@ -251,8 +277,10 @@ class _$BookingImpl implements _Booking {
       {this.id = 0,
       this.customerInfo = const CustomerInfo(),
       this.createAt = 0,
-      this.pickupLocation = const LatLng(0.0, 0.0),
+      this.pickUpLocation = const LatLng(0.0, 0.0),
+      this.pickUpAddress = "",
       this.dropOffLocation = const LatLng(0.0, 0.0),
+      this.dropOffAddress = "",
       this.incomingDesAddress = "",
       this.status = BookingStatus.waitting,
       this.amount = 0.0,
@@ -272,10 +300,16 @@ class _$BookingImpl implements _Booking {
   final num createAt;
   @override
   @JsonKey()
-  final LatLng pickupLocation;
+  final LatLng pickUpLocation;
+  @override
+  @JsonKey()
+  final String pickUpAddress;
   @override
   @JsonKey()
   final LatLng dropOffLocation;
+  @override
+  @JsonKey()
+  final String dropOffAddress;
   @override
   @JsonKey()
   final String incomingDesAddress;
@@ -300,7 +334,7 @@ class _$BookingImpl implements _Booking {
 
   @override
   String toString() {
-    return 'Booking(id: $id, customerInfo: $customerInfo, createAt: $createAt, pickupLocation: $pickupLocation, dropOffLocation: $dropOffLocation, incomingDesAddress: $incomingDesAddress, status: $status, amount: $amount, predictTime: $predictTime, distance: $distance, vehicleType: $vehicleType, paymentMethod: $paymentMethod)';
+    return 'Booking(id: $id, customerInfo: $customerInfo, createAt: $createAt, pickUpLocation: $pickUpLocation, pickUpAddress: $pickUpAddress, dropOffLocation: $dropOffLocation, dropOffAddress: $dropOffAddress, incomingDesAddress: $incomingDesAddress, status: $status, amount: $amount, predictTime: $predictTime, distance: $distance, vehicleType: $vehicleType, paymentMethod: $paymentMethod)';
   }
 
   @override
@@ -313,10 +347,14 @@ class _$BookingImpl implements _Booking {
                 other.customerInfo == customerInfo) &&
             (identical(other.createAt, createAt) ||
                 other.createAt == createAt) &&
-            (identical(other.pickupLocation, pickupLocation) ||
-                other.pickupLocation == pickupLocation) &&
+            (identical(other.pickUpLocation, pickUpLocation) ||
+                other.pickUpLocation == pickUpLocation) &&
+            (identical(other.pickUpAddress, pickUpAddress) ||
+                other.pickUpAddress == pickUpAddress) &&
             (identical(other.dropOffLocation, dropOffLocation) ||
                 other.dropOffLocation == dropOffLocation) &&
+            (identical(other.dropOffAddress, dropOffAddress) ||
+                other.dropOffAddress == dropOffAddress) &&
             (identical(other.incomingDesAddress, incomingDesAddress) ||
                 other.incomingDesAddress == incomingDesAddress) &&
             (identical(other.status, status) || other.status == status) &&
@@ -337,8 +375,10 @@ class _$BookingImpl implements _Booking {
       id,
       customerInfo,
       createAt,
-      pickupLocation,
+      pickUpLocation,
+      pickUpAddress,
       dropOffLocation,
+      dropOffAddress,
       incomingDesAddress,
       status,
       amount,
@@ -359,8 +399,10 @@ abstract class _Booking implements Booking {
       {final int id,
       final CustomerInfo customerInfo,
       final num createAt,
-      final LatLng pickupLocation,
+      final LatLng pickUpLocation,
+      final String pickUpAddress,
       final LatLng dropOffLocation,
+      final String dropOffAddress,
       final String incomingDesAddress,
       final BookingStatus status,
       final double amount,
@@ -376,9 +418,13 @@ abstract class _Booking implements Booking {
   @override
   num get createAt;
   @override
-  LatLng get pickupLocation;
+  LatLng get pickUpLocation;
+  @override
+  String get pickUpAddress;
   @override
   LatLng get dropOffLocation;
+  @override
+  String get dropOffAddress;
   @override
   String get incomingDesAddress;
   @override

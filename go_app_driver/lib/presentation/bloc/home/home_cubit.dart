@@ -9,7 +9,6 @@ import 'package:go_app_driver/domain/usecases/booking/get_active_booking_usecase
 import 'package:go_app_driver/presentation/bloc/socket/socket_bloc.dart';
 import 'package:injectable/injectable.dart';
 
-
 part 'home_state.dart';
 
 @injectable
@@ -38,6 +37,11 @@ class HomeCubit extends Cubit<HomeState> {
     _onLoadActiveBooking();
   }
 
+  void onReset() {
+    _onLoadAccount();
+    _onLoadActiveBooking();
+  }
+
   void _onLoadAccount() async {
     var either = await _getAccountUseCase();
     either.fold((l) => null, (r) {
@@ -47,10 +51,12 @@ class HomeCubit extends Cubit<HomeState> {
 
   void _onLoadActiveBooking() async {
     var either = await _getActiveBookingUseCase();
+    await Future.delayed(const Duration(milliseconds: 500));
     either.fold((l) => null, (r) {
       if (r.id != 0) {
-        // Logger().i("emit received");
-        emit(HomeReceivedBooking(driverInfo: state.driverInfo, bookingId: r.id));
+        socketBloc.scheduleSendLocation();
+        emit(
+            HomeReceivedBooking(driverInfo: state.driverInfo, bookingId: r.id));
       }
     });
   }
@@ -62,7 +68,8 @@ class HomeCubit extends Cubit<HomeState> {
       emit(HomeLoadAccountSuccess(driverInfo: currentInfo));
     });
   }
-   @override
+
+  @override
   Future<void> close() {
     socketSubscription?.cancel();
     return super.close();

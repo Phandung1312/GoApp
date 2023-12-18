@@ -28,7 +28,6 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     LatLng latLng = getCurrentLatLngFromSharedPrefs();
     _initialCameraPosition = CameraPosition(target: latLng, zoom: 15);
-
   }
 
   @override
@@ -52,24 +51,34 @@ class _HomePageState extends State<HomePage> {
                         fontSize: 16, fontWeight: FontWeight.w700),
                   ),
                   GestureDetector(
-                    onTap: (){
-                      var driverStatusModel = DriverStatusModel(driverId: state.driverInfo.id,driverStatus : isFree ? DriverStatus.off : DriverStatus.free);
-                      context.read<HomeCubit>().onChangeDriverStatus(driverStatusModel);
+                    onTap: () {
+                      var driverStatusModel = DriverStatusModel(
+                          driverId: state.driverInfo.id,
+                          driverStatus:
+                              isFree ? DriverStatus.off : DriverStatus.free);
+                      context
+                          .read<HomeCubit>()
+                          .onChangeDriverStatus(driverStatusModel);
                     },
                     child: Container(
-                      padding:
-                          const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 5, horizontal: 20),
                       decoration: BoxDecoration(
-                        color: isFree ? AppColors.primaryGreen : Colors.grey.withOpacity(0.4),
+                        color: isFree
+                            ? AppColors.primaryGreen
+                            : Colors.grey.withOpacity(0.4),
                         borderRadius: BorderRadius.circular(15),
                         border: Border.all(
-                          color:  Colors.black.withOpacity(0.5),
+                          color: Colors.black.withOpacity(0.5),
                           width: isFree ? 0 : 1,
                         ),
                       ),
                       child: Image(
-                        color: isFree ? Colors.white : Colors.black.withOpacity(0.5) ,
-                        image: isFree ? AppImages.icPowerOn : AppImages.icPowerOff,
+                        color: isFree
+                            ? Colors.white
+                            : Colors.black.withOpacity(0.5),
+                        image:
+                            isFree ? AppImages.icPowerOn : AppImages.icPowerOff,
                         fit: BoxFit.cover,
                         height: 20,
                       ),

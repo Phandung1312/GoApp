@@ -1,6 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:go_app_driver/config/constants.dart';
+import 'package:go_app_driver/data/models/booking/booking_cancel_request.dart';
+import 'package:go_app_driver/data/models/booking/booking_cancel_response.dart';
 import 'package:go_app_driver/data/models/booking/booking_model.dart';
+import 'package:go_app_driver/data/models/booking/booking_status_model.dart';
 import 'package:go_app_driver/data/models/booking/driver_status_model.dart';
 import 'package:go_app_driver/data/models/customer_info_model.dart';
 import 'package:retrofit/retrofit.dart';
@@ -24,4 +27,10 @@ abstract class BookingApiService {
 
   @GET('bookings/active')
   Future<HttpResponse<BookingModel>> getActiveBooking();
+
+  @PATCH('bookings/{id}/cancel')
+  Future<HttpResponse<BookingCancelResponse>> cancelBooking(
+    @Path('id') int id,
+    @Body() BookingCancelRequest request
+  );
 }

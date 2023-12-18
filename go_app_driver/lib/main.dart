@@ -12,6 +12,7 @@ import 'package:go_app_driver/presentation/bloc/history/history_bloc.dart';
 import 'package:go_app_driver/presentation/bloc/home/home_cubit.dart';
 import 'package:go_app_driver/presentation/bloc/login/login_bloc.dart';
 import 'package:go_app_driver/presentation/bloc/register/register_bloc.dart';
+import 'package:go_app_driver/presentation/bloc/socket/socket_bloc.dart';
 import 'package:go_app_driver/presentation/pages/splash/splash_page.dart';
 import 'package:injectable/injectable.dart';
 import 'package:toast/toast.dart';
@@ -46,6 +47,7 @@ class MyApp extends StatelessWidget {
           BlocProvider<ChatCubit>(create: (_) => getIt()),
           BlocProvider<AccountCubit>(create: (_) => getIt()),
           BlocProvider<HistoryBloc>(create: (_) => getIt()),
+          BlocProvider<SocketBloc>(create: (_) => getIt()),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,

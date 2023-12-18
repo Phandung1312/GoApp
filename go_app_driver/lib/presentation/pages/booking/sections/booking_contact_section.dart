@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_app_driver/config/colors.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:go_app_driver/config/routes.dart';
 import 'package:go_app_driver/domain/entities/booking.dart';
 import 'package:go_app_driver/presentation/bloc/chat/chat_cubit.dart';
@@ -18,19 +18,21 @@ class BookingContactSection extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+               FlutterPhoneDirectCaller.callNumber(booking.customerInfo.phoneNumber);
+            },
             child: const Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Icon(
                   Icons.phone,
-                  color: AppColors.primaryGreyColor,
+                  color: Colors.black,
                   size: 30,
                 ),
                 Text(
                   "Gọi điện",
                   style: TextStyle(
-                      color: AppColors.primaryGreyColor, fontSize: 16),
+                      color: Colors.black, fontSize: 16),
                 )
               ],
             ),
@@ -45,13 +47,13 @@ class BookingContactSection extends StatelessWidget {
               children: [
                 Icon(
                   Icons.message,
-                  color: AppColors.primaryGreyColor,
+                  color: Colors.black,
                   size: 30,
                 ),
                 Text(
                   "Nhắn tin",
                   style: TextStyle(
-                      color: AppColors.primaryGreyColor, fontSize: 16),
+                      color: Colors.black, fontSize: 16),
                 )
               ],
             ),
@@ -65,13 +67,13 @@ class BookingContactSection extends StatelessWidget {
               children: [
                 Icon(
                   Icons.more_vert,
-                  color: AppColors.primaryGreyColor,
+                  color: Colors.black,
                   size: 30,
                 ),
                 Text(
                   "Xem thêm",
                   style: TextStyle(
-                      color: AppColors.primaryGreyColor, fontSize: 16),
+                      color: Colors.black, fontSize: 16),
                 )
               ],
             ),

@@ -5,19 +5,18 @@ import 'package:geolocator/geolocator.dart';
 import 'package:go_app_driver/config/colors.dart';
 import 'package:go_app_driver/domain/entities/enum/enum.dart';
 import 'package:go_app_driver/extensions/latlng_extension.dart';
+import 'package:go_app_driver/helpers/toast.dart';
 import 'package:go_app_driver/presentation/bloc/booking/booking_bloc.dart';
+import 'package:go_app_driver/presentation/bloc/home/home_cubit.dart';
+import 'package:go_app_driver/presentation/bloc/socket/socket_bloc.dart';
 import 'package:go_app_driver/presentation/pages/booking/sections/booking_bottom_section.dart';
 import 'package:go_app_driver/presentation/pages/booking/sections/booking_contact_section.dart';
 import 'package:go_app_driver/presentation/pages/booking/sections/booking_info_section.dart';
 import 'package:go_app_driver/presentation/pages/booking/sections/booking_status_section.dart';
 import 'package:go_app_driver/presentation/widgets/loading_overlay.dart';
-import 'package:toast/toast.dart';
-import 'package:vietmap_flutter_navigation/embedded/controller.dart';
-import 'package:vietmap_flutter_navigation/models/options.dart';
-import 'package:vietmap_flutter_navigation/models/way_point.dart';
-import 'package:vietmap_flutter_navigation/navigation_plugin.dart';
+import 'package:vietmap_flutter_navigation/models/direction_route.dart';
+
 import 'package:vietmap_flutter_navigation/vietmap_flutter_navigation.dart';
-import 'package:vietmap_flutter_navigation/views/navigation_view.dart';
 
 class BookingPage extends StatefulWidget {
   const BookingPage({super.key});
@@ -57,14 +56,17 @@ class _BookingPageState extends State<BookingPage> {
           switch (state.bookingData.status) {
             case BookingStatus.complete:
               {
-                Toast.show("Đã hoàn thành cuốc xe, cuốc xe đã lưu lại trong hoạt động.",
-                    duration: Toast.lengthShort, gravity: Toast.bottom);
+                ToastHelper.showToast(
+                    message:
+                        "Cuốc xe đã hoàn thành, đã được lưu lại trong hoạt động");
+                context.read<HomeCubit>().onReset();
                 Navigator.pop(context);
               }
             case BookingStatus.cancelled:
               {
-                 Toast.show("Rất tiếc cuốc xe này đã bị hủy",
-                    duration: Toast.lengthShort, gravity: Toast.bottom);
+                ToastHelper.showToast(
+                    message: "Rất tiếc cuốc xe này đã bị hủy");
+                context.read<HomeCubit>().onReset();
                 Navigator.pop(context);
               }
               break;
@@ -128,11 +130,22 @@ class _BookingPageState extends State<BookingPage> {
                             Expanded(
                               child: NavigationView(
                                   mapOptions: _navigationOption,
-                                  onRouteProgressChange:
-                                      (RouteProgressEvent routeProgressEvent) {
+                                  onRouteProgressChange: (RouteProgressEvent
+                                      routeProgressEvent) async {
                                     var currentLocation =
                                         routeProgressEvent.snappedLocation;
-                                    if (currentLocation != null) {}
+                                    if (currentLocation != null) {
+                                      context.read<SocketBloc>().updateBearing(
+                                          currentLocation.bearing?.toDouble() ??
+                                              0);
+                                    }
+                                  },
+                                  onRouteBuilt: (DirectionRoute direction) {
+                                    if (direction.geometry != null) {
+                                      context
+                                          .read<SocketBloc>()
+                                          .updateRoute(direction.geometry!);
+                                    }
                                   },
                                   onMapRendered: () async {
                                     var listWaypoint = <WayPoint>[];
@@ -145,15 +158,32 @@ class _BookingPageState extends State<BookingPage> {
                                     listWaypoint.add(WayPoint(
                                         name: '',
                                         latitude: state.bookingData
-                                            .pickupLocation.latitude,
+                                            .pickUpLocation.latitude,
                                         longitude: state.bookingData
-                                            .pickupLocation.longitude));
+                                            .pickUpLocation.longitude));
                                     _navigationController
                                         ?.buildAndStartNavigation(
                                             wayPoints: listWaypoint,
-                                            profile:
-                                                DrivingProfile.drivingTraffic)
+                                            profile: DrivingProfile.motorcycle)
                                         .then((value) {});
+                                  },
+                                  onArrival: () {
+                                    showDialog(
+                                        barrierDismissible: false,
+                                        context: context,
+                                        builder: (_) => AlertDialog(
+                                              title: const Text('Thông báo'),
+                                              content:
+                                                  const Text('Bạn đã đến nơi'),
+                                              actions: [
+                                                TextButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: const Text('OK'))
+                                              ],
+                                            ));
                                   },
                                   onMapCreated: (p0) async {
                                     _navigationController = p0;

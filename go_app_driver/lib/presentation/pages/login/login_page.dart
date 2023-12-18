@@ -32,8 +32,8 @@ class LoginPage extends StatelessWidget {
               case AccountStatus.unregistered:
                 {
                   Future.delayed(const Duration(milliseconds: 100), () {
-                    Navigator.pushNamedAndRemoveUntil(
-                        context, Paths.register, (_) => false);
+                    Navigator.pushNamed(
+                        context, Paths.register);
                   });
                   break;
                 }

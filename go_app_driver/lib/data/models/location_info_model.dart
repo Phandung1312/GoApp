@@ -6,13 +6,17 @@ class LocationInfoModel with _$LocationInfoModel{
   const LocationInfoModel._();
   const factory LocationInfoModel({
     required int idUser,
-    required String location
+    required String location,
+    String? routeEncode,
+    double? bearing,
   }) = _LocationInfoModel;
 
    Map<String, dynamic> toJson(){
         return <String, dynamic>{
             'driverId' : idUser,
             'location' : location,
+            'routeEncode' : routeEncode,
+            'bearing' : bearing
         };
       }
 }

@@ -26,6 +26,13 @@ class MessageModel with _$MessageModel implements DataMapper<Message> {
     };
   }
 
+  factory MessageModel.fromJsonSocket(Map<String, dynamic> json) {
+    return MessageModel(
+        senderId: json['senderId'] as int,
+        receiverId: json['receiverId'] as int,
+        content: json['content'] as String,
+        createAt: (json['createAt'] as String) as int);
+  }
   @override
   Message maptoEntity() {
     return Message(

@@ -13,7 +13,7 @@ class BookingBottomSection extends StatelessWidget {
       buildWhen: (previous, current) => current is BookingLoadInfoSuccess || current is BookingStatusChanged,
       builder: (context, state) {
         return Padding(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(15),
           child: InkWell(
             onTap: (){
               context.read<BookingBloc>().add(const BookingEvent.sendBookingStatus());
@@ -27,7 +27,7 @@ class BookingBottomSection extends StatelessWidget {
                   state.bookingData.status.statusToDriverAction() ,
                   style: const TextStyle(
                       color: Colors.white,
-                      fontSize: 20,
+                      fontSize: 16,
                       fontWeight: FontWeight.w700),
                 )),
           ),
