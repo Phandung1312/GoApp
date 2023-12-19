@@ -9,6 +9,7 @@ import 'package:go_app_driver/domain/entities/register_info.dart';
 
 abstract class AccountRepository{
   Future<Either<Failure, AccountStatus>> login();
+  Future<Either<Failure, void>> logOut();
   Future<Either<Failure, DriverInfoModel>> registerDriver(RegisterInfo registerInfo);
   Future<Either<Failure, DriverInfo>> getAccount();
 }

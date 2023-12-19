@@ -6,7 +6,6 @@ import 'package:go_app_driver/config/routes.dart';
 import 'package:go_app_driver/core/utils/utils.dart';
 import 'package:go_app_driver/domain/entities/driver_info.dart';
 import 'package:go_app_driver/extensions/enum_extension.dart';
-import 'package:go_app_driver/helpers/google_authen_helper.dart';
 import 'package:go_app_driver/presentation/bloc/account/account_cubit.dart';
 import 'package:go_app_driver/presentation/pages/account/sections/info_field_section.dart';
 import 'package:go_app_driver/presentation/widgets/main_tool_bar.dart';
@@ -25,7 +24,7 @@ class _AccountPageState extends State<AccountPage> {
     super.initState();
     context.read<AccountCubit>().onLoad();
   }
-  DriverInfo driverInfo = DriverInfo();
+  DriverInfo driverInfo = const DriverInfo();
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AccountCubit, AccountState>(
@@ -34,6 +33,10 @@ class _AccountPageState extends State<AccountPage> {
           setState(() {
             driverInfo = state.driverInfo;
           });
+          return;
+        }
+        if(state is AccountLogOutSuccess){
+          Navigator.pushNamedAndRemoveUntil(context, Paths.login, (route) => false);
         }
       },
       builder: (context, state) => Column(
@@ -140,10 +143,8 @@ class _AccountPageState extends State<AccountPage> {
             height: 30,
           ),
           InkWell(
-            onTap: () async{
-              await GoogleAuthenHelper.signOut();
-              // ignore: use_build_context_synchronously
-              Navigator.pushNamedAndRemoveUntil(context, Paths.login, (route) => false);
+            onTap: () {
+              context.read<AccountCubit>().logOut();
             },
             child: Text(
               "Đăng xuất",

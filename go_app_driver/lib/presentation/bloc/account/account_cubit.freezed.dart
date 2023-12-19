@@ -22,6 +22,7 @@ mixin _$AccountState {
     required TResult Function() loading,
     required TResult Function(DriverInfo driverInfo) loadSuccess,
     required TResult Function() loadError,
+    required TResult Function() logOutSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$AccountState {
     TResult? Function()? loading,
     TResult? Function(DriverInfo driverInfo)? loadSuccess,
     TResult? Function()? loadError,
+    TResult? Function()? logOutSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$AccountState {
     TResult Function()? loading,
     TResult Function(DriverInfo driverInfo)? loadSuccess,
     TResult Function()? loadError,
+    TResult Function()? logOutSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$AccountState {
     required TResult Function(AccountLoading value) loading,
     required TResult Function(AccountLoadSuccess value) loadSuccess,
     required TResult Function(AccountLoadLoadError value) loadError,
+    required TResult Function(AccountLogOutSuccess value) logOutSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$AccountState {
     TResult? Function(AccountLoading value)? loading,
     TResult? Function(AccountLoadSuccess value)? loadSuccess,
     TResult? Function(AccountLoadLoadError value)? loadError,
+    TResult? Function(AccountLogOutSuccess value)? logOutSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$AccountState {
     TResult Function(AccountLoading value)? loading,
     TResult Function(AccountLoadSuccess value)? loadSuccess,
     TResult Function(AccountLoadLoadError value)? loadError,
+    TResult Function(AccountLogOutSuccess value)? logOutSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -128,6 +134,7 @@ class _$AccountInitialImpl implements AccountInitial {
     required TResult Function() loading,
     required TResult Function(DriverInfo driverInfo) loadSuccess,
     required TResult Function() loadError,
+    required TResult Function() logOutSuccess,
   }) {
     return initial();
   }
@@ -139,6 +146,7 @@ class _$AccountInitialImpl implements AccountInitial {
     TResult? Function()? loading,
     TResult? Function(DriverInfo driverInfo)? loadSuccess,
     TResult? Function()? loadError,
+    TResult? Function()? logOutSuccess,
   }) {
     return initial?.call();
   }
@@ -150,6 +158,7 @@ class _$AccountInitialImpl implements AccountInitial {
     TResult Function()? loading,
     TResult Function(DriverInfo driverInfo)? loadSuccess,
     TResult Function()? loadError,
+    TResult Function()? logOutSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -165,6 +174,7 @@ class _$AccountInitialImpl implements AccountInitial {
     required TResult Function(AccountLoading value) loading,
     required TResult Function(AccountLoadSuccess value) loadSuccess,
     required TResult Function(AccountLoadLoadError value) loadError,
+    required TResult Function(AccountLogOutSuccess value) logOutSuccess,
   }) {
     return initial(this);
   }
@@ -176,6 +186,7 @@ class _$AccountInitialImpl implements AccountInitial {
     TResult? Function(AccountLoading value)? loading,
     TResult? Function(AccountLoadSuccess value)? loadSuccess,
     TResult? Function(AccountLoadLoadError value)? loadError,
+    TResult? Function(AccountLogOutSuccess value)? logOutSuccess,
   }) {
     return initial?.call(this);
   }
@@ -187,6 +198,7 @@ class _$AccountInitialImpl implements AccountInitial {
     TResult Function(AccountLoading value)? loading,
     TResult Function(AccountLoadSuccess value)? loadSuccess,
     TResult Function(AccountLoadLoadError value)? loadError,
+    TResult Function(AccountLogOutSuccess value)? logOutSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -242,6 +254,7 @@ class _$AccountLoadingImpl implements AccountLoading {
     required TResult Function() loading,
     required TResult Function(DriverInfo driverInfo) loadSuccess,
     required TResult Function() loadError,
+    required TResult Function() logOutSuccess,
   }) {
     return loading();
   }
@@ -253,6 +266,7 @@ class _$AccountLoadingImpl implements AccountLoading {
     TResult? Function()? loading,
     TResult? Function(DriverInfo driverInfo)? loadSuccess,
     TResult? Function()? loadError,
+    TResult? Function()? logOutSuccess,
   }) {
     return loading?.call();
   }
@@ -264,6 +278,7 @@ class _$AccountLoadingImpl implements AccountLoading {
     TResult Function()? loading,
     TResult Function(DriverInfo driverInfo)? loadSuccess,
     TResult Function()? loadError,
+    TResult Function()? logOutSuccess,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -279,6 +294,7 @@ class _$AccountLoadingImpl implements AccountLoading {
     required TResult Function(AccountLoading value) loading,
     required TResult Function(AccountLoadSuccess value) loadSuccess,
     required TResult Function(AccountLoadLoadError value) loadError,
+    required TResult Function(AccountLogOutSuccess value) logOutSuccess,
   }) {
     return loading(this);
   }
@@ -290,6 +306,7 @@ class _$AccountLoadingImpl implements AccountLoading {
     TResult? Function(AccountLoading value)? loading,
     TResult? Function(AccountLoadSuccess value)? loadSuccess,
     TResult? Function(AccountLoadLoadError value)? loadError,
+    TResult? Function(AccountLogOutSuccess value)? logOutSuccess,
   }) {
     return loading?.call(this);
   }
@@ -301,6 +318,7 @@ class _$AccountLoadingImpl implements AccountLoading {
     TResult Function(AccountLoading value)? loading,
     TResult Function(AccountLoadSuccess value)? loadSuccess,
     TResult Function(AccountLoadLoadError value)? loadError,
+    TResult Function(AccountLogOutSuccess value)? logOutSuccess,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -394,6 +412,7 @@ class _$AccountLoadSuccessImpl implements AccountLoadSuccess {
     required TResult Function() loading,
     required TResult Function(DriverInfo driverInfo) loadSuccess,
     required TResult Function() loadError,
+    required TResult Function() logOutSuccess,
   }) {
     return loadSuccess(driverInfo);
   }
@@ -405,6 +424,7 @@ class _$AccountLoadSuccessImpl implements AccountLoadSuccess {
     TResult? Function()? loading,
     TResult? Function(DriverInfo driverInfo)? loadSuccess,
     TResult? Function()? loadError,
+    TResult? Function()? logOutSuccess,
   }) {
     return loadSuccess?.call(driverInfo);
   }
@@ -416,6 +436,7 @@ class _$AccountLoadSuccessImpl implements AccountLoadSuccess {
     TResult Function()? loading,
     TResult Function(DriverInfo driverInfo)? loadSuccess,
     TResult Function()? loadError,
+    TResult Function()? logOutSuccess,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
@@ -431,6 +452,7 @@ class _$AccountLoadSuccessImpl implements AccountLoadSuccess {
     required TResult Function(AccountLoading value) loading,
     required TResult Function(AccountLoadSuccess value) loadSuccess,
     required TResult Function(AccountLoadLoadError value) loadError,
+    required TResult Function(AccountLogOutSuccess value) logOutSuccess,
   }) {
     return loadSuccess(this);
   }
@@ -442,6 +464,7 @@ class _$AccountLoadSuccessImpl implements AccountLoadSuccess {
     TResult? Function(AccountLoading value)? loading,
     TResult? Function(AccountLoadSuccess value)? loadSuccess,
     TResult? Function(AccountLoadLoadError value)? loadError,
+    TResult? Function(AccountLogOutSuccess value)? logOutSuccess,
   }) {
     return loadSuccess?.call(this);
   }
@@ -453,6 +476,7 @@ class _$AccountLoadSuccessImpl implements AccountLoadSuccess {
     TResult Function(AccountLoading value)? loading,
     TResult Function(AccountLoadSuccess value)? loadSuccess,
     TResult Function(AccountLoadLoadError value)? loadError,
+    TResult Function(AccountLogOutSuccess value)? logOutSuccess,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
@@ -515,6 +539,7 @@ class _$AccountLoadLoadErrorImpl implements AccountLoadLoadError {
     required TResult Function() loading,
     required TResult Function(DriverInfo driverInfo) loadSuccess,
     required TResult Function() loadError,
+    required TResult Function() logOutSuccess,
   }) {
     return loadError();
   }
@@ -526,6 +551,7 @@ class _$AccountLoadLoadErrorImpl implements AccountLoadLoadError {
     TResult? Function()? loading,
     TResult? Function(DriverInfo driverInfo)? loadSuccess,
     TResult? Function()? loadError,
+    TResult? Function()? logOutSuccess,
   }) {
     return loadError?.call();
   }
@@ -537,6 +563,7 @@ class _$AccountLoadLoadErrorImpl implements AccountLoadLoadError {
     TResult Function()? loading,
     TResult Function(DriverInfo driverInfo)? loadSuccess,
     TResult Function()? loadError,
+    TResult Function()? logOutSuccess,
     required TResult orElse(),
   }) {
     if (loadError != null) {
@@ -552,6 +579,7 @@ class _$AccountLoadLoadErrorImpl implements AccountLoadLoadError {
     required TResult Function(AccountLoading value) loading,
     required TResult Function(AccountLoadSuccess value) loadSuccess,
     required TResult Function(AccountLoadLoadError value) loadError,
+    required TResult Function(AccountLogOutSuccess value) logOutSuccess,
   }) {
     return loadError(this);
   }
@@ -563,6 +591,7 @@ class _$AccountLoadLoadErrorImpl implements AccountLoadLoadError {
     TResult? Function(AccountLoading value)? loading,
     TResult? Function(AccountLoadSuccess value)? loadSuccess,
     TResult? Function(AccountLoadLoadError value)? loadError,
+    TResult? Function(AccountLogOutSuccess value)? logOutSuccess,
   }) {
     return loadError?.call(this);
   }
@@ -574,6 +603,7 @@ class _$AccountLoadLoadErrorImpl implements AccountLoadLoadError {
     TResult Function(AccountLoading value)? loading,
     TResult Function(AccountLoadSuccess value)? loadSuccess,
     TResult Function(AccountLoadLoadError value)? loadError,
+    TResult Function(AccountLogOutSuccess value)? logOutSuccess,
     required TResult orElse(),
   }) {
     if (loadError != null) {
@@ -585,4 +615,125 @@ class _$AccountLoadLoadErrorImpl implements AccountLoadLoadError {
 
 abstract class AccountLoadLoadError implements AccountState {
   const factory AccountLoadLoadError() = _$AccountLoadLoadErrorImpl;
+}
+
+/// @nodoc
+abstract class _$$AccountLogOutSuccessImplCopyWith<$Res> {
+  factory _$$AccountLogOutSuccessImplCopyWith(_$AccountLogOutSuccessImpl value,
+          $Res Function(_$AccountLogOutSuccessImpl) then) =
+      __$$AccountLogOutSuccessImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$AccountLogOutSuccessImplCopyWithImpl<$Res>
+    extends _$AccountStateCopyWithImpl<$Res, _$AccountLogOutSuccessImpl>
+    implements _$$AccountLogOutSuccessImplCopyWith<$Res> {
+  __$$AccountLogOutSuccessImplCopyWithImpl(_$AccountLogOutSuccessImpl _value,
+      $Res Function(_$AccountLogOutSuccessImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$AccountLogOutSuccessImpl implements AccountLogOutSuccess {
+  const _$AccountLogOutSuccessImpl();
+
+  @override
+  String toString() {
+    return 'AccountState.logOutSuccess()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AccountLogOutSuccessImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(DriverInfo driverInfo) loadSuccess,
+    required TResult Function() loadError,
+    required TResult Function() logOutSuccess,
+  }) {
+    return logOutSuccess();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(DriverInfo driverInfo)? loadSuccess,
+    TResult? Function()? loadError,
+    TResult? Function()? logOutSuccess,
+  }) {
+    return logOutSuccess?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(DriverInfo driverInfo)? loadSuccess,
+    TResult Function()? loadError,
+    TResult Function()? logOutSuccess,
+    required TResult orElse(),
+  }) {
+    if (logOutSuccess != null) {
+      return logOutSuccess();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AccountInitial value) initial,
+    required TResult Function(AccountLoading value) loading,
+    required TResult Function(AccountLoadSuccess value) loadSuccess,
+    required TResult Function(AccountLoadLoadError value) loadError,
+    required TResult Function(AccountLogOutSuccess value) logOutSuccess,
+  }) {
+    return logOutSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AccountInitial value)? initial,
+    TResult? Function(AccountLoading value)? loading,
+    TResult? Function(AccountLoadSuccess value)? loadSuccess,
+    TResult? Function(AccountLoadLoadError value)? loadError,
+    TResult? Function(AccountLogOutSuccess value)? logOutSuccess,
+  }) {
+    return logOutSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AccountInitial value)? initial,
+    TResult Function(AccountLoading value)? loading,
+    TResult Function(AccountLoadSuccess value)? loadSuccess,
+    TResult Function(AccountLoadLoadError value)? loadError,
+    TResult Function(AccountLogOutSuccess value)? logOutSuccess,
+    required TResult orElse(),
+  }) {
+    if (logOutSuccess != null) {
+      return logOutSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AccountLogOutSuccess implements AccountState {
+  const factory AccountLogOutSuccess() = _$AccountLogOutSuccessImpl;
 }

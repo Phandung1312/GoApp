@@ -72,6 +72,12 @@ class AccountRepositoryImpl implements AccountRepository {
       return Left(NetworkFailure());
     }
   }
+  
+  @override
+  Future<Either<Failure, void>> logOut() async{
+    await _googleSignIn.signOut();
+    return const  Right(null);
+  }
 }
 
 GoogleSignIn _googleSignIn = GoogleSignIn(

@@ -6,4 +6,5 @@ class AccountState with _$AccountState{
   const factory AccountState.loading() = AccountLoading;
   const factory AccountState.loadSuccess({required DriverInfo driverInfo}) = AccountLoadSuccess;
   const factory AccountState.loadError() = AccountLoadLoadError;
+  const factory AccountState.logOutSuccess() = AccountLogOutSuccess;
 }
