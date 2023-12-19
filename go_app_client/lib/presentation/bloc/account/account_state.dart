@@ -1,6 +1,9 @@
 part of 'account_bloc.dart';
 
-
-abstract class AccountState {}
-
-final class AccountInitial extends AccountState {}
+@freezed
+class AccountState with _$AccountState{
+  const factory AccountState.initial() = AccountInitial;
+  const factory AccountState.loadSuccess({required ClientInfo clientInfo}) = AccountLoadSuccess;
+  const factory AccountState.loading() = AccountLoading;
+  const factory AccountState.logOutSuccess() = AccountLogOutSuccess;
+}

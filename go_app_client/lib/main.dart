@@ -6,6 +6,7 @@ import 'package:go_app_client/config/routes/routes.dart';
 import 'package:go_app_client/config/theme/app_theme.dart';
 import 'package:go_app_client/core/inject/injection.dart';
 import 'package:go_app_client/helpers/easy_loading.dart';
+import 'package:go_app_client/presentation/bloc/account/account_bloc.dart';
 import 'package:go_app_client/presentation/bloc/chat/chat/chat_cubit.dart';
 import 'package:go_app_client/presentation/bloc/driver_location/driver_location_cubit.dart';
 import 'package:go_app_client/presentation/bloc/history/history_bloc.dart';
@@ -44,6 +45,7 @@ class MyApp extends StatelessWidget {
         BlocProvider<ChatCubit>(create: (_) => getIt()),
         BlocProvider<DriverLocationCubit>(create: (_) => getIt()),
         BlocProvider<ReviewCubit>(create: (_) => getIt()),
+        BlocProvider<AccountBloc>(create: (_) => getIt()),
       ],
       child: MaterialApp(
       debugShowCheckedModeBanner: false,

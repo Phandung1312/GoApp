@@ -10,7 +10,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:dio/dio.dart' as _i4;
 import 'package:get_it/get_it.dart' as _i1;
-import 'package:go_app_client/core/inject/register_module.dart' as _i49;
+import 'package:go_app_client/core/inject/register_module.dart' as _i52;
 import 'package:go_app_client/core/network/network_info.dart' as _i11;
 import 'package:go_app_client/data/api/account_api_service.dart' as _i15;
 import 'package:go_app_client/data/api/booking_api_service.dart' as _i16;
@@ -43,45 +43,51 @@ import 'package:go_app_client/domain/repositories/booking_repository.dart'
     as _i29;
 import 'package:go_app_client/domain/repositories/chat_repository.dart' as _i32;
 import 'package:go_app_client/domain/repositories/map_repository.dart' as _i23;
+import 'package:go_app_client/domain/usecases/account/get_account_usecase.dart'
+    as _i37;
 import 'package:go_app_client/domain/usecases/account/login_usecase.dart'
-    as _i43;
-import 'package:go_app_client/domain/usecases/account/register_customer_usecase.dart'
+    as _i45;
+import 'package:go_app_client/domain/usecases/account/logout_usecase.dart'
     as _i44;
+import 'package:go_app_client/domain/usecases/account/register_customer_usecase.dart'
+    as _i46;
 import 'package:go_app_client/domain/usecases/booking/cancel_booking_usecase.dart'
     as _i31;
 import 'package:go_app_client/domain/usecases/booking/create_booking_usecase.dart'
     as _i34;
 import 'package:go_app_client/domain/usecases/booking/get_active_booking_usecase.dart'
-    as _i37;
-import 'package:go_app_client/domain/usecases/booking/get_all_messages_usecase.dart'
     as _i38;
-import 'package:go_app_client/domain/usecases/booking/get_booking_price_usecase.dart'
+import 'package:go_app_client/domain/usecases/booking/get_all_messages_usecase.dart'
     as _i39;
-import 'package:go_app_client/domain/usecases/booking/get_driver_info_usecase.dart'
+import 'package:go_app_client/domain/usecases/booking/get_booking_price_usecase.dart'
     as _i40;
+import 'package:go_app_client/domain/usecases/booking/get_driver_info_usecase.dart'
+    as _i41;
 import 'package:go_app_client/domain/usecases/history/create_review_usecase.dart'
     as _i35;
 import 'package:go_app_client/domain/usecases/map/find_route_usecase.dart'
     as _i36;
 import 'package:go_app_client/domain/usecases/map/get_place_detail_usecase.dart'
-    as _i41;
+    as _i42;
 import 'package:go_app_client/domain/usecases/map/search_address_from_latlng_usecase.dart'
     as _i25;
 import 'package:go_app_client/domain/usecases/map/search_address_from_text_usecase.dart'
     as _i26;
 import 'package:go_app_client/helpers/socket_io.dart' as _i14;
+import 'package:go_app_client/presentation/bloc/account/account_bloc.dart'
+    as _i48;
 import 'package:go_app_client/presentation/bloc/booking/booking_bloc.dart'
-    as _i46;
+    as _i49;
 import 'package:go_app_client/presentation/bloc/chat/chat/chat_cubit.dart'
-    as _i47;
+    as _i50;
 import 'package:go_app_client/presentation/bloc/driver_location/driver_location_cubit.dart'
     as _i18;
 import 'package:go_app_client/presentation/bloc/history/history_bloc.dart'
     as _i5;
-import 'package:go_app_client/presentation/bloc/home/home_cubit.dart' as _i42;
-import 'package:go_app_client/presentation/bloc/login/login_bloc.dart' as _i48;
+import 'package:go_app_client/presentation/bloc/home/home_cubit.dart' as _i43;
+import 'package:go_app_client/presentation/bloc/login/login_bloc.dart' as _i51;
 import 'package:go_app_client/presentation/bloc/review/review_cubit.dart'
-    as _i45;
+    as _i47;
 import 'package:go_app_client/presentation/bloc/socket/socket_bloc.dart'
     as _i13;
 import 'package:injectable/injectable.dart' as _i2;
@@ -103,12 +109,12 @@ extension GetItInjectableX on _i1.GetIt {
     final registerModule = _$RegisterModule();
     gh.factory<_i3.AccountModelMapper>(() => _i3.AccountModelMapper());
     gh.lazySingleton<_i4.Dio>(
-      () => registerModule.dioApp(),
-      instanceName: 'App',
-    );
-    gh.lazySingleton<_i4.Dio>(
       () => registerModule.dio(),
       instanceName: 'Map',
+    );
+    gh.lazySingleton<_i4.Dio>(
+      () => registerModule.dioApp(),
+      instanceName: 'App',
     );
     gh.factory<_i5.HistoryBloc>(() => _i5.HistoryBloc());
     gh.factory<_i6.InstructionModelMapper>(() => _i6.InstructionModelMapper());
@@ -174,48 +180,56 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i35.CreateReviewUseCase(gh<_i29.BookingRepository>()));
     gh.lazySingleton<_i36.FindRouteUseCase>(
         () => _i36.FindRouteUseCase(gh<_i23.MapRepository>()));
-    gh.lazySingleton<_i37.GetActiveBookingUseCase>(
-        () => _i37.GetActiveBookingUseCase(gh<_i29.BookingRepository>()));
-    gh.lazySingleton<_i38.GetAllMessagesUseCase>(
-        () => _i38.GetAllMessagesUseCase(gh<_i32.ChatRepository>()));
-    gh.lazySingleton<_i39.GetBookingPriceUseCase>(
-        () => _i39.GetBookingPriceUseCase(gh<_i29.BookingRepository>()));
-    gh.lazySingleton<_i40.GetDriverInfoUseCase>(
-        () => _i40.GetDriverInfoUseCase(gh<_i29.BookingRepository>()));
-    gh.lazySingleton<_i41.GetPlaceDetailUseCase>(
-        () => _i41.GetPlaceDetailUseCase(gh<_i23.MapRepository>()));
-    gh.factory<_i42.HomeCubit>(() => _i42.HomeCubit(
+    gh.lazySingleton<_i37.GetAccountUseCase>(
+        () => _i37.GetAccountUseCase(gh<_i27.AccountRepository>()));
+    gh.lazySingleton<_i38.GetActiveBookingUseCase>(
+        () => _i38.GetActiveBookingUseCase(gh<_i29.BookingRepository>()));
+    gh.lazySingleton<_i39.GetAllMessagesUseCase>(
+        () => _i39.GetAllMessagesUseCase(gh<_i32.ChatRepository>()));
+    gh.lazySingleton<_i40.GetBookingPriceUseCase>(
+        () => _i40.GetBookingPriceUseCase(gh<_i29.BookingRepository>()));
+    gh.lazySingleton<_i41.GetDriverInfoUseCase>(
+        () => _i41.GetDriverInfoUseCase(gh<_i29.BookingRepository>()));
+    gh.lazySingleton<_i42.GetPlaceDetailUseCase>(
+        () => _i42.GetPlaceDetailUseCase(gh<_i23.MapRepository>()));
+    gh.factory<_i43.HomeCubit>(() => _i43.HomeCubit(
           gh<_i13.SocketBloc>(),
-          gh<_i37.GetActiveBookingUseCase>(),
+          gh<_i38.GetActiveBookingUseCase>(),
         ));
-    gh.lazySingleton<_i43.LoginUseCase>(
-        () => _i43.LoginUseCase(gh<_i27.AccountRepository>()));
-    gh.lazySingleton<_i44.RegisterCustomerUseCase>(
-        () => _i44.RegisterCustomerUseCase(gh<_i27.AccountRepository>()));
-    gh.factory<_i45.ReviewCubit>(
-        () => _i45.ReviewCubit(gh<_i35.CreateReviewUseCase>()));
-    gh.factory<_i46.BookingBloc>(() => _i46.BookingBloc(
+    gh.lazySingleton<_i44.LogOutUseCase>(
+        () => _i44.LogOutUseCase(gh<_i27.AccountRepository>()));
+    gh.lazySingleton<_i45.LoginUseCase>(
+        () => _i45.LoginUseCase(gh<_i27.AccountRepository>()));
+    gh.lazySingleton<_i46.RegisterCustomerUseCase>(
+        () => _i46.RegisterCustomerUseCase(gh<_i27.AccountRepository>()));
+    gh.factory<_i47.ReviewCubit>(
+        () => _i47.ReviewCubit(gh<_i35.CreateReviewUseCase>()));
+    gh.factory<_i48.AccountBloc>(() => _i48.AccountBloc(
+          gh<_i37.GetAccountUseCase>(),
+          gh<_i44.LogOutUseCase>(),
+        ));
+    gh.factory<_i49.BookingBloc>(() => _i49.BookingBloc(
           gh<_i13.SocketBloc>(),
           gh<_i18.DriverLocationCubit>(),
           gh<_i26.SearchAddressFromTextUseCase>(),
           gh<_i25.SearchAddressFromLatLngUseCase>(),
-          gh<_i41.GetPlaceDetailUseCase>(),
+          gh<_i42.GetPlaceDetailUseCase>(),
           gh<_i36.FindRouteUseCase>(),
-          gh<_i39.GetBookingPriceUseCase>(),
+          gh<_i40.GetBookingPriceUseCase>(),
           gh<_i34.CreateBookingUseCase>(),
-          gh<_i40.GetDriverInfoUseCase>(),
+          gh<_i41.GetDriverInfoUseCase>(),
           gh<_i31.CancelBookingUseCase>(),
         ));
-    gh.factory<_i47.ChatCubit>(() => _i47.ChatCubit(
+    gh.factory<_i50.ChatCubit>(() => _i50.ChatCubit(
           gh<_i13.SocketBloc>(),
-          gh<_i38.GetAllMessagesUseCase>(),
+          gh<_i39.GetAllMessagesUseCase>(),
         ));
-    gh.factory<_i48.LoginBloc>(() => _i48.LoginBloc(
-          gh<_i43.LoginUseCase>(),
-          gh<_i44.RegisterCustomerUseCase>(),
+    gh.factory<_i51.LoginBloc>(() => _i51.LoginBloc(
+          gh<_i45.LoginUseCase>(),
+          gh<_i46.RegisterCustomerUseCase>(),
         ));
     return this;
   }
 }
 
-class _$RegisterModule extends _i49.RegisterModule {}
+class _$RegisterModule extends _i52.RegisterModule {}

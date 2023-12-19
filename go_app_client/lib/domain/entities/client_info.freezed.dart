@@ -16,10 +16,11 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ClientInfo {
+  int get id => throw _privateConstructorUsedError;
   String get fullName => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get phoneNumber => throw _privateConstructorUsedError;
-  String get dateOfBirth => throw _privateConstructorUsedError;
+  int get dateOfBirth => throw _privateConstructorUsedError;
   String get avatarUrl => throw _privateConstructorUsedError;
   bool get gender => throw _privateConstructorUsedError;
   bool get block => throw _privateConstructorUsedError;
@@ -36,10 +37,11 @@ abstract class $ClientInfoCopyWith<$Res> {
       _$ClientInfoCopyWithImpl<$Res, ClientInfo>;
   @useResult
   $Res call(
-      {String fullName,
+      {int id,
+      String fullName,
       String email,
       String phoneNumber,
-      String dateOfBirth,
+      int dateOfBirth,
       String avatarUrl,
       bool gender,
       bool block});
@@ -58,6 +60,7 @@ class _$ClientInfoCopyWithImpl<$Res, $Val extends ClientInfo>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? fullName = null,
     Object? email = null,
     Object? phoneNumber = null,
@@ -67,6 +70,10 @@ class _$ClientInfoCopyWithImpl<$Res, $Val extends ClientInfo>
     Object? block = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       fullName: null == fullName
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
@@ -82,7 +89,7 @@ class _$ClientInfoCopyWithImpl<$Res, $Val extends ClientInfo>
       dateOfBirth: null == dateOfBirth
           ? _value.dateOfBirth
           : dateOfBirth // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       avatarUrl: null == avatarUrl
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
@@ -108,10 +115,11 @@ abstract class _$$ClientInfoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String fullName,
+      {int id,
+      String fullName,
       String email,
       String phoneNumber,
-      String dateOfBirth,
+      int dateOfBirth,
       String avatarUrl,
       bool gender,
       bool block});
@@ -128,6 +136,7 @@ class __$$ClientInfoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? fullName = null,
     Object? email = null,
     Object? phoneNumber = null,
@@ -137,6 +146,10 @@ class __$$ClientInfoImplCopyWithImpl<$Res>
     Object? block = null,
   }) {
     return _then(_$ClientInfoImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       fullName: null == fullName
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
@@ -152,7 +165,7 @@ class __$$ClientInfoImplCopyWithImpl<$Res>
       dateOfBirth: null == dateOfBirth
           ? _value.dateOfBirth
           : dateOfBirth // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       avatarUrl: null == avatarUrl
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
@@ -173,14 +186,18 @@ class __$$ClientInfoImplCopyWithImpl<$Res>
 
 class _$ClientInfoImpl implements _ClientInfo {
   const _$ClientInfoImpl(
-      {this.fullName = "",
+      {this.id = 0,
+      this.fullName = "",
       this.email = "",
       this.phoneNumber = "",
-      this.dateOfBirth = "",
+      this.dateOfBirth = 0,
       this.avatarUrl = "",
       this.gender = true,
       this.block = false});
 
+  @override
+  @JsonKey()
+  final int id;
   @override
   @JsonKey()
   final String fullName;
@@ -192,7 +209,7 @@ class _$ClientInfoImpl implements _ClientInfo {
   final String phoneNumber;
   @override
   @JsonKey()
-  final String dateOfBirth;
+  final int dateOfBirth;
   @override
   @JsonKey()
   final String avatarUrl;
@@ -205,7 +222,7 @@ class _$ClientInfoImpl implements _ClientInfo {
 
   @override
   String toString() {
-    return 'ClientInfo(fullName: $fullName, email: $email, phoneNumber: $phoneNumber, dateOfBirth: $dateOfBirth, avatarUrl: $avatarUrl, gender: $gender, block: $block)';
+    return 'ClientInfo(id: $id, fullName: $fullName, email: $email, phoneNumber: $phoneNumber, dateOfBirth: $dateOfBirth, avatarUrl: $avatarUrl, gender: $gender, block: $block)';
   }
 
   @override
@@ -213,6 +230,7 @@ class _$ClientInfoImpl implements _ClientInfo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ClientInfoImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.fullName, fullName) ||
                 other.fullName == fullName) &&
             (identical(other.email, email) || other.email == email) &&
@@ -227,7 +245,7 @@ class _$ClientInfoImpl implements _ClientInfo {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, fullName, email, phoneNumber,
+  int get hashCode => Object.hash(runtimeType, id, fullName, email, phoneNumber,
       dateOfBirth, avatarUrl, gender, block);
 
   @JsonKey(ignore: true)
@@ -239,14 +257,17 @@ class _$ClientInfoImpl implements _ClientInfo {
 
 abstract class _ClientInfo implements ClientInfo {
   const factory _ClientInfo(
-      {final String fullName,
+      {final int id,
+      final String fullName,
       final String email,
       final String phoneNumber,
-      final String dateOfBirth,
+      final int dateOfBirth,
       final String avatarUrl,
       final bool gender,
       final bool block}) = _$ClientInfoImpl;
 
+  @override
+  int get id;
   @override
   String get fullName;
   @override
@@ -254,7 +275,7 @@ abstract class _ClientInfo implements ClientInfo {
   @override
   String get phoneNumber;
   @override
-  String get dateOfBirth;
+  int get dateOfBirth;
   @override
   String get avatarUrl;
   @override

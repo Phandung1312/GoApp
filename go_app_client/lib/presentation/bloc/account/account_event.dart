@@ -1,4 +1,7 @@
 part of 'account_bloc.dart';
 
-
-abstract class AccountEvent {}
+@freezed
+ class AccountEvent with _$AccountEvent{
+  const factory AccountEvent.load() = AccountLoad;
+  const factory AccountEvent.logOut() = AccountLogOut;
+ }

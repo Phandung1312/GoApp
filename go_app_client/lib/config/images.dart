@@ -31,6 +31,7 @@ class AppImages{
   static const icUserName = _Image('ic_user_name.png');
   static const icPhone = _Image('ic_phone.png');
   static const icCalendar = _Image('ic_calendar.png');
+  static const icEmail = _Image('ic_email.png');
   
   static const icRegisterDay = _Image('ic_register_day.png');
   static const icGender = _Image('ic_gender.png');

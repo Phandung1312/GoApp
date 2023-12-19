@@ -24,9 +24,9 @@ mixin _$ClientInfoModel {
   String? get fullName => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
   String? get phoneNumber => throw _privateConstructorUsedError;
-  DateTime? get dateOfBirth => throw _privateConstructorUsedError;
-  String? get avtUrl => throw _privateConstructorUsedError;
-  bool? get male => throw _privateConstructorUsedError;
+  num? get dateOfBirth => throw _privateConstructorUsedError;
+  String? get avatarUrl => throw _privateConstructorUsedError;
+  bool? get gender => throw _privateConstructorUsedError;
   bool? get nonBlock => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -46,9 +46,9 @@ abstract class $ClientInfoModelCopyWith<$Res> {
       String? fullName,
       String? email,
       String? phoneNumber,
-      DateTime? dateOfBirth,
-      String? avtUrl,
-      bool? male,
+      num? dateOfBirth,
+      String? avatarUrl,
+      bool? gender,
       bool? nonBlock});
 }
 
@@ -70,8 +70,8 @@ class _$ClientInfoModelCopyWithImpl<$Res, $Val extends ClientInfoModel>
     Object? email = freezed,
     Object? phoneNumber = freezed,
     Object? dateOfBirth = freezed,
-    Object? avtUrl = freezed,
-    Object? male = freezed,
+    Object? avatarUrl = freezed,
+    Object? gender = freezed,
     Object? nonBlock = freezed,
   }) {
     return _then(_value.copyWith(
@@ -94,14 +94,14 @@ class _$ClientInfoModelCopyWithImpl<$Res, $Val extends ClientInfoModel>
       dateOfBirth: freezed == dateOfBirth
           ? _value.dateOfBirth
           : dateOfBirth // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      avtUrl: freezed == avtUrl
-          ? _value.avtUrl
-          : avtUrl // ignore: cast_nullable_to_non_nullable
+              as num?,
+      avatarUrl: freezed == avatarUrl
+          ? _value.avatarUrl
+          : avatarUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      male: freezed == male
-          ? _value.male
-          : male // ignore: cast_nullable_to_non_nullable
+      gender: freezed == gender
+          ? _value.gender
+          : gender // ignore: cast_nullable_to_non_nullable
               as bool?,
       nonBlock: freezed == nonBlock
           ? _value.nonBlock
@@ -124,9 +124,9 @@ abstract class _$$ClientInfoModelImplCopyWith<$Res>
       String? fullName,
       String? email,
       String? phoneNumber,
-      DateTime? dateOfBirth,
-      String? avtUrl,
-      bool? male,
+      num? dateOfBirth,
+      String? avatarUrl,
+      bool? gender,
       bool? nonBlock});
 }
 
@@ -146,8 +146,8 @@ class __$$ClientInfoModelImplCopyWithImpl<$Res>
     Object? email = freezed,
     Object? phoneNumber = freezed,
     Object? dateOfBirth = freezed,
-    Object? avtUrl = freezed,
-    Object? male = freezed,
+    Object? avatarUrl = freezed,
+    Object? gender = freezed,
     Object? nonBlock = freezed,
   }) {
     return _then(_$ClientInfoModelImpl(
@@ -170,14 +170,14 @@ class __$$ClientInfoModelImplCopyWithImpl<$Res>
       dateOfBirth: freezed == dateOfBirth
           ? _value.dateOfBirth
           : dateOfBirth // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      avtUrl: freezed == avtUrl
-          ? _value.avtUrl
-          : avtUrl // ignore: cast_nullable_to_non_nullable
+              as num?,
+      avatarUrl: freezed == avatarUrl
+          ? _value.avatarUrl
+          : avatarUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      male: freezed == male
-          ? _value.male
-          : male // ignore: cast_nullable_to_non_nullable
+      gender: freezed == gender
+          ? _value.gender
+          : gender // ignore: cast_nullable_to_non_nullable
               as bool?,
       nonBlock: freezed == nonBlock
           ? _value.nonBlock
@@ -196,8 +196,8 @@ class _$ClientInfoModelImpl extends _ClientInfoModel {
       this.email,
       this.phoneNumber,
       this.dateOfBirth,
-      this.avtUrl,
-      this.male,
+      this.avatarUrl,
+      this.gender,
       this.nonBlock})
       : super._();
 
@@ -213,17 +213,17 @@ class _$ClientInfoModelImpl extends _ClientInfoModel {
   @override
   final String? phoneNumber;
   @override
-  final DateTime? dateOfBirth;
+  final num? dateOfBirth;
   @override
-  final String? avtUrl;
+  final String? avatarUrl;
   @override
-  final bool? male;
+  final bool? gender;
   @override
   final bool? nonBlock;
 
   @override
   String toString() {
-    return 'ClientInfoModel(id: $id, fullName: $fullName, email: $email, phoneNumber: $phoneNumber, dateOfBirth: $dateOfBirth, avtUrl: $avtUrl, male: $male, nonBlock: $nonBlock)';
+    return 'ClientInfoModel(id: $id, fullName: $fullName, email: $email, phoneNumber: $phoneNumber, dateOfBirth: $dateOfBirth, avatarUrl: $avatarUrl, gender: $gender, nonBlock: $nonBlock)';
   }
 
   @override
@@ -239,8 +239,9 @@ class _$ClientInfoModelImpl extends _ClientInfoModel {
                 other.phoneNumber == phoneNumber) &&
             (identical(other.dateOfBirth, dateOfBirth) ||
                 other.dateOfBirth == dateOfBirth) &&
-            (identical(other.avtUrl, avtUrl) || other.avtUrl == avtUrl) &&
-            (identical(other.male, male) || other.male == male) &&
+            (identical(other.avatarUrl, avatarUrl) ||
+                other.avatarUrl == avatarUrl) &&
+            (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.nonBlock, nonBlock) ||
                 other.nonBlock == nonBlock));
   }
@@ -248,7 +249,7 @@ class _$ClientInfoModelImpl extends _ClientInfoModel {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, fullName, email, phoneNumber,
-      dateOfBirth, avtUrl, male, nonBlock);
+      dateOfBirth, avatarUrl, gender, nonBlock);
 
   @JsonKey(ignore: true)
   @override
@@ -271,9 +272,9 @@ abstract class _ClientInfoModel extends ClientInfoModel {
       final String? fullName,
       final String? email,
       final String? phoneNumber,
-      final DateTime? dateOfBirth,
-      final String? avtUrl,
-      final bool? male,
+      final num? dateOfBirth,
+      final String? avatarUrl,
+      final bool? gender,
       final bool? nonBlock}) = _$ClientInfoModelImpl;
   const _ClientInfoModel._() : super._();
 
@@ -289,11 +290,11 @@ abstract class _ClientInfoModel extends ClientInfoModel {
   @override
   String? get phoneNumber;
   @override
-  DateTime? get dateOfBirth;
+  num? get dateOfBirth;
   @override
-  String? get avtUrl;
+  String? get avatarUrl;
   @override
-  bool? get male;
+  bool? get gender;
   @override
   bool? get nonBlock;
   @override

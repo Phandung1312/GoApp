@@ -22,4 +22,9 @@ abstract class AccountApiService {
       @Part(name: "dateOfBirth") String? dateOfBirth,
       @Part(name: "isMale") bool? gender,
       @Part(name: "phoneNumber") required String phoneNumber});
+  @GET('customers/{id}')
+  Future<HttpResponse<ClientInfoModel>> getAccount(
+    @Path('id') int id,
+  );
+  
 }
