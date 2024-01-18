@@ -13,13 +13,14 @@ import 'package:go_app_driver/presentation/bloc/home/home_cubit.dart';
 import 'package:go_app_driver/presentation/bloc/login/login_bloc.dart';
 import 'package:go_app_driver/presentation/bloc/register/register_bloc.dart';
 import 'package:go_app_driver/presentation/bloc/socket/socket_bloc.dart';
+import 'package:go_app_driver/presentation/bloc/statistics/statistics_cubit.dart';
 import 'package:go_app_driver/presentation/pages/splash/splash_page.dart';
 import 'package:injectable/injectable.dart';
 import 'package:toast/toast.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await configureInjection(Environment.prod);
+  await configureInjection(Environment.dev);
   await dotenv.load(fileName: ".env");
   EasyLoading.instance
     ..backgroundColor = Colors.white
@@ -48,6 +49,7 @@ class MyApp extends StatelessWidget {
           BlocProvider<AccountCubit>(create: (_) => getIt()),
           BlocProvider<HistoryBloc>(create: (_) => getIt()),
           BlocProvider<SocketBloc>(create: (_) => getIt()),
+          BlocProvider<StatisticsCubit>(create: (_) => getIt()),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,

@@ -119,7 +119,7 @@ class _$AccountInitialImpl implements AccountInitial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$AccountInitialImpl);
   }
@@ -239,7 +239,7 @@ class _$AccountLoadingImpl implements AccountLoading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$AccountLoadingImpl);
   }
@@ -387,7 +387,7 @@ class _$AccountLoadSuccessImpl implements AccountLoadSuccess {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AccountLoadSuccessImpl &&
@@ -523,7 +523,7 @@ class _$AccountLoadLoadErrorImpl implements AccountLoadLoadError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AccountLoadLoadErrorImpl);
@@ -644,7 +644,7 @@ class _$AccountLogOutSuccessImpl implements AccountLogOutSuccess {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AccountLogOutSuccessImpl);

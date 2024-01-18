@@ -125,7 +125,7 @@ class _$SocketConnectImpl implements _SocketConnect {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$SocketConnectImpl);
   }
@@ -283,7 +283,7 @@ class _$SocketBroadCastBookingStatusImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SocketBroadCastBookingStatusImpl &&
@@ -448,7 +448,7 @@ class _$SocketNotifyHaveBookingImpl implements _SocketNotifyHaveBooking {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SocketNotifyHaveBookingImpl &&
@@ -593,7 +593,7 @@ class _$SocketBroadCastSendLocationImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SocketBroadCastSendLocationImpl);
@@ -751,7 +751,7 @@ class _$SocketBroadCastMessageImpl implements _SocketBroadCastMessage {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SocketBroadCastMessageImpl &&
@@ -966,7 +966,7 @@ class _$SocketInitialImpl implements SocketInitial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$SocketInitialImpl);
   }
@@ -1112,7 +1112,7 @@ class _$SocketReceivedBookingStatusImpl implements SocketReceivedBookingStatus {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SocketReceivedBookingStatusImpl &&
@@ -1264,7 +1264,7 @@ class _$SocketReceivedBookingImpl implements SocketReceivedBooking {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SocketReceivedBookingImpl &&
@@ -1425,7 +1425,7 @@ class _$SocketReceivedMessageImpl implements SocketReceivedMessage {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SocketReceivedMessageImpl &&

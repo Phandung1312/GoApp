@@ -23,7 +23,6 @@ mixin _$Booking {
   String get pickUpAddress => throw _privateConstructorUsedError;
   LatLng get dropOffLocation => throw _privateConstructorUsedError;
   String get dropOffAddress => throw _privateConstructorUsedError;
-  String get incomingDesAddress => throw _privateConstructorUsedError;
   BookingStatus get status => throw _privateConstructorUsedError;
   double get amount => throw _privateConstructorUsedError;
   num get predictTime => throw _privateConstructorUsedError;
@@ -48,7 +47,6 @@ abstract class $BookingCopyWith<$Res> {
       String pickUpAddress,
       LatLng dropOffLocation,
       String dropOffAddress,
-      String incomingDesAddress,
       BookingStatus status,
       double amount,
       num predictTime,
@@ -79,7 +77,6 @@ class _$BookingCopyWithImpl<$Res, $Val extends Booking>
     Object? pickUpAddress = null,
     Object? dropOffLocation = null,
     Object? dropOffAddress = null,
-    Object? incomingDesAddress = null,
     Object? status = null,
     Object? amount = null,
     Object? predictTime = null,
@@ -115,10 +112,6 @@ class _$BookingCopyWithImpl<$Res, $Val extends Booking>
       dropOffAddress: null == dropOffAddress
           ? _value.dropOffAddress
           : dropOffAddress // ignore: cast_nullable_to_non_nullable
-              as String,
-      incomingDesAddress: null == incomingDesAddress
-          ? _value.incomingDesAddress
-          : incomingDesAddress // ignore: cast_nullable_to_non_nullable
               as String,
       status: null == status
           ? _value.status
@@ -171,7 +164,6 @@ abstract class _$$BookingImplCopyWith<$Res> implements $BookingCopyWith<$Res> {
       String pickUpAddress,
       LatLng dropOffLocation,
       String dropOffAddress,
-      String incomingDesAddress,
       BookingStatus status,
       double amount,
       num predictTime,
@@ -201,7 +193,6 @@ class __$$BookingImplCopyWithImpl<$Res>
     Object? pickUpAddress = null,
     Object? dropOffLocation = null,
     Object? dropOffAddress = null,
-    Object? incomingDesAddress = null,
     Object? status = null,
     Object? amount = null,
     Object? predictTime = null,
@@ -237,10 +228,6 @@ class __$$BookingImplCopyWithImpl<$Res>
       dropOffAddress: null == dropOffAddress
           ? _value.dropOffAddress
           : dropOffAddress // ignore: cast_nullable_to_non_nullable
-              as String,
-      incomingDesAddress: null == incomingDesAddress
-          ? _value.incomingDesAddress
-          : incomingDesAddress // ignore: cast_nullable_to_non_nullable
               as String,
       status: null == status
           ? _value.status
@@ -281,7 +268,6 @@ class _$BookingImpl implements _Booking {
       this.pickUpAddress = "",
       this.dropOffLocation = const LatLng(0.0, 0.0),
       this.dropOffAddress = "",
-      this.incomingDesAddress = "",
       this.status = BookingStatus.waitting,
       this.amount = 0.0,
       this.predictTime = 0,
@@ -312,9 +298,6 @@ class _$BookingImpl implements _Booking {
   final String dropOffAddress;
   @override
   @JsonKey()
-  final String incomingDesAddress;
-  @override
-  @JsonKey()
   final BookingStatus status;
   @override
   @JsonKey()
@@ -334,11 +317,11 @@ class _$BookingImpl implements _Booking {
 
   @override
   String toString() {
-    return 'Booking(id: $id, customerInfo: $customerInfo, createAt: $createAt, pickUpLocation: $pickUpLocation, pickUpAddress: $pickUpAddress, dropOffLocation: $dropOffLocation, dropOffAddress: $dropOffAddress, incomingDesAddress: $incomingDesAddress, status: $status, amount: $amount, predictTime: $predictTime, distance: $distance, vehicleType: $vehicleType, paymentMethod: $paymentMethod)';
+    return 'Booking(id: $id, customerInfo: $customerInfo, createAt: $createAt, pickUpLocation: $pickUpLocation, pickUpAddress: $pickUpAddress, dropOffLocation: $dropOffLocation, dropOffAddress: $dropOffAddress, status: $status, amount: $amount, predictTime: $predictTime, distance: $distance, vehicleType: $vehicleType, paymentMethod: $paymentMethod)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BookingImpl &&
@@ -355,8 +338,6 @@ class _$BookingImpl implements _Booking {
                 other.dropOffLocation == dropOffLocation) &&
             (identical(other.dropOffAddress, dropOffAddress) ||
                 other.dropOffAddress == dropOffAddress) &&
-            (identical(other.incomingDesAddress, incomingDesAddress) ||
-                other.incomingDesAddress == incomingDesAddress) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.amount, amount) || other.amount == amount) &&
             (identical(other.predictTime, predictTime) ||
@@ -379,7 +360,6 @@ class _$BookingImpl implements _Booking {
       pickUpAddress,
       dropOffLocation,
       dropOffAddress,
-      incomingDesAddress,
       status,
       amount,
       predictTime,
@@ -403,7 +383,6 @@ abstract class _Booking implements Booking {
       final String pickUpAddress,
       final LatLng dropOffLocation,
       final String dropOffAddress,
-      final String incomingDesAddress,
       final BookingStatus status,
       final double amount,
       final num predictTime,
@@ -425,8 +404,6 @@ abstract class _Booking implements Booking {
   LatLng get dropOffLocation;
   @override
   String get dropOffAddress;
-  @override
-  String get incomingDesAddress;
   @override
   BookingStatus get status;
   @override

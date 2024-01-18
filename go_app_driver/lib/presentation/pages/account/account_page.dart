@@ -24,6 +24,7 @@ class _AccountPageState extends State<AccountPage> {
     super.initState();
     context.read<AccountCubit>().onLoad();
   }
+
   DriverInfo driverInfo = const DriverInfo();
   @override
   Widget build(BuildContext context) {
@@ -35,17 +36,14 @@ class _AccountPageState extends State<AccountPage> {
           });
           return;
         }
-        if(state is AccountLogOutSuccess){
-          Navigator.pushNamedAndRemoveUntil(context, Paths.login, (route) => false);
+        if (state is AccountLogOutSuccess) {
+          Navigator.pushNamedAndRemoveUntil(
+              context, Paths.login, (route) => false);
         }
       },
       builder: (context, state) => Column(
         children: [
-          const MainToolBar(
-            
-            title: "Thông tin tài khoản",
-            isBack : false
-          ),
+          const MainToolBar(title: "Thông tin tài khoản", isBack: false),
           const SizedBox(
             height: 10,
           ),
@@ -111,7 +109,7 @@ class _AccountPageState extends State<AccountPage> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
-                        "${driverInfo.rating}" ' • ',
+                        "${driverInfo.rating.toStringAsFixed(1)}" ' • ',
                         style: const TextStyle(
                             fontFamily: 'Nunito',
                             fontSize: 14,

@@ -23,7 +23,6 @@ mixin BaseRemoteService {
     } on DioException catch (e) {
        Logger().i(e.requestOptions.uri);
        Logger().i(e.requestOptions.data);
-       Logger().i(e.response?.data.toString());
       Logger().e("Retrofit error:${e.message}");
       if (e.type == DioExceptionType.receiveTimeout) {
         return Left(ApiTimeOutFailure());

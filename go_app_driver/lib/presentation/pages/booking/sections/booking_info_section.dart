@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_app_driver/config/colors.dart';
 import 'package:go_app_driver/config/images.dart';
 import 'package:go_app_driver/core/utils/utils.dart';
+import 'package:go_app_driver/domain/entities/enum/enum.dart';
 import 'package:go_app_driver/extensions/enum_extension.dart';
 import 'package:go_app_driver/presentation/bloc/booking/booking_bloc.dart';
 
@@ -14,6 +15,8 @@ class BookingInfoSection extends StatelessWidget {
     return BlocBuilder<BookingBloc, BookingState>(
        buildWhen: (previous, current) => current is BookingLoadInfoSuccess || current is BookingStatusChanged,
       builder: (context, state) {
+        var bookingStatus = state.bookingData.status;
+        var isDestination = bookingStatus == BookingStatus.onRide ? true : false;
         return  Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
@@ -25,9 +28,8 @@ class BookingInfoSection extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Text(
-                            state.bookingData.incomingDesAddress,
+                            isDestination? state.bookingData.dropOffAddress : state.bookingData.pickUpAddress,
                             style: const TextStyle(
-                              fontFamily: 'Nunito',
                               fontSize: 18,
                               fontWeight: FontWeight.w500,
                             ),

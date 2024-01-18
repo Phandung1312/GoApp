@@ -39,7 +39,7 @@ class Utils {
         return "Đã hoàn tất";
 
       default:
-        return "";
+        return "Đã hủy";
     }
   }
 }

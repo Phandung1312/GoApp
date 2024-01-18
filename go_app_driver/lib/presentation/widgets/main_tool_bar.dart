@@ -7,7 +7,7 @@ class MainToolBar extends StatelessWidget implements PreferredSizeWidget {
   final bool isBack;
   final String title;
   const MainToolBar({Key? key, this.title = "", this.isBack = true})
-      : preferredSize = const Size.fromHeight(80),
+      : preferredSize = const Size.fromHeight(70),
         super(key: key);
   @override
   final Size preferredSize;
@@ -17,7 +17,7 @@ class MainToolBar extends StatelessWidget implements PreferredSizeWidget {
       mainAxisSize: MainAxisSize.max,
       children: [
         const SizedBox(
-          height: 20,
+          height: 15,
         ),
         SizedBox(
             width: double.infinity,

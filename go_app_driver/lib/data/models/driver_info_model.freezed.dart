@@ -415,7 +415,7 @@ class _$DriverInfoModelImpl extends _DriverInfoModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DriverInfoModelImpl &&

@@ -11,7 +11,7 @@ class DriverStatusModel with _$DriverStatusModel{
   const factory DriverStatusModel({
     int? driverId,
     @DriverStatusConverter()
-    DriverStatus? driverStatus,
+    DriverStatus? status,
   }) = _DriverStatusModel;
 
    factory DriverStatusModel.fromJson(Map<String, dynamic> json) => _$DriverStatusModelFromJson(json);

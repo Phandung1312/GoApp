@@ -11,6 +11,8 @@ import 'package:go_app_driver/data/models/booking/driver_status_model.dart';
 import 'package:go_app_driver/domain/entities/booking.dart';
 import 'package:go_app_driver/domain/entities/customer_info.dart';
 import 'package:go_app_driver/domain/entities/enum/enum.dart';
+import 'package:go_app_driver/domain/entities/filter.dart';
+import 'package:go_app_driver/domain/entities/history.dart';
 import 'package:go_app_driver/domain/repositories/booking_repository.dart';
 import 'package:injectable/injectable.dart';
 
@@ -41,9 +43,9 @@ class BookingRepositoryImpl implements BookingRepository{
   }
 
   @override
-  Future<Either<Failure, DriverStatus>> changeDriverStatus(DriverStatusModel status) async {
+  Future<Either<Failure, DriverStatus>> changeDriverStatus(int driverId) async {
      if (await _networkInfo.isConnected) {
-      var result = await _remoteDataSource.changeDriverStatus(status);
+      var result = await _remoteDataSource.changeDriverStatus(driverId);
       return result;
     } else {
       return Left(NetworkFailure());
@@ -64,6 +66,16 @@ class BookingRepositoryImpl implements BookingRepository{
   Future<Either<Failure, BookingCancelResponse>> cancelBooking(BookingCancelRequest request)async {
      if (await _networkInfo.isConnected) {
       var result = await _remoteDataSource.cancelBooking(request);
+      return result;
+    } else {
+      return Left(NetworkFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<History>>> getBookings(Filter filter) async{
+    if (await _networkInfo.isConnected) {
+      var result = await _remoteDataSource.getBookings(filter);
       return result;
     } else {
       return Left(NetworkFailure());

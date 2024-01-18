@@ -101,7 +101,7 @@ class BottomViewHome extends StatelessWidget {
                       height: 5,
                     ),
                     Text(
-                      state.driverInfo.rating.toString(),
+                      state.driverInfo.rating.toStringAsFixed(1),
                       style: const TextStyle(
                           color: Color.fromARGB(255, 15, 195, 78),
                           fontSize: 20,

@@ -4,5 +4,6 @@ enum AccountStatus{
   registered,
   blocked,
   uncheck,
+  blockRole,
   unknown
 }

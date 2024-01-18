@@ -6,8 +6,8 @@ import 'package:go_app_driver/config/colors.dart';
 class Styles{
   static const TextStyle titleText = TextStyle(
     color: Colors.black,
-    fontWeight: FontWeight.w600,
-    fontSize: 22
+    fontWeight: FontWeight.w500,
+    fontSize: 20
   );
   static const TextStyle noticeText = TextStyle(
     

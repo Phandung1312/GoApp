@@ -101,7 +101,7 @@ class _$HistoryLoadAllImpl implements HistoryLoadAll {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$HistoryLoadAllImpl);
   }
@@ -203,7 +203,7 @@ class _$HistoryLoadMoreImpl implements HistoryLoadMore {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$HistoryLoadMoreImpl);
   }
@@ -389,7 +389,7 @@ class _$HistorInitialImpl implements HistorInitial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$HistorInitialImpl);
   }
@@ -515,7 +515,7 @@ class _$HistoryLoadingImpl implements HistoryLoading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$HistoryLoadingImpl);
   }
@@ -665,7 +665,7 @@ class _$HistoryLoadSuccessImpl implements HistoryLoadSuccess {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HistoryLoadSuccessImpl &&
@@ -826,7 +826,7 @@ class _$HistoryLoadErrorImpl implements HistoryLoadError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HistoryLoadErrorImpl &&
@@ -967,7 +967,7 @@ class _$HistoryLoadingMoreImpl implements HistoryLoadingMore {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$HistoryLoadingMoreImpl);
   }
@@ -1119,7 +1119,7 @@ class _$HistoryLoadMoreSuccessImpl implements HistoryLoadMoreSuccess {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HistoryLoadMoreSuccessImpl &&

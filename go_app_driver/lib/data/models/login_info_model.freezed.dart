@@ -141,7 +141,7 @@ class _$LoginInfoModelImpl implements _LoginInfoModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoginInfoModelImpl &&
@@ -312,7 +312,7 @@ class _$DataModelImpl implements _DataModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DataModelImpl &&

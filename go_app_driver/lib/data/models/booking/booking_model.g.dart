@@ -16,12 +16,21 @@ _$BookingModelImpl _$$BookingModelImplFromJson(Map<String, dynamic> json) =>
       dropOffAddress: json['dropOffAddress'] as String?,
       status: _$JsonConverterFromJson<String, BookingStatus>(
           json['status'], const BookingStatusConverter().fromJson),
-      customerId: json['customerId'] as int?,
+      customer: json['customer'] == null
+          ? null
+          : CustomerInfoModel.fromJson(
+              json['customer'] as Map<String, dynamic>),
       distance: (json['distance'] as num?)?.toDouble(),
       amount: (json['amount'] as num?)?.toDouble(),
       predictTime: json['predictTime'] as num?,
-      paymentMethod: json['paymentMethod'] as String?,
-      driverId: json['driverId'] as int?,
+      payment: json['payment'] == null
+          ? null
+          : PaymentModel.fromJson(json['payment'] as Map<String, dynamic>),
+      review: json['review'] == null
+          ? null
+          : ReviewModel.fromJson(json['review'] as Map<String, dynamic>),
+      startTime: json['startTime'] as num?,
+      endTime: json['endTime'] as num?,
       vehicleType: _$JsonConverterFromJson<String, VehicleType>(
           json['vehicleType'], const VehicleTypeConverter().fromJson),
     );
@@ -36,12 +45,14 @@ Map<String, dynamic> _$$BookingModelImplToJson(_$BookingModelImpl instance) =>
       'dropOffAddress': instance.dropOffAddress,
       'status': _$JsonConverterToJson<String, BookingStatus>(
           instance.status, const BookingStatusConverter().toJson),
-      'customerId': instance.customerId,
+      'customer': instance.customer,
       'distance': instance.distance,
       'amount': instance.amount,
       'predictTime': instance.predictTime,
-      'paymentMethod': instance.paymentMethod,
-      'driverId': instance.driverId,
+      'payment': instance.payment,
+      'review': instance.review,
+      'startTime': instance.startTime,
+      'endTime': instance.endTime,
       'vehicleType': _$JsonConverterToJson<String, VehicleType>(
           instance.vehicleType, const VehicleTypeConverter().toJson),
     };

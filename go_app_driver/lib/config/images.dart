@@ -45,6 +45,6 @@ class AppImages{
   static const icCar = _Image('ic_car.png');
   static const icMotorbike = _Image('ic_motorbike.png');
 
-
-  
+  static const imageSorry = _Image('image_sorry.png');
+  static const icFilter = _Image('ic_filter.png');
 }

@@ -1,11 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_app_driver/data/models/booking/driver_status_model.dart';
+import 'package:go_app_driver/domain/entities/booking.dart';
 import 'package:go_app_driver/domain/entities/driver_info.dart';
+import 'package:go_app_driver/domain/entities/enum/enum.dart';
 import 'package:go_app_driver/domain/usecases/account/get_account_usecase.dart';
 import 'package:go_app_driver/domain/usecases/booking/change_driver_status_usecase.dart';
 import 'package:go_app_driver/domain/usecases/booking/get_active_booking_usecase.dart';
+import 'package:go_app_driver/helpers/toast.dart';
 import 'package:go_app_driver/presentation/bloc/socket/socket_bloc.dart';
 import 'package:injectable/injectable.dart';
 
@@ -26,43 +28,41 @@ class HomeCubit extends Cubit<HomeState> {
     }
 
     socketSubscription = socketBloc.stream.listen((socketState) {
-      socketState.whenOrNull(
-          receivedBookingStatus: (data) {},
-          receivedBooking: (bookingId) {
-            emit(HomeReceivedBooking(
-                driverInfo: state.driverInfo, bookingId: bookingId));
-          });
-    });
-    _onLoadAccount();
-    _onLoadActiveBooking();
-  }
-
-  void onReset() {
-    _onLoadAccount();
-    _onLoadActiveBooking();
-  }
-
-  void _onLoadAccount() async {
-    var either = await _getAccountUseCase();
-    either.fold((l) => null, (r) {
-      emit(HomeLoadAccountSuccess(driverInfo: r));
+      socketState.whenOrNull(receivedBookingStatus: (data) {
+        if (data.status == BookingStatus.cancelled) {
+          ToastHelper.showToast(
+              message: "Rất tiếc khách hàng đã hủy cuốc xe này");
+          emit(HomeLoadAccountSuccess(driverInfo: state.driverInfo));
+        }
+      }, receivedBooking: (bookingId) {
+        emit(HomeReceivedBooking(
+            driverInfo: state.driverInfo, bookingId: bookingId));
+      });
     });
   }
 
-  void _onLoadActiveBooking() async {
-    var either = await _getActiveBookingUseCase();
-    await Future.delayed(const Duration(milliseconds: 500));
-    either.fold((l) => null, (r) {
-      if (r.id != 0) {
-        socketBloc.scheduleSendLocation();
-        emit(
-            HomeReceivedBooking(driverInfo: state.driverInfo, bookingId: r.id));
-      }
-    });
+  void onReload() async {
+    var value =
+        await Future.wait([_getAccountUseCase(), _getActiveBookingUseCase()]);
+
+    if (value[0].isLeft()) {
+      return;
+    }
+    var driverInfo =
+        value[0].getOrElse(() => const DriverInfo()) as DriverInfo?;
+    if (value[1].isLeft()) {
+      emit(HomeLoadAccountSuccess(driverInfo: driverInfo!));
+      return;
+    }
+
+    var booking = value[1].getOrElse(() => const Booking()) as Booking?;
+    socketBloc.scheduleSendLocation();
+
+    emit(HomeReceivedBooking(driverInfo: driverInfo!, bookingId: booking!.id));
   }
 
-  void onChangeDriverStatus(DriverStatusModel driverStatusModel) async {
-    var either = await _changeDriverStatusUseCase(driverStatusModel);
+  void onChangeDriverStatus() async {
+    var either = await _changeDriverStatusUseCase(state.driverInfo.id);
     either.fold((l) => null, (r) {
       var currentInfo = state.driverInfo.copyWith(status: r);
       emit(HomeLoadAccountSuccess(driverInfo: currentInfo));

@@ -3,6 +3,7 @@ import 'package:go_app_driver/presentation/pages/booking/booking_page.dart';
 import 'package:go_app_driver/presentation/pages/booking_detail/booking_detail_page.dart';
 import 'package:go_app_driver/presentation/pages/cancel_booking/cancel_booking_page.dart';
 import 'package:go_app_driver/presentation/pages/chat/chat_page.dart';
+import 'package:go_app_driver/presentation/pages/history_detail/history_detail_page.dart';
 import 'package:go_app_driver/presentation/pages/login/login_page.dart';
 import 'package:go_app_driver/presentation/pages/login/pending_page.dart';
 import 'package:go_app_driver/presentation/pages/login/register_page.dart';
@@ -22,6 +23,7 @@ class Paths {
   static const String chat = '/chat';
   static const String account = '/account';
   static const String cancelBooking = '/cancel';
+  static const String historyDetail = '/historydetail';
 }
 
 class AppNavigator {
@@ -45,6 +47,8 @@ class AppNavigator {
         return _materialRoute(const ChatPage(), settings);
       case Paths.cancelBooking:
         return _materialRoute(const CancelBookingPage(), settings);
+      case Paths.historyDetail:
+        return _materialRoute(const HistoryDetailPage(), settings);
       default:
         return _materialRoute(const LoginPage(), settings);
     }

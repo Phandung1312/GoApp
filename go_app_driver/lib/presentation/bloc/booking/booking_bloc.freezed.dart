@@ -132,7 +132,7 @@ class _$BookingLoadInfoImpl implements BookingLoadInfo {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BookingLoadInfoImpl &&
@@ -265,7 +265,7 @@ class _$BookingSendBookingStatusImpl implements BookingSendBookingStatus {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BookingSendBookingStatusImpl);
@@ -401,7 +401,7 @@ class _$BookingChangeBookingStatusImpl implements BookingChangeBookingStatus {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BookingChangeBookingStatusImpl &&
@@ -561,7 +561,7 @@ class _$BookingCancelImpl implements BookingCancel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BookingCancelImpl &&

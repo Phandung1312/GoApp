@@ -17,7 +17,6 @@ import 'package:go_app_driver/helpers/vietmap_polyline_utils.dart'
     as map_helper;
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
-import 'package:polyline_codec/polyline_codec.dart';
 import 'package:stomp_dart_client/stomp.dart';
 import 'package:stomp_dart_client/stomp_config.dart';
 import 'package:vietmap_gl_platform_interface/vietmap_gl_platform_interface.dart';
@@ -37,13 +36,20 @@ class SocketBloc extends Bloc<SocketEvent, SocketState> {
 
     client = StompClient(
         config: StompConfig.sockJS(
-            url: "$webSocketUrl?Authorization=Bearer $token",
+            url: webSocketUrl,
+            webSocketConnectHeaders: <String, String>{
+              'Authorization': 'Bearer $token'
+            },
             onConnect: (stompFrame) {
               Logger().i("Socket connected");
               listenerNotify();
               listenerBooking();
               listenerBookingSatus();
               listenerMessage();
+              sendLocation();
+            },
+            onWebSocketError: (data) {
+              Logger().i("Socket error ${data.toString()}");
             },
             onDisconnect: (_) {
               Logger().i("Socket disconnected");
@@ -109,7 +115,7 @@ class SocketBloc extends Bloc<SocketEvent, SocketState> {
   }
 
   void scheduleSendLocation() async {
-    timer = Timer.periodic(const Duration(seconds: 5), (timer) {
+    timer = Timer.periodic(const Duration(seconds: 2), (timer) {
       sendLocation();
     });
   }
@@ -155,18 +161,14 @@ class SocketBloc extends Bloc<SocketEvent, SocketState> {
     var locationInfo = LocationInfoModel(
         idUser: idUser, location: latLng.toUrlValue(), bearing: bearing);
     if (route != null) {
-      var listPoint = PolylineCodec.decode(route!).map((e) {
-        return LatLng(e[0] / 10, e[1] / 10);
-      }).toList();
-
+      var listPoint = VietmapPolylineDecoder.decodePolyline(route!);
       var data = map_helper.VietmapPolyline.splitRouteByPoint(listPoint, latLng,
           unit: map_helper.Unit.miles);
 
       var newRoute = VietmapPolylineDecoder.encodePolyline(data[1]);
-
+      
       locationInfo = locationInfo.copyWith(routeEncode: newRoute);
     }
-    Logger().i(jsonEncode(locationInfo.toJson()));
     client.send(
         destination: '/app/location',
         body: jsonEncode(locationInfo.toJson()),

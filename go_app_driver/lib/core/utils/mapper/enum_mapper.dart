@@ -125,7 +125,7 @@ class DriverStatusConverter implements JsonConverter<DriverStatus, String> {
         return DriverStatus.off;
       case 'ON_RIDE':
         return DriverStatus.onRide;
-      case 'NOT_ACTIVE':
+      case 'NOT_ACTIVATED':
         return DriverStatus.notActive;
       default:
         return DriverStatus.unknown;
@@ -142,9 +142,23 @@ class DriverStatusConverter implements JsonConverter<DriverStatus, String> {
       case DriverStatus.onRide:
         return 'ON_RIDE';
       case DriverStatus.notActive:
-        return 'NOT_ACTIVE';
+        return 'NOT_ACTIVATED';
       default:
         return 'UNKNOWN';
     }
   }
+}
+
+class GenericListConver<T> implements JsonConverter<T, String>{
+  @override
+  T fromJson(String json) {
+   
+    throw UnimplementedError();
+  }
+
+  @override
+  String toJson(T object) {
+    return "";
+  }
+
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_app_driver/config/colors.dart';
 import 'package:go_app_driver/config/images.dart';
+import 'package:go_app_driver/config/routes.dart';
 import 'package:go_app_driver/core/utils/utils.dart';
 import 'package:go_app_driver/domain/entities/enum/enum.dart';
 import 'package:go_app_driver/domain/entities/history.dart';
@@ -60,7 +61,8 @@ class _ListHistoriesState extends State<ListHistories> {
                 var history = histories[index];
                 return InkWell(
                   onTap: () {
-                    build(context);
+                    Navigator.pushNamed(context, Paths.historyDetail,
+                        arguments: history);
                   },
                   child: Padding(
                     padding: const EdgeInsets.only(left: 15, top: 20),
@@ -112,10 +114,24 @@ class _ListHistoriesState extends State<ListHistories> {
                                 const SizedBox(
                                   height: 10,
                                 ),
-                                Text(
-                                  history.createAt,
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.w300),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      Utils.fromTimeStamp(
+                                          timeStamp: history.createAt,
+                                          format: "HH:mm dd/MM/yyyy"),
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.w300),
+                                    ),
+                                    Text(
+                                      Utils.formatCurrency(history.price),
+                                      style: const TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w700),
+                                    )
+                                  ],
                                 ),
                                 if (index != histories.length - 1) ...[
                                   const SizedBox(

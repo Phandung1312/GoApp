@@ -20,7 +20,7 @@ class BookingStatusSection extends StatelessWidget {
             Text(
               bookingStatus.toName(),
               style: TextStyle(
-                  color: bookingStatus == BookingStatus.found
+                  color: bookingStatus == BookingStatus.found || bookingStatus == BookingStatus.arrrivedPickup
                       ? Colors.blue
                       : bookingStatus == BookingStatus.onRide
                           ? Colors.red

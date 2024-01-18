@@ -4,6 +4,7 @@ import 'package:go_app_driver/data/api/account_api_service.dart';
 import 'package:go_app_driver/data/api/booking_api_service.dart';
 import 'package:go_app_driver/data/api/chat_api_service.dart';
 import 'package:go_app_driver/data/api/map_api_service.dart';
+import 'package:go_app_driver/data/api/statistics_api_service.dart';
 import 'package:injectable/injectable.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -35,6 +36,9 @@ abstract class RegisterModule {
   @lazySingleton
   ChatApiService chatApiService(@Named("App") Dio dio) =>
       ChatApiService(dio);
+  @lazySingleton
+  StatisticsApiService statisticsApiService(@Named("App") Dio dio) =>
+      StatisticsApiService(dio);
   @lazySingleton
   MapApiService mapApiService(@Named("Map") Dio dio) => MapApiService(dio);
   

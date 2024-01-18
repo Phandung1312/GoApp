@@ -15,7 +15,6 @@ class Booking with _$Booking {
     @Default("") String pickUpAddress,
     @Default(LatLng(0.0, 0.0)) LatLng dropOffLocation,
     @Default("") String dropOffAddress,
-    @Default("") String incomingDesAddress,
     @Default(BookingStatus.waitting) BookingStatus status,
     @Default(0.0) double amount,
     @Default(0) num predictTime,

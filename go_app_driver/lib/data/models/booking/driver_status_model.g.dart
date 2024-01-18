@@ -10,16 +10,16 @@ _$DriverStatusModelImpl _$$DriverStatusModelImplFromJson(
         Map<String, dynamic> json) =>
     _$DriverStatusModelImpl(
       driverId: json['driverId'] as int?,
-      driverStatus: _$JsonConverterFromJson<String, DriverStatus>(
-          json['driverStatus'], const DriverStatusConverter().fromJson),
+      status: _$JsonConverterFromJson<String, DriverStatus>(
+          json['status'], const DriverStatusConverter().fromJson),
     );
 
 Map<String, dynamic> _$$DriverStatusModelImplToJson(
         _$DriverStatusModelImpl instance) =>
     <String, dynamic>{
       'driverId': instance.driverId,
-      'driverStatus': _$JsonConverterToJson<String, DriverStatus>(
-          instance.driverStatus, const DriverStatusConverter().toJson),
+      'status': _$JsonConverterToJson<String, DriverStatus>(
+          instance.status, const DriverStatusConverter().toJson),
     };
 
 Value? _$JsonConverterFromJson<Json, Value>(

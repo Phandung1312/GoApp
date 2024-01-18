@@ -4,7 +4,7 @@ import 'package:go_app_driver/config/images.dart';
 import 'package:go_app_driver/presentation/pages/account/account_page.dart';
 import 'package:go_app_driver/presentation/pages/history/history_page.dart';
 import 'package:go_app_driver/presentation/pages/home/home_page.dart';
-import 'package:go_app_driver/presentation/pages/payment/payment_page.dart';
+import 'package:go_app_driver/presentation/pages/statistical/statistics_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -18,7 +18,7 @@ class _MainPageState extends State<MainPage> {
   final tabs = [
     const HomePage(),
     const HistoryPage(),
-    const PaymentPage(),
+    const StatisticsPage(),
     const AccountPage(),
   ];
   @override
@@ -47,12 +47,12 @@ class _MainPageState extends State<MainPage> {
             BottomNavigationBarItem(
               icon: ImageIcon(AppImages.icPayment),
               activeIcon: ImageIcon(AppImages.icPaymentSelected),
-              label: "Payment",
+              label: "Thống kê",
             ),
             BottomNavigationBarItem(
               icon: ImageIcon(AppImages.icAccount),
               activeIcon: ImageIcon(AppImages.icAccountSelected),
-              label: "Account",
+              label: "Tài khoản",
             ),
           ],
           onTap: (index) {

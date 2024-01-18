@@ -22,7 +22,7 @@ DriverStatusModel _$DriverStatusModelFromJson(Map<String, dynamic> json) {
 mixin _$DriverStatusModel {
   int? get driverId => throw _privateConstructorUsedError;
   @DriverStatusConverter()
-  DriverStatus? get driverStatus => throw _privateConstructorUsedError;
+  DriverStatus? get status => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,8 +36,7 @@ abstract class $DriverStatusModelCopyWith<$Res> {
           DriverStatusModel value, $Res Function(DriverStatusModel) then) =
       _$DriverStatusModelCopyWithImpl<$Res, DriverStatusModel>;
   @useResult
-  $Res call(
-      {int? driverId, @DriverStatusConverter() DriverStatus? driverStatus});
+  $Res call({int? driverId, @DriverStatusConverter() DriverStatus? status});
 }
 
 /// @nodoc
@@ -54,16 +53,16 @@ class _$DriverStatusModelCopyWithImpl<$Res, $Val extends DriverStatusModel>
   @override
   $Res call({
     Object? driverId = freezed,
-    Object? driverStatus = freezed,
+    Object? status = freezed,
   }) {
     return _then(_value.copyWith(
       driverId: freezed == driverId
           ? _value.driverId
           : driverId // ignore: cast_nullable_to_non_nullable
               as int?,
-      driverStatus: freezed == driverStatus
-          ? _value.driverStatus
-          : driverStatus // ignore: cast_nullable_to_non_nullable
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
               as DriverStatus?,
     ) as $Val);
   }
@@ -77,8 +76,7 @@ abstract class _$$DriverStatusModelImplCopyWith<$Res>
       __$$DriverStatusModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int? driverId, @DriverStatusConverter() DriverStatus? driverStatus});
+  $Res call({int? driverId, @DriverStatusConverter() DriverStatus? status});
 }
 
 /// @nodoc
@@ -93,16 +91,16 @@ class __$$DriverStatusModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? driverId = freezed,
-    Object? driverStatus = freezed,
+    Object? status = freezed,
   }) {
     return _then(_$DriverStatusModelImpl(
       driverId: freezed == driverId
           ? _value.driverId
           : driverId // ignore: cast_nullable_to_non_nullable
               as int?,
-      driverStatus: freezed == driverStatus
-          ? _value.driverStatus
-          : driverStatus // ignore: cast_nullable_to_non_nullable
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
               as DriverStatus?,
     ));
   }
@@ -112,7 +110,7 @@ class __$$DriverStatusModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$DriverStatusModelImpl implements _DriverStatusModel {
   const _$DriverStatusModelImpl(
-      {this.driverId, @DriverStatusConverter() this.driverStatus});
+      {this.driverId, @DriverStatusConverter() this.status});
 
   factory _$DriverStatusModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$DriverStatusModelImplFromJson(json);
@@ -121,27 +119,26 @@ class _$DriverStatusModelImpl implements _DriverStatusModel {
   final int? driverId;
   @override
   @DriverStatusConverter()
-  final DriverStatus? driverStatus;
+  final DriverStatus? status;
 
   @override
   String toString() {
-    return 'DriverStatusModel(driverId: $driverId, driverStatus: $driverStatus)';
+    return 'DriverStatusModel(driverId: $driverId, status: $status)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DriverStatusModelImpl &&
             (identical(other.driverId, driverId) ||
                 other.driverId == driverId) &&
-            (identical(other.driverStatus, driverStatus) ||
-                other.driverStatus == driverStatus));
+            (identical(other.status, status) || other.status == status));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, driverId, driverStatus);
+  int get hashCode => Object.hash(runtimeType, driverId, status);
 
   @JsonKey(ignore: true)
   @override
@@ -161,7 +158,7 @@ class _$DriverStatusModelImpl implements _DriverStatusModel {
 abstract class _DriverStatusModel implements DriverStatusModel {
   const factory _DriverStatusModel(
           {final int? driverId,
-          @DriverStatusConverter() final DriverStatus? driverStatus}) =
+          @DriverStatusConverter() final DriverStatus? status}) =
       _$DriverStatusModelImpl;
 
   factory _DriverStatusModel.fromJson(Map<String, dynamic> json) =
@@ -171,7 +168,7 @@ abstract class _DriverStatusModel implements DriverStatusModel {
   int? get driverId;
   @override
   @DriverStatusConverter()
-  DriverStatus? get driverStatus;
+  DriverStatus? get status;
   @override
   @JsonKey(ignore: true)
   _$$DriverStatusModelImplCopyWith<_$DriverStatusModelImpl> get copyWith =>

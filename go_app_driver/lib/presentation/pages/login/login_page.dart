@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_app_driver/config/colors.dart';
 import 'package:go_app_driver/config/images.dart';
 import 'package:go_app_driver/domain/entities/enum/account_status.dart';
+import 'package:go_app_driver/helpers/toast.dart';
 import 'package:go_app_driver/presentation/bloc/login/login_bloc.dart';
 import 'package:go_app_driver/config/routes.dart';
 import 'package:toast/toast.dart';
@@ -49,10 +50,14 @@ class LoginPage extends StatelessWidget {
                       context, Paths.pending, (route) => route.isFirst);
                   break;
                 }
+               case AccountStatus.blockRole:
+                {
+                  ToastHelper.showToast(message: "Ứng dụng này chỉ cho phép tài xế đăng nhập");
+                  break;
+                }
               default:
                 {
-                  Toast.show("Rất tiếc tài khoản của bạn đã bị khóa",
-              duration: Toast.lengthShort, gravity: Toast.bottom);
+                  ToastHelper.showToast(message: "Rất tiếc tài khoản của bạn đã bị khóa");
                   break;
                 }
             }

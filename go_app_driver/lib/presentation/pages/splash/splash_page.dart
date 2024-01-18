@@ -62,7 +62,7 @@ class _SplashPageState extends State<SplashPage> {
 
 
     if(isLoggedIn()){
-      GoogleAuthenHelper.refreshToken();
+      await GoogleAuthenHelper.refreshToken();
       Future.delayed(
       const  Duration(milliseconds: 100),
       () => Navigator.pushNamedAndRemoveUntil(context, Paths.main,(route) => false)

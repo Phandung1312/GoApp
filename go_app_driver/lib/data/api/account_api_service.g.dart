@@ -13,7 +13,7 @@ class _AccountApiService implements AccountApiService {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://forlorn-bite-production.up.railway.app/';
+    baseUrl ??= 'https://goapi-production-ecc7.up.railway.app/';
   }
 
   final Dio _dio;

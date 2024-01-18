@@ -5,7 +5,6 @@ import 'package:geolocator/geolocator.dart';
 import 'package:go_app_driver/config/colors.dart';
 import 'package:go_app_driver/domain/entities/enum/enum.dart';
 import 'package:go_app_driver/extensions/latlng_extension.dart';
-import 'package:go_app_driver/helpers/toast.dart';
 import 'package:go_app_driver/presentation/bloc/booking/booking_bloc.dart';
 import 'package:go_app_driver/presentation/bloc/home/home_cubit.dart';
 import 'package:go_app_driver/presentation/bloc/socket/socket_bloc.dart';
@@ -13,6 +12,8 @@ import 'package:go_app_driver/presentation/pages/booking/sections/booking_bottom
 import 'package:go_app_driver/presentation/pages/booking/sections/booking_contact_section.dart';
 import 'package:go_app_driver/presentation/pages/booking/sections/booking_info_section.dart';
 import 'package:go_app_driver/presentation/pages/booking/sections/booking_status_section.dart';
+import 'package:go_app_driver/presentation/pages/booking/sections/cancelled_booking_dialog.dart';
+import 'package:go_app_driver/presentation/pages/booking/sections/complete_booking_dialog.dart';
 import 'package:go_app_driver/presentation/widgets/loading_overlay.dart';
 import 'package:vietmap_flutter_navigation/models/direction_route.dart';
 
@@ -51,23 +52,33 @@ class _BookingPageState extends State<BookingPage> {
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text("Đã có lỗi xảy ra. Hãy thử lại!"),
           ));
+          Navigator.pop(context);
         }
         if (state is BookingStatusChanged) {
           switch (state.bookingData.status) {
+            case BookingStatus.onRide:
+              initRoute(state);
+              break;
             case BookingStatus.complete:
               {
-                ToastHelper.showToast(
-                    message:
-                        "Cuốc xe đã hoàn thành, đã được lưu lại trong hoạt động");
-                context.read<HomeCubit>().onReset();
-                Navigator.pop(context);
+                context.read<HomeCubit>().onReload();
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return const CompleteBookingDialog();
+                  },
+                ).whenComplete(() => Navigator.pop(context));
               }
+              break;
             case BookingStatus.cancelled:
               {
-                ToastHelper.showToast(
-                    message: "Rất tiếc cuốc xe này đã bị hủy");
-                context.read<HomeCubit>().onReset();
-                Navigator.pop(context);
+                context.read<HomeCubit>().onReload();
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return const CancelledBookingDialog();
+                  },
+                ).whenComplete(() => Navigator.pop(context));
               }
               break;
             default:
@@ -148,24 +159,7 @@ class _BookingPageState extends State<BookingPage> {
                                     }
                                   },
                                   onMapRendered: () async {
-                                    var listWaypoint = <WayPoint>[];
-                                    var res =
-                                        await Geolocator.getCurrentPosition();
-                                    listWaypoint.add(WayPoint(
-                                        name: '',
-                                        latitude: res.toLatLng().latitude,
-                                        longitude: res.toLatLng().longitude));
-                                    listWaypoint.add(WayPoint(
-                                        name: '',
-                                        latitude: state.bookingData
-                                            .pickUpLocation.latitude,
-                                        longitude: state.bookingData
-                                            .pickUpLocation.longitude));
-                                    _navigationController
-                                        ?.buildAndStartNavigation(
-                                            wayPoints: listWaypoint,
-                                            profile: DrivingProfile.motorcycle)
-                                        .then((value) {});
+                                    await initRoute(state);
                                   },
                                   onArrival: () {
                                     showDialog(
@@ -205,5 +199,23 @@ class _BookingPageState extends State<BookingPage> {
         );
       },
     );
+  }
+
+  Future<void> initRoute(BookingState state) async {
+    var listWaypoint = <LatLng>[];
+    var res = await Geolocator.getCurrentPosition();
+    listWaypoint.add(LatLng(res.toLatLng().latitude, res.toLatLng().longitude));
+    if (state.bookingData.status == BookingStatus.onRide) {
+      listWaypoint.add(LatLng(state.bookingData.dropOffLocation.latitude,
+          state.bookingData.dropOffLocation.longitude));
+    } else {
+      listWaypoint.add(LatLng(state.bookingData.pickUpLocation.latitude,
+          state.bookingData.pickUpLocation.longitude));
+    }
+
+    _navigationController
+        ?.buildAndStartNavigation(
+            waypoints: listWaypoint, profile: DrivingProfile.motorcycle)
+        .then((value) {});
   }
 }

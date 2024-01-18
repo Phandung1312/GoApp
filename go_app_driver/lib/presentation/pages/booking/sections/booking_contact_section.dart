@@ -5,6 +5,7 @@ import 'package:go_app_driver/config/routes.dart';
 import 'package:go_app_driver/domain/entities/booking.dart';
 import 'package:go_app_driver/presentation/bloc/chat/chat_cubit.dart';
 
+
 class BookingContactSection extends StatelessWidget {
   final Booking booking;
   const BookingContactSection({super.key, required this.booking});
@@ -20,6 +21,7 @@ class BookingContactSection extends StatelessWidget {
           GestureDetector(
             onTap: () {
                FlutterPhoneDirectCaller.callNumber(booking.customerInfo.phoneNumber);
+         
             },
             child: const Column(
               crossAxisAlignment: CrossAxisAlignment.center,

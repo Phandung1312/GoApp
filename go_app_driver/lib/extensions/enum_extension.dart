@@ -58,6 +58,17 @@ extension BookingStatusExtension on BookingStatus {
         return "";
     }
   }
+
+  String toHistory() {
+    switch (this) {
+      case BookingStatus.complete:
+        return "Đã hoàn thành";
+      case BookingStatus.cancelled:
+        return "Đã hủy";
+      default:
+        return "Đã hủy";
+    }
+  }
 }
 
 extension BoolExtension on bool {

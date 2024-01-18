@@ -20,6 +20,21 @@ class GoogleAuthenHelper {
   static Future<void> signOut() async {
     await _googleSignIn.signOut();
   }
+
+  static Future<void> handleSignIn() async {
+    try {
+      final googleUser = await _googleSignIn.signIn();
+      GoogleSignInAuthentication? googleSignInAuthentication =
+          await googleUser?.authentication;
+
+      final pref = getIt<SharedPreferences>();
+      await pref.setString(
+          "idToken", googleSignInAuthentication?.idToken ?? "");
+      await pref.setBool("isLoggedIn", true);
+    } catch (error) {
+      print(error);
+    }
+  }
 }
 
 GoogleSignIn _googleSignIn = GoogleSignIn(

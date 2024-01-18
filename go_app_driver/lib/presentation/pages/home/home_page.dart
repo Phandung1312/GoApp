@@ -4,9 +4,10 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:go_app_driver/config/colors.dart';
 import 'package:go_app_driver/config/images.dart';
-import 'package:go_app_driver/data/models/booking/driver_status_model.dart';
+import 'package:go_app_driver/config/routes.dart';
 import 'package:go_app_driver/domain/entities/enum/enum.dart';
 import 'package:go_app_driver/helpers/share_prefereces.dart';
+import 'package:go_app_driver/helpers/toast.dart';
 import 'package:go_app_driver/presentation/bloc/home/home_cubit.dart';
 
 import 'package:go_app_driver/presentation/pages/home/setions/bottom_view_home.dart';
@@ -28,13 +29,23 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     LatLng latLng = getCurrentLatLngFromSharedPrefs();
     _initialCameraPosition = CameraPosition(target: latLng, zoom: 15);
+    context.read<HomeCubit>().onReload();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeCubit, HomeState>(
+    return BlocConsumer<HomeCubit, HomeState>(
+      listener: (context, state ){
+        if(state.driverInfo.status == DriverStatus.notActive){
+           ToastHelper.showToast(
+                message:
+                    "Rất tiếc, tài khoản của bạn đã bị khóa");
+          Navigator.pushNamedAndRemoveUntil(context, Paths.login, (route) => false);
+        }
+      },
       builder: (context, state) {
-        var isFree = state.driverInfo.status == DriverStatus.free;
+        var isFree = state.driverInfo.status == DriverStatus.free ||
+            state.driverInfo.status == DriverStatus.onRide;
         return Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -45,20 +56,20 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Text(
                     isFree
-                        ? "Sẵn sàng nhận cuốc xe"
+                        ? "Bạn đang ở trạng thái hoạt động"
                         : "Bật hoạt động để nhận cuốc xe",
                     style: const TextStyle(
                         fontSize: 16, fontWeight: FontWeight.w700),
                   ),
                   GestureDetector(
                     onTap: () {
-                      var driverStatusModel = DriverStatusModel(
-                          driverId: state.driverInfo.id,
-                          driverStatus:
-                              isFree ? DriverStatus.off : DriverStatus.free);
-                      context
-                          .read<HomeCubit>()
-                          .onChangeDriverStatus(driverStatusModel);
+                      if (state is HomeReceivedBooking) {
+                        ToastHelper.showToast(
+                            message:
+                                "Bạn thực hiện chuyến xe, không thể tắt trạng thái hoạt động!");
+                        return;
+                      }
+                      context.read<HomeCubit>().onChangeDriverStatus();
                     },
                     child: Container(
                       padding: const EdgeInsets.symmetric(
@@ -111,6 +122,7 @@ class _HomePageState extends State<HomePage> {
                       _controller?.animateCamera(CameraUpdate.newLatLngZoom(
                           LatLng(locationData.latitude, locationData.longitude),
                           16));
+                    
                     },
                     child: Container(
                       decoration: BoxDecoration(
