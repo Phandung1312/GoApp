@@ -10,7 +10,7 @@ _$ReviewModelImpl _$$ReviewModelImplFromJson(Map<String, dynamic> json) =>
     _$ReviewModelImpl(
       id: json['id'] as int,
       bookingId: json['bookingId'] as int?,
-      rating: json['rating'] as num?,
+      rating: (json['rating'] as num?)?.toDouble(),
       content: json['content'] as String?,
       createAt: json['createAt'] as int?,
     );

@@ -13,7 +13,7 @@ class _BookingApiService implements BookingApiService {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://forlorn-bite-production.up.railway.app/';
+    baseUrl ??= 'https://goapi-production-ecc7.up.railway.app/';
   }
 
   final Dio _dio;
@@ -141,6 +141,34 @@ class _BookingApiService implements BookingApiService {
   }
 
   @override
+  Future<HttpResponse<BookingModel>> getBookingById(int id) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<HttpResponse<BookingModel>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'bookings/${id}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = BookingModel.fromJson(_result.data!);
+    final httpResponse = HttpResponse(value, _result);
+    return httpResponse;
+  }
+
+  @override
   Future<HttpResponse<ReviewModel>> createReview(
       ReviewRequestModel reviewRequest) async {
     const _extra = <String, dynamic>{};
@@ -198,6 +226,47 @@ class _BookingApiService implements BookingApiService {
               baseUrl,
             ))));
     final value = BookingCancelResponse.fromJson(_result.data!);
+    final httpResponse = HttpResponse(value, _result);
+    return httpResponse;
+  }
+
+  @override
+  Future<HttpResponse<PaginationModel>> getHistories(
+    int? page,
+    int? size,
+    String? status,
+    String? sortType,
+    String? sortFiled,
+  ) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'page': page,
+      r'size': size,
+      r'status': status,
+      r'sortType': sortType,
+      r'sortFiled': sortFiled,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<HttpResponse<PaginationModel>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'bookings',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = PaginationModel.fromJson(_result.data!);
     final httpResponse = HttpResponse(value, _result);
     return httpResponse;
   }

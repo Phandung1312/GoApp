@@ -12,7 +12,7 @@ class ApiServerFailure extends Failure {
 class ApiTimeOutFailure extends Failure {}
 
 class ExceptionFailure extends Failure {
-  final Exception message;
+  final String message;
   const ExceptionFailure(this.message);
 }
 

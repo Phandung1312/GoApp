@@ -1,7 +1,7 @@
-const String  baseUrl = "https://forlorn-bite-production.up.railway.app/";
+const String  baseUrl = "https://goapi-production-ecc7.up.railway.app/";
 const String mapUrl = "https://maps.vietmap.vn/api/";
 
-const String webSocketUrl = "https://forlorn-bite-production.up.railway.app/ws";
+const String webSocketUrl = "https://goapi-production-ecc7.up.railway.app/ws";
 
 
 class SocketUrlConstant{

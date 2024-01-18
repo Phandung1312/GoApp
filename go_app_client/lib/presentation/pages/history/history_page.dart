@@ -13,16 +13,17 @@ class HistoryPage extends StatefulWidget {
 }
 
 class _HistoryPageState extends State<HistoryPage> {
-  
   @override
   void initState() {
     super.initState();
     context.read<HistoryBloc>().add(const HistoryEvent.loadAll());
   }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HistoryBloc, HistoryState>(
-      buildWhen: (previous, current) => current is HistoryLoading || current is HistoryLoadSuccess,
+      buildWhen: (previous, current) =>
+          current is HistoryLoading || current is HistoryLoadSuccess,
       builder: (context, state) {
         return Column(
           children: [
@@ -30,13 +31,26 @@ class _HistoryPageState extends State<HistoryPage> {
               title: "Hoạt động",
               isBack: false,
             ),
-            state.maybeWhen(
-                loading: () => const ListHistoriesSkeleton(),
-                loadSuccess: (data) => ListHistories(histories: data),
-                orElse: () => Container())
+            const SizedBox(
+              height: 10,
+            ),
+            Expanded(
+                child: state.maybeWhen(
+                    loading: () => const ListHistoriesSkeleton(),
+                    loadSuccess: (data) => const ListHistories(),
+                    orElse: () => Container())),
+            const SizedBox(
+              height: 20,
+            )
           ],
         );
       },
     );
+  }
+
+  @override
+  void dispose() {
+    context.read<HistoryBloc>().close();
+    super.dispose();
   }
 }

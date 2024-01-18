@@ -50,6 +50,7 @@ class AppImages{
   static const icCompassReview = _Image('ic_compass_review.png');
 
   static const homeBackground = _Image('home_background.png');
+  static const icDriver = _Image('ic_driver.png');
 
 
 

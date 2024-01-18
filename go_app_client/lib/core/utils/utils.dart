@@ -51,13 +51,17 @@ class Utils {
         return "Đã hủy";
       case BookingStatus.complete:
         return "Đã hoàn tất";
-
+      case BookingStatus.wattingRefund:
+        return "Đang chờ hoàn tiền";
+      case BookingStatus.refunded:
+        return "Đã hoàn tiền";
       default:
-        return "";
+        return "Không xác định";
     }
   }
 
-    static String fromTimeStamp({required int timeStamp, String format = "dd/MM/yyyy"}) {
+  static String fromTimeStamp(
+      {required int timeStamp, String format = "dd/MM/yyyy"}) {
     final time = DateTime.fromMillisecondsSinceEpoch(timeStamp);
     return DateFormat(format).format(time);
   }
@@ -72,34 +76,25 @@ class Utils {
     return "Hoàn hảo";
   }
 
-
-  static List<ReviewTemplate> getReviewTemplates(){
+  static List<ReviewTemplate> getReviewTemplates() {
     return <ReviewTemplate>[
       const ReviewTemplate(
-        image: AppImages.icFamous,
-        content: "Tài xế thân thiện"
-      ),
+          image: AppImages.icFamous, content: "Tài xế thân thiện"),
       const ReviewTemplate(
-        image: AppImages.icTrophy,
-        content: "Dịch vụ hoàn hảo"
-      ),
+          image: AppImages.icTrophy, content: "Dịch vụ hoàn hảo"),
       const ReviewTemplate(
-        image: AppImages.icCompassReview,
-        content: "Tài xế tìm đường giỏi"
-      ),
+          image: AppImages.icCompassReview, content: "Tài xế tìm đường giỏi"),
       const ReviewTemplate(
-        image: AppImages.icClean,
-        content: "Tài xế gọn gàng ,sạch sẽ"
-      ),
-     
+          image: AppImages.icClean, content: "Tài xế gọn gàng ,sạch sẽ"),
     ];
   }
 
-  static double textHeight(String text, double width, {required TextStyle style}) {
+  static double textHeight(String text, double width,
+      {required TextStyle style}) {
     final span = TextSpan(text: text, style: style);
     final tp = TextPainter(text: span, textDirection: ui.TextDirection.ltr);
     tp.layout(maxWidth: width);
     final numLines = tp.computeLineMetrics().length;
     return numLines * tp.size.height;
-}
+  }
 }

@@ -42,7 +42,7 @@ class ChatCubit extends Cubit<ChatState> {
     emit(ChatLoadingAllMessages(
         userId: getUserId(), driverInfo: driverInfo));
     var either = await _getAllMessagesUseCase();
-    either.fold((l) => null, (r) {
+    either.fold((l) => emit(ChatLoadAllError()), (r) {
       var messages = r.messageResponses?.map((e) => e.maptoEntity()).toList();
       emit(ChatLoadAllMessageSucces(
           messages: messages ?? <Message>[],

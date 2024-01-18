@@ -4,6 +4,7 @@ import 'package:go_app_client/config/colors.dart';
 import 'package:go_app_client/config/images.dart';
 import 'package:go_app_client/config/routes/routes.dart';
 import 'package:go_app_client/domain/entities/enum/account_status.dart';
+import 'package:go_app_client/helpers/toast.dart';
 import 'package:go_app_client/presentation/bloc/login/login_bloc.dart';
 import 'package:toast/toast.dart';
 
@@ -40,10 +41,9 @@ class LoginPage extends StatelessWidget {
               case AccountStatus.blocked:
                 {
                   Navigator.of(context).pop();
-                  Future.delayed(const Duration(milliseconds: 100), () {
-                    Navigator.pushNamedAndRemoveUntil(
-                        context, Paths.main, (route) => false);
-                  });
+                   ToastHelper.showToast(
+                message:
+                    "Rất tiếc, tài khoản của bạn đã bị khóa");
                   break;
                 }
               case AccountStatus.registered:

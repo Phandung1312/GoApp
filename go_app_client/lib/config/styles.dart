@@ -7,8 +7,8 @@ import 'package:go_app_client/config/colors.dart';
 class Styles{
   static const TextStyle titleText = TextStyle(
     color: Colors.black,
-    fontWeight: FontWeight.bold,
-    fontSize: 25
+    fontWeight: FontWeight.w500,
+    fontSize: 20
   );
   static const TextStyle noticeText = TextStyle(
     

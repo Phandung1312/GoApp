@@ -28,15 +28,16 @@ class _AccountPageState extends State<AccountPage> {
   Widget build(BuildContext context) {
     return BlocConsumer<AccountBloc, AccountState>(
       listener: (context, state) {
-        if(state is AccountLoadSuccess){
+        if (state is AccountLoadSuccess) {
           setState(() {
-            clientInfo  = state.clientInfo;
+            clientInfo = state.clientInfo;
           });
 
           return;
         }
-        if(state is AccountLogOutSuccess){
-          Navigator.pushNamedAndRemoveUntil(context, Paths.login, (route) => false);
+        if (state is AccountLogOutSuccess) {
+          Navigator.pushNamedAndRemoveUntil(
+              context, Paths.login, (route) => false);
         }
       },
       builder: (context, state) {
@@ -46,14 +47,33 @@ class _AccountPageState extends State<AccountPage> {
             const SizedBox(
               height: 10,
             ),
-            CircleAvatar(
-              radius: 100,
-              backgroundImage: Image.network(clientInfo.avatarUrl).image,
+            Stack(
+              children: [
+                CircleAvatar(
+                  radius: 100,
+                  backgroundImage: Image.network(clientInfo.avatarUrl).image,
+                ),
+                Positioned(
+                  right: 5,
+                  bottom: 5,
+                  child: GestureDetector(
+                    onTap: (){
+                      Navigator.pushNamed(context, Paths.editAccount, arguments: clientInfo);
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(5),
+                      decoration: const BoxDecoration(
+                        color: Color.fromARGB(255, 223, 223, 224),
+                        shape: BoxShape.circle
+                      ),
+                      child: const Icon(Icons.edit, )),
+                  ))
+              ],
             ),
             const SizedBox(
               height: 30,
             ),
-             info(
+            info(
                 image: AppImages.icEmail,
                 lable: "Email",
                 content: clientInfo.email),
@@ -79,7 +99,7 @@ class _AccountPageState extends State<AccountPage> {
             ),
             InkWell(
               onTap: () {
-                  context.read<AccountBloc>().add(const AccountEvent.logOut());
+                context.read<AccountBloc>().add(const AccountEvent.logOut());
               },
               child: Text(
                 "Đăng xuất",

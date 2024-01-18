@@ -41,6 +41,7 @@ mixin _$BookingEvent {
     required TResult Function(DriverLocation driverLocation)
         changeDriverLocation,
     required TResult Function(BookingCancelRequest request) cancel,
+    required TResult Function() reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -67,6 +68,7 @@ mixin _$BookingEvent {
     TResult? Function(Booking booking)? loadBookingData,
     TResult? Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult? Function(BookingCancelRequest request)? cancel,
+    TResult? Function()? reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -92,6 +94,7 @@ mixin _$BookingEvent {
     TResult Function(Booking booking)? loadBookingData,
     TResult Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult Function(BookingCancelRequest request)? cancel,
+    TResult Function()? reset,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -121,6 +124,7 @@ mixin _$BookingEvent {
     required TResult Function(BookingChangeDriverLocation value)
         changeDriverLocation,
     required TResult Function(BookingCancel value) cancel,
+    required TResult Function(BookingReset value) reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -146,6 +150,7 @@ mixin _$BookingEvent {
     TResult? Function(BookingLoadBookingData value)? loadBookingData,
     TResult? Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult? Function(BookingCancel value)? cancel,
+    TResult? Function(BookingReset value)? reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -170,6 +175,7 @@ mixin _$BookingEvent {
     TResult Function(BookingLoadBookingData value)? loadBookingData,
     TResult Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult Function(BookingCancel value)? cancel,
+    TResult Function(BookingReset value)? reset,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -257,6 +263,7 @@ class _$BookingSelectPickupLocationImpl implements BookingSelectPickupLocation {
     required TResult Function(DriverLocation driverLocation)
         changeDriverLocation,
     required TResult Function(BookingCancelRequest request) cancel,
+    required TResult Function() reset,
   }) {
     return selectPickupLocation();
   }
@@ -286,6 +293,7 @@ class _$BookingSelectPickupLocationImpl implements BookingSelectPickupLocation {
     TResult? Function(Booking booking)? loadBookingData,
     TResult? Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult? Function(BookingCancelRequest request)? cancel,
+    TResult? Function()? reset,
   }) {
     return selectPickupLocation?.call();
   }
@@ -314,6 +322,7 @@ class _$BookingSelectPickupLocationImpl implements BookingSelectPickupLocation {
     TResult Function(Booking booking)? loadBookingData,
     TResult Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult Function(BookingCancelRequest request)? cancel,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (selectPickupLocation != null) {
@@ -349,6 +358,7 @@ class _$BookingSelectPickupLocationImpl implements BookingSelectPickupLocation {
     required TResult Function(BookingChangeDriverLocation value)
         changeDriverLocation,
     required TResult Function(BookingCancel value) cancel,
+    required TResult Function(BookingReset value) reset,
   }) {
     return selectPickupLocation(this);
   }
@@ -377,6 +387,7 @@ class _$BookingSelectPickupLocationImpl implements BookingSelectPickupLocation {
     TResult? Function(BookingLoadBookingData value)? loadBookingData,
     TResult? Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult? Function(BookingCancel value)? cancel,
+    TResult? Function(BookingReset value)? reset,
   }) {
     return selectPickupLocation?.call(this);
   }
@@ -404,6 +415,7 @@ class _$BookingSelectPickupLocationImpl implements BookingSelectPickupLocation {
     TResult Function(BookingLoadBookingData value)? loadBookingData,
     TResult Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult Function(BookingCancel value)? cancel,
+    TResult Function(BookingReset value)? reset,
     required TResult orElse(),
   }) {
     if (selectPickupLocation != null) {
@@ -482,6 +494,7 @@ class _$BookingSelectDesLocationImpl implements BookingSelectDesLocation {
     required TResult Function(DriverLocation driverLocation)
         changeDriverLocation,
     required TResult Function(BookingCancelRequest request) cancel,
+    required TResult Function() reset,
   }) {
     return selectDesLocation();
   }
@@ -511,6 +524,7 @@ class _$BookingSelectDesLocationImpl implements BookingSelectDesLocation {
     TResult? Function(Booking booking)? loadBookingData,
     TResult? Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult? Function(BookingCancelRequest request)? cancel,
+    TResult? Function()? reset,
   }) {
     return selectDesLocation?.call();
   }
@@ -539,6 +553,7 @@ class _$BookingSelectDesLocationImpl implements BookingSelectDesLocation {
     TResult Function(Booking booking)? loadBookingData,
     TResult Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult Function(BookingCancelRequest request)? cancel,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (selectDesLocation != null) {
@@ -574,6 +589,7 @@ class _$BookingSelectDesLocationImpl implements BookingSelectDesLocation {
     required TResult Function(BookingChangeDriverLocation value)
         changeDriverLocation,
     required TResult Function(BookingCancel value) cancel,
+    required TResult Function(BookingReset value) reset,
   }) {
     return selectDesLocation(this);
   }
@@ -602,6 +618,7 @@ class _$BookingSelectDesLocationImpl implements BookingSelectDesLocation {
     TResult? Function(BookingLoadBookingData value)? loadBookingData,
     TResult? Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult? Function(BookingCancel value)? cancel,
+    TResult? Function(BookingReset value)? reset,
   }) {
     return selectDesLocation?.call(this);
   }
@@ -629,6 +646,7 @@ class _$BookingSelectDesLocationImpl implements BookingSelectDesLocation {
     TResult Function(BookingLoadBookingData value)? loadBookingData,
     TResult Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult Function(BookingCancel value)? cancel,
+    TResult Function(BookingReset value)? reset,
     required TResult orElse(),
   }) {
     if (selectDesLocation != null) {
@@ -739,6 +757,7 @@ class _$BookingLocateOnMapImpl implements BookingLocateOnMap {
     required TResult Function(DriverLocation driverLocation)
         changeDriverLocation,
     required TResult Function(BookingCancelRequest request) cancel,
+    required TResult Function() reset,
   }) {
     return locateOnMap(selectLocation, refId);
   }
@@ -768,6 +787,7 @@ class _$BookingLocateOnMapImpl implements BookingLocateOnMap {
     TResult? Function(Booking booking)? loadBookingData,
     TResult? Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult? Function(BookingCancelRequest request)? cancel,
+    TResult? Function()? reset,
   }) {
     return locateOnMap?.call(selectLocation, refId);
   }
@@ -796,6 +816,7 @@ class _$BookingLocateOnMapImpl implements BookingLocateOnMap {
     TResult Function(Booking booking)? loadBookingData,
     TResult Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult Function(BookingCancelRequest request)? cancel,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (locateOnMap != null) {
@@ -831,6 +852,7 @@ class _$BookingLocateOnMapImpl implements BookingLocateOnMap {
     required TResult Function(BookingChangeDriverLocation value)
         changeDriverLocation,
     required TResult Function(BookingCancel value) cancel,
+    required TResult Function(BookingReset value) reset,
   }) {
     return locateOnMap(this);
   }
@@ -859,6 +881,7 @@ class _$BookingLocateOnMapImpl implements BookingLocateOnMap {
     TResult? Function(BookingLoadBookingData value)? loadBookingData,
     TResult? Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult? Function(BookingCancel value)? cancel,
+    TResult? Function(BookingReset value)? reset,
   }) {
     return locateOnMap?.call(this);
   }
@@ -886,6 +909,7 @@ class _$BookingLocateOnMapImpl implements BookingLocateOnMap {
     TResult Function(BookingLoadBookingData value)? loadBookingData,
     TResult Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult Function(BookingCancel value)? cancel,
+    TResult Function(BookingReset value)? reset,
     required TResult orElse(),
   }) {
     if (locateOnMap != null) {
@@ -999,6 +1023,7 @@ class _$BookingSearchAddressFromTextImpl
     required TResult Function(DriverLocation driverLocation)
         changeDriverLocation,
     required TResult Function(BookingCancelRequest request) cancel,
+    required TResult Function() reset,
   }) {
     return searchAddressFromText(query);
   }
@@ -1028,6 +1053,7 @@ class _$BookingSearchAddressFromTextImpl
     TResult? Function(Booking booking)? loadBookingData,
     TResult? Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult? Function(BookingCancelRequest request)? cancel,
+    TResult? Function()? reset,
   }) {
     return searchAddressFromText?.call(query);
   }
@@ -1056,6 +1082,7 @@ class _$BookingSearchAddressFromTextImpl
     TResult Function(Booking booking)? loadBookingData,
     TResult Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult Function(BookingCancelRequest request)? cancel,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (searchAddressFromText != null) {
@@ -1091,6 +1118,7 @@ class _$BookingSearchAddressFromTextImpl
     required TResult Function(BookingChangeDriverLocation value)
         changeDriverLocation,
     required TResult Function(BookingCancel value) cancel,
+    required TResult Function(BookingReset value) reset,
   }) {
     return searchAddressFromText(this);
   }
@@ -1119,6 +1147,7 @@ class _$BookingSearchAddressFromTextImpl
     TResult? Function(BookingLoadBookingData value)? loadBookingData,
     TResult? Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult? Function(BookingCancel value)? cancel,
+    TResult? Function(BookingReset value)? reset,
   }) {
     return searchAddressFromText?.call(this);
   }
@@ -1146,6 +1175,7 @@ class _$BookingSearchAddressFromTextImpl
     TResult Function(BookingLoadBookingData value)? loadBookingData,
     TResult Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult Function(BookingCancel value)? cancel,
+    TResult Function(BookingReset value)? reset,
     required TResult orElse(),
   }) {
     if (searchAddressFromText != null) {
@@ -1260,6 +1290,7 @@ class _$BookingSearchAddressFromCoordinateImpl
     required TResult Function(DriverLocation driverLocation)
         changeDriverLocation,
     required TResult Function(BookingCancelRequest request) cancel,
+    required TResult Function() reset,
   }) {
     return searchAddressFromCoordinate(coordinate);
   }
@@ -1289,6 +1320,7 @@ class _$BookingSearchAddressFromCoordinateImpl
     TResult? Function(Booking booking)? loadBookingData,
     TResult? Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult? Function(BookingCancelRequest request)? cancel,
+    TResult? Function()? reset,
   }) {
     return searchAddressFromCoordinate?.call(coordinate);
   }
@@ -1317,6 +1349,7 @@ class _$BookingSearchAddressFromCoordinateImpl
     TResult Function(Booking booking)? loadBookingData,
     TResult Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult Function(BookingCancelRequest request)? cancel,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (searchAddressFromCoordinate != null) {
@@ -1352,6 +1385,7 @@ class _$BookingSearchAddressFromCoordinateImpl
     required TResult Function(BookingChangeDriverLocation value)
         changeDriverLocation,
     required TResult Function(BookingCancel value) cancel,
+    required TResult Function(BookingReset value) reset,
   }) {
     return searchAddressFromCoordinate(this);
   }
@@ -1380,6 +1414,7 @@ class _$BookingSearchAddressFromCoordinateImpl
     TResult? Function(BookingLoadBookingData value)? loadBookingData,
     TResult? Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult? Function(BookingCancel value)? cancel,
+    TResult? Function(BookingReset value)? reset,
   }) {
     return searchAddressFromCoordinate?.call(this);
   }
@@ -1407,6 +1442,7 @@ class _$BookingSearchAddressFromCoordinateImpl
     TResult Function(BookingLoadBookingData value)? loadBookingData,
     TResult Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult Function(BookingCancel value)? cancel,
+    TResult Function(BookingReset value)? reset,
     required TResult orElse(),
   }) {
     if (searchAddressFromCoordinate != null) {
@@ -1527,6 +1563,7 @@ class _$BookingPickAddressImpl implements BookingPickAddress {
     required TResult Function(DriverLocation driverLocation)
         changeDriverLocation,
     required TResult Function(BookingCancelRequest request) cancel,
+    required TResult Function() reset,
   }) {
     return pickAddress(mapPickerData);
   }
@@ -1556,6 +1593,7 @@ class _$BookingPickAddressImpl implements BookingPickAddress {
     TResult? Function(Booking booking)? loadBookingData,
     TResult? Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult? Function(BookingCancelRequest request)? cancel,
+    TResult? Function()? reset,
   }) {
     return pickAddress?.call(mapPickerData);
   }
@@ -1584,6 +1622,7 @@ class _$BookingPickAddressImpl implements BookingPickAddress {
     TResult Function(Booking booking)? loadBookingData,
     TResult Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult Function(BookingCancelRequest request)? cancel,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (pickAddress != null) {
@@ -1619,6 +1658,7 @@ class _$BookingPickAddressImpl implements BookingPickAddress {
     required TResult Function(BookingChangeDriverLocation value)
         changeDriverLocation,
     required TResult Function(BookingCancel value) cancel,
+    required TResult Function(BookingReset value) reset,
   }) {
     return pickAddress(this);
   }
@@ -1647,6 +1687,7 @@ class _$BookingPickAddressImpl implements BookingPickAddress {
     TResult? Function(BookingLoadBookingData value)? loadBookingData,
     TResult? Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult? Function(BookingCancel value)? cancel,
+    TResult? Function(BookingReset value)? reset,
   }) {
     return pickAddress?.call(this);
   }
@@ -1674,6 +1715,7 @@ class _$BookingPickAddressImpl implements BookingPickAddress {
     TResult Function(BookingLoadBookingData value)? loadBookingData,
     TResult Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult Function(BookingCancel value)? cancel,
+    TResult Function(BookingReset value)? reset,
     required TResult orElse(),
   }) {
     if (pickAddress != null) {
@@ -1793,6 +1835,7 @@ class _$BookingGetAddressDetailImpl implements BookingGetAddressDetail {
     required TResult Function(DriverLocation driverLocation)
         changeDriverLocation,
     required TResult Function(BookingCancelRequest request) cancel,
+    required TResult Function() reset,
   }) {
     return getAddressDetail(model);
   }
@@ -1822,6 +1865,7 @@ class _$BookingGetAddressDetailImpl implements BookingGetAddressDetail {
     TResult? Function(Booking booking)? loadBookingData,
     TResult? Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult? Function(BookingCancelRequest request)? cancel,
+    TResult? Function()? reset,
   }) {
     return getAddressDetail?.call(model);
   }
@@ -1850,6 +1894,7 @@ class _$BookingGetAddressDetailImpl implements BookingGetAddressDetail {
     TResult Function(Booking booking)? loadBookingData,
     TResult Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult Function(BookingCancelRequest request)? cancel,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (getAddressDetail != null) {
@@ -1885,6 +1930,7 @@ class _$BookingGetAddressDetailImpl implements BookingGetAddressDetail {
     required TResult Function(BookingChangeDriverLocation value)
         changeDriverLocation,
     required TResult Function(BookingCancel value) cancel,
+    required TResult Function(BookingReset value) reset,
   }) {
     return getAddressDetail(this);
   }
@@ -1913,6 +1959,7 @@ class _$BookingGetAddressDetailImpl implements BookingGetAddressDetail {
     TResult? Function(BookingLoadBookingData value)? loadBookingData,
     TResult? Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult? Function(BookingCancel value)? cancel,
+    TResult? Function(BookingReset value)? reset,
   }) {
     return getAddressDetail?.call(this);
   }
@@ -1940,6 +1987,7 @@ class _$BookingGetAddressDetailImpl implements BookingGetAddressDetail {
     TResult Function(BookingLoadBookingData value)? loadBookingData,
     TResult Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult Function(BookingCancel value)? cancel,
+    TResult Function(BookingReset value)? reset,
     required TResult orElse(),
   }) {
     if (getAddressDetail != null) {
@@ -2050,6 +2098,7 @@ class _$BookingSelectVehicleTypeImpl implements BookingSelectVehicleType {
     required TResult Function(DriverLocation driverLocation)
         changeDriverLocation,
     required TResult Function(BookingCancelRequest request) cancel,
+    required TResult Function() reset,
   }) {
     return selectVehicleType(vehicleType);
   }
@@ -2079,6 +2128,7 @@ class _$BookingSelectVehicleTypeImpl implements BookingSelectVehicleType {
     TResult? Function(Booking booking)? loadBookingData,
     TResult? Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult? Function(BookingCancelRequest request)? cancel,
+    TResult? Function()? reset,
   }) {
     return selectVehicleType?.call(vehicleType);
   }
@@ -2107,6 +2157,7 @@ class _$BookingSelectVehicleTypeImpl implements BookingSelectVehicleType {
     TResult Function(Booking booking)? loadBookingData,
     TResult Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult Function(BookingCancelRequest request)? cancel,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (selectVehicleType != null) {
@@ -2142,6 +2193,7 @@ class _$BookingSelectVehicleTypeImpl implements BookingSelectVehicleType {
     required TResult Function(BookingChangeDriverLocation value)
         changeDriverLocation,
     required TResult Function(BookingCancel value) cancel,
+    required TResult Function(BookingReset value) reset,
   }) {
     return selectVehicleType(this);
   }
@@ -2170,6 +2222,7 @@ class _$BookingSelectVehicleTypeImpl implements BookingSelectVehicleType {
     TResult? Function(BookingLoadBookingData value)? loadBookingData,
     TResult? Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult? Function(BookingCancel value)? cancel,
+    TResult? Function(BookingReset value)? reset,
   }) {
     return selectVehicleType?.call(this);
   }
@@ -2197,6 +2250,7 @@ class _$BookingSelectVehicleTypeImpl implements BookingSelectVehicleType {
     TResult Function(BookingLoadBookingData value)? loadBookingData,
     TResult Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult Function(BookingCancel value)? cancel,
+    TResult Function(BookingReset value)? reset,
     required TResult orElse(),
   }) {
     if (selectVehicleType != null) {
@@ -2344,6 +2398,7 @@ class _$BookingUpdateRouteParamsImpl implements BookingUpdateRouteParams {
     required TResult Function(DriverLocation driverLocation)
         changeDriverLocation,
     required TResult Function(BookingCancelRequest request) cancel,
+    required TResult Function() reset,
   }) {
     return updateRouteParams(pickupPoint, destinationPoint, pickupDescription,
         destinationDesciption);
@@ -2374,6 +2429,7 @@ class _$BookingUpdateRouteParamsImpl implements BookingUpdateRouteParams {
     TResult? Function(Booking booking)? loadBookingData,
     TResult? Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult? Function(BookingCancelRequest request)? cancel,
+    TResult? Function()? reset,
   }) {
     return updateRouteParams?.call(pickupPoint, destinationPoint,
         pickupDescription, destinationDesciption);
@@ -2403,6 +2459,7 @@ class _$BookingUpdateRouteParamsImpl implements BookingUpdateRouteParams {
     TResult Function(Booking booking)? loadBookingData,
     TResult Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult Function(BookingCancelRequest request)? cancel,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (updateRouteParams != null) {
@@ -2439,6 +2496,7 @@ class _$BookingUpdateRouteParamsImpl implements BookingUpdateRouteParams {
     required TResult Function(BookingChangeDriverLocation value)
         changeDriverLocation,
     required TResult Function(BookingCancel value) cancel,
+    required TResult Function(BookingReset value) reset,
   }) {
     return updateRouteParams(this);
   }
@@ -2467,6 +2525,7 @@ class _$BookingUpdateRouteParamsImpl implements BookingUpdateRouteParams {
     TResult? Function(BookingLoadBookingData value)? loadBookingData,
     TResult? Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult? Function(BookingCancel value)? cancel,
+    TResult? Function(BookingReset value)? reset,
   }) {
     return updateRouteParams?.call(this);
   }
@@ -2494,6 +2553,7 @@ class _$BookingUpdateRouteParamsImpl implements BookingUpdateRouteParams {
     TResult Function(BookingLoadBookingData value)? loadBookingData,
     TResult Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult Function(BookingCancel value)? cancel,
+    TResult Function(BookingReset value)? reset,
     required TResult orElse(),
   }) {
     if (updateRouteParams != null) {
@@ -2615,6 +2675,7 @@ class _$BookingGetDirectionImpl implements BookingGetDirection {
     required TResult Function(DriverLocation driverLocation)
         changeDriverLocation,
     required TResult Function(BookingCancelRequest request) cancel,
+    required TResult Function() reset,
   }) {
     return getDirection(from, to);
   }
@@ -2644,6 +2705,7 @@ class _$BookingGetDirectionImpl implements BookingGetDirection {
     TResult? Function(Booking booking)? loadBookingData,
     TResult? Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult? Function(BookingCancelRequest request)? cancel,
+    TResult? Function()? reset,
   }) {
     return getDirection?.call(from, to);
   }
@@ -2672,6 +2734,7 @@ class _$BookingGetDirectionImpl implements BookingGetDirection {
     TResult Function(Booking booking)? loadBookingData,
     TResult Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult Function(BookingCancelRequest request)? cancel,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (getDirection != null) {
@@ -2707,6 +2770,7 @@ class _$BookingGetDirectionImpl implements BookingGetDirection {
     required TResult Function(BookingChangeDriverLocation value)
         changeDriverLocation,
     required TResult Function(BookingCancel value) cancel,
+    required TResult Function(BookingReset value) reset,
   }) {
     return getDirection(this);
   }
@@ -2735,6 +2799,7 @@ class _$BookingGetDirectionImpl implements BookingGetDirection {
     TResult? Function(BookingLoadBookingData value)? loadBookingData,
     TResult? Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult? Function(BookingCancel value)? cancel,
+    TResult? Function(BookingReset value)? reset,
   }) {
     return getDirection?.call(this);
   }
@@ -2762,6 +2827,7 @@ class _$BookingGetDirectionImpl implements BookingGetDirection {
     TResult Function(BookingLoadBookingData value)? loadBookingData,
     TResult Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult Function(BookingCancel value)? cancel,
+    TResult Function(BookingReset value)? reset,
     required TResult orElse(),
   }) {
     if (getDirection != null) {
@@ -2874,6 +2940,7 @@ class _$BookingChangeRouteByVehicleImpl implements BookingChangeRouteByVehicle {
     required TResult Function(DriverLocation driverLocation)
         changeDriverLocation,
     required TResult Function(BookingCancelRequest request) cancel,
+    required TResult Function() reset,
   }) {
     return changeRouteByVehicle(vehicleType);
   }
@@ -2903,6 +2970,7 @@ class _$BookingChangeRouteByVehicleImpl implements BookingChangeRouteByVehicle {
     TResult? Function(Booking booking)? loadBookingData,
     TResult? Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult? Function(BookingCancelRequest request)? cancel,
+    TResult? Function()? reset,
   }) {
     return changeRouteByVehicle?.call(vehicleType);
   }
@@ -2931,6 +2999,7 @@ class _$BookingChangeRouteByVehicleImpl implements BookingChangeRouteByVehicle {
     TResult Function(Booking booking)? loadBookingData,
     TResult Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult Function(BookingCancelRequest request)? cancel,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (changeRouteByVehicle != null) {
@@ -2966,6 +3035,7 @@ class _$BookingChangeRouteByVehicleImpl implements BookingChangeRouteByVehicle {
     required TResult Function(BookingChangeDriverLocation value)
         changeDriverLocation,
     required TResult Function(BookingCancel value) cancel,
+    required TResult Function(BookingReset value) reset,
   }) {
     return changeRouteByVehicle(this);
   }
@@ -2994,6 +3064,7 @@ class _$BookingChangeRouteByVehicleImpl implements BookingChangeRouteByVehicle {
     TResult? Function(BookingLoadBookingData value)? loadBookingData,
     TResult? Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult? Function(BookingCancel value)? cancel,
+    TResult? Function(BookingReset value)? reset,
   }) {
     return changeRouteByVehicle?.call(this);
   }
@@ -3021,6 +3092,7 @@ class _$BookingChangeRouteByVehicleImpl implements BookingChangeRouteByVehicle {
     TResult Function(BookingLoadBookingData value)? loadBookingData,
     TResult Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult Function(BookingCancel value)? cancel,
+    TResult Function(BookingReset value)? reset,
     required TResult orElse(),
   }) {
     if (changeRouteByVehicle != null) {
@@ -3130,6 +3202,7 @@ class _$BookingCreateOrderImpl implements BookingCreateOrder {
     required TResult Function(DriverLocation driverLocation)
         changeDriverLocation,
     required TResult Function(BookingCancelRequest request) cancel,
+    required TResult Function() reset,
   }) {
     return createOrder(vehicleType);
   }
@@ -3159,6 +3232,7 @@ class _$BookingCreateOrderImpl implements BookingCreateOrder {
     TResult? Function(Booking booking)? loadBookingData,
     TResult? Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult? Function(BookingCancelRequest request)? cancel,
+    TResult? Function()? reset,
   }) {
     return createOrder?.call(vehicleType);
   }
@@ -3187,6 +3261,7 @@ class _$BookingCreateOrderImpl implements BookingCreateOrder {
     TResult Function(Booking booking)? loadBookingData,
     TResult Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult Function(BookingCancelRequest request)? cancel,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (createOrder != null) {
@@ -3222,6 +3297,7 @@ class _$BookingCreateOrderImpl implements BookingCreateOrder {
     required TResult Function(BookingChangeDriverLocation value)
         changeDriverLocation,
     required TResult Function(BookingCancel value) cancel,
+    required TResult Function(BookingReset value) reset,
   }) {
     return createOrder(this);
   }
@@ -3250,6 +3326,7 @@ class _$BookingCreateOrderImpl implements BookingCreateOrder {
     TResult? Function(BookingLoadBookingData value)? loadBookingData,
     TResult? Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult? Function(BookingCancel value)? cancel,
+    TResult? Function(BookingReset value)? reset,
   }) {
     return createOrder?.call(this);
   }
@@ -3277,6 +3354,7 @@ class _$BookingCreateOrderImpl implements BookingCreateOrder {
     TResult Function(BookingLoadBookingData value)? loadBookingData,
     TResult Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult Function(BookingCancel value)? cancel,
+    TResult Function(BookingReset value)? reset,
     required TResult orElse(),
   }) {
     if (createOrder != null) {
@@ -3357,6 +3435,7 @@ class _$BookingGoToPaymentImpl implements BookingGoToPayment {
     required TResult Function(DriverLocation driverLocation)
         changeDriverLocation,
     required TResult Function(BookingCancelRequest request) cancel,
+    required TResult Function() reset,
   }) {
     return goToPayment();
   }
@@ -3386,6 +3465,7 @@ class _$BookingGoToPaymentImpl implements BookingGoToPayment {
     TResult? Function(Booking booking)? loadBookingData,
     TResult? Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult? Function(BookingCancelRequest request)? cancel,
+    TResult? Function()? reset,
   }) {
     return goToPayment?.call();
   }
@@ -3414,6 +3494,7 @@ class _$BookingGoToPaymentImpl implements BookingGoToPayment {
     TResult Function(Booking booking)? loadBookingData,
     TResult Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult Function(BookingCancelRequest request)? cancel,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (goToPayment != null) {
@@ -3449,6 +3530,7 @@ class _$BookingGoToPaymentImpl implements BookingGoToPayment {
     required TResult Function(BookingChangeDriverLocation value)
         changeDriverLocation,
     required TResult Function(BookingCancel value) cancel,
+    required TResult Function(BookingReset value) reset,
   }) {
     return goToPayment(this);
   }
@@ -3477,6 +3559,7 @@ class _$BookingGoToPaymentImpl implements BookingGoToPayment {
     TResult? Function(BookingLoadBookingData value)? loadBookingData,
     TResult? Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult? Function(BookingCancel value)? cancel,
+    TResult? Function(BookingReset value)? reset,
   }) {
     return goToPayment?.call(this);
   }
@@ -3504,6 +3587,7 @@ class _$BookingGoToPaymentImpl implements BookingGoToPayment {
     TResult Function(BookingLoadBookingData value)? loadBookingData,
     TResult Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult Function(BookingCancel value)? cancel,
+    TResult Function(BookingReset value)? reset,
     required TResult orElse(),
   }) {
     if (goToPayment != null) {
@@ -3578,6 +3662,7 @@ class _$BookingPayImpl implements BookingPay {
     required TResult Function(DriverLocation driverLocation)
         changeDriverLocation,
     required TResult Function(BookingCancelRequest request) cancel,
+    required TResult Function() reset,
   }) {
     return pay();
   }
@@ -3607,6 +3692,7 @@ class _$BookingPayImpl implements BookingPay {
     TResult? Function(Booking booking)? loadBookingData,
     TResult? Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult? Function(BookingCancelRequest request)? cancel,
+    TResult? Function()? reset,
   }) {
     return pay?.call();
   }
@@ -3635,6 +3721,7 @@ class _$BookingPayImpl implements BookingPay {
     TResult Function(Booking booking)? loadBookingData,
     TResult Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult Function(BookingCancelRequest request)? cancel,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (pay != null) {
@@ -3670,6 +3757,7 @@ class _$BookingPayImpl implements BookingPay {
     required TResult Function(BookingChangeDriverLocation value)
         changeDriverLocation,
     required TResult Function(BookingCancel value) cancel,
+    required TResult Function(BookingReset value) reset,
   }) {
     return pay(this);
   }
@@ -3698,6 +3786,7 @@ class _$BookingPayImpl implements BookingPay {
     TResult? Function(BookingLoadBookingData value)? loadBookingData,
     TResult? Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult? Function(BookingCancel value)? cancel,
+    TResult? Function(BookingReset value)? reset,
   }) {
     return pay?.call(this);
   }
@@ -3725,6 +3814,7 @@ class _$BookingPayImpl implements BookingPay {
     TResult Function(BookingLoadBookingData value)? loadBookingData,
     TResult Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult Function(BookingCancel value)? cancel,
+    TResult Function(BookingReset value)? reset,
     required TResult orElse(),
   }) {
     if (pay != null) {
@@ -3828,6 +3918,7 @@ class _$BookingLoadDriverInfoImpl implements BookingLoadDriverInfo {
     required TResult Function(DriverLocation driverLocation)
         changeDriverLocation,
     required TResult Function(BookingCancelRequest request) cancel,
+    required TResult Function() reset,
   }) {
     return loadDriverInfo(driverId);
   }
@@ -3857,6 +3948,7 @@ class _$BookingLoadDriverInfoImpl implements BookingLoadDriverInfo {
     TResult? Function(Booking booking)? loadBookingData,
     TResult? Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult? Function(BookingCancelRequest request)? cancel,
+    TResult? Function()? reset,
   }) {
     return loadDriverInfo?.call(driverId);
   }
@@ -3885,6 +3977,7 @@ class _$BookingLoadDriverInfoImpl implements BookingLoadDriverInfo {
     TResult Function(Booking booking)? loadBookingData,
     TResult Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult Function(BookingCancelRequest request)? cancel,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (loadDriverInfo != null) {
@@ -3920,6 +4013,7 @@ class _$BookingLoadDriverInfoImpl implements BookingLoadDriverInfo {
     required TResult Function(BookingChangeDriverLocation value)
         changeDriverLocation,
     required TResult Function(BookingCancel value) cancel,
+    required TResult Function(BookingReset value) reset,
   }) {
     return loadDriverInfo(this);
   }
@@ -3948,6 +4042,7 @@ class _$BookingLoadDriverInfoImpl implements BookingLoadDriverInfo {
     TResult? Function(BookingLoadBookingData value)? loadBookingData,
     TResult? Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult? Function(BookingCancel value)? cancel,
+    TResult? Function(BookingReset value)? reset,
   }) {
     return loadDriverInfo?.call(this);
   }
@@ -3975,6 +4070,7 @@ class _$BookingLoadDriverInfoImpl implements BookingLoadDriverInfo {
     TResult Function(BookingLoadBookingData value)? loadBookingData,
     TResult Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult Function(BookingCancel value)? cancel,
+    TResult Function(BookingReset value)? reset,
     required TResult orElse(),
   }) {
     if (loadDriverInfo != null) {
@@ -4083,6 +4179,7 @@ class _$BookingChangeStatusImpl implements BookingChangeStatus {
     required TResult Function(DriverLocation driverLocation)
         changeDriverLocation,
     required TResult Function(BookingCancelRequest request) cancel,
+    required TResult Function() reset,
   }) {
     return changeStatus(bookingStatus);
   }
@@ -4112,6 +4209,7 @@ class _$BookingChangeStatusImpl implements BookingChangeStatus {
     TResult? Function(Booking booking)? loadBookingData,
     TResult? Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult? Function(BookingCancelRequest request)? cancel,
+    TResult? Function()? reset,
   }) {
     return changeStatus?.call(bookingStatus);
   }
@@ -4140,6 +4238,7 @@ class _$BookingChangeStatusImpl implements BookingChangeStatus {
     TResult Function(Booking booking)? loadBookingData,
     TResult Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult Function(BookingCancelRequest request)? cancel,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (changeStatus != null) {
@@ -4175,6 +4274,7 @@ class _$BookingChangeStatusImpl implements BookingChangeStatus {
     required TResult Function(BookingChangeDriverLocation value)
         changeDriverLocation,
     required TResult Function(BookingCancel value) cancel,
+    required TResult Function(BookingReset value) reset,
   }) {
     return changeStatus(this);
   }
@@ -4203,6 +4303,7 @@ class _$BookingChangeStatusImpl implements BookingChangeStatus {
     TResult? Function(BookingLoadBookingData value)? loadBookingData,
     TResult? Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult? Function(BookingCancel value)? cancel,
+    TResult? Function(BookingReset value)? reset,
   }) {
     return changeStatus?.call(this);
   }
@@ -4230,6 +4331,7 @@ class _$BookingChangeStatusImpl implements BookingChangeStatus {
     TResult Function(BookingLoadBookingData value)? loadBookingData,
     TResult Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult Function(BookingCancel value)? cancel,
+    TResult Function(BookingReset value)? reset,
     required TResult orElse(),
   }) {
     if (changeStatus != null) {
@@ -4349,6 +4451,7 @@ class _$BookingLoadBookingDataImpl implements BookingLoadBookingData {
     required TResult Function(DriverLocation driverLocation)
         changeDriverLocation,
     required TResult Function(BookingCancelRequest request) cancel,
+    required TResult Function() reset,
   }) {
     return loadBookingData(booking);
   }
@@ -4378,6 +4481,7 @@ class _$BookingLoadBookingDataImpl implements BookingLoadBookingData {
     TResult? Function(Booking booking)? loadBookingData,
     TResult? Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult? Function(BookingCancelRequest request)? cancel,
+    TResult? Function()? reset,
   }) {
     return loadBookingData?.call(booking);
   }
@@ -4406,6 +4510,7 @@ class _$BookingLoadBookingDataImpl implements BookingLoadBookingData {
     TResult Function(Booking booking)? loadBookingData,
     TResult Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult Function(BookingCancelRequest request)? cancel,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (loadBookingData != null) {
@@ -4441,6 +4546,7 @@ class _$BookingLoadBookingDataImpl implements BookingLoadBookingData {
     required TResult Function(BookingChangeDriverLocation value)
         changeDriverLocation,
     required TResult Function(BookingCancel value) cancel,
+    required TResult Function(BookingReset value) reset,
   }) {
     return loadBookingData(this);
   }
@@ -4469,6 +4575,7 @@ class _$BookingLoadBookingDataImpl implements BookingLoadBookingData {
     TResult? Function(BookingLoadBookingData value)? loadBookingData,
     TResult? Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult? Function(BookingCancel value)? cancel,
+    TResult? Function(BookingReset value)? reset,
   }) {
     return loadBookingData?.call(this);
   }
@@ -4496,6 +4603,7 @@ class _$BookingLoadBookingDataImpl implements BookingLoadBookingData {
     TResult Function(BookingLoadBookingData value)? loadBookingData,
     TResult Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult Function(BookingCancel value)? cancel,
+    TResult Function(BookingReset value)? reset,
     required TResult orElse(),
   }) {
     if (loadBookingData != null) {
@@ -4616,6 +4724,7 @@ class _$BookingChangeDriverLocationImpl implements BookingChangeDriverLocation {
     required TResult Function(DriverLocation driverLocation)
         changeDriverLocation,
     required TResult Function(BookingCancelRequest request) cancel,
+    required TResult Function() reset,
   }) {
     return changeDriverLocation(driverLocation);
   }
@@ -4645,6 +4754,7 @@ class _$BookingChangeDriverLocationImpl implements BookingChangeDriverLocation {
     TResult? Function(Booking booking)? loadBookingData,
     TResult? Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult? Function(BookingCancelRequest request)? cancel,
+    TResult? Function()? reset,
   }) {
     return changeDriverLocation?.call(driverLocation);
   }
@@ -4673,6 +4783,7 @@ class _$BookingChangeDriverLocationImpl implements BookingChangeDriverLocation {
     TResult Function(Booking booking)? loadBookingData,
     TResult Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult Function(BookingCancelRequest request)? cancel,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (changeDriverLocation != null) {
@@ -4708,6 +4819,7 @@ class _$BookingChangeDriverLocationImpl implements BookingChangeDriverLocation {
     required TResult Function(BookingChangeDriverLocation value)
         changeDriverLocation,
     required TResult Function(BookingCancel value) cancel,
+    required TResult Function(BookingReset value) reset,
   }) {
     return changeDriverLocation(this);
   }
@@ -4736,6 +4848,7 @@ class _$BookingChangeDriverLocationImpl implements BookingChangeDriverLocation {
     TResult? Function(BookingLoadBookingData value)? loadBookingData,
     TResult? Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult? Function(BookingCancel value)? cancel,
+    TResult? Function(BookingReset value)? reset,
   }) {
     return changeDriverLocation?.call(this);
   }
@@ -4763,6 +4876,7 @@ class _$BookingChangeDriverLocationImpl implements BookingChangeDriverLocation {
     TResult Function(BookingLoadBookingData value)? loadBookingData,
     TResult Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult Function(BookingCancel value)? cancel,
+    TResult Function(BookingReset value)? reset,
     required TResult orElse(),
   }) {
     if (changeDriverLocation != null) {
@@ -4880,6 +4994,7 @@ class _$BookingCancelImpl implements BookingCancel {
     required TResult Function(DriverLocation driverLocation)
         changeDriverLocation,
     required TResult Function(BookingCancelRequest request) cancel,
+    required TResult Function() reset,
   }) {
     return cancel(request);
   }
@@ -4909,6 +5024,7 @@ class _$BookingCancelImpl implements BookingCancel {
     TResult? Function(Booking booking)? loadBookingData,
     TResult? Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult? Function(BookingCancelRequest request)? cancel,
+    TResult? Function()? reset,
   }) {
     return cancel?.call(request);
   }
@@ -4937,6 +5053,7 @@ class _$BookingCancelImpl implements BookingCancel {
     TResult Function(Booking booking)? loadBookingData,
     TResult Function(DriverLocation driverLocation)? changeDriverLocation,
     TResult Function(BookingCancelRequest request)? cancel,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (cancel != null) {
@@ -4972,6 +5089,7 @@ class _$BookingCancelImpl implements BookingCancel {
     required TResult Function(BookingChangeDriverLocation value)
         changeDriverLocation,
     required TResult Function(BookingCancel value) cancel,
+    required TResult Function(BookingReset value) reset,
   }) {
     return cancel(this);
   }
@@ -5000,6 +5118,7 @@ class _$BookingCancelImpl implements BookingCancel {
     TResult? Function(BookingLoadBookingData value)? loadBookingData,
     TResult? Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult? Function(BookingCancel value)? cancel,
+    TResult? Function(BookingReset value)? reset,
   }) {
     return cancel?.call(this);
   }
@@ -5027,6 +5146,7 @@ class _$BookingCancelImpl implements BookingCancel {
     TResult Function(BookingLoadBookingData value)? loadBookingData,
     TResult Function(BookingChangeDriverLocation value)? changeDriverLocation,
     TResult Function(BookingCancel value)? cancel,
+    TResult Function(BookingReset value)? reset,
     required TResult orElse(),
   }) {
     if (cancel != null) {
@@ -5044,4 +5164,231 @@ abstract class BookingCancel implements BookingEvent {
   @JsonKey(ignore: true)
   _$$BookingCancelImplCopyWith<_$BookingCancelImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$BookingResetImplCopyWith<$Res> {
+  factory _$$BookingResetImplCopyWith(
+          _$BookingResetImpl value, $Res Function(_$BookingResetImpl) then) =
+      __$$BookingResetImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$BookingResetImplCopyWithImpl<$Res>
+    extends _$BookingEventCopyWithImpl<$Res, _$BookingResetImpl>
+    implements _$$BookingResetImplCopyWith<$Res> {
+  __$$BookingResetImplCopyWithImpl(
+      _$BookingResetImpl _value, $Res Function(_$BookingResetImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$BookingResetImpl implements BookingReset {
+  const _$BookingResetImpl();
+
+  @override
+  String toString() {
+    return 'BookingEvent.reset()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$BookingResetImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() selectPickupLocation,
+    required TResult Function() selectDesLocation,
+    required TResult Function(SelectLocation selectLocation, String? refId)
+        locateOnMap,
+    required TResult Function(String query) searchAddressFromText,
+    required TResult Function(LatLng coordinate) searchAddressFromCoordinate,
+    required TResult Function(MapPickerData mapPickerData) pickAddress,
+    required TResult Function(MapAutoComplete model) getAddressDetail,
+    required TResult Function(VehicleType vehicleType) selectVehicleType,
+    required TResult Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)
+        updateRouteParams,
+    required TResult Function(LatLng from, LatLng to) getDirection,
+    required TResult Function(VehicleType vehicleType) changeRouteByVehicle,
+    required TResult Function(VehicleType vehicleType) createOrder,
+    required TResult Function() goToPayment,
+    required TResult Function() pay,
+    required TResult Function(int driverId) loadDriverInfo,
+    required TResult Function(BookingStatus bookingStatus) changeStatus,
+    required TResult Function(Booking booking) loadBookingData,
+    required TResult Function(DriverLocation driverLocation)
+        changeDriverLocation,
+    required TResult Function(BookingCancelRequest request) cancel,
+    required TResult Function() reset,
+  }) {
+    return reset();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? selectPickupLocation,
+    TResult? Function()? selectDesLocation,
+    TResult? Function(SelectLocation selectLocation, String? refId)?
+        locateOnMap,
+    TResult? Function(String query)? searchAddressFromText,
+    TResult? Function(LatLng coordinate)? searchAddressFromCoordinate,
+    TResult? Function(MapPickerData mapPickerData)? pickAddress,
+    TResult? Function(MapAutoComplete model)? getAddressDetail,
+    TResult? Function(VehicleType vehicleType)? selectVehicleType,
+    TResult? Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)?
+        updateRouteParams,
+    TResult? Function(LatLng from, LatLng to)? getDirection,
+    TResult? Function(VehicleType vehicleType)? changeRouteByVehicle,
+    TResult? Function(VehicleType vehicleType)? createOrder,
+    TResult? Function()? goToPayment,
+    TResult? Function()? pay,
+    TResult? Function(int driverId)? loadDriverInfo,
+    TResult? Function(BookingStatus bookingStatus)? changeStatus,
+    TResult? Function(Booking booking)? loadBookingData,
+    TResult? Function(DriverLocation driverLocation)? changeDriverLocation,
+    TResult? Function(BookingCancelRequest request)? cancel,
+    TResult? Function()? reset,
+  }) {
+    return reset?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? selectPickupLocation,
+    TResult Function()? selectDesLocation,
+    TResult Function(SelectLocation selectLocation, String? refId)? locateOnMap,
+    TResult Function(String query)? searchAddressFromText,
+    TResult Function(LatLng coordinate)? searchAddressFromCoordinate,
+    TResult Function(MapPickerData mapPickerData)? pickAddress,
+    TResult Function(MapAutoComplete model)? getAddressDetail,
+    TResult Function(VehicleType vehicleType)? selectVehicleType,
+    TResult Function(LatLng? pickupPoint, LatLng? destinationPoint,
+            String? pickupDescription, String? destinationDesciption)?
+        updateRouteParams,
+    TResult Function(LatLng from, LatLng to)? getDirection,
+    TResult Function(VehicleType vehicleType)? changeRouteByVehicle,
+    TResult Function(VehicleType vehicleType)? createOrder,
+    TResult Function()? goToPayment,
+    TResult Function()? pay,
+    TResult Function(int driverId)? loadDriverInfo,
+    TResult Function(BookingStatus bookingStatus)? changeStatus,
+    TResult Function(Booking booking)? loadBookingData,
+    TResult Function(DriverLocation driverLocation)? changeDriverLocation,
+    TResult Function(BookingCancelRequest request)? cancel,
+    TResult Function()? reset,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(BookingSelectPickupLocation value)
+        selectPickupLocation,
+    required TResult Function(BookingSelectDesLocation value) selectDesLocation,
+    required TResult Function(BookingLocateOnMap value) locateOnMap,
+    required TResult Function(BookingSearchAddressFromText value)
+        searchAddressFromText,
+    required TResult Function(BookingSearchAddressFromCoordinate value)
+        searchAddressFromCoordinate,
+    required TResult Function(BookingPickAddress value) pickAddress,
+    required TResult Function(BookingGetAddressDetail value) getAddressDetail,
+    required TResult Function(BookingSelectVehicleType value) selectVehicleType,
+    required TResult Function(BookingUpdateRouteParams value) updateRouteParams,
+    required TResult Function(BookingGetDirection value) getDirection,
+    required TResult Function(BookingChangeRouteByVehicle value)
+        changeRouteByVehicle,
+    required TResult Function(BookingCreateOrder value) createOrder,
+    required TResult Function(BookingGoToPayment value) goToPayment,
+    required TResult Function(BookingPay value) pay,
+    required TResult Function(BookingLoadDriverInfo value) loadDriverInfo,
+    required TResult Function(BookingChangeStatus value) changeStatus,
+    required TResult Function(BookingLoadBookingData value) loadBookingData,
+    required TResult Function(BookingChangeDriverLocation value)
+        changeDriverLocation,
+    required TResult Function(BookingCancel value) cancel,
+    required TResult Function(BookingReset value) reset,
+  }) {
+    return reset(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(BookingSelectPickupLocation value)? selectPickupLocation,
+    TResult? Function(BookingSelectDesLocation value)? selectDesLocation,
+    TResult? Function(BookingLocateOnMap value)? locateOnMap,
+    TResult? Function(BookingSearchAddressFromText value)?
+        searchAddressFromText,
+    TResult? Function(BookingSearchAddressFromCoordinate value)?
+        searchAddressFromCoordinate,
+    TResult? Function(BookingPickAddress value)? pickAddress,
+    TResult? Function(BookingGetAddressDetail value)? getAddressDetail,
+    TResult? Function(BookingSelectVehicleType value)? selectVehicleType,
+    TResult? Function(BookingUpdateRouteParams value)? updateRouteParams,
+    TResult? Function(BookingGetDirection value)? getDirection,
+    TResult? Function(BookingChangeRouteByVehicle value)? changeRouteByVehicle,
+    TResult? Function(BookingCreateOrder value)? createOrder,
+    TResult? Function(BookingGoToPayment value)? goToPayment,
+    TResult? Function(BookingPay value)? pay,
+    TResult? Function(BookingLoadDriverInfo value)? loadDriverInfo,
+    TResult? Function(BookingChangeStatus value)? changeStatus,
+    TResult? Function(BookingLoadBookingData value)? loadBookingData,
+    TResult? Function(BookingChangeDriverLocation value)? changeDriverLocation,
+    TResult? Function(BookingCancel value)? cancel,
+    TResult? Function(BookingReset value)? reset,
+  }) {
+    return reset?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(BookingSelectPickupLocation value)? selectPickupLocation,
+    TResult Function(BookingSelectDesLocation value)? selectDesLocation,
+    TResult Function(BookingLocateOnMap value)? locateOnMap,
+    TResult Function(BookingSearchAddressFromText value)? searchAddressFromText,
+    TResult Function(BookingSearchAddressFromCoordinate value)?
+        searchAddressFromCoordinate,
+    TResult Function(BookingPickAddress value)? pickAddress,
+    TResult Function(BookingGetAddressDetail value)? getAddressDetail,
+    TResult Function(BookingSelectVehicleType value)? selectVehicleType,
+    TResult Function(BookingUpdateRouteParams value)? updateRouteParams,
+    TResult Function(BookingGetDirection value)? getDirection,
+    TResult Function(BookingChangeRouteByVehicle value)? changeRouteByVehicle,
+    TResult Function(BookingCreateOrder value)? createOrder,
+    TResult Function(BookingGoToPayment value)? goToPayment,
+    TResult Function(BookingPay value)? pay,
+    TResult Function(BookingLoadDriverInfo value)? loadDriverInfo,
+    TResult Function(BookingChangeStatus value)? changeStatus,
+    TResult Function(BookingLoadBookingData value)? loadBookingData,
+    TResult Function(BookingChangeDriverLocation value)? changeDriverLocation,
+    TResult Function(BookingCancel value)? cancel,
+    TResult Function(BookingReset value)? reset,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class BookingReset implements BookingEvent {
+  const factory BookingReset() = _$BookingResetImpl;
 }

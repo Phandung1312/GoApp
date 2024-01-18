@@ -59,7 +59,7 @@ class BookingStatusConverter implements JsonConverter<BookingStatus, String> {
         return BookingStatus.cancelled;
       case 'WAITING_REFUND':
         return BookingStatus.wattingRefund;
-      case 'REFUND':
+      case 'REFUNDED':
         return BookingStatus.refunded;
       default:
         return BookingStatus.unknown;

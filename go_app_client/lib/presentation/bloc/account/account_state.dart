@@ -5,5 +5,6 @@ class AccountState with _$AccountState{
   const factory AccountState.initial() = AccountInitial;
   const factory AccountState.loadSuccess({required ClientInfo clientInfo}) = AccountLoadSuccess;
   const factory AccountState.loading() = AccountLoading;
+  const factory AccountState.loadError() = AccountLoadError;
   const factory AccountState.logOutSuccess() = AccountLogOutSuccess;
 }

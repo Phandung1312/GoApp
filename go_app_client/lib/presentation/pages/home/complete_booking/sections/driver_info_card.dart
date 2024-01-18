@@ -78,7 +78,7 @@ class _DriverInfoCardState extends State<DriverInfoCard> {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              Navigator.pushNamed(context, Paths.driverInfo);
+                              Navigator.pushNamed(context, Paths.driverInfo, arguments: state.driverInfo);
                             },
                             child: CircleAvatar(
                               backgroundImage:
@@ -157,7 +157,7 @@ class _DriverInfoCardState extends State<DriverInfoCard> {
                           ),
                           Expanded(
                             child: Text(
-                              " • " "${state.driverInfo?.rating}",
+                              " • " "${state.driverInfo?.rating.toStringAsFixed(1)}",
                               style: const TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
                             ),

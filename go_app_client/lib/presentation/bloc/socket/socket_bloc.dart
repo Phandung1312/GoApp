@@ -28,6 +28,7 @@ class SocketBloc extends Bloc<SocketEvent, SocketState> {
     client = StompClient(
         config: StompConfig.sockJS(
             url: "$webSocketUrl?Authorization=Bearer $token",
+          
             onConnect: (_) {
               Logger().i("Socket connected");
 
@@ -40,9 +41,11 @@ class SocketBloc extends Bloc<SocketEvent, SocketState> {
             onWebSocketError: (data) {
               Logger().i("Socket error ${data.toString()}");
             }));
+            
 
     on<_SocketConnect>((event, emit) {
       client.activate();
+      
     });
 
     on<SocketSendBookingStatus>(_sendBookingStatus);
@@ -94,7 +97,7 @@ class SocketBloc extends Bloc<SocketEvent, SocketState> {
     client.subscribe(
         destination: SocketUrlConstant.RECEIVE_DRIVER_LOCATION,
         callback: (frame) {
-          Logger().i("Receive driver location = ${frame.body}");
+          // Logger().i("Receive driver location = ${frame.body}");
           var driverLocation = DriverLocationModel.fromJson(
               jsonDecode(frame.body!) as Map<String, dynamic>).maptoEntity();
           add(SocketEvent.broadCastDriverLocation(driverLocation: driverLocation));

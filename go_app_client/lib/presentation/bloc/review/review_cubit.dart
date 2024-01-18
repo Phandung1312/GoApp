@@ -20,7 +20,7 @@ class ReviewCubit extends Cubit<ReviewState>{
     EasyLoading.show();
     var either = await _createReviewUseCase(reviewRequestModel);
     EasyLoading.dismiss();
-    either.fold((l) => null, (r) => emit(const ReviewState.createSuccess()));
+    either.fold((l) => emit(const ReviewCreateError()), (r) => emit(const ReviewState.createSuccess()));
   }
 }
 

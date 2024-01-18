@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_app_client/presentation/pages/edit_account/edit_account_page.dart';
+import 'package:go_app_client/presentation/pages/history_detail/history_detail_page.dart';
 import 'package:go_app_client/presentation/pages/home/booking_detail/booking_detail_page.dart';
 import 'package:go_app_client/presentation/pages/home/booking_review/booking_review.dart';
 import 'package:go_app_client/presentation/pages/home/cancel_booking/cancel_booking_page.dart';
@@ -27,6 +29,8 @@ class Paths {
   static const String bookingDetail = "/detail";
   static const String review = "review";
   static const String cancelBooking = '/cancel';
+  static const String historyDetail = '/historydetail';
+  static const String editAccount = '/editaccount';
 }
 
 class AppNavigator {
@@ -56,6 +60,10 @@ class AppNavigator {
         return _materialRoute(const BookingDetailPage(), settings);
       case Paths.cancelBooking:
         return _materialRoute(const CancelBookingPage(), settings);
+      case Paths.historyDetail:
+        return _materialRoute(const HistoryDetailPage(), settings);
+      case Paths.editAccount:
+        return _materialRoute(const EditAccountPage(), settings);
       default:
         return _materialRoute(const LoginPage(), settings);
     }

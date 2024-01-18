@@ -21,6 +21,8 @@ class InputLocationPage extends StatefulWidget {
 }
 
 class _InputLocationPageState extends State<InputLocationPage> {
+  BookingBloc? _bloc;
+
   bool isLoading = false;
   final TextEditingController _pickupLocationController =
       TextEditingController();
@@ -39,6 +41,12 @@ class _InputLocationPageState extends State<InputLocationPage> {
   }
 
   @override
+  void dispose() {
+    _bloc?.close();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocConsumer<BookingBloc, BookingState>(
       listener: (context, state) {
@@ -50,6 +58,8 @@ class _InputLocationPageState extends State<InputLocationPage> {
               case ApiServerFailure:
                 errorMessage = (failure as ApiServerFailure).message;
                 break;
+              case ExceptionFailure:
+                errorMessage = (failure as ExceptionFailure).message;
               default:
                 errorMessage = "Đã xảy ra lỗi, vui lòng thử lại sau";
                 break;
@@ -87,9 +97,9 @@ class _InputLocationPageState extends State<InputLocationPage> {
 
         if (state is BookingGetDirectionSuccess) {
           Navigator.pushNamedAndRemoveUntil(context, Paths.completeBooking,
-              (route){
-                return route.settings.name == Paths.main;
-              });
+              (route) {
+            return route.settings.name == Paths.main;
+          });
         }
       },
       buildWhen: (previous, current) =>

@@ -7,7 +7,7 @@ import 'package:go_app_client/config/routes/routes.dart';
 import 'package:go_app_client/presentation/bloc/booking/booking_bloc.dart';
 
 import 'package:go_app_client/presentation/bloc/home/home_cubit.dart';
-import 'package:go_app_client/presentation/pages/home/sections/select_vehicle_section.dart';
+import 'package:go_app_client/presentation/pages/home/driver_profile/sections/select_vehicle_section.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

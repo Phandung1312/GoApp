@@ -3,6 +3,7 @@ import 'package:go_app_client/core/errors/failures.dart';
 import 'package:go_app_client/core/inject/injection.dart';
 import 'package:go_app_client/core/network/network_info.dart';
 import 'package:go_app_client/data/datasources/account/account_remote_datasource.dart';
+import 'package:go_app_client/data/models/account_request_model.dart';
 import 'package:go_app_client/data/models/client_info_request.dart';
 import 'package:go_app_client/domain/entities/client_info.dart';
 import 'package:go_app_client/domain/entities/enum/account_status.dart';
@@ -76,6 +77,16 @@ class AccountRepositoryImpl implements AccountRepository {
   Future<Either<Failure, void>> logOut() async{
     await _googleSignIn.signOut();
     return const  Right(null);
+  }
+
+  @override
+  Future<Either<Failure, ClientInfo>> update(AccountRequestModel accountRequestModel)async {
+      if (await _networkInfo.isConnected) {
+      var result = await _remoteDataSource.update(accountRequestModel);
+      return result;
+    } else {
+      return Left(NetworkFailure());
+    }
   }
 }
 

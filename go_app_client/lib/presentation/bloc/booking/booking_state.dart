@@ -189,6 +189,8 @@ class BookingLoadDataSuccess extends BookingState {
             path: state.path,
             booking: state.booking,
             driverInfo: state.driverInfo);
+  @override
+  List<Object?> get props => [booking, driverInfo];
 }
 
 class BookingDriverRouteUpdated extends BookingState {

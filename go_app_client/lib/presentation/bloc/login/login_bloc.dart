@@ -33,9 +33,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     either.fold((l) => emit(LoginFailure(failure: l)), (r) {
       r
           ? emit(LoginRegisterSuccess())
-          : emit(LoginFailure(
-              failure: ExceptionFailure(
-                  Exception("Đã xảy ra lỗi không muốn, hãy thử lại sau."))));
+          : emit( const LoginFailure(
+              failure : ExceptionFailure(
+                 "Điểm đến quá gần, hãy chọn điểm đến khác")));
     });
   }
 }

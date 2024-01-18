@@ -49,9 +49,9 @@ class _SplashPageState extends State<SplashPage> {
     await prefs.setDouble('latitude', locationData.latitude);
     await prefs.setDouble('longitude', locationData.longitude);
     if (isLoggedIn()) {
-      GoogleAuthenHelper.refreshToken();
+      await GoogleAuthenHelper.refreshToken();
       Future.delayed(
-          const Duration(milliseconds: 100),
+          const Duration(milliseconds: 0),
           () => Navigator.pushNamedAndRemoveUntil(
               context, Paths.main, (route) => false));
     } else {

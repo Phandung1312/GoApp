@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:go_app_client/config/colors.dart';
 import 'package:go_app_client/config/images.dart';
 import 'package:go_app_client/config/styles.dart';
+import 'package:go_app_client/domain/entities/booking.dart';
 import 'package:go_app_client/domain/entities/enum/enum.dart';
 import 'package:go_app_client/helpers/map_info.dart';
 import 'package:go_app_client/helpers/share_prefereces.dart';
+import 'package:go_app_client/helpers/toast.dart';
 import 'package:go_app_client/presentation/bloc/booking/booking_bloc.dart';
+import 'package:go_app_client/presentation/bloc/driver_location/driver_location_cubit.dart';
+import 'package:go_app_client/presentation/bloc/home/home_cubit.dart';
 import 'package:go_app_client/presentation/pages/home/complete_booking/booking_bottom_view.dart';
 import 'package:go_app_client/presentation/pages/home/complete_booking/sections/driver_location_marker.dart';
 import 'package:go_app_client/presentation/widgets/loading_overlay.dart';
@@ -25,12 +30,24 @@ class _CompleteBookingPageState extends State<CompleteBookingPage> {
   late CameraPosition _initialCameraPosition;
   Line? bookingLine;
   Line? driverLine;
-
+  bool visiblleDriverIcon = true;
+  bool isFirstVisibleDriverLocation = true;
+  BookingBloc? _bloc;
+  HomeCubit? _homeCubit;
   @override
   void initState() {
     super.initState();
+    _bloc = BlocProvider.of<BookingBloc>(context);
+    _homeCubit = BlocProvider.of<HomeCubit>(context);
     LatLng latLng = getCurrentLatLngFromSharedPrefs();
     _initialCameraPosition = CameraPosition(target: latLng, zoom: 15);
+  }
+
+  @override
+  void dispose() {
+    _bloc?.add(const BookingEvent.reset());
+    _homeCubit?.onCheckBooking();
+    super.dispose();
   }
 
   @override
@@ -38,16 +55,30 @@ class _CompleteBookingPageState extends State<CompleteBookingPage> {
     return BlocConsumer<BookingBloc, BookingState>(
         listener: (context, state) {
           if (state is BookingDriverRouteUpdated) {
+            if (isFirstVisibleDriverLocation) {
+              var driverLocationState =
+                  context.read<DriverLocationCubit>().state;
+              if (driverLocationState is DriverLocationUpdated) {
+                _controller?.animateCamera(CameraUpdate.newLatLngZoom(
+                    LatLng(driverLocationState.driverLocation.location.latitude,
+                        driverLocationState.driverLocation.location.longitude),
+                    15));
+              }
+              isFirstVisibleDriverLocation = false;
+            }
             _controller?.clearLines();
             _controller?.addPolyline(PolylineOptions(
                 geometry: state.driverRoute,
                 polylineColor: Colors.blue,
                 polylineWidth: 5.0,
-                polylineOpacity: 0.5));
+                polylineOpacity: 0.8));
             return;
           }
           if (state is BookingStatusUpdated) {
             if (state.booking?.status == BookingStatus.onRide) {
+              setState(() {
+                visiblleDriverIcon = false;
+              });
               _controller?.clearLines();
               _controller?.addPolyline(PolylineOptions(
                   geometry: state.path!.points,
@@ -64,11 +95,21 @@ class _CompleteBookingPageState extends State<CompleteBookingPage> {
                   bottom: 150));
               return;
             }
+
+            if (state.booking?.status == BookingStatus.arrrivedPickup) {
+              ToastHelper.showToast(
+                  message: "Tài xế đã tới nơi đón bạn, hãy ra xe ngay");
+            }
+          }
+          if (state is BookingLoadError) {
+            ToastHelper.showToast(message: "Đã có lỗi xảy ra, hãy thử lại");
+            Navigator.pop(context);
           }
         },
         buildWhen: (previous, current) =>
             current is BookingGetDirectionSuccess ||
             current is BookingLoadingData ||
+            current is BookingLoadError ||
             current is BookingLoadDataSuccess ||
             current is BookingFoundingDriver,
         builder: (context, state) => SafeArea(
@@ -99,7 +140,7 @@ class _CompleteBookingPageState extends State<CompleteBookingPage> {
                                 geometry: state.path!.points,
                                 polylineColor: AppColors.primaryGreen,
                                 polylineWidth: 5.0,
-                                polylineOpacity: 0.5));
+                                polylineOpacity: 0.8));
                             _controller?.animateCamera(
                                 CameraUpdate.newLatLngBounds(
                                     state.path!.focus ??
@@ -182,11 +223,87 @@ class _CompleteBookingPageState extends State<CompleteBookingPage> {
                               ],
                               mapController: _controller!),
                           DriverLocationMarker(controller: _controller!),
-                          const Positioned(
+                          Positioned(
                             bottom: 0,
-                            child: BookingBottomView(),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                if (visiblleDriverIcon) ...[
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        right: 20, bottom: 10),
+                                    child: InkWell(
+                                      onTap: () async {
+                                        var driverLocationState = context
+                                            .read<DriverLocationCubit>()
+                                            .state;
+                                        if (driverLocationState
+                                            is DriverLocationUpdated) {
+                                          _controller?.animateCamera(
+                                              CameraUpdate.newLatLngZoom(
+                                                  LatLng(
+                                                      driverLocationState
+                                                          .driverLocation
+                                                          .location
+                                                          .latitude,
+                                                      driverLocationState
+                                                          .driverLocation
+                                                          .location
+                                                          .longitude),
+                                                  15));
+                                        } else {
+                                          ToastHelper.showToast(
+                                              message:
+                                                  "Chưa xác định được vị trí tài xế");
+                                        }
+                                      },
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                            color: Colors.white),
+                                        padding: const EdgeInsets.all(10),
+                                        child: const Image(
+                                          image: AppImages.icDriver,
+                                          fit: BoxFit.cover,
+                                          width: 25,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      right: 20, bottom: 20),
+                                  child: InkWell(
+                                    onTap: () async {
+                                      Position locationData =
+                                          await Geolocator.getCurrentPosition();
+                                      _controller?.animateCamera(
+                                          CameraUpdate.newLatLngZoom(
+                                              LatLng(locationData.latitude,
+                                                  locationData.longitude),
+                                              16));
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(50),
+                                          color: Colors.white),
+                                      padding: const EdgeInsets.all(10),
+                                      child: const Image(
+                                        image: AppImages.icFocus,
+                                        fit: BoxFit.cover,
+                                        width: 25,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                const BookingBottomView(),
+                              ],
+                            ),
                           )
-                        ]
+                        ],
                       ],
                     ),
             )));

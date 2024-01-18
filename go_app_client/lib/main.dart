@@ -10,10 +10,12 @@ import 'package:go_app_client/presentation/bloc/account/account_bloc.dart';
 import 'package:go_app_client/presentation/bloc/chat/chat/chat_cubit.dart';
 import 'package:go_app_client/presentation/bloc/driver_location/driver_location_cubit.dart';
 import 'package:go_app_client/presentation/bloc/history/history_bloc.dart';
+import 'package:go_app_client/presentation/bloc/history_detail/history_detail_bloc.dart';
 import 'package:go_app_client/presentation/bloc/home/home_cubit.dart';
 import 'package:go_app_client/presentation/bloc/login/login_bloc.dart';
 import 'package:go_app_client/presentation/bloc/booking/booking_bloc.dart';
 import 'package:go_app_client/presentation/bloc/review/review_cubit.dart';
+import 'package:go_app_client/presentation/pages/login/register_page.dart';
 import 'package:go_app_client/presentation/pages/splash/splash_page.dart';
 
 import 'package:injectable/injectable.dart';
@@ -42,6 +44,7 @@ class MyApp extends StatelessWidget {
         BlocProvider<HomeCubit>(create: (_) => getIt()),
         BlocProvider<BookingBloc>(create: (_) => getIt()),
         BlocProvider<HistoryBloc>(create: (_) => getIt()),
+        BlocProvider<HistoryDetailBloc>(create: (_) => getIt()),
         BlocProvider<ChatCubit>(create: (_) => getIt()),
         BlocProvider<DriverLocationCubit>(create: (_) => getIt()),
         BlocProvider<ReviewCubit>(create: (_) => getIt()),

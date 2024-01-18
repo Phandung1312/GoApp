@@ -6,6 +6,7 @@ import 'package:go_app_client/core/utils/utils.dart';
 import 'package:go_app_client/data/models/history/review_request_model.dart';
 import 'package:go_app_client/domain/entities/review_template.dart';
 import 'package:go_app_client/helpers/toast.dart';
+import 'package:go_app_client/presentation/bloc/history_detail/history_detail_bloc.dart';
 import 'package:go_app_client/presentation/bloc/review/review_cubit.dart';
 import 'package:go_app_client/presentation/pages/home/booking_review/section/review_item.dart';
 import 'package:go_app_client/presentation/widgets/main_tool_bar.dart';
@@ -26,7 +27,7 @@ class _BookingReviewPageState extends State<BookingReviewPage> {
   @override
   void initState() {
     super.initState();
-     WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       bookingId = ModalRoute.of(context)!.settings.arguments as int;
     });
   }
@@ -38,12 +39,17 @@ class _BookingReviewPageState extends State<BookingReviewPage> {
       appBar: const MainToolBar(title: "Đánh giá tài xế", isBack: true),
       body: BlocListener<ReviewCubit, ReviewState>(
         listener: (context, state) {
-         if(state is ReviewCreateSuccess){
-           ToastHelper.showToast(
-                  message:
-                      "Đánh giá của bạn đã được ghi nhận, cảm ơn vì đã sử dụng dịch vụ của chúng tôi");
-              Navigator.pop(context);
-         }
+          state.whenOrNull(createSuccess: () {
+            context
+                .read<HistoryDetailBloc>()
+                .add(HistoryDetailEvent.loadHistory(id: bookingId));
+            ToastHelper.showToast(
+                message:
+                    "Đánh giá của bạn đã được ghi nhận, cảm ơn vì đã sử dụng dịch vụ của chúng tôi");
+            Navigator.pop(context);
+          }, createError: () {
+            ToastHelper.showToast(message: "Đã xảy ra lỗi, hãy thử lại sau");
+          });
         },
         child: SingleChildScrollView(
           child: Column(

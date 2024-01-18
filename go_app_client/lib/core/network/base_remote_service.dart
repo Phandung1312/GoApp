@@ -22,14 +22,13 @@ mixin BaseRemoteService {
       }
     } on DioException catch (e) {
       Logger().i(e.requestOptions.uri);
-
       Logger().i(e.requestOptions.data.toString());
       Logger().i(e.response?.data.toString());
       Logger().e("Retrofit error:${e.message}");
       if (e.type == DioExceptionType.receiveTimeout) {
         return Left(ApiTimeOutFailure());
       } else {
-        return Left(ExceptionFailure(e));
+        return Left(ExceptionFailure(e.message ?? "Đã xảy ra lỗi"));
       }
     }
   }

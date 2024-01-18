@@ -13,7 +13,7 @@ class _AccountApiService implements AccountApiService {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://forlorn-bite-production.up.railway.app/';
+    baseUrl ??= 'https://goapi-production-ecc7.up.railway.app/';
   }
 
   final Dio _dio;
@@ -124,6 +124,76 @@ class _AccountApiService implements AccountApiService {
       method: 'GET',
       headers: _headers,
       extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'customers/${id}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ClientInfoModel.fromJson(_result.data!);
+    final httpResponse = HttpResponse(value, _result);
+    return httpResponse;
+  }
+
+  @override
+  Future<HttpResponse<ClientInfoModel>> updateAccount({
+    required int id,
+    File? avatar,
+    String? fullName,
+    String? dateOfBirth,
+    bool? gender,
+    String? phoneNumber,
+  }) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = FormData();
+    if (avatar != null) {
+      _data.files.add(MapEntry(
+        'avatar',
+        MultipartFile.fromFileSync(
+          avatar.path,
+          filename: avatar.path.split(Platform.pathSeparator).last,
+        ),
+      ));
+    }
+    if (fullName != null) {
+      _data.fields.add(MapEntry(
+        'fullName',
+        fullName,
+      ));
+    }
+    if (dateOfBirth != null) {
+      _data.fields.add(MapEntry(
+        'dateOfBirth',
+        dateOfBirth,
+      ));
+    }
+    if (gender != null) {
+      _data.fields.add(MapEntry(
+        'gender',
+        gender.toString(),
+      ));
+    }
+    if (phoneNumber != null) {
+      _data.fields.add(MapEntry(
+        'phoneNumber',
+        phoneNumber,
+      ));
+    }
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<HttpResponse<ClientInfoModel>>(Options(
+      method: 'PATCH',
+      headers: _headers,
+      extra: _extra,
+      contentType: 'multipart/form-data',
     )
             .compose(
               _dio.options,

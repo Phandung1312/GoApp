@@ -20,18 +20,21 @@ mixin _$ReviewState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() createSuccess,
+    required TResult Function() createError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? createSuccess,
+    TResult? Function()? createError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? createSuccess,
+    TResult Function()? createError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$ReviewState {
   TResult map<TResult extends Object?>({
     required TResult Function(ReviewInitial value) initial,
     required TResult Function(ReviewCreateSuccess value) createSuccess,
+    required TResult Function(ReviewCreateError value) createError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ReviewInitial value)? initial,
     TResult? Function(ReviewCreateSuccess value)? createSuccess,
+    TResult? Function(ReviewCreateError value)? createError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ReviewInitial value)? initial,
     TResult Function(ReviewCreateSuccess value)? createSuccess,
+    TResult Function(ReviewCreateError value)? createError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +120,7 @@ class _$ReviewInitialImpl implements ReviewInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() createSuccess,
+    required TResult Function() createError,
   }) {
     return initial();
   }
@@ -123,6 +130,7 @@ class _$ReviewInitialImpl implements ReviewInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? createSuccess,
+    TResult? Function()? createError,
   }) {
     return initial?.call();
   }
@@ -132,6 +140,7 @@ class _$ReviewInitialImpl implements ReviewInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? createSuccess,
+    TResult Function()? createError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -145,6 +154,7 @@ class _$ReviewInitialImpl implements ReviewInitial {
   TResult map<TResult extends Object?>({
     required TResult Function(ReviewInitial value) initial,
     required TResult Function(ReviewCreateSuccess value) createSuccess,
+    required TResult Function(ReviewCreateError value) createError,
   }) {
     return initial(this);
   }
@@ -154,6 +164,7 @@ class _$ReviewInitialImpl implements ReviewInitial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ReviewInitial value)? initial,
     TResult? Function(ReviewCreateSuccess value)? createSuccess,
+    TResult? Function(ReviewCreateError value)? createError,
   }) {
     return initial?.call(this);
   }
@@ -163,6 +174,7 @@ class _$ReviewInitialImpl implements ReviewInitial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ReviewInitial value)? initial,
     TResult Function(ReviewCreateSuccess value)? createSuccess,
+    TResult Function(ReviewCreateError value)? createError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -217,6 +229,7 @@ class _$ReviewCreateSuccessImpl implements ReviewCreateSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() createSuccess,
+    required TResult Function() createError,
   }) {
     return createSuccess();
   }
@@ -226,6 +239,7 @@ class _$ReviewCreateSuccessImpl implements ReviewCreateSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? createSuccess,
+    TResult? Function()? createError,
   }) {
     return createSuccess?.call();
   }
@@ -235,6 +249,7 @@ class _$ReviewCreateSuccessImpl implements ReviewCreateSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? createSuccess,
+    TResult Function()? createError,
     required TResult orElse(),
   }) {
     if (createSuccess != null) {
@@ -248,6 +263,7 @@ class _$ReviewCreateSuccessImpl implements ReviewCreateSuccess {
   TResult map<TResult extends Object?>({
     required TResult Function(ReviewInitial value) initial,
     required TResult Function(ReviewCreateSuccess value) createSuccess,
+    required TResult Function(ReviewCreateError value) createError,
   }) {
     return createSuccess(this);
   }
@@ -257,6 +273,7 @@ class _$ReviewCreateSuccessImpl implements ReviewCreateSuccess {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ReviewInitial value)? initial,
     TResult? Function(ReviewCreateSuccess value)? createSuccess,
+    TResult? Function(ReviewCreateError value)? createError,
   }) {
     return createSuccess?.call(this);
   }
@@ -266,6 +283,7 @@ class _$ReviewCreateSuccessImpl implements ReviewCreateSuccess {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ReviewInitial value)? initial,
     TResult Function(ReviewCreateSuccess value)? createSuccess,
+    TResult Function(ReviewCreateError value)? createError,
     required TResult orElse(),
   }) {
     if (createSuccess != null) {
@@ -277,4 +295,112 @@ class _$ReviewCreateSuccessImpl implements ReviewCreateSuccess {
 
 abstract class ReviewCreateSuccess implements ReviewState {
   const factory ReviewCreateSuccess() = _$ReviewCreateSuccessImpl;
+}
+
+/// @nodoc
+abstract class _$$ReviewCreateErrorImplCopyWith<$Res> {
+  factory _$$ReviewCreateErrorImplCopyWith(_$ReviewCreateErrorImpl value,
+          $Res Function(_$ReviewCreateErrorImpl) then) =
+      __$$ReviewCreateErrorImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ReviewCreateErrorImplCopyWithImpl<$Res>
+    extends _$ReviewStateCopyWithImpl<$Res, _$ReviewCreateErrorImpl>
+    implements _$$ReviewCreateErrorImplCopyWith<$Res> {
+  __$$ReviewCreateErrorImplCopyWithImpl(_$ReviewCreateErrorImpl _value,
+      $Res Function(_$ReviewCreateErrorImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ReviewCreateErrorImpl implements ReviewCreateError {
+  const _$ReviewCreateErrorImpl();
+
+  @override
+  String toString() {
+    return 'ReviewState.createError()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ReviewCreateErrorImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() createSuccess,
+    required TResult Function() createError,
+  }) {
+    return createError();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? createSuccess,
+    TResult? Function()? createError,
+  }) {
+    return createError?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? createSuccess,
+    TResult Function()? createError,
+    required TResult orElse(),
+  }) {
+    if (createError != null) {
+      return createError();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ReviewInitial value) initial,
+    required TResult Function(ReviewCreateSuccess value) createSuccess,
+    required TResult Function(ReviewCreateError value) createError,
+  }) {
+    return createError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ReviewInitial value)? initial,
+    TResult? Function(ReviewCreateSuccess value)? createSuccess,
+    TResult? Function(ReviewCreateError value)? createError,
+  }) {
+    return createError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ReviewInitial value)? initial,
+    TResult Function(ReviewCreateSuccess value)? createSuccess,
+    TResult Function(ReviewCreateError value)? createError,
+    required TResult orElse(),
+  }) {
+    if (createError != null) {
+      return createError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ReviewCreateError implements ReviewState {
+  const factory ReviewCreateError() = _$ReviewCreateErrorImpl;
 }

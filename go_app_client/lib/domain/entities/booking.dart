@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:go_app_client/domain/entities/driver_info.dart';
 import 'package:go_app_client/domain/entities/enum/enum.dart';
 import 'package:vietmap_flutter_gl/vietmap_flutter_gl.dart';
 
@@ -17,7 +18,7 @@ class Booking with _$Booking {
     @Default(0.0) double amount,
     @Default(0) num predictTime,
     @Default(0.0) double distance,
-    @Default(0) int driverId,
+    @Default(DriverInfo()) DriverInfo driver,
     @Default(VehicleType.motorcycle) VehicleType vehicleType,
     @Default("VnPay") String paymentMethod,
   }) = _Booking;

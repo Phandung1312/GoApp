@@ -8,6 +8,7 @@ import 'package:go_app_client/data/models/booking/booking_request.dart';
 import 'package:go_app_client/data/models/driver_info_model.dart';
 import 'package:go_app_client/data/models/history/review_model.dart';
 import 'package:go_app_client/data/models/history/review_request_model.dart';
+import 'package:go_app_client/data/models/pagination_model.dart';
 import 'package:retrofit/retrofit.dart';
 part 'booking_api_service.g.dart';
 
@@ -29,15 +30,24 @@ abstract class BookingApiService {
 
   @GET('bookings/active')
   Future<HttpResponse<BookingModel>> getActiveBooking();
-
+  @GET('bookings/{id}')
+  Future<HttpResponse<BookingModel>> getBookingById(
+    @Path('id') int id,
+  );
   @POST('reviews')
   Future<HttpResponse<ReviewModel>> createReview(
-    @Body() ReviewRequestModel reviewRequest
-  );
+      @Body() ReviewRequestModel reviewRequest);
 
-    @PATCH('bookings/{id}/cancel')
+  @PATCH('bookings/{id}/cancel')
   Future<HttpResponse<BookingCancelResponse>> cancelBooking(
-    @Path('id') int id,
-    @Body() BookingCancelRequest request
+      @Path('id') int id, @Body() BookingCancelRequest request);
+
+  @GET('bookings')
+  Future<HttpResponse<PaginationModel>> getHistories(
+    @Query('page') int? page,
+    @Query('size') int? size,
+    @Query('status') String? status,
+    @Query('sortType') String? sortType,
+    @Query('sortFiled') String? sortFiled,
   );
 }

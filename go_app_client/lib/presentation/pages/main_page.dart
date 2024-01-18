@@ -5,7 +5,6 @@ import 'package:go_app_client/config/images.dart';
 import 'package:go_app_client/presentation/pages/account/account_page.dart';
 import 'package:go_app_client/presentation/pages/history/history_page.dart';
 import 'package:go_app_client/presentation/pages/home/home_page.dart';
-import 'package:go_app_client/presentation/pages/payment/payment_page.dart';
 
 
 class MainPage extends StatefulWidget {
@@ -20,7 +19,6 @@ class _MainPageState extends State<MainPage> {
   final tabs = [
     const HomePage(),
     const HistoryPage(),
-    const PaymentPage(),
     const AccountPage()
   ];
   @override
@@ -44,11 +42,6 @@ class _MainPageState extends State<MainPage> {
               icon: ImageIcon(AppImages.icInvoice ), 
               activeIcon: ImageIcon(AppImages.icInvoiceSelected),
                label : "Hoạt động",
-              ),
-              BottomNavigationBarItem(
-              icon: ImageIcon(AppImages.icPayment), 
-              activeIcon: ImageIcon(AppImages.icPaymentSelected),
-               label : "Payment",
               ),
               BottomNavigationBarItem(
              icon: ImageIcon(AppImages.icAccount ), 

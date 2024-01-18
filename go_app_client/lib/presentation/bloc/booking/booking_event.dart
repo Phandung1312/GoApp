@@ -35,5 +35,5 @@ class BookingEvent with _$BookingEvent {
 
   const factory BookingEvent.changeDriverLocation({required DriverLocation driverLocation}) = BookingChangeDriverLocation;
   const factory BookingEvent.cancel({required BookingCancelRequest request}) = BookingCancel;
-
+  const factory BookingEvent.reset() = BookingReset;
 }

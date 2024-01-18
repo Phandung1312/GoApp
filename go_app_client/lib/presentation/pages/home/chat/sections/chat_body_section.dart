@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_app_client/domain/entities/message.dart';
+import 'package:go_app_client/helpers/toast.dart';
 import 'package:go_app_client/presentation/bloc/chat/chat/chat_cubit.dart';
 import 'package:go_app_client/presentation/pages/home/chat/sections/message_item.dart';
 import 'package:go_app_client/presentation/widgets/loading_overlay.dart';
-
 
 class ChatBodySection extends StatefulWidget {
   const ChatBodySection({super.key});
@@ -25,7 +25,7 @@ class _ChatBodySectionState extends State<ChatBodySection> {
           setState(() {
             messages.addAll(state.messages);
           });
-       
+
           _scrollToBottom();
           return;
         }
@@ -36,14 +36,24 @@ class _ChatBodySectionState extends State<ChatBodySection> {
           _scrollToBottom();
           return;
         }
-        if(state is ChatUserFocus){
+        if (state is ChatUserFocus) {
           _scrollToBottom();
+          return;
+        }
+        if (state is ChatLoadAllError) {
+          ToastHelper.showToast(
+              message: "Đã xảy ra lỗi khi tải tin nhắn, xin hãy thử lại ");
+          Navigator.pop(context);
         }
       },
-      buildWhen: (previous, current) => current is ChatLoadingAllMessages || current is ChatLoadAllMessageSucces,
+      buildWhen: (previous, current) =>
+          current is ChatLoadingAllMessages ||
+          current is ChatLoadAllMessageSucces,
       builder: (context, state) {
         if (state is ChatLoadingAllMessages) {
-          return const Center(child: spinKitWave);
+          return Container(
+              color: Colors.grey.shade200,
+              child: const Center(child: spinKitWave));
         }
         return Container(
           color: Colors.grey.shade200,
@@ -67,7 +77,9 @@ class _ChatBodySectionState extends State<ChatBodySection> {
 
   void _scrollToBottom() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _scrollController.jumpTo( _scrollController.position.maxScrollExtent,);
+      _scrollController.jumpTo(
+        _scrollController.position.maxScrollExtent,
+      );
     });
   }
 }

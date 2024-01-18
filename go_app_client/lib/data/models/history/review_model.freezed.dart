@@ -22,7 +22,7 @@ ReviewModel _$ReviewModelFromJson(Map<String, dynamic> json) {
 mixin _$ReviewModel {
   int get id => throw _privateConstructorUsedError;
   int? get bookingId => throw _privateConstructorUsedError;
-  num? get rating => throw _privateConstructorUsedError;
+  double? get rating => throw _privateConstructorUsedError;
   String? get content => throw _privateConstructorUsedError;
   int? get createAt => throw _privateConstructorUsedError;
 
@@ -39,7 +39,7 @@ abstract class $ReviewModelCopyWith<$Res> {
       _$ReviewModelCopyWithImpl<$Res, ReviewModel>;
   @useResult
   $Res call(
-      {int id, int? bookingId, num? rating, String? content, int? createAt});
+      {int id, int? bookingId, double? rating, String? content, int? createAt});
 }
 
 /// @nodoc
@@ -73,7 +73,7 @@ class _$ReviewModelCopyWithImpl<$Res, $Val extends ReviewModel>
       rating: freezed == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
-              as num?,
+              as double?,
       content: freezed == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
@@ -95,7 +95,7 @@ abstract class _$$ReviewModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id, int? bookingId, num? rating, String? content, int? createAt});
+      {int id, int? bookingId, double? rating, String? content, int? createAt});
 }
 
 /// @nodoc
@@ -127,7 +127,7 @@ class __$$ReviewModelImplCopyWithImpl<$Res>
       rating: freezed == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
-              as num?,
+              as double?,
       content: freezed == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
@@ -142,13 +142,14 @@ class __$$ReviewModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ReviewModelImpl implements _ReviewModel {
+class _$ReviewModelImpl extends _ReviewModel {
   const _$ReviewModelImpl(
       {required this.id,
       this.bookingId,
       this.rating,
       this.content,
-      this.createAt});
+      this.createAt})
+      : super._();
 
   factory _$ReviewModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ReviewModelImplFromJson(json);
@@ -158,7 +159,7 @@ class _$ReviewModelImpl implements _ReviewModel {
   @override
   final int? bookingId;
   @override
-  final num? rating;
+  final double? rating;
   @override
   final String? content;
   @override
@@ -202,13 +203,14 @@ class _$ReviewModelImpl implements _ReviewModel {
   }
 }
 
-abstract class _ReviewModel implements ReviewModel {
+abstract class _ReviewModel extends ReviewModel {
   const factory _ReviewModel(
       {required final int id,
       final int? bookingId,
-      final num? rating,
+      final double? rating,
       final String? content,
       final int? createAt}) = _$ReviewModelImpl;
+  const _ReviewModel._() : super._();
 
   factory _ReviewModel.fromJson(Map<String, dynamic> json) =
       _$ReviewModelImpl.fromJson;
@@ -218,7 +220,7 @@ abstract class _ReviewModel implements ReviewModel {
   @override
   int? get bookingId;
   @override
-  num? get rating;
+  double? get rating;
   @override
   String? get content;
   @override

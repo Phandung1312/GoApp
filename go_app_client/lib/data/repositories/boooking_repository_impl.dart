@@ -9,6 +9,8 @@ import 'package:go_app_client/data/models/history/review_request_model.dart';
 import 'package:go_app_client/domain/entities/booking.dart';
 import 'package:go_app_client/domain/entities/driver_info.dart';
 import 'package:go_app_client/domain/entities/enum/enum.dart';
+import 'package:go_app_client/domain/entities/filter.dart';
+import 'package:go_app_client/domain/entities/history.dart';
 import 'package:go_app_client/domain/entities/map_routing_params.dart';
 import 'package:go_app_client/domain/repositories/booking_repository.dart';
 import 'package:go_app_client/extensions/latlng_extension.dart';
@@ -84,4 +86,25 @@ class BookingRepositoryImpl implements BookingRepository {
       return Left(NetworkFailure());
     }
   }
+
+    @override
+  Future<Either<Failure, List<History>>> getBookings(Filter filter) async{
+    if (await _networkInfo.isConnected) {
+      var result = await _remoteDataSource.getBookings(filter);
+      return result;
+    } else {
+      return Left(NetworkFailure());
+    }
+  }
+  
+  @override
+  Future<Either<Failure, History>> getHistoryById(int id) async{
+    if (await _networkInfo.isConnected) {
+      var result = await _remoteDataSource.getHistory(id);
+      return result;
+    } else {
+      return Left(NetworkFailure());
+    }
+  }
+
 }

@@ -21,11 +21,10 @@ class _CancelBookingPageState extends State<CancelBookingPage> {
   Widget build(BuildContext context) {
     return BlocListener<BookingBloc, BookingState>(
       listener: (context, state) {
-        if(state is BookingCancelSuccess){
-          ToastHelper.showToast(
-                  message:
-                      "Đơn hàng của bạn đã được hủy");
-          Navigator.pushNamedAndRemoveUntil(context, Paths.main, (route) => false);
+        if (state is BookingCancelSuccess) {
+          ToastHelper.showToast(message: "Đơn hàng của bạn đã được hủy");
+          Navigator.pushNamedAndRemoveUntil(
+              context, Paths.main, (route) => false);
         }
       },
       child: SafeArea(

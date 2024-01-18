@@ -21,8 +21,14 @@ mixin _$History {
   VehicleType get vehicleType => throw _privateConstructorUsedError;
   String get from => throw _privateConstructorUsedError;
   String get to => throw _privateConstructorUsedError;
-  String get createAt => throw _privateConstructorUsedError;
+  int get createAt => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
+  String get paymentMethod => throw _privateConstructorUsedError;
+  int get startTime => throw _privateConstructorUsedError;
+  int get endTime => throw _privateConstructorUsedError;
+  double get distance => throw _privateConstructorUsedError;
+  DriverInfo get driverInfo => throw _privateConstructorUsedError;
+  Review get review => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HistoryCopyWith<History> get copyWith => throw _privateConstructorUsedError;
@@ -39,8 +45,17 @@ abstract class $HistoryCopyWith<$Res> {
       VehicleType vehicleType,
       String from,
       String to,
-      String createAt,
-      int price});
+      int createAt,
+      int price,
+      String paymentMethod,
+      int startTime,
+      int endTime,
+      double distance,
+      DriverInfo driverInfo,
+      Review review});
+
+  $DriverInfoCopyWith<$Res> get driverInfo;
+  $ReviewCopyWith<$Res> get review;
 }
 
 /// @nodoc
@@ -63,6 +78,12 @@ class _$HistoryCopyWithImpl<$Res, $Val extends History>
     Object? to = null,
     Object? createAt = null,
     Object? price = null,
+    Object? paymentMethod = null,
+    Object? startTime = null,
+    Object? endTime = null,
+    Object? distance = null,
+    Object? driverInfo = null,
+    Object? review = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -88,12 +109,52 @@ class _$HistoryCopyWithImpl<$Res, $Val extends History>
       createAt: null == createAt
           ? _value.createAt
           : createAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
+      paymentMethod: null == paymentMethod
+          ? _value.paymentMethod
+          : paymentMethod // ignore: cast_nullable_to_non_nullable
+              as String,
+      startTime: null == startTime
+          ? _value.startTime
+          : startTime // ignore: cast_nullable_to_non_nullable
+              as int,
+      endTime: null == endTime
+          ? _value.endTime
+          : endTime // ignore: cast_nullable_to_non_nullable
+              as int,
+      distance: null == distance
+          ? _value.distance
+          : distance // ignore: cast_nullable_to_non_nullable
+              as double,
+      driverInfo: null == driverInfo
+          ? _value.driverInfo
+          : driverInfo // ignore: cast_nullable_to_non_nullable
+              as DriverInfo,
+      review: null == review
+          ? _value.review
+          : review // ignore: cast_nullable_to_non_nullable
+              as Review,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DriverInfoCopyWith<$Res> get driverInfo {
+    return $DriverInfoCopyWith<$Res>(_value.driverInfo, (value) {
+      return _then(_value.copyWith(driverInfo: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ReviewCopyWith<$Res> get review {
+    return $ReviewCopyWith<$Res>(_value.review, (value) {
+      return _then(_value.copyWith(review: value) as $Val);
+    });
   }
 }
 
@@ -110,8 +171,19 @@ abstract class _$$HistoryImplCopyWith<$Res> implements $HistoryCopyWith<$Res> {
       VehicleType vehicleType,
       String from,
       String to,
-      String createAt,
-      int price});
+      int createAt,
+      int price,
+      String paymentMethod,
+      int startTime,
+      int endTime,
+      double distance,
+      DriverInfo driverInfo,
+      Review review});
+
+  @override
+  $DriverInfoCopyWith<$Res> get driverInfo;
+  @override
+  $ReviewCopyWith<$Res> get review;
 }
 
 /// @nodoc
@@ -132,6 +204,12 @@ class __$$HistoryImplCopyWithImpl<$Res>
     Object? to = null,
     Object? createAt = null,
     Object? price = null,
+    Object? paymentMethod = null,
+    Object? startTime = null,
+    Object? endTime = null,
+    Object? distance = null,
+    Object? driverInfo = null,
+    Object? review = null,
   }) {
     return _then(_$HistoryImpl(
       id: null == id
@@ -157,11 +235,35 @@ class __$$HistoryImplCopyWithImpl<$Res>
       createAt: null == createAt
           ? _value.createAt
           : createAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
+      paymentMethod: null == paymentMethod
+          ? _value.paymentMethod
+          : paymentMethod // ignore: cast_nullable_to_non_nullable
+              as String,
+      startTime: null == startTime
+          ? _value.startTime
+          : startTime // ignore: cast_nullable_to_non_nullable
+              as int,
+      endTime: null == endTime
+          ? _value.endTime
+          : endTime // ignore: cast_nullable_to_non_nullable
+              as int,
+      distance: null == distance
+          ? _value.distance
+          : distance // ignore: cast_nullable_to_non_nullable
+              as double,
+      driverInfo: null == driverInfo
+          ? _value.driverInfo
+          : driverInfo // ignore: cast_nullable_to_non_nullable
+              as DriverInfo,
+      review: null == review
+          ? _value.review
+          : review // ignore: cast_nullable_to_non_nullable
+              as Review,
     ));
   }
 }
@@ -175,8 +277,14 @@ class _$HistoryImpl implements _History {
       this.vehicleType = VehicleType.motorcycle,
       this.from = "",
       this.to = '',
-      this.createAt = '',
-      this.price = 0});
+      this.createAt = 0,
+      this.price = 0,
+      this.paymentMethod = "",
+      this.startTime = 0,
+      this.endTime = 0,
+      this.distance = 0.0,
+      this.driverInfo = const DriverInfo(),
+      this.review = const Review()});
 
   @override
   @JsonKey()
@@ -195,14 +303,32 @@ class _$HistoryImpl implements _History {
   final String to;
   @override
   @JsonKey()
-  final String createAt;
+  final int createAt;
   @override
   @JsonKey()
   final int price;
+  @override
+  @JsonKey()
+  final String paymentMethod;
+  @override
+  @JsonKey()
+  final int startTime;
+  @override
+  @JsonKey()
+  final int endTime;
+  @override
+  @JsonKey()
+  final double distance;
+  @override
+  @JsonKey()
+  final DriverInfo driverInfo;
+  @override
+  @JsonKey()
+  final Review review;
 
   @override
   String toString() {
-    return 'History(id: $id, bookingStatus: $bookingStatus, vehicleType: $vehicleType, from: $from, to: $to, createAt: $createAt, price: $price)';
+    return 'History(id: $id, bookingStatus: $bookingStatus, vehicleType: $vehicleType, from: $from, to: $to, createAt: $createAt, price: $price, paymentMethod: $paymentMethod, startTime: $startTime, endTime: $endTime, distance: $distance, driverInfo: $driverInfo, review: $review)';
   }
 
   @override
@@ -219,12 +345,35 @@ class _$HistoryImpl implements _History {
             (identical(other.to, to) || other.to == to) &&
             (identical(other.createAt, createAt) ||
                 other.createAt == createAt) &&
-            (identical(other.price, price) || other.price == price));
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.paymentMethod, paymentMethod) ||
+                other.paymentMethod == paymentMethod) &&
+            (identical(other.startTime, startTime) ||
+                other.startTime == startTime) &&
+            (identical(other.endTime, endTime) || other.endTime == endTime) &&
+            (identical(other.distance, distance) ||
+                other.distance == distance) &&
+            (identical(other.driverInfo, driverInfo) ||
+                other.driverInfo == driverInfo) &&
+            (identical(other.review, review) || other.review == review));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, bookingStatus, vehicleType, from, to, createAt, price);
+      runtimeType,
+      id,
+      bookingStatus,
+      vehicleType,
+      from,
+      to,
+      createAt,
+      price,
+      paymentMethod,
+      startTime,
+      endTime,
+      distance,
+      driverInfo,
+      review);
 
   @JsonKey(ignore: true)
   @override
@@ -240,8 +389,14 @@ abstract class _History implements History {
       final VehicleType vehicleType,
       final String from,
       final String to,
-      final String createAt,
-      final int price}) = _$HistoryImpl;
+      final int createAt,
+      final int price,
+      final String paymentMethod,
+      final int startTime,
+      final int endTime,
+      final double distance,
+      final DriverInfo driverInfo,
+      final Review review}) = _$HistoryImpl;
 
   @override
   int get id;
@@ -254,9 +409,21 @@ abstract class _History implements History {
   @override
   String get to;
   @override
-  String get createAt;
+  int get createAt;
   @override
   int get price;
+  @override
+  String get paymentMethod;
+  @override
+  int get startTime;
+  @override
+  int get endTime;
+  @override
+  double get distance;
+  @override
+  DriverInfo get driverInfo;
+  @override
+  Review get review;
   @override
   @JsonKey(ignore: true)
   _$$HistoryImplCopyWith<_$HistoryImpl> get copyWith =>

@@ -26,5 +26,15 @@ abstract class AccountApiService {
   Future<HttpResponse<ClientInfoModel>> getAccount(
     @Path('id') int id,
   );
-  
-}
+  @PATCH('customers/{id}')
+   @MultiPart()
+  Future<HttpResponse<ClientInfoModel>> updateAccount(
+    {
+      @Path('id')required int id,
+      @Part(name: "avatar") File? avatar,
+      @Part(name: "fullName")  String? fullName,
+      @Part(name: "dateOfBirth") String? dateOfBirth,
+      @Part(name: "gender") bool? gender,
+      @Part(name: "phoneNumber")  String? phoneNumber}
+  );
+ }

@@ -17,10 +17,19 @@ _$BookingModelImpl _$$BookingModelImplFromJson(Map<String, dynamic> json) =>
       status: _$JsonConverterFromJson<String, BookingStatus>(
           json['status'], const BookingStatusConverter().fromJson),
       distance: (json['distance'] as num?)?.toDouble(),
-      driverId: json['driverId'] as int?,
+      driver: json['driver'] == null
+          ? null
+          : DriverInfoModel.fromJson(json['driver'] as Map<String, dynamic>),
       amount: (json['amount'] as num?)?.toDouble(),
       predictTime: json['predictTime'] as num?,
-      paymentMethod: json['paymentMethod'] as String?,
+      payment: json['payment'] == null
+          ? null
+          : PaymentModel.fromJson(json['payment'] as Map<String, dynamic>),
+      review: json['review'] == null
+          ? null
+          : ReviewModel.fromJson(json['review'] as Map<String, dynamic>),
+      startTime: json['startTime'] as num?,
+      endTime: json['endTime'] as num?,
       vehicleType: _$JsonConverterFromJson<String, VehicleType>(
           json['vehicleType'], const VehicleTypeConverter().fromJson),
     );
@@ -36,10 +45,13 @@ Map<String, dynamic> _$$BookingModelImplToJson(_$BookingModelImpl instance) =>
       'status': _$JsonConverterToJson<String, BookingStatus>(
           instance.status, const BookingStatusConverter().toJson),
       'distance': instance.distance,
-      'driverId': instance.driverId,
+      'driver': instance.driver,
       'amount': instance.amount,
       'predictTime': instance.predictTime,
-      'paymentMethod': instance.paymentMethod,
+      'payment': instance.payment,
+      'review': instance.review,
+      'startTime': instance.startTime,
+      'endTime': instance.endTime,
       'vehicleType': _$JsonConverterToJson<String, VehicleType>(
           instance.vehicleType, const VehicleTypeConverter().toJson),
     };

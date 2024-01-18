@@ -19,18 +19,22 @@ mixin _$AccountEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() load,
+    required TResult Function(AccountRequestModel accountRequestModel)
+        updateAccount,
     required TResult Function() logOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? load,
+    TResult? Function(AccountRequestModel accountRequestModel)? updateAccount,
     TResult? Function()? logOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
+    TResult Function(AccountRequestModel accountRequestModel)? updateAccount,
     TResult Function()? logOut,
     required TResult orElse(),
   }) =>
@@ -38,18 +42,21 @@ mixin _$AccountEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AccountLoad value) load,
+    required TResult Function(AccountUpdate value) updateAccount,
     required TResult Function(AccountLogOut value) logOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AccountLoad value)? load,
+    TResult? Function(AccountUpdate value)? updateAccount,
     TResult? Function(AccountLogOut value)? logOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AccountLoad value)? load,
+    TResult Function(AccountUpdate value)? updateAccount,
     TResult Function(AccountLogOut value)? logOut,
     required TResult orElse(),
   }) =>
@@ -113,6 +120,8 @@ class _$AccountLoadImpl implements AccountLoad {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() load,
+    required TResult Function(AccountRequestModel accountRequestModel)
+        updateAccount,
     required TResult Function() logOut,
   }) {
     return load();
@@ -122,6 +131,7 @@ class _$AccountLoadImpl implements AccountLoad {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? load,
+    TResult? Function(AccountRequestModel accountRequestModel)? updateAccount,
     TResult? Function()? logOut,
   }) {
     return load?.call();
@@ -131,6 +141,7 @@ class _$AccountLoadImpl implements AccountLoad {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
+    TResult Function(AccountRequestModel accountRequestModel)? updateAccount,
     TResult Function()? logOut,
     required TResult orElse(),
   }) {
@@ -144,6 +155,7 @@ class _$AccountLoadImpl implements AccountLoad {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AccountLoad value) load,
+    required TResult Function(AccountUpdate value) updateAccount,
     required TResult Function(AccountLogOut value) logOut,
   }) {
     return load(this);
@@ -153,6 +165,7 @@ class _$AccountLoadImpl implements AccountLoad {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AccountLoad value)? load,
+    TResult? Function(AccountUpdate value)? updateAccount,
     TResult? Function(AccountLogOut value)? logOut,
   }) {
     return load?.call(this);
@@ -162,6 +175,7 @@ class _$AccountLoadImpl implements AccountLoad {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AccountLoad value)? load,
+    TResult Function(AccountUpdate value)? updateAccount,
     TResult Function(AccountLogOut value)? logOut,
     required TResult orElse(),
   }) {
@@ -174,6 +188,159 @@ class _$AccountLoadImpl implements AccountLoad {
 
 abstract class AccountLoad implements AccountEvent {
   const factory AccountLoad() = _$AccountLoadImpl;
+}
+
+/// @nodoc
+abstract class _$$AccountUpdateImplCopyWith<$Res> {
+  factory _$$AccountUpdateImplCopyWith(
+          _$AccountUpdateImpl value, $Res Function(_$AccountUpdateImpl) then) =
+      __$$AccountUpdateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({AccountRequestModel accountRequestModel});
+
+  $AccountRequestModelCopyWith<$Res> get accountRequestModel;
+}
+
+/// @nodoc
+class __$$AccountUpdateImplCopyWithImpl<$Res>
+    extends _$AccountEventCopyWithImpl<$Res, _$AccountUpdateImpl>
+    implements _$$AccountUpdateImplCopyWith<$Res> {
+  __$$AccountUpdateImplCopyWithImpl(
+      _$AccountUpdateImpl _value, $Res Function(_$AccountUpdateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? accountRequestModel = null,
+  }) {
+    return _then(_$AccountUpdateImpl(
+      null == accountRequestModel
+          ? _value.accountRequestModel
+          : accountRequestModel // ignore: cast_nullable_to_non_nullable
+              as AccountRequestModel,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AccountRequestModelCopyWith<$Res> get accountRequestModel {
+    return $AccountRequestModelCopyWith<$Res>(_value.accountRequestModel,
+        (value) {
+      return _then(_value.copyWith(accountRequestModel: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$AccountUpdateImpl implements AccountUpdate {
+  const _$AccountUpdateImpl(this.accountRequestModel);
+
+  @override
+  final AccountRequestModel accountRequestModel;
+
+  @override
+  String toString() {
+    return 'AccountEvent.updateAccount(accountRequestModel: $accountRequestModel)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AccountUpdateImpl &&
+            (identical(other.accountRequestModel, accountRequestModel) ||
+                other.accountRequestModel == accountRequestModel));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, accountRequestModel);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AccountUpdateImplCopyWith<_$AccountUpdateImpl> get copyWith =>
+      __$$AccountUpdateImplCopyWithImpl<_$AccountUpdateImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() load,
+    required TResult Function(AccountRequestModel accountRequestModel)
+        updateAccount,
+    required TResult Function() logOut,
+  }) {
+    return updateAccount(accountRequestModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? load,
+    TResult? Function(AccountRequestModel accountRequestModel)? updateAccount,
+    TResult? Function()? logOut,
+  }) {
+    return updateAccount?.call(accountRequestModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? load,
+    TResult Function(AccountRequestModel accountRequestModel)? updateAccount,
+    TResult Function()? logOut,
+    required TResult orElse(),
+  }) {
+    if (updateAccount != null) {
+      return updateAccount(accountRequestModel);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AccountLoad value) load,
+    required TResult Function(AccountUpdate value) updateAccount,
+    required TResult Function(AccountLogOut value) logOut,
+  }) {
+    return updateAccount(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AccountLoad value)? load,
+    TResult? Function(AccountUpdate value)? updateAccount,
+    TResult? Function(AccountLogOut value)? logOut,
+  }) {
+    return updateAccount?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AccountLoad value)? load,
+    TResult Function(AccountUpdate value)? updateAccount,
+    TResult Function(AccountLogOut value)? logOut,
+    required TResult orElse(),
+  }) {
+    if (updateAccount != null) {
+      return updateAccount(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AccountUpdate implements AccountEvent {
+  const factory AccountUpdate(final AccountRequestModel accountRequestModel) =
+      _$AccountUpdateImpl;
+
+  AccountRequestModel get accountRequestModel;
+  @JsonKey(ignore: true)
+  _$$AccountUpdateImplCopyWith<_$AccountUpdateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -215,6 +382,8 @@ class _$AccountLogOutImpl implements AccountLogOut {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() load,
+    required TResult Function(AccountRequestModel accountRequestModel)
+        updateAccount,
     required TResult Function() logOut,
   }) {
     return logOut();
@@ -224,6 +393,7 @@ class _$AccountLogOutImpl implements AccountLogOut {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? load,
+    TResult? Function(AccountRequestModel accountRequestModel)? updateAccount,
     TResult? Function()? logOut,
   }) {
     return logOut?.call();
@@ -233,6 +403,7 @@ class _$AccountLogOutImpl implements AccountLogOut {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
+    TResult Function(AccountRequestModel accountRequestModel)? updateAccount,
     TResult Function()? logOut,
     required TResult orElse(),
   }) {
@@ -246,6 +417,7 @@ class _$AccountLogOutImpl implements AccountLogOut {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AccountLoad value) load,
+    required TResult Function(AccountUpdate value) updateAccount,
     required TResult Function(AccountLogOut value) logOut,
   }) {
     return logOut(this);
@@ -255,6 +427,7 @@ class _$AccountLogOutImpl implements AccountLogOut {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AccountLoad value)? load,
+    TResult? Function(AccountUpdate value)? updateAccount,
     TResult? Function(AccountLogOut value)? logOut,
   }) {
     return logOut?.call(this);
@@ -264,6 +437,7 @@ class _$AccountLogOutImpl implements AccountLogOut {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AccountLoad value)? load,
+    TResult Function(AccountUpdate value)? updateAccount,
     TResult Function(AccountLogOut value)? logOut,
     required TResult orElse(),
   }) {
@@ -285,6 +459,7 @@ mixin _$AccountState {
     required TResult Function() initial,
     required TResult Function(ClientInfo clientInfo) loadSuccess,
     required TResult Function() loading,
+    required TResult Function() loadError,
     required TResult Function() logOutSuccess,
   }) =>
       throw _privateConstructorUsedError;
@@ -293,6 +468,7 @@ mixin _$AccountState {
     TResult? Function()? initial,
     TResult? Function(ClientInfo clientInfo)? loadSuccess,
     TResult? Function()? loading,
+    TResult? Function()? loadError,
     TResult? Function()? logOutSuccess,
   }) =>
       throw _privateConstructorUsedError;
@@ -301,6 +477,7 @@ mixin _$AccountState {
     TResult Function()? initial,
     TResult Function(ClientInfo clientInfo)? loadSuccess,
     TResult Function()? loading,
+    TResult Function()? loadError,
     TResult Function()? logOutSuccess,
     required TResult orElse(),
   }) =>
@@ -310,6 +487,7 @@ mixin _$AccountState {
     required TResult Function(AccountInitial value) initial,
     required TResult Function(AccountLoadSuccess value) loadSuccess,
     required TResult Function(AccountLoading value) loading,
+    required TResult Function(AccountLoadError value) loadError,
     required TResult Function(AccountLogOutSuccess value) logOutSuccess,
   }) =>
       throw _privateConstructorUsedError;
@@ -318,6 +496,7 @@ mixin _$AccountState {
     TResult? Function(AccountInitial value)? initial,
     TResult? Function(AccountLoadSuccess value)? loadSuccess,
     TResult? Function(AccountLoading value)? loading,
+    TResult? Function(AccountLoadError value)? loadError,
     TResult? Function(AccountLogOutSuccess value)? logOutSuccess,
   }) =>
       throw _privateConstructorUsedError;
@@ -326,6 +505,7 @@ mixin _$AccountState {
     TResult Function(AccountInitial value)? initial,
     TResult Function(AccountLoadSuccess value)? loadSuccess,
     TResult Function(AccountLoading value)? loading,
+    TResult Function(AccountLoadError value)? loadError,
     TResult Function(AccountLogOutSuccess value)? logOutSuccess,
     required TResult orElse(),
   }) =>
@@ -391,6 +571,7 @@ class _$AccountInitialImpl implements AccountInitial {
     required TResult Function() initial,
     required TResult Function(ClientInfo clientInfo) loadSuccess,
     required TResult Function() loading,
+    required TResult Function() loadError,
     required TResult Function() logOutSuccess,
   }) {
     return initial();
@@ -402,6 +583,7 @@ class _$AccountInitialImpl implements AccountInitial {
     TResult? Function()? initial,
     TResult? Function(ClientInfo clientInfo)? loadSuccess,
     TResult? Function()? loading,
+    TResult? Function()? loadError,
     TResult? Function()? logOutSuccess,
   }) {
     return initial?.call();
@@ -413,6 +595,7 @@ class _$AccountInitialImpl implements AccountInitial {
     TResult Function()? initial,
     TResult Function(ClientInfo clientInfo)? loadSuccess,
     TResult Function()? loading,
+    TResult Function()? loadError,
     TResult Function()? logOutSuccess,
     required TResult orElse(),
   }) {
@@ -428,6 +611,7 @@ class _$AccountInitialImpl implements AccountInitial {
     required TResult Function(AccountInitial value) initial,
     required TResult Function(AccountLoadSuccess value) loadSuccess,
     required TResult Function(AccountLoading value) loading,
+    required TResult Function(AccountLoadError value) loadError,
     required TResult Function(AccountLogOutSuccess value) logOutSuccess,
   }) {
     return initial(this);
@@ -439,6 +623,7 @@ class _$AccountInitialImpl implements AccountInitial {
     TResult? Function(AccountInitial value)? initial,
     TResult? Function(AccountLoadSuccess value)? loadSuccess,
     TResult? Function(AccountLoading value)? loading,
+    TResult? Function(AccountLoadError value)? loadError,
     TResult? Function(AccountLogOutSuccess value)? logOutSuccess,
   }) {
     return initial?.call(this);
@@ -450,6 +635,7 @@ class _$AccountInitialImpl implements AccountInitial {
     TResult Function(AccountInitial value)? initial,
     TResult Function(AccountLoadSuccess value)? loadSuccess,
     TResult Function(AccountLoading value)? loading,
+    TResult Function(AccountLoadError value)? loadError,
     TResult Function(AccountLogOutSuccess value)? logOutSuccess,
     required TResult orElse(),
   }) {
@@ -543,6 +729,7 @@ class _$AccountLoadSuccessImpl implements AccountLoadSuccess {
     required TResult Function() initial,
     required TResult Function(ClientInfo clientInfo) loadSuccess,
     required TResult Function() loading,
+    required TResult Function() loadError,
     required TResult Function() logOutSuccess,
   }) {
     return loadSuccess(clientInfo);
@@ -554,6 +741,7 @@ class _$AccountLoadSuccessImpl implements AccountLoadSuccess {
     TResult? Function()? initial,
     TResult? Function(ClientInfo clientInfo)? loadSuccess,
     TResult? Function()? loading,
+    TResult? Function()? loadError,
     TResult? Function()? logOutSuccess,
   }) {
     return loadSuccess?.call(clientInfo);
@@ -565,6 +753,7 @@ class _$AccountLoadSuccessImpl implements AccountLoadSuccess {
     TResult Function()? initial,
     TResult Function(ClientInfo clientInfo)? loadSuccess,
     TResult Function()? loading,
+    TResult Function()? loadError,
     TResult Function()? logOutSuccess,
     required TResult orElse(),
   }) {
@@ -580,6 +769,7 @@ class _$AccountLoadSuccessImpl implements AccountLoadSuccess {
     required TResult Function(AccountInitial value) initial,
     required TResult Function(AccountLoadSuccess value) loadSuccess,
     required TResult Function(AccountLoading value) loading,
+    required TResult Function(AccountLoadError value) loadError,
     required TResult Function(AccountLogOutSuccess value) logOutSuccess,
   }) {
     return loadSuccess(this);
@@ -591,6 +781,7 @@ class _$AccountLoadSuccessImpl implements AccountLoadSuccess {
     TResult? Function(AccountInitial value)? initial,
     TResult? Function(AccountLoadSuccess value)? loadSuccess,
     TResult? Function(AccountLoading value)? loading,
+    TResult? Function(AccountLoadError value)? loadError,
     TResult? Function(AccountLogOutSuccess value)? logOutSuccess,
   }) {
     return loadSuccess?.call(this);
@@ -602,6 +793,7 @@ class _$AccountLoadSuccessImpl implements AccountLoadSuccess {
     TResult Function(AccountInitial value)? initial,
     TResult Function(AccountLoadSuccess value)? loadSuccess,
     TResult Function(AccountLoading value)? loading,
+    TResult Function(AccountLoadError value)? loadError,
     TResult Function(AccountLogOutSuccess value)? logOutSuccess,
     required TResult orElse(),
   }) {
@@ -663,6 +855,7 @@ class _$AccountLoadingImpl implements AccountLoading {
     required TResult Function() initial,
     required TResult Function(ClientInfo clientInfo) loadSuccess,
     required TResult Function() loading,
+    required TResult Function() loadError,
     required TResult Function() logOutSuccess,
   }) {
     return loading();
@@ -674,6 +867,7 @@ class _$AccountLoadingImpl implements AccountLoading {
     TResult? Function()? initial,
     TResult? Function(ClientInfo clientInfo)? loadSuccess,
     TResult? Function()? loading,
+    TResult? Function()? loadError,
     TResult? Function()? logOutSuccess,
   }) {
     return loading?.call();
@@ -685,6 +879,7 @@ class _$AccountLoadingImpl implements AccountLoading {
     TResult Function()? initial,
     TResult Function(ClientInfo clientInfo)? loadSuccess,
     TResult Function()? loading,
+    TResult Function()? loadError,
     TResult Function()? logOutSuccess,
     required TResult orElse(),
   }) {
@@ -700,6 +895,7 @@ class _$AccountLoadingImpl implements AccountLoading {
     required TResult Function(AccountInitial value) initial,
     required TResult Function(AccountLoadSuccess value) loadSuccess,
     required TResult Function(AccountLoading value) loading,
+    required TResult Function(AccountLoadError value) loadError,
     required TResult Function(AccountLogOutSuccess value) logOutSuccess,
   }) {
     return loading(this);
@@ -711,6 +907,7 @@ class _$AccountLoadingImpl implements AccountLoading {
     TResult? Function(AccountInitial value)? initial,
     TResult? Function(AccountLoadSuccess value)? loadSuccess,
     TResult? Function(AccountLoading value)? loading,
+    TResult? Function(AccountLoadError value)? loadError,
     TResult? Function(AccountLogOutSuccess value)? logOutSuccess,
   }) {
     return loading?.call(this);
@@ -722,6 +919,7 @@ class _$AccountLoadingImpl implements AccountLoading {
     TResult Function(AccountInitial value)? initial,
     TResult Function(AccountLoadSuccess value)? loadSuccess,
     TResult Function(AccountLoading value)? loading,
+    TResult Function(AccountLoadError value)? loadError,
     TResult Function(AccountLogOutSuccess value)? logOutSuccess,
     required TResult orElse(),
   }) {
@@ -734,6 +932,126 @@ class _$AccountLoadingImpl implements AccountLoading {
 
 abstract class AccountLoading implements AccountState {
   const factory AccountLoading() = _$AccountLoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$AccountLoadErrorImplCopyWith<$Res> {
+  factory _$$AccountLoadErrorImplCopyWith(_$AccountLoadErrorImpl value,
+          $Res Function(_$AccountLoadErrorImpl) then) =
+      __$$AccountLoadErrorImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$AccountLoadErrorImplCopyWithImpl<$Res>
+    extends _$AccountStateCopyWithImpl<$Res, _$AccountLoadErrorImpl>
+    implements _$$AccountLoadErrorImplCopyWith<$Res> {
+  __$$AccountLoadErrorImplCopyWithImpl(_$AccountLoadErrorImpl _value,
+      $Res Function(_$AccountLoadErrorImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$AccountLoadErrorImpl implements AccountLoadError {
+  const _$AccountLoadErrorImpl();
+
+  @override
+  String toString() {
+    return 'AccountState.loadError()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$AccountLoadErrorImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(ClientInfo clientInfo) loadSuccess,
+    required TResult Function() loading,
+    required TResult Function() loadError,
+    required TResult Function() logOutSuccess,
+  }) {
+    return loadError();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(ClientInfo clientInfo)? loadSuccess,
+    TResult? Function()? loading,
+    TResult? Function()? loadError,
+    TResult? Function()? logOutSuccess,
+  }) {
+    return loadError?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(ClientInfo clientInfo)? loadSuccess,
+    TResult Function()? loading,
+    TResult Function()? loadError,
+    TResult Function()? logOutSuccess,
+    required TResult orElse(),
+  }) {
+    if (loadError != null) {
+      return loadError();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AccountInitial value) initial,
+    required TResult Function(AccountLoadSuccess value) loadSuccess,
+    required TResult Function(AccountLoading value) loading,
+    required TResult Function(AccountLoadError value) loadError,
+    required TResult Function(AccountLogOutSuccess value) logOutSuccess,
+  }) {
+    return loadError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AccountInitial value)? initial,
+    TResult? Function(AccountLoadSuccess value)? loadSuccess,
+    TResult? Function(AccountLoading value)? loading,
+    TResult? Function(AccountLoadError value)? loadError,
+    TResult? Function(AccountLogOutSuccess value)? logOutSuccess,
+  }) {
+    return loadError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AccountInitial value)? initial,
+    TResult Function(AccountLoadSuccess value)? loadSuccess,
+    TResult Function(AccountLoading value)? loading,
+    TResult Function(AccountLoadError value)? loadError,
+    TResult Function(AccountLogOutSuccess value)? logOutSuccess,
+    required TResult orElse(),
+  }) {
+    if (loadError != null) {
+      return loadError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AccountLoadError implements AccountState {
+  const factory AccountLoadError() = _$AccountLoadErrorImpl;
 }
 
 /// @nodoc
@@ -778,6 +1096,7 @@ class _$AccountLogOutSuccessImpl implements AccountLogOutSuccess {
     required TResult Function() initial,
     required TResult Function(ClientInfo clientInfo) loadSuccess,
     required TResult Function() loading,
+    required TResult Function() loadError,
     required TResult Function() logOutSuccess,
   }) {
     return logOutSuccess();
@@ -789,6 +1108,7 @@ class _$AccountLogOutSuccessImpl implements AccountLogOutSuccess {
     TResult? Function()? initial,
     TResult? Function(ClientInfo clientInfo)? loadSuccess,
     TResult? Function()? loading,
+    TResult? Function()? loadError,
     TResult? Function()? logOutSuccess,
   }) {
     return logOutSuccess?.call();
@@ -800,6 +1120,7 @@ class _$AccountLogOutSuccessImpl implements AccountLogOutSuccess {
     TResult Function()? initial,
     TResult Function(ClientInfo clientInfo)? loadSuccess,
     TResult Function()? loading,
+    TResult Function()? loadError,
     TResult Function()? logOutSuccess,
     required TResult orElse(),
   }) {
@@ -815,6 +1136,7 @@ class _$AccountLogOutSuccessImpl implements AccountLogOutSuccess {
     required TResult Function(AccountInitial value) initial,
     required TResult Function(AccountLoadSuccess value) loadSuccess,
     required TResult Function(AccountLoading value) loading,
+    required TResult Function(AccountLoadError value) loadError,
     required TResult Function(AccountLogOutSuccess value) logOutSuccess,
   }) {
     return logOutSuccess(this);
@@ -826,6 +1148,7 @@ class _$AccountLogOutSuccessImpl implements AccountLogOutSuccess {
     TResult? Function(AccountInitial value)? initial,
     TResult? Function(AccountLoadSuccess value)? loadSuccess,
     TResult? Function(AccountLoading value)? loading,
+    TResult? Function(AccountLoadError value)? loadError,
     TResult? Function(AccountLogOutSuccess value)? logOutSuccess,
   }) {
     return logOutSuccess?.call(this);
@@ -837,6 +1160,7 @@ class _$AccountLogOutSuccessImpl implements AccountLogOutSuccess {
     TResult Function(AccountInitial value)? initial,
     TResult Function(AccountLoadSuccess value)? loadSuccess,
     TResult Function(AccountLoading value)? loading,
+    TResult Function(AccountLoadError value)? loadError,
     TResult Function(AccountLogOutSuccess value)? logOutSuccess,
     required TResult orElse(),
   }) {

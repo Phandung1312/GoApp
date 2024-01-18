@@ -26,7 +26,7 @@ mixin _$Booking {
   double get amount => throw _privateConstructorUsedError;
   num get predictTime => throw _privateConstructorUsedError;
   double get distance => throw _privateConstructorUsedError;
-  int get driverId => throw _privateConstructorUsedError;
+  DriverInfo get driver => throw _privateConstructorUsedError;
   VehicleType get vehicleType => throw _privateConstructorUsedError;
   String get paymentMethod => throw _privateConstructorUsedError;
 
@@ -50,9 +50,11 @@ abstract class $BookingCopyWith<$Res> {
       double amount,
       num predictTime,
       double distance,
-      int driverId,
+      DriverInfo driver,
       VehicleType vehicleType,
       String paymentMethod});
+
+  $DriverInfoCopyWith<$Res> get driver;
 }
 
 /// @nodoc
@@ -78,7 +80,7 @@ class _$BookingCopyWithImpl<$Res, $Val extends Booking>
     Object? amount = null,
     Object? predictTime = null,
     Object? distance = null,
-    Object? driverId = null,
+    Object? driver = null,
     Object? vehicleType = null,
     Object? paymentMethod = null,
   }) {
@@ -123,10 +125,10 @@ class _$BookingCopyWithImpl<$Res, $Val extends Booking>
           ? _value.distance
           : distance // ignore: cast_nullable_to_non_nullable
               as double,
-      driverId: null == driverId
-          ? _value.driverId
-          : driverId // ignore: cast_nullable_to_non_nullable
-              as int,
+      driver: null == driver
+          ? _value.driver
+          : driver // ignore: cast_nullable_to_non_nullable
+              as DriverInfo,
       vehicleType: null == vehicleType
           ? _value.vehicleType
           : vehicleType // ignore: cast_nullable_to_non_nullable
@@ -136,6 +138,14 @@ class _$BookingCopyWithImpl<$Res, $Val extends Booking>
           : paymentMethod // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DriverInfoCopyWith<$Res> get driver {
+    return $DriverInfoCopyWith<$Res>(_value.driver, (value) {
+      return _then(_value.copyWith(driver: value) as $Val);
+    });
   }
 }
 
@@ -157,9 +167,12 @@ abstract class _$$BookingImplCopyWith<$Res> implements $BookingCopyWith<$Res> {
       double amount,
       num predictTime,
       double distance,
-      int driverId,
+      DriverInfo driver,
       VehicleType vehicleType,
       String paymentMethod});
+
+  @override
+  $DriverInfoCopyWith<$Res> get driver;
 }
 
 /// @nodoc
@@ -183,7 +196,7 @@ class __$$BookingImplCopyWithImpl<$Res>
     Object? amount = null,
     Object? predictTime = null,
     Object? distance = null,
-    Object? driverId = null,
+    Object? driver = null,
     Object? vehicleType = null,
     Object? paymentMethod = null,
   }) {
@@ -228,10 +241,10 @@ class __$$BookingImplCopyWithImpl<$Res>
           ? _value.distance
           : distance // ignore: cast_nullable_to_non_nullable
               as double,
-      driverId: null == driverId
-          ? _value.driverId
-          : driverId // ignore: cast_nullable_to_non_nullable
-              as int,
+      driver: null == driver
+          ? _value.driver
+          : driver // ignore: cast_nullable_to_non_nullable
+              as DriverInfo,
       vehicleType: null == vehicleType
           ? _value.vehicleType
           : vehicleType // ignore: cast_nullable_to_non_nullable
@@ -258,7 +271,7 @@ class _$BookingImpl implements _Booking {
       this.amount = 0.0,
       this.predictTime = 0,
       this.distance = 0.0,
-      this.driverId = 0,
+      this.driver = const DriverInfo(),
       this.vehicleType = VehicleType.motorcycle,
       this.paymentMethod = "VnPay"});
 
@@ -294,7 +307,7 @@ class _$BookingImpl implements _Booking {
   final double distance;
   @override
   @JsonKey()
-  final int driverId;
+  final DriverInfo driver;
   @override
   @JsonKey()
   final VehicleType vehicleType;
@@ -304,7 +317,7 @@ class _$BookingImpl implements _Booking {
 
   @override
   String toString() {
-    return 'Booking(id: $id, createAt: $createAt, pickUpLocation: $pickUpLocation, pickUpAddress: $pickUpAddress, dropOffLocation: $dropOffLocation, dropOffAddress: $dropOffAddress, status: $status, amount: $amount, predictTime: $predictTime, distance: $distance, driverId: $driverId, vehicleType: $vehicleType, paymentMethod: $paymentMethod)';
+    return 'Booking(id: $id, createAt: $createAt, pickUpLocation: $pickUpLocation, pickUpAddress: $pickUpAddress, dropOffLocation: $dropOffLocation, dropOffAddress: $dropOffAddress, status: $status, amount: $amount, predictTime: $predictTime, distance: $distance, driver: $driver, vehicleType: $vehicleType, paymentMethod: $paymentMethod)';
   }
 
   @override
@@ -329,8 +342,7 @@ class _$BookingImpl implements _Booking {
                 other.predictTime == predictTime) &&
             (identical(other.distance, distance) ||
                 other.distance == distance) &&
-            (identical(other.driverId, driverId) ||
-                other.driverId == driverId) &&
+            (identical(other.driver, driver) || other.driver == driver) &&
             (identical(other.vehicleType, vehicleType) ||
                 other.vehicleType == vehicleType) &&
             (identical(other.paymentMethod, paymentMethod) ||
@@ -350,7 +362,7 @@ class _$BookingImpl implements _Booking {
       amount,
       predictTime,
       distance,
-      driverId,
+      driver,
       vehicleType,
       paymentMethod);
 
@@ -373,7 +385,7 @@ abstract class _Booking implements Booking {
       final double amount,
       final num predictTime,
       final double distance,
-      final int driverId,
+      final DriverInfo driver,
       final VehicleType vehicleType,
       final String paymentMethod}) = _$BookingImpl;
 
@@ -398,7 +410,7 @@ abstract class _Booking implements Booking {
   @override
   double get distance;
   @override
-  int get driverId;
+  DriverInfo get driver;
   @override
   VehicleType get vehicleType;
   @override

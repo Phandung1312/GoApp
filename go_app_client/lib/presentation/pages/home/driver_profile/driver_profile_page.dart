@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:go_app_client/config/colors.dart';
 import 'package:go_app_client/config/images.dart';
 import 'package:go_app_client/domain/entities/driver_info.dart';
 import 'package:go_app_client/extensions/enum_extension.dart';
-import 'package:go_app_client/presentation/bloc/booking/booking_bloc.dart';
 import 'package:go_app_client/presentation/widgets/main_tool_bar.dart';
 
 class DriverProfilePage extends StatelessWidget {
@@ -13,9 +11,7 @@ class DriverProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<BookingBloc, BookingState>(
-      builder: (context, state) {
-        var driverInfo = state.driverInfo ?? const DriverInfo();
+        var driverInfo = ModalRoute.of(context)!.settings.arguments as DriverInfo;
         return Scaffold(
           body: SafeArea(
               child: Column(
@@ -89,7 +85,7 @@ class DriverProfilePage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                            Text(
-                            "${driverInfo.rating}" + ' • ',
+                            '${driverInfo.rating.toStringAsFixed(1)} • ',
                             style: const TextStyle(
                                 fontFamily: 'Nunito',
                                 fontSize: 14,
@@ -117,9 +113,8 @@ class DriverProfilePage extends StatelessWidget {
                 ),
               )
             ],
-          )),
-        );
-      },
+          ))
+       
     );
   }
 

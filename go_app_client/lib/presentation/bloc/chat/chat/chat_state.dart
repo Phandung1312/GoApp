@@ -14,7 +14,9 @@ class ChatLoadingAllMessages extends ChatState {
       {required int userId, required DriverInfo driverInfo})
       : super(userId: userId, driverInfo: driverInfo);
 }
-
+class ChatLoadAllError extends ChatState{
+  
+}
 class ChatLoadAllMessageSucces extends ChatState {
   final List<Message> messages;
   ChatLoadAllMessageSucces(
@@ -32,6 +34,7 @@ class ChatReceivedMessage extends ChatState {
   ChatReceivedMessage({required this.message, required ChatState state})
       : super(userId: state.userId, driverInfo: state.driverInfo, conversationId: state.conversationId);
 }
+
 
 class ChatUserFocus extends ChatState{
   ChatUserFocus({required ChatState state})

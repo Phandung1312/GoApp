@@ -26,6 +26,8 @@ extension BookingStatusExtension on BookingStatus{
     switch(this){
       case BookingStatus.found:
       return "Tài xế đang tới";
+      case BookingStatus.arrrivedPickup:
+      return "Tài xế đã tới";
         case BookingStatus.paid:
       return "Tài xế đang tới";
       case BookingStatus.onRide:

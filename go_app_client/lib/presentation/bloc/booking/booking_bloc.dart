@@ -70,12 +70,12 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
         switch (bookingStatus) {
           case BookingStatus.paid:
             add(const BookingEvent.pay());
-          case BookingStatus.onRide:
+          case BookingStatus.onRide ||
+                BookingStatus.arrrivedPickup ||
+                BookingStatus.complete:
             add(BookingChangeStatus(bookingStatus: bookingStatus));
             break;
-          case BookingStatus.complete:
-            add(BookingChangeStatus(bookingStatus: bookingStatus));
-            break;
+
           default:
             break;
         }
@@ -85,9 +85,11 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
     });
     _driverLocationSubscription =
         _driverLocationCubit.stream.listen((driverLocationState) {
-      if (driverLocationState is DriverLocationUpdated) {
-        add(BookingChangeDriverLocation(
+      if (driverLocationState is DriverLocationUpdated ) {
+        if(state.booking?.status != BookingStatus.onRide){
+          add(BookingChangeDriverLocation(
             driverLocation: driverLocationState.driverLocation));
+        }
       }
     });
     on<BookingSelectVehicleType>(_onSelectVehicleType);
@@ -107,6 +109,11 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
     on<BookingLoadBookingData>(_onLoadBookingData);
     on<BookingChangeDriverLocation>(_onChangeDriverLocation);
     on<BookingCancel>(_onCancelBooking);
+    on<BookingReset>(_onReset);
+  }
+
+  void _onReset(BookingReset event,Emitter<BookingState> emit) async {
+    emit(const BookingInitial());
   }
   void _onChangeDriverLocation(
       BookingChangeDriverLocation event, Emitter<BookingState> emit) {
@@ -144,7 +151,6 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
       BookingChangeRouteByVehicle event, Emitter<BookingState> emit) async {
     var params = state.mapRoutingParams;
     params = params?.copyWith(vehicleType: event.vehicleType);
-    EasyLoadingHelper.simplyCustomize(Colors.green);
     EasyLoading.show();
     emit(BookingUpdateSucess(
         mapRoutingParams: params!, bookingPrices: state.bookingPrices));
@@ -161,7 +167,6 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
 
   void _onLocatingOnMap(
       BookingLocateOnMap event, Emitter<BookingState> emit) async {
-    EasyLoadingHelper.simplyCustomize(Colors.green);
     EasyLoading.show();
     if (event.refId != null) {
       var either = await _getPlaceDetailUseCase(event.refId!);
@@ -268,9 +273,18 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
       if (r.points.isEmpty) {
         emit(BookingLoadError(
             state: state,
-            failure: ExceptionFailure(
-                Exception("Tìm tuyến đường thất bại, xin vui lòng thử lại"))));
-      } else {
+            failure: const  ExceptionFailure(
+                "Điểm đến quá gần, hãy chọn điểm đến khác")));
+        return;
+      }
+      if(r.distance < 150 ){
+        emit(BookingLoadError(
+            state: state,
+            failure: const  ExceptionFailure(
+               "Điểm đến quá gần, hãy chọn điểm đến khác")));
+        return;
+      }
+       else {
         emit(BookingGetDirectionSuccess(path: r, state: state));
       }
     });
@@ -318,8 +332,8 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
       if (path.points.isEmpty) {
         emit(BookingLoadError(
             state: state,
-            failure: ExceptionFailure(
-                Exception("Tìm tuyến đường thất bại, xin vui lòng thử lại"))));
+            failure: const  ExceptionFailure(
+                "Điểm đến quá gần, hãy chọn điểm đến khác")));
       } else {
         if (bookingData.status == BookingStatus.paid) {
           var newState = BookingState(
@@ -327,15 +341,16 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
           emit(BookingFoundingDriver(state: newState));
         } else if (bookingData.status == BookingStatus.found ||
             bookingData.status == BookingStatus.onRide) {
-          var driverEither = await _getDriverInfoUseCase(bookingData.driverId);
-          driverEither.fold((l) => null, (r) {
+          socketBloc.listenerBooking();
+          socketBloc.listenerDriverLocation();
+          var either = await _getDriverInfoUseCase(bookingData.driver.id);
+          either.fold((l) => emit(BookingLoadError(state: state, failure: l)),
+              (r) {
             var newState = BookingState(
                 mapRoutingParams: params,
                 booking: bookingData,
                 path: path,
                 driverInfo: r);
-            socketBloc.listenerBooking();
-            socketBloc.listenerDriverLocation();
             emit(BookingLoadDataSuccess(state: newState));
           });
         }
